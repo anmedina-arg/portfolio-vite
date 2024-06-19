@@ -1,0 +1,22 @@
+nav {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  gap: 0.8rem;
+  width: 40%;
+  height: 4rem;
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 2rem;
+  border: solid white 1px;
+  border-radius: 3rem;
+  backdrop-filter: blur(15px);
+  z-index: 2;
+}
+
+@media screen and (max-width: 600px) {
+  nav {
+    width: 100%;
+  }
+}

@@ -1,0 +1,75 @@
+.container__header {
+  text-align: center;
+  height: 100vh;
+  position: relative;
+}
+
+.title__container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 3rem;
+}
+
+/* ============== ME ============== */
+
+.me {
+  background: linear-gradient(var(--color-primary), var(--color-bg));
+  width: 22rem;
+  height: 25rem;
+  border-radius: 12rem 12rem 0 0;
+  overflow: hidden;
+  margin: 2rem auto 0;
+  display: flex;
+}
+
+.picture {
+  height: auto;
+}
+
+.about {
+  display: flex;
+}
+
+.about__text {
+  margin: auto;
+  width: 50%;
+  color: var(--color-light);
+}
+
+/* .about__text p {
+  text-align: justify;
+  line-height: 1.5;
+} */
+
+.about__me {
+  color: white;
+  margin-bottom: 1rem;
+}
+
+/* ============ MEDIA QUERIES (MEDIUM DEVICES) ====================== */
+
+@media screen and (max-width: 1024px) {
+  .about {
+    flex-direction: column;
+  }
+  .about__text {
+    width: 100%;
+  }
+  .about__text p {
+    padding: 0 1rem;
+  }
+}
+
+/* ============ MEDIA QUERIES (SMALL DEVICES) ====================== */
+
+@media screen and (max-width: 600px) {
+  .about {
+    flex-direction: column;
+  }
+  .about__text {
+    width: 100%;
+  }
+  .about__text p {
+    padding: 0 1rem;
+  }
+}

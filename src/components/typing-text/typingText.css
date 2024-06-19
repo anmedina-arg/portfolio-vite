@@ -1,0 +1,57 @@
+.typing-text{
+	min-width: 200px;
+}
+
+.typing-text span {
+	position: relative;
+}
+
+.typing-text span::before{
+	content:"fullstack";
+	color: cadetblue;
+	animation: words 20s infinite;
+}
+
+.typing-text span::after{
+	content: "";
+	position: absolute;
+	width: calc(100% + 8px);
+	height: 100%;
+	background-color: #fff;
+	border-left: 2px solid black;
+	right: -8px;
+	animation: cursor .8s infinite, typing 20s steps(14) infinite;
+}
+
+@keyframes cursor {
+	to{
+		border-left: 2px solid #00000005;
+	}
+}
+
+@keyframes words {
+	0%, 20% {
+		content: "frontend";
+	}
+	21%, 40% {
+		content: "backend";
+	}
+	41%, 60% {
+		content: "gammer";
+	}
+	61%, 80% {
+		content: "proactive";
+	}
+	81%, 100% {
+		content: "the best!";
+	}
+}
+
+@keyframes typing {
+	10%, 15%, 30%, 35%, 50%, 55%, 70%, 75%, 90%, 95% {
+		width: 0;
+	}
+	5%, 20%, 25%, 40%, 45%, 60%, 65%, 80%, 85% {
+		width: calc(100% + 8px);
+	}
+}

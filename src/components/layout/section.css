@@ -1,0 +1,20 @@
+.container__layout {
+  width: var(--container-width-lg);
+  margin: 0 auto;
+  height: 100%;
+  text-align: center;
+  position: relative;
+}
+
+@media screen and (max-width: 1024px) {
+  .container__layout {
+    width: var(--container-width-md);
+  }
+}
+/* ==================== MEDIA QUERIES (SMALL DEVICES) ============== */
+
+@media screen and (max-width: 600px) {
+  .container__layout {
+    width: var(--container-width-ms);
+  }
+}
