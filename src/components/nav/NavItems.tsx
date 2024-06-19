@@ -28,7 +28,7 @@ export const itemsNav: ItemsNavProps[] = [
   {
     title: 'portfolio',
     path: '#portfolio',
-    icon: <BiMessageRoundedEdit />,
+    icon: <ImFolderOpen />,
     // className: 'active === "#portfolio" ? "active" : ""'
   },
   {
@@ -40,7 +40,7 @@ export const itemsNav: ItemsNavProps[] = [
   {
     title: 'contact',
     path: '#contact',
-    icon: <ImFolderOpen />,
+    icon: <BiMessageRoundedEdit />,
     // className: 'active === "#contact" ? "active" : ""'
   },
 ]
