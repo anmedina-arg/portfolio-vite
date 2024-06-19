@@ -1,8 +1,10 @@
+
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import styles from "./card.module.css";
 
-const SkillCard = ({ skill }) => {
+const SkillCard = ({ skill }: any) => {
   // let { skill } = prop;
-  let { id, icon, name, level } = skill;
+  const { id, icon, name, level } = skill;
   return (
     <article className={styles.experience__details} key={id}>
       {icon}

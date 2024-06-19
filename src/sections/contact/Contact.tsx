@@ -1,4 +1,3 @@
-import React from "react";
 import "./contact.css";
 //import emailjs from "emailjs-com";
 import { BsLinkedin, BsGithub } from "react-icons/bs";

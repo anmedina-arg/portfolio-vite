@@ -1,4 +1,3 @@
-import React from "react";
 import CVENG from "../../assets/CV_Andres_Medina_eng.pdf";
 import CVESP from "../../assets/CV_Andres_Medina_esp.pdf";
 import Button from "../ui/buttons/Button";

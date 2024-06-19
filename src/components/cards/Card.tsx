@@ -1,6 +1,9 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import styles from "./card.module.css";
 
-const Card = ({ project, skillArr }) => {
+// TODO, correct types
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const Card = ({ project, skillArr }: any) => {
   const { id, image, title, github, demo } = project; //falta description
   return (
     <>
@@ -15,7 +18,7 @@ const Card = ({ project, skillArr }) => {
             <h3>{title}</h3>
             {/* <p>{ description}</p> */}
             <ul>
-              {skillArr?.map((e, index) => {
+              {skillArr?.map((e: any, index: number) => {
                 return <li key={index}>{e}</li>;
               })}
             </ul>
