@@ -14,8 +14,14 @@
 }
 
 .active {
-  background: var(--color-primary-variant);
-  color: var(--color-white);
+  border-radius: 50%;
+  background-color: var(--color-primary-variant);
+  transform: scale(1.5) translate(0, -25%);
+}
+
+.active .spanHidden {
+  visibility: visible;
+  opacity: 1;
 }
 
 /* Estilos para el span oculto */
@@ -35,6 +41,7 @@
   font-size: 0.5rem;
   text-align: center;
   transition: visibility 0.25s, opacity 0.25s linear;
+  text-wrap: nowrap;
 }
 
 /* Al hacer hover sobre .anchor, muestra el span */
