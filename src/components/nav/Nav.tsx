@@ -2,12 +2,13 @@ import "./nav.css";
 import { useScrollSpy } from "../../hooks/scrollSpy";
 import { ItemsNavProps, itemsNav } from "./NavItems";
 import Anchor from "../anchor/Anchor";
+import { ReactElement } from "react";
 
 type NavProps = {
   items: ItemsNavProps[]
 }
 
-function Nav({ items }: NavProps) {
+function Nav({ items }: NavProps): ReactElement {
   const activeSection = useScrollSpy(items);
 
   return (

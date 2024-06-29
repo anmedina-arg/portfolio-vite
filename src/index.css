@@ -8,20 +8,38 @@
 }
 
 :root {
+  --space-patern: 40px 40px;
+
+  --bg-pattern: radial-gradient(#111111 0 1px, transparent 1px 10px) 0 0 / var(--space-patern);
+  --bg-linear-gradient: linear-gradient(to left, #a5a5a5, #d4d4d4 20% 80%,#a5a5a5);
+  --bg-blend-mode: multiply;
+  
   --color-bg: #1f1f38;
   --color-bg-variant: #2c2c6c;
   --color-bg-transition-one: #0172af;
   --color-bg-transition-two: #74febd;
   --color-primary: #4db5ff;
   --color-primary-variant: rgba(77, 181, 255);
+  /* habilitar el color para el modo escuro */
+  /* --color-white: #2b2b2b; */
   --color-white: #fff;
   --color-light: rgba(255, 255, 255, 0.6);
   --color-card: #181818;
+
+  
   --color-border-card: linear-gradient(to left, #f7ba2b 0%, #ea5358 100%);
+
+  /* variables de tamaño */
   --container-width-lg: 75%;
   --container-width-md: 86%;
   --container-width-sm: 90%;
   --transition: all 400ms ease;
+}
+
+[data-theme='dark'] {
+  --bg-pattern: radial-gradient(#505050 0 1px, transparent 1px 10px) 0 0 / var(--space-patern);
+  --bg-linear-gradient: linear-gradient(to left, #1f1f1f, #3a3a3a 20% 80%,#1f1f1f);
+  --bg-blend-mode: screen;
 }
 
 html {
@@ -36,4 +54,8 @@ body {
   font-family: "Poppins", sans-serif;
   background-color: var(--color-bg);
   color: var(--color-white);
+  /*Cambiar al siguiente fondo cuando se apliquen los fondos de las secciones*/
+  /* background: var(--bg-linear-gradient),var(--bg-pattern);
+  background-blend-mode: var(--bg-blend-mode); */
+  transition: var(--transition);
 }

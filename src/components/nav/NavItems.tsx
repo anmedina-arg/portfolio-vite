@@ -4,7 +4,6 @@ import { BiMessageRoundedEdit } from "react-icons/bi";
 import { GiSkills } from "react-icons/gi";
 import { ImFolderOpen } from "react-icons/im";
 import { ReactElement } from "react";
-// import { FaUserFriends } from "react-icons/fa";
 
 export type ItemsNavProps = {
   title: string,

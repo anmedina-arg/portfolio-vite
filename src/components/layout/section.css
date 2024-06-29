@@ -5,6 +5,18 @@
   text-align: center;
   position: relative;
   padding-bottom: 4rem;
+  /*Utilizar este fondo de la section cuando se utilice el fondo de patrones de puntos*/
+  /* background: linear-gradient(to top left, #1caaba 0 5%, #c271e7),
+    radial-gradient(circle farthest-corner at 0% 100%, #1d3133, transparent),
+    linear-gradient(
+      to top left,
+      transparent,
+      rgb(255, 255, 255, 0.5),
+      transparent
+    );
+  background-blend-mode: screen, darken; */
+  
+  border-radius: 20px;
 }
 
 @media screen and (max-width: 1024px) {
