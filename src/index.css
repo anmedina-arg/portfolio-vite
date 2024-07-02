@@ -53,9 +53,9 @@ html {
 body {
   font-family: "Poppins", sans-serif;
   background-color: var(--color-bg);
-  color: var(--color-white);
   /*Cambiar al siguiente fondo cuando se apliquen los fondos de las secciones*/
   /* background: var(--bg-linear-gradient),var(--bg-pattern);
   background-blend-mode: var(--bg-blend-mode); */
+  color: var(--color-white);
   transition: var(--transition);
 }
