@@ -8,7 +8,7 @@ import Recomendations from "./sections/recomendations/Recomendations";
 import { itemsNav } from "./components/nav/NavItems";
 import { ReactElement } from "react";
 import SwitchTheme from "./components/switchTheme/switchTheme";
-import ExperienceLine from "./sections/experience-line/experienceLine";
+// import ExperienceLine from "./sections/experience-line/experienceLine";
 
 function App(): ReactElement {
   return (

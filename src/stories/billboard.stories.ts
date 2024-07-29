@@ -4,20 +4,22 @@ import Billboard from '../components/billboard/billboard';
 const meta = {
   title: 'Billboard',
   component: Billboard,
-//   parameters: {
-//     layout: 'centered',
-//   },
+  parameters: {
+    layout: 'centered',
+  },
   tags: ['autodocs'],
   argTypes: {
-    text: 'string'
+    mainWord: { control: 'text' },  // Especifica un control de texto
+    neonWord: { control: 'text' },  // Especifica un control de texto
   },
 } satisfies Meta<typeof Billboard>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const GeatBillboard: Story = {
+export const GreatBillboard: Story = {
   args: {
-    text: 'hola mi nombre es andres'
+    mainWord: 'frontend',
+    neonWord: "developer"
   },
 };

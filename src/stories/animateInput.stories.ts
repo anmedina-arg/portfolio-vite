@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import Billboard from '../components/billboard/billboard';
 import AnimateInput from '../components/inputs/animateInput';
 
 const meta = {
