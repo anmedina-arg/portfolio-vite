@@ -1,60 +1,23 @@
-h1,
-h2,
-h3,
-h4,
-h5 {
-  font-weight: 500;
+/* .text-light {
+  color: var(--color-light);
+} */
+
+.contactSocials {
+  display: flex;
+  border: 1px solid red;
+  width: 50vw;
+  height: 10vh;
 }
 
-h1 {
-  font-size: 2.5rem;
-}
-
-section > h2,
-section > h5 {
-  text-align: center; 
-  color: var(--color-ligth);
-}
-
-section h2 {
-  color: var(--color-primary);
-  margin-bottom: 3rem;
-}
-
-.text-light {
-  color: var(--color-ligth);
-}
-
-a {
-  color: var(--color-primary);
+/*los siguientes estilos de los elementos a y sus hovers,se usan en el contact. Especificamente en los links, o iconos de los botones del contact*/
+/* a {
+  color: var(--color-text-default);
   transition: var(--transition);
-}
+} */
 
-a:hover {
-  color: var(--color-white);
-}
-
-.btn {
-  width: max-content;
-  display: inline-block;
-  color: var(--color-primary);
-  padding: 0.75rem;
-  border-radius: 0.4rem;
-  cursor: pointer;
-  border: 1px solid var(--color-primary);
-  transition: var(--transition);
-}
-
-.btn:hover {
-  background-color: var(--color-white);
-  color: var(--color-bg);
-  border-color: transparent;
-}
-
-.btn-primary {
-  background: var(--color-primary);
-  color: var(--color-bg);
-}
+/* a:hover {
+  color: var(--color-text-default);
+} */
 
 /* img {
   display: block;
@@ -64,38 +27,38 @@ a:hover {
 
 /* ==================== MEDIA QUERIES (MEDIUM DEVICES) ============== */
 
-@media screen and (max-width: 1024px) {
+/* @media screen and (max-width: 1024px) {
   .container {
     width: var(--container-width-md);
   }
   .section {
     margin-top: 6rem;
   }
-}
+} */
 /* ==================== MEDIA QUERIES (SMALL DEVICES) ============== */
 
-@media screen and (max-width: 600px) {
+/* @media screen and (max-width: 600px) {
   .container {
     width: var(--container-width-ms);
   }
   .section > h2 {
     margin-bottom: 2rem;
   }
-}
+} */
 
 
-.container.contact__container {
+/* .container.contact__container {
   width: 58%;
   display: flex;
   flex-direction: column;
   gap: 1.2rem;
   margin: 0 auto;
-}
+} */
 
 .contact__option {
   background: var(--color-bg-variant);
   margin: 1.2rem auto;
-  padding: 1.2rem;
+  /* padding: 1.2rem; */
   border-radius: 2rem;
   text-align: center;
   border: 1px solid transparent;
@@ -109,7 +72,7 @@ a:hover {
 
 .contact__option-icon {
   font-size: 1.5rem;
-  margin-bottom: 0.5rem;
+  /* margin-bottom: 0.5rem; */
 }
 
 .contact__option a {
@@ -118,17 +81,17 @@ a:hover {
   font-size: 0.8rem;
 }
 
-@media screen and (max-width: 1024px) {
+/* @media screen and (max-width: 1024px) {
   .container.contact__container {
     grid-template-columns: 1fr;
     gap: 2rem;
   }
-}
+} */
 
 /* ============ MEDIA QUERIES (SMALL DEVICES) ====================== */
 
-@media screen and (max-width: 600px) {
+/* @media screen and (max-width: 600px) {
   .container.contact__container {
     width: var(--container-width-sm);
   }
-}
+} */

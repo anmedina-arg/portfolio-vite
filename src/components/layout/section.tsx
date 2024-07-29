@@ -2,9 +2,10 @@ import { ReactElement } from "react";
 import "./section.css";
 
 type SectionProps = {
-  children: ReactElement[]
+  children: ReactElement | ReactElement[],
+  id?: string
 }
 
-export function Section({ children }: SectionProps) {
-  return <div className="container__layout">{children}</div>;
+export function Section({ children, id }: SectionProps) {
+  return <section className="section" id={id}>{children}</section>;
 }

@@ -1,44 +1,40 @@
 import "./home.css";
-import DownloadNav from "../../components/downloads-nav/download-nav";
-import ME from "../../assets/me-sin-fondo.png";
 import { Section } from "../../components/layout/section";
 import { Paragraph } from "../../components/commons/paragraph/paragraph";
+import MyTitle from "../../components/titles/myTitle/MyTitle";
+import MySubtitle from "../../components/titles/MySubtitle/MySubtitle";
+import Billboard from "../../components/billboard/billboard";
+import MainBackground from "../../components/backgrounds/mainBackground";
+import { FaArrowDown } from "react-icons/fa";
+import BorderGradientButton from "../../components/ui/buttons/borderGradientButton";
 
 function Home() {
   return (
-    <header id="home">
-      <Section>
-        <div className="title__container">
-          <h5>Hello I´m</h5>
-          <h1>Andrés Medina</h1>
-          <h2 className="text-light">Fullstack developer</h2>
-        </div>
-        <DownloadNav />
-        <div className="about">
-          <div className="about__text">
-            <h3 className="about__me">About me</h3>
-            <Paragraph>
-              As an Industrial Engineer with 12 years of experience leading
-              teams and developing critical soft skills, I've made a unique
-              career transition into the world of Information Technology. I am
-              both proactive and responsible, continually seeking out new
-              challenges, eagerly diving into research, and always keen on
-              learning. My interests and drive have led me to train as a
-              Full-Stack Developer, specializing in JavaScript and NodeJS. I
-              started this exciting journey at Henry's Bootcamp, where I
-              successfully executed various projects both individually and
-              collaboratively. The journey has been one of continuous growth,
-              including strengthening crucial soft skills like communication,
-              feedback, diversity, inclusion, teamwork, and a focus on
-              continuous improvement.
-            </Paragraph>
-          </div>
-          <div className="me">
-            <img className="picture" src={ME} alt="me" />
+    <Section id="home">
+      <MainBackground>
+        <div className="homeLayout">
+          <Billboard mainWord="frontend" neonWord="developer" />
+          <div className="contentHome">
+            <div className="contentTextHome">
+              <div className="inlineText">
+                <MyTitle color="default" label="Hola! Soy" />
+                <MyTitle color="primary" label="Andrés Medina" weight="bold" />
+              </div>
+              <div className="inlineText">
+                <Paragraph>Desarrollo <MySubtitle color="primary" label="aplicaciones y sitios web" weight="bold" /> que transforman tus ideas en realidades digitales, <MySubtitle color="primary" label="fusionando arte y tecnología" weight="bold" />, con una <MySubtitle color="primary" weight="bold" label="belleza estética" /> y una <MySubtitle color="primary" weight="bold" label="funcionalidad sólida y robusta" />.</Paragraph>
+              </div>
+              <BorderGradientButton label="contactame!" href="#contact" />
+            </div>
+            <div className="sideContentTextHome">
+              <MySubtitle label="Visita mi portfolio" size="small" />
+              <a href="#experience" className="contentIconHome">
+                <FaArrowDown />
+              </a>
+            </div>
           </div>
         </div>
-      </Section>
-    </header>
+      </MainBackground>
+    </Section>
   );
 }
 

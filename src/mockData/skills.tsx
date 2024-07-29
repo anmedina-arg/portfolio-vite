@@ -14,7 +14,14 @@ import {
 } from "react-icons/si";
 import { BsFillPatchCheckFill } from "react-icons/bs";
 
-export const FRONTEND_SKIL = [
+export type SkillsProps = {
+  id: string,
+  name: string,
+  level: string,
+  icon: React.ReactElement
+}
+
+export const FRONTEND_SKIL: SkillsProps[] = [
   {
     id: "FES4",
     name: "NextJS",

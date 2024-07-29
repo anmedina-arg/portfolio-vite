@@ -11,8 +11,12 @@ type NavProps = {
 function Nav({ items }: NavProps): ReactElement {
   const activeSection = useScrollSpy(items);
 
+  console.log(activeSection)
+
+  const hideNavBar = activeSection === 'home' ? 'hideNavBar' : ''
+
   return (
-    <nav>
+    <nav className={hideNavBar}>
       {
         itemsNav.map((item: ItemsNavProps) => (
           < Anchor

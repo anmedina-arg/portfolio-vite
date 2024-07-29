@@ -1,0 +1,46 @@
+.myH2 {
+	font-weight: 500;
+	display: inline;
+}
+
+.default {
+	color: var(--color-light);
+}
+
+.primary {
+	color: var(--color-primary-variant);
+}
+
+.small {
+	font-size: 1rem !important;
+}
+
+.medium {
+	font-size: 1.5rem;
+}
+
+.large {
+	font-size: 2rem;
+}
+
+.medium {
+	font-weight: 500;
+}
+
+.bold {
+	font-weight: 900;
+}
+
+@media screen and (max-width: 680px) {
+	.small {
+		font-size: 0.75rem;
+	}
+
+	.medium {
+		font-size: 1rem;
+	}
+
+	.large {
+		font-size: 1.25rem;
+	}
+}
