@@ -7,16 +7,12 @@ import Portfolio from "./sections/portfolio/Portfolio";
 import Recomendations from "./sections/recomendations/Recomendations";
 import { itemsNav } from "./components/nav/NavItems";
 import { ReactElement } from "react";
-import SwitchTheme from "./components/switchTheme/switchTheme";
-// import ExperienceLine from "./sections/experience-line/experienceLine";
 
 function App(): ReactElement {
   return (
     <>
       <Nav items={itemsNav} />
-      <SwitchTheme />
       <Home />
-      {/* <ExperienceLine /> */}
       <Experience />
       <Portfolio />
       <Recomendations />

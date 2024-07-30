@@ -18,7 +18,7 @@
 }
 
 .testimonial {
-  background: var(--color-bg-variant);
+  /* background: var(--color-bg-variant); */
   padding: 2rem;
   text-align: center;
   border-radius: 2rem;
@@ -27,10 +27,14 @@
 
 .client__review {
   display: block;
-  font-weight: 300;
-  color: var(--color-light);
+  font-weight: 500;
+  color: var(--color-text-default);
   width: 80%;
   margin: 0.8rem auto 0;
+}
+
+.client__name {
+  color: var(--color-text-default);
 }
 
 /* ============ MEDIA QUERIES (MEDIUM DEVICES) ====================== */

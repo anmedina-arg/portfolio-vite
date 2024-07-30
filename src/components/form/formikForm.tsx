@@ -22,7 +22,7 @@ const Modal = ({ isVisible, setIsVisible, modalMessage }: ModalProps) => {
 
 	return (
 		<div onClick={() => setIsVisible(false)} className="modalSubmitForm">
-			<span>prueba{modalMessage}</span>
+			<span>{modalMessage}</span>
 			<button onClick={() => setIsVisible(false)} className="gradientButtomForm">OK</button>
 		</div>
 	)

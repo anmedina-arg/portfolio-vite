@@ -7,15 +7,18 @@ import Billboard from "../../components/billboard/billboard";
 import MainBackground from "../../components/backgrounds/mainBackground";
 import { FaArrowDown } from "react-icons/fa";
 import BorderGradientButton from "../../components/ui/buttons/borderGradientButton";
+import SwitchTheme from "../../components/switchTheme/switchTheme";
 
 function Home() {
   return (
     <Section id="home">
+      <SwitchTheme />
       <MainBackground>
         <div className="homeLayout">
           <Billboard mainWord="frontend" neonWord="developer" />
           <div className="contentHome">
             <div className="contentTextHome">
+              <hr style={{ marginBlock: "1rem" }}></hr>
               <div className="inlineText">
                 <MyTitle label="Hola! Soy" />
                 <MyTitle label="Andrés Medina" weight="bold" />

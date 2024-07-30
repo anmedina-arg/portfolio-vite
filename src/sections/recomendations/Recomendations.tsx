@@ -9,12 +9,15 @@ import { Section } from "../../components/layout/section";
 
 import { reviews } from '../../mockData/recomendations';
 import MySubtitle from "../../components/titles/MySubtitle/MySubtitle";
+import SectionTitle from "../../components/titles/sectionTitle/sectionTitle";
+import MainBackground from "../../components/backgrounds/mainBackground";
+
 
 function Recomendations() {
   return (
     <Section id="recomendations">
-      <MySubtitle size="small" label="Some references" color="default" />
-      <MySubtitle label="Recomendations" color="primary" />
+      <SectionTitle label="Recomendaciones" />
+      <MySubtitle label="Algunas de las personas que trabajaron conmigo..." />
       <Swiper
         slidesPerView={1}
         spaceBetween={50}
@@ -29,11 +32,13 @@ function Recomendations() {
         {reviews.map(({ id, avatar, name, review }) => {
           return (
             <SwiperSlide key={id} className="testimonial">
-              <div className="client__avatar">
-                <img src={avatar} alt="" />
-              </div>
-              <h5 className="client__name">{name}</h5>
-              <small className="client__review">{review}</small>
+              <MainBackground>
+                <div className="client__avatar">
+                  <img src={avatar} alt="" />
+                </div>
+                <h5 className="client__name">{name}</h5>
+                <small className="client__review">{review}</small>
+              </MainBackground>
             </SwiperSlide>
           );
         })}

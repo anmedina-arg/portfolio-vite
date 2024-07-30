@@ -1,6 +1,8 @@
-/* .text-light {
-  color: var(--color-light);
-} */
+.contactContainerForm {
+  text-align: initial;
+  display: flex;
+  justify-content: center;
+}
 
 .contactSocials {
   display: flex;
@@ -9,89 +11,21 @@
   height: 10vh;
 }
 
-/*los siguientes estilos de los elementos a y sus hovers,se usan en el contact. Especificamente en los links, o iconos de los botones del contact*/
-/* a {
-  color: var(--color-text-default);
-  transition: var(--transition);
-} */
-
-/* a:hover {
-  color: var(--color-text-default);
-} */
-
-/* img {
-  display: block;
-  width: 100%;
-  object-fit: cover;
-} */
-
-/* ==================== MEDIA QUERIES (MEDIUM DEVICES) ============== */
-
-/* @media screen and (max-width: 1024px) {
-  .container {
-    width: var(--container-width-md);
-  }
-  .section {
-    margin-top: 6rem;
-  }
-} */
-/* ==================== MEDIA QUERIES (SMALL DEVICES) ============== */
-
-/* @media screen and (max-width: 600px) {
-  .container {
-    width: var(--container-width-ms);
-  }
-  .section > h2 {
-    margin-bottom: 2rem;
-  }
-} */
-
-
-/* .container.contact__container {
-  width: 58%;
-  display: flex;
-  flex-direction: column;
-  gap: 1.2rem;
-  margin: 0 auto;
-} */
-
 .contact__option {
-  background: var(--color-bg-variant);
+  text-decoration: none;
+  color: var(--color-text-default);
+  font-size: 1rem;
   margin: 1.2rem auto;
-  /* padding: 1.2rem; */
   border-radius: 2rem;
   text-align: center;
-  border: 1px solid transparent;
+  display: inline-block;
   transition: var(--transition);
 }
 
 .contact__option:hover {
-  background: transparent;
-  border-color: var(--color-primary-variant);
+  transform: scale(1.2);
 }
 
 .contact__option-icon {
   font-size: 1.5rem;
-  /* margin-bottom: 0.5rem; */
 }
-
-.contact__option a {
-  margin-top: 0.7rem;
-  display: inline-block;
-  font-size: 0.8rem;
-}
-
-/* @media screen and (max-width: 1024px) {
-  .container.contact__container {
-    grid-template-columns: 1fr;
-    gap: 2rem;
-  }
-} */
-
-/* ============ MEDIA QUERIES (SMALL DEVICES) ====================== */
-
-/* @media screen and (max-width: 600px) {
-  .container.contact__container {
-    width: var(--container-width-sm);
-  }
-} */

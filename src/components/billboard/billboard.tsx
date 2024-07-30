@@ -2,7 +2,7 @@ import './billboard.css';
 
 type BillboardProps = {
 	mainWord: string,
-	neonWord: string
+	neonWord?: string
 }
 
 const Billboard = ({ mainWord, neonWord }: BillboardProps) => {

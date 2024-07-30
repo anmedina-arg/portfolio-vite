@@ -72,3 +72,13 @@
     text-shadow: none;
   }
 }
+
+@media screen and (max-width: 680px) {
+  .mainWord {
+    font-size: 15vw;
+  }
+
+  .neon {
+    font-size: 8vw;
+  }
+}
