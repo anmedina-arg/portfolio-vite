@@ -2,7 +2,7 @@ import './myTitle.css';
 
 type MyTitleProps = {
 	label: string,
-	color: "default" | "primary",
+	color?: "default" | "primary",
 	weight?: "medium" | "bold"
 }
 

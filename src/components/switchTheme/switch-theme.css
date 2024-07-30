@@ -56,21 +56,21 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: var(--color-text-default);
+    background-color: transparent;
     transition: .4s;
     border-radius: 30px;
-    outline: 1px solid black;
+    outline: 1px solid var(--color-text-default);
 }
 
 /* La esfera que se mueve dentro del slider */
 .slider:before {
     position: absolute;
     content: "";
-    height: 1.4em;
-    width: 1.4em;
-    border-radius: 20px;
-    left: 0;
-    bottom: -0.2rem;
+    height: 0.8em;
+    width: 0.8em;
+    border-radius: 50%;
+    left: 0.1rem;
+    bottom: 0.1rem;
     background-color: var(--color-text-default);
     transition: .4s;
     z-index: 2;
@@ -78,9 +78,10 @@
 }
 
 input:checked+.slider {
-    background-color: var(--color-text-default);
+    background-color: transparent;
+    padding: 0.2rem;
 }
 
 input:checked+.slider:before {
-    transform: translateX(2em);
+    transform: translateX(2.5em);
 }
