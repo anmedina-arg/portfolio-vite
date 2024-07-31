@@ -1,14 +1,14 @@
-import GABY from "../assets/gaby.jpeg";
-import CATA from "../assets/Cata.png";
+import GABY from "../assets/gaby.webp";
+import CATA from "../assets/Cata.webp";
 import NICO from "../assets/Nico.webp";
 import ADRIAN from "../assets/Adrian.jpeg";
-import GIAN from "../assets/Gian.jpg";
+import GIAN from "../assets/Gian.webp";
 
 export const reviews = [
     {
       id: 11,
       avatar: GABY,
-      name: "Gabriel Wheht",
+      name: "Gabriel Weht",
       review:
         "Con Andrés pasamos muchísimas horas debugenado código, ayudándonos siempre a encontrar errores, a mejorar códigos, a compartir los que ya teníamos. Sin dudas un gran compañero de equipo, siempre explicando lo que sabe y aprendiendo constantemente. Muchas gracias por estos meses de codear juntos Andy!",
     },

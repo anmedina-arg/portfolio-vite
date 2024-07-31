@@ -5,15 +5,31 @@ import Coolco from "../assets/Coolco.webp";
 import Gallery from "../assets/The-gallery.webp";
 import Cats from "../assets/Cats-and-dog.webp";
 import Apes from "../assets/Apes.webp";
-import Tateti from "../assets/tateti.png";
-import Memory from "../assets/memory_card_game.png";
-import Sudoku from "../assets/sudoku.png";
-import Pelis from "../assets/buscador_peliculas.png";
-import Todo from "../assets/todoapp.png";
-import Orderix from "../assets/Orderix.png";
-import Kurve from "../assets/kurve.png"
+import Tateti from "../assets/tateti.webp";
+import Memory from "../assets/memory_card_game.webp";
+import Sudoku from "../assets/sudoku.webp";
+import Pelis from "../assets/buscador_peliculas.webp";
+import Todo from "../assets/todoapp.webp";
+import Orderix from "../assets/Orderix.webp";
+import Kurve from "../assets/kurve.webp";
+import CABSA from "../assets/cabsa.webp";
 
 export const projects = [
+	{
+    id: 15,
+    image: CABSA,
+    title: "CABSA",
+    github: "https://github.com",
+    demo: "https://www.cabsaintl.com/",
+    description: "",
+    skill: [
+      "Next",
+      "Typescript",
+	"React",
+      "CSS",
+  "EmmailJS"
+    ],
+  },
 	{
     id: 14,
     image: Kurve,
@@ -22,9 +38,11 @@ export const projects = [
     demo: "https://kurve.ai//",
     description: "",
     skill: [
+      "Vite",
       "Typescript",
 	"React",
-	"CSS"
+      "CSS",
+  "EmmailJS"
     ],
   },
   {
