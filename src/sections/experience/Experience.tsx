@@ -18,7 +18,7 @@ function Experience() {
       <div className="experience__container">
         <MainBackground>
           <div className="experience__frontend">
-            <MySubtitle size="small" color="primary" label="Desarrollo frontend" />
+            <MySubtitle size="small" label="Desarrollo frontend" />
             <hr style={{ marginBlock: "1rem" }}></hr>
             <div className="experience__content">
               {FRONTEND_SKIL.map((skill) => {
@@ -29,7 +29,7 @@ function Experience() {
         </MainBackground>
         <MainBackground>
           <div className="experience__backend">
-            <MySubtitle size="small" color="primary" label="Desarrollo backend" />
+            <MySubtitle size="small" label="Desarrollo backend" />
             <hr style={{ marginBlock: "1rem" }}></hr>
             <div className="experience__content">
               {BACKEND_SKILL.map((skill) => {
