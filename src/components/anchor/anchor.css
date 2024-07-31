@@ -8,14 +8,14 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  color: var(--color-ligth);
+  color: var(--color-text-default);
   /* font-size: 1.1rem; */
   transition: transform 0.25s linear, background-color 0.25s linear, border-radius 0.25s linear;
 }
 
 .active {
   border-radius: 50%;
-  background-color: var(--color-primary-variant);
+  background: -webkit-radial-gradient(top left, var(--color-esphere-gray));
   transform: scale(1.5) translate(0, -25%);
 }
 
@@ -27,7 +27,7 @@
 /* Estilos para el span oculto */
 .spanHidden {
   text-transform: capitalize;
-  border:1px solid var(--color-light);
+  border: 1px solid var(--color-text-default);
   visibility: hidden;
   opacity: 0;
   position: absolute;
@@ -47,9 +47,9 @@
 /* Al hacer hover sobre .anchor, muestra el span */
 
 @media (hover: hover) {
-  .anchor:hover{
+  .anchor:hover {
     border-radius: 50%;
-    background-color: var(--color-primary-variant);
+    background: -webkit-radial-gradient(top left, var(--color-esphere-gray));
     transform: scale(1.5) translate(0, -25%);
   }
 

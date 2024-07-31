@@ -1,0 +1,19 @@
+.mainBackground {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  border-radius: 20px;
+  border:1px solid var(--color-mainBackground-border);
+  background: linear-gradient(to top left, var(--color-mainBackground-bg-primary) 0 5%, var(--color-mainBackground-bg-secondary)),
+    radial-gradient(circle farthest-corner at 0% 100%, var(--color-mainBackground-bg-thirth), transparent),
+    linear-gradient(
+      to top left,
+      transparent,
+      rgb(255, 255, 255, 0.5),
+      transparent
+    );
+  background-blend-mode: screen, darken;
+  -webkit-box-shadow: -69px 90px 132px -51px rgba(250,140,250,1);
+  -moz-box-shadow: -69px 90px 132px -51px rgba(250,140,250,1);
+  box-shadow: -100px 100px 100px -100px var(--color-mainBackground-shadow-primary),110px -80px 100px -100px var(--color-mainBackground-shadow-secondary);
+}

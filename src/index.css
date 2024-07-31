@@ -1,27 +1,97 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700;900&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&family=Tilt+Neon:YROT@45&display=swap');
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  text-decoration: none;
 }
 
 :root {
-  --color-bg: #1f1f38;
-  --color-bg-variant: #2c2c6c;
-  --color-bg-transition-one: #0172af;
-  --color-bg-transition-two: #74febd;
-  --color-primary: #4db5ff;
-  --color-primary-variant: rgba(77, 181, 255);
-  --color-white: #fff;
-  --color-light: rgba(255, 255, 255, 0.6);
-  --color-card: #181818;
-  --color-border-card: linear-gradient(to left, #f7ba2b 0%, #ea5358 100%);
-  --container-width-lg: 75%;
-  --container-width-md: 86%;
-  --container-width-sm: 90%;
+  /* variables de tamaño */
+  --container-width-lg: 75vw;
+  --container-width-md: 86vw;
+  --container-width-sm: 90vw;
   --transition: all 400ms ease;
+
+  /*variables relacionadas con el fondo, gradientes y patrones*/
+  --bg-space-patern: 40px 40px;
+  --bg-pattern: radial-gradient(#111111 0 1px, transparent 1px 10px) 0 0 / var(--bg-space-patern);
+  --bg-linear-gradient: linear-gradient(to left, #a5a5a5, #d4d4d4 20% 80%, #a5a5a5);
+  --bg-blend-mode: multiply;
+
+  /*variables relacionadas con el billboard*/
+  --color-billboard-text-shadow: none;
+
+  /* variables relacionadas con la targeta de los proyectos*/
+  --color-white: #fff;
+  --color-bg: #1f1f38;
+  /*este color se usa en las cartas*/
+  --color-primary-variant: #4db5ff;
+  --color-border-card: linear-gradient(to left, #f7ba2b 0%, #ea5358 100%);
+  /*este color se aplica en el span de los anchors de la navbar*/
+  --color-card: #181818;
+
+  --color-bg-variant: #2c2c6c;
+  --color-bg-variant-experience: #90bfc0;
+  /* --color-bg-transition-one: #0172af;
+  --color-bg-transition-two: #74febd; */
+
+
+  /*COLORES DEL TEXTO*/
+  --color-text-default: #0E0B2E;
+  /* --color-text-primary: #ab00b4; */
+
+
+  /*colores de MainBackground*/
+  --color-mainBackground-bg-primary: #1caaba;
+  --color-mainBackground-bg-secondary: #c271e7;
+  --color-mainBackground-bg-thirth: #1d3133;
+  --color-mainBackground-bg-fourth: #ffffff80;
+  --color-mainBackground-border: #515151;
+  --color-mainBackground-shadow-primary: #240324;
+  --color-mainBackground-shadow-secondary: #7adb39;
+
+  /* Colores del gradiente del boton*/
+  --var-color-gradient-buton: #33cbeb 0%, #28d662 30%, #f07739 70%, #e3366b 100%;
+
+  /*gradientes de esferas*/
+  --color-esphere-gray: white 13%, #d3d3d3, #a9a9a9, #808080 80% 80%, #c0c0c0
+}
+
+[data-theme='dark'] {
+  /*variables relacionadas con el fondo, gradientes y patrones*/
+  --bg-pattern: radial-gradient(#505050 0 1px, transparent 1px 10px) 0 0 / var(--bg-space-patern);
+  --bg-linear-gradient: linear-gradient(to left, #1f1f1f, #3a3a3a 20% 80%, #1f1f1f);
+  --bg-blend-mode: screen;
+
+  /*variables relacionadas con el billboard*/
+  --color-billboard-text-shadow:
+    1px 0 10px rgba(255, 255, 255, 0.5),
+    -1px 0 10px rgba(255, 255, 255, 0.5),
+    0 1px 10px rgba(255, 255, 255, 0.5),
+    0 -1px 10px rgba(255, 255, 255, 0.5);
+
+  /*COLORES DEL TEXTO*/
+  --color-text-default: #e8e8e8;
+  /* --color-text-primary: #f86e00; */
+
+  /*colores de MainBackground*/
+  --color-mainBackground-bg-primary: #011315;
+  --color-mainBackground-bg-secondary: #062534;
+  --color-mainBackground-bg-thirth: #360f57;
+  --color-mainBackground-bg-fourth: #27262680;
+  --color-mainBackground-border: #969696;
+  --color-mainBackground-shadow-primary: #3c1576f0;
+  --color-mainBackground-shadow-secondary: #ed22c8;
+
+  /* Colores del gradiente del boton*/
+  --var-color-gradient-buton: #e636c4 0%, #3fcea5 48%, #50408b 96%;
+
+  /*gradientes de esferas*/
+  --color-esphere-gray: #a9a9a9 13%, #808080, #696969, #464646 80% 80%, #2f4f4f;
+
+  --color-bg-variant-experience: #2c2c6c;
 }
 
 html {
@@ -34,6 +104,7 @@ html {
 
 body {
   font-family: "Poppins", sans-serif;
-  background-color: var(--color-bg);
-  color: var(--color-white);
+  background: var(--bg-linear-gradient), var(--bg-pattern);
+  background-blend-mode: var(--bg-blend-mode);
+  transition: var(--transition);
 }

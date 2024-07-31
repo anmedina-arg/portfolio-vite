@@ -1,0 +1,13 @@
+.responsive-columns-container{
+	-webkit-columns: 200px 2;
+	-moz-columns: 200px 2;
+	columns: 200px 2;
+	column-gap: 25px;
+}
+.responsive-columns-title{
+	column-span: all;
+}
+
+.responsive-columns-container p {
+	margin: 10px;
+}

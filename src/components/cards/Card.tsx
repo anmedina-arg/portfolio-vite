@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+import Button from "../ui/buttons/Button";
 import styles from "./card.module.css";
 
 // TODO, correct types
@@ -24,13 +25,15 @@ const Card = ({ project, skillArr }: any) => {
             </ul>
           </div>
           <div className={styles.portfolio__item_cta}>
-            <a href={github} className="btn" target="_blank" rel="noreferrer">
+            <Button text="Github" reference={github} target="_blank" />
+            <Button text="Link" reference={demo} target="_blank" />
+            {/* <a href={github} className="btn" target="_blank" rel="noreferrer">
               Github
             </a>
 
             <a href={demo} className="btn" target="_blank" rel="noreferrer">
               Link
-            </a>
+            </a> */}
           </div>
         </div>
       </article>

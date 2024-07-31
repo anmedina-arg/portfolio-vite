@@ -13,6 +13,12 @@ nav {
   border-radius: 3rem;
   backdrop-filter: blur(15px);
   z-index: 2;
+  transition: all 1s ease;
+}
+
+.hideNavBar{
+    transform: translateX(-50%) translateY(100px); /* Mueve fuera de la vista */
+  opacity: 0; /* Transparente */
 }
 
 @media screen and (max-width: 600px) {

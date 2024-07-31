@@ -1,3 +1,9 @@
+.recomendationsContainer {
+  width: 100%;
+  /* color: var(--color-text-default); */
+  color: #f3f3f3
+}
+
 .client__avatar {
   width: 4rem;
   aspect-ratio: 1/1;
@@ -7,8 +13,12 @@
   border: 0.4rem solid var(--color-primary-variant);
 }
 
+.client__avatar img {
+  width: 100%;
+}
+
 .testimonial {
-  background: var(--color-bg-variant);
+  /* background: var(--color-bg-variant); */
   padding: 2rem;
   text-align: center;
   border-radius: 2rem;
@@ -17,27 +27,31 @@
 
 .client__review {
   display: block;
-  font-weight: 300;
-  color: var(--color-ligth);
+  font-weight: 500;
+  color: var(--color-text-default);
   width: 80%;
   margin: 0.8rem auto 0;
+}
+
+.client__name {
+  color: var(--color-text-default);
 }
 
 /* ============ MEDIA QUERIES (MEDIUM DEVICES) ====================== */
 
 @media screen and (max-width: 1024px) {
-  .recomendations__container {
+  /* .recomendations__container {
     width: 60%;
-  }
+  } */
 }
 
 /* ============ MEDIA QUERIES (SMALL DEVICES) ====================== */
 
 @media screen and (max-width: 600px) {
-  .recomendations__container {
+  /* .recomendations__container {
     width: var(--container-width-sm);
   }
   .client__review {
     width: var(--container-width-sm);
-  }
+  } */
 }

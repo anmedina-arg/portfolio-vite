@@ -11,15 +11,36 @@ import {
   SiStyledcomponents,
   SiPrisma,
   SiMongodb,
+  SiReactquery
 } from "react-icons/si";
+import { TbBrandVite } from "react-icons/tb";
 import { BsFillPatchCheckFill } from "react-icons/bs";
 
-export const FRONTEND_SKIL = [
+export type SkillsProps = {
+  id: string,
+  name: string,
+  level: string,
+  icon: React.ReactElement
+}
+
+export const FRONTEND_SKIL: SkillsProps[] = [
   {
     id: "FES4",
     name: "NextJS",
     level: "Intermediate",
     icon: <SiNextdotjs />,
+  },
+  {
+    id: "FES4",
+    name: "Vite",
+    level: "Intermediate",
+    icon: <TbBrandVite />,
+  },
+  {
+    id: "FES4",
+    name: "React query",
+    level: "Intermediate",
+    icon: <SiReactquery />,
   },
   {
     id: "FES4",
@@ -47,7 +68,7 @@ export const FRONTEND_SKIL = [
   },
   {
     id: "FES2",
-    name: "Styled-component",
+    name: "Styled component",
     level: "Intermediate",
     icon: <SiStyledcomponents />,
   },

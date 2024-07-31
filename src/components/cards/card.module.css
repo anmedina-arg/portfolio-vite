@@ -8,6 +8,7 @@
   /* margin: 2rem; */
   transition: ease-in-out;
   transition-duration: 0.5s;
+  text-decoration: none;
 }
 
 .interior {
@@ -51,6 +52,7 @@
   border-radius: 1.5rem;
   overflow: hidden;
 }
+
 .card__container h3 {
   margin: 1.2rem 0 1rem;
   text-transform: uppercase;
@@ -62,12 +64,14 @@
 .card__container p {
   margin: 1.2rem 0 1rem;
 }
+
 .card__container ul {
   margin-bottom: 1rem;
 }
+
 .card__container li {
   margin-left: 1rem;
-  list-style-type: disc;
+  list-style-type: none;
 }
 
 .portfolio__item_cta {
@@ -81,11 +85,12 @@
 .experience__details {
   display: flex;
   gap: 1rem;
+  color: var(--color-text-default)
 }
 
 .experience__detail-icon {
   margin-top: 6px;
-  color: var(--color-primary);
+  color: var(--color-primary-variant);
 }
 
 .personal__icon {
@@ -93,6 +98,6 @@
 }
 
 .text-light {
-  color: var(--color-ligth);
+  color: var(--color-light);
   /* --color-light: rgba(255, 255, 255, 0.6); */
 }

@@ -6,8 +6,9 @@ import Nav from "../src/components/nav/Nav";
 import Portfolio from "./sections/portfolio/Portfolio";
 import Recomendations from "./sections/recomendations/Recomendations";
 import { itemsNav } from "./components/nav/NavItems";
+import { ReactElement } from "react";
 
-function App() {
+function App(): ReactElement {
   return (
     <>
       <Nav items={itemsNav} />
