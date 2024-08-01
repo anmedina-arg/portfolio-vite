@@ -1,15 +1,16 @@
 import "./home.css";
-import { Section } from "../../components/layout/section";
-import { Paragraph } from "../../components/commons/paragraph/paragraph";
-import MyTitle from "../../components/titles/myTitle/MyTitle";
-import MySubtitle from "../../components/titles/MySubtitle/MySubtitle";
-import Billboard from "../../components/billboard/billboard";
-import MainBackground from "../../components/backgrounds/mainBackground";
+
 import { FaArrowDown } from "react-icons/fa";
+
+import Billboard from "../../components/billboard/billboard";
 import BorderGradientButton from "../../components/ui/buttons/borderGradientButton";
+import MainBackground from "../../components/backgrounds/mainBackground";
+import MyTitle from "../../components/titles/myTitle/MyTitle";
+import Paragraph from "../../components/commons/paragraph/paragraph";
+import Section from "../../components/layout/section";
 import SwitchTheme from "../../components/switchTheme/switchTheme";
 
-function Home() {
+const Home: React.FC = () => {
   return (
     <Section id="home">
       <SwitchTheme />
@@ -24,12 +25,11 @@ function Home() {
                 <MyTitle label="Andrés Medina" weight="bold" />
               </div>
               <div className="inlineText">
-                <Paragraph>Desarrollo <MySubtitle label="aplicaciones y sitios web" weight="bold" /> que transforman tus ideas en realidades digitales, <MySubtitle label="fusionando arte y tecnología" weight="bold" />, con una <MySubtitle weight="bold" label="belleza estética" /> y una <MySubtitle weight="bold" label="funcionalidad sólida y robusta" />.</Paragraph>
+                <Paragraph>Desarrollo <b>aplicaciones y sitios web</b> que transforman tus ideas en realidades digitales, <b>fusionando arte y tecnología</b>, con una <b>belleza estética</b> y una <b>funcionalidad sólida y robusta</b>.</Paragraph>
               </div>
               <BorderGradientButton label="contactame!" href="#contact" />
             </div>
             <div className="sideContentTextHome">
-              {/* <MySubtitle label="Visita mi portfolio" size="small" /> */}
               <a href="#experience" className="contentIconHome">
                 <FaArrowDown />
               </a>

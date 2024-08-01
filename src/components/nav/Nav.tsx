@@ -1,8 +1,8 @@
 import "./nav.css";
-import { useScrollSpy } from "../../hooks/scrollSpy";
-import { ItemsNavProps, itemsNav } from "./NavItems";
-import Anchor from "../anchor/Anchor";
 import { ReactElement } from "react";
+import { useScrollSpy } from "../../hooks/scrollSpy";
+import { ItemsNavProps, itemsNav } from "../../mockData/navItems.tsx";
+import Anchor from "../anchor/Anchor";
 
 type NavProps = {
   items: ItemsNavProps[]
@@ -10,8 +10,6 @@ type NavProps = {
 
 function Nav({ items }: NavProps): ReactElement {
   const activeSection = useScrollSpy(items);
-
-  console.log(activeSection)
 
   const hideNavBar = activeSection === 'home' ? 'hideNavBar' : ''
 

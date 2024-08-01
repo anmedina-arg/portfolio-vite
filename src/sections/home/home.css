@@ -69,7 +69,6 @@
 
   .inlineText {
     justify-content: center;
-    /* gap: 0; */
   }
 
   .inlineText:nth-child(1) {

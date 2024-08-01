@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import Nav from '../components/nav/Nav';
-import { itemsNav } from '../components/nav/NavItems';
+import { itemsNav } from '../mockData/navItems';
 
 const meta = {
 	title: 'Nav',

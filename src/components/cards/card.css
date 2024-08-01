@@ -1,4 +1,4 @@
-.card__container {
+.cardContainer {
   padding: 2%;
   border-radius: 1rem;
   overflow: visible;
@@ -25,16 +25,16 @@
   justify-content: space-between;
 }
 
-.card__container:hover {
+.cardContainer:hover {
   box-shadow: 10px 0px 50px -20px #f7ba2b, -10px 0px 50px -20px #ea5358;
 }
 
-.card__container:hover .interior {
+.cardContainer:hover .interior {
   color: #f7ba2b;
   transition: color 0.5s;
 }
 
-.card__image {
+.cardImage {
   height: 200px;
   display: block;
   width: 100%;
@@ -48,12 +48,12 @@
   flex-direction: column;
 }
 
-.portfolio__item-image {
+.portfolioItemImage {
   border-radius: 1.5rem;
   overflow: hidden;
 }
 
-.card__container h3 {
+.cardContainer h3 {
   margin: 1.2rem 0 1rem;
   text-transform: uppercase;
   font-weight: 700;
@@ -61,20 +61,20 @@
   text-align: center;
 }
 
-.card__container p {
+.cardContainer p {
   margin: 1.2rem 0 1rem;
 }
 
-.card__container ul {
+.cardContainer ul {
   margin-bottom: 1rem;
 }
 
-.card__container li {
+.cardContainer li {
   margin-left: 1rem;
   list-style-type: none;
 }
 
-.portfolio__item_cta {
+.portfolioItemCta {
   display: flex;
   gap: 1rem;
   margin-bottom: 1rem;
@@ -82,22 +82,17 @@
 
 /* =================== SKILL CARD =================== */
 
-.experience__details {
+.experienceDetails {
   display: flex;
   gap: 1rem;
   color: var(--color-text-default)
 }
 
-.experience__detail-icon {
+.experienceDetail-icon {
   margin-top: 6px;
   color: var(--color-primary-variant);
 }
 
-.personal__icon {
+.personalIcon {
   background: white;
-}
-
-.text-light {
-  color: var(--color-light);
-  /* --color-light: rgba(255, 255, 255, 0.6); */
 }

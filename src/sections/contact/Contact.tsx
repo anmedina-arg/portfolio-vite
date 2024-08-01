@@ -1,26 +1,22 @@
-import FormikForm from "../../components/form/formikForm";
-import { Section } from "../../components/layout/section";
-import MySubtitle from "../../components/titles/MySubtitle/MySubtitle";
-
 import "./contact.css";
-//import emailjs from "emailjs-com";
-import { BsLinkedin, BsGithub } from "react-icons/bs";
-import { TfiEmail } from "react-icons/tfi";
+
+import FormikForm from "../../components/form/formikForm";
+
 import MainBackground from "../../components/backgrounds/mainBackground";
+import MySubtitle from "../../components/titles/MySubtitle/MySubtitle";
+import Section from "../../components/layout/section";
 import SectionTitle from "../../components/titles/sectionTitle/sectionTitle";
 
+import { contactDetails } from "../../mockData/contact";
 
-// type ContactProps = {
-//   contactDetailsArr?: contactDetailsProps[]
-// }
-
-function Contact() {
+const Contact: React.FC = () => {
   return (
     <Section id="contact">
       <SectionTitle label="contacto" />
       <MySubtitle label="Si estás interesado en que trabajemos juntos, envíame un mensajito desde aquí abajo!" />
       <hr style={{ marginBlock: "1rem", background: "transparent", border: "none" }}></hr>
       <hr style={{ marginBlock: "1rem", background: "transparent", border: "none" }}></hr>
+
       <MainBackground>
         <div className="contactContainerForm">
           <FormikForm />
@@ -28,22 +24,17 @@ function Contact() {
       </MainBackground>
 
       <hr style={{ marginBlock: "1rem", background: "transparent", border: "none" }}></hr>
+
       <MainBackground>
         <div style={{ display: "flex" }}>
           {
-            contactDetails.map((contactDetail) => {
-              const { title, href, icon } = contactDetail
+            contactDetails.map(({ title, href, icon }) => {
               return (
-                <a
-                  href={href}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="contact__option"
-                >
-                  <article >
+                <a className="contactOption" key={title} href={href} target="_blank" rel="noreferrer">
+                  <div >
                     <h4>{title}</h4>
-                    {icon}
-                  </article>
+                    <span>{icon}</span>
+                  </div>
                 </a>
               )
             })
@@ -55,32 +46,3 @@ function Contact() {
 }
 
 export default Contact;
-
-type contactDetailsProps = {
-  title: string,
-  href: string,
-  icon: React.ReactElement
-}
-
-const contactDetails: contactDetailsProps[] = [
-  {
-    title: "Email",
-    href: "mailto:andres.medina.arg@gmail.com",
-    icon: <TfiEmail />
-  },
-  {
-    title: "LinkedIn",
-    href: "https://www.linkedin.com/in/andres-medina-arg/",
-    icon: <BsLinkedin />
-  },
-  {
-    title: "Github",
-    href: "https://github.com/anmedina-arg",
-    icon: <BsGithub />
-  },
-  // {
-  //   title: "WhatsApp",
-  //   href: "https://wa.me/5493816713512?text=Hola,%20¿cómo%20estás?",
-  //   icon: <BsGithub />
-  // },
-]

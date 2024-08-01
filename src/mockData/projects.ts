@@ -14,7 +14,17 @@ import Orderix from "../assets/Orderix.webp";
 import Kurve from "../assets/kurve.webp";
 import CABSA from "../assets/cabsa.webp";
 
-export const projects = [
+export type ProjectProps = {
+  id: number,
+  image: string,
+  title: string,
+  github: string,
+  demo: string,
+  description: string,
+  skill: Array<string>
+}
+
+export const projects: ProjectProps[] = [
 	{
     id: 15,
     image: CABSA,
@@ -103,7 +113,7 @@ export const projects = [
     image: Ecommerce,
     title: "Team Project - E-commerce Davo´s shoes",
     github: "https://github.com/Nikl4auss/henry-final-project",
-    //demo: "https://github.com/Nikl4auss/henry-final-project",
+    demo: "https://github.com/Nikl4auss/henry-final-project",
     description:
       "NOT RESPONSIVE YET. The project is an e-commerce of sports shoes. Developed as a team to present at Henry's bootcamp. This project has user administration, different functionalities depending on the profile. In the administrator profile you can control and create stock, manage orders and manage registered users. The shopping cart is managed with Local Storege, you can leave the page and then resume the purchase from your cart without losing the addition! The SPA has a search bar, filters by products according to their stock, registration with Google, MeLi payment gateway and sends emails to the user with the status of their order, among other features. In addition to strengthening our technical knowledge, we have lived the experience of working as a team! with agile methodologies, organization of tasks in Trello and versioning in Github. Really great teamwork!. The technology used: Javascript | react | React-Redux | Pure CSS (modules) | Express | Node | SQL | Sequelize | Auth0 | Mailgun | MeLi payment gateway",
     skill: [

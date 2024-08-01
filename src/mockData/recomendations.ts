@@ -4,7 +4,14 @@ import NICO from "../assets/Nico.webp";
 import ADRIAN from "../assets/Adrian.jpeg";
 import GIAN from "../assets/Gian.webp";
 
-export const reviews = [
+type ReviewProps = {
+  id: number,
+  avatar: string,
+  name: string,
+  review: string
+}
+
+export const reviews: ReviewProps[] = [
     {
       id: 11,
       avatar: GABY,

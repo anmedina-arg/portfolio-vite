@@ -13,7 +13,6 @@ const meta = {
   argTypes: {
     icon: { control: IconBase }, // y esto?
     href: { control: 'text' },
-    key: { control: 'text' },
     className: { control: 'text' },
     title: { control: 'text' },
   },
@@ -26,7 +25,6 @@ export const AnchorPrimary: Story = {
   args: {
     icon: <HiOutlineHome />,
     href: '',
-    key: '',
     className: '',
     title: 'titulo'
   },
