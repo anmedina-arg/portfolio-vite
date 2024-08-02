@@ -25,19 +25,19 @@ export type SkillsProps = {
 
 export const FRONTEND_SKIL: SkillsProps[] = [
   {
-    id: "FES4",
+    id: "FES1",
     name: "NextJS",
     level: "Intermediate",
     icon: <SiNextdotjs />,
   },
   {
-    id: "FES4",
+    id: "FES2",
     name: "Vite",
     level: "Intermediate",
     icon: <TbBrandVite />,
   },
   {
-    id: "FES4",
+    id: "FES3",
     name: "React query",
     level: "Intermediate",
     icon: <SiReactquery />,
@@ -49,82 +49,82 @@ export const FRONTEND_SKIL: SkillsProps[] = [
     icon: <SiReact />,
   },
   {
-    id: "FES3",
+    id: "FES5",
     name: "Typescript",
     level: "Intermediate",
     icon: <SiTypescript />,
   },
   {
-    id: "FES3",
+    id: "FES6",
     name: "Javascript",
     level: "Intermediate",
     icon: <SiJavascript />,
   },
   {
-    id: "FES2",
+    id: "FES7",
     name: "Tailwind",
     level: "Intermediate",
     icon: <SiTailwindcss />,
   },
   {
-    id: "FES2",
+    id: "FES8",
     name: "Styled component",
     level: "Intermediate",
     icon: <SiStyledcomponents />,
   },
   {
-    id: "FES2",
+    id: "FES9",
     name: "CSS",
     level: "Intermediate",
     icon: <SiCss3 />,
   },
   {
-    id: "FES1",
+    id: "FES10",
     name: "HTML",
     level: "Intermediate",
     icon: <SiHtml5 />,
   },
 ];
 
-export const BACKEND_SKILL = [
+export const BACKEND_SKILL: SkillsProps[] = [
   {
-    id: "FES3",
+    id: "BES1",
     name: "Javascript",
     level: "Intermediate",
     icon: <SiJavascript />,
   },
   {
-    id: "FES3",
+    id: "BES2",
     name: "Typescript",
     level: "Intermediate",
     icon: <SiTypescript />,
   },
   {
-    id: "BES1",
+    id: "BES3",
     name: "Node",
     level: "Intermediate",
     icon: <SiNodedotjs />,
   },
   {
-    id: "BES2",
+    id: "BES4",
     name: "SQL",
     level: "Intermediate",
     icon: <SiPostgresql />,
   },
   {
-    id: "BES2",
+    id: "BES5",
     name: "MongoDB",
     level: "Beginner",
     icon: <SiMongodb />,
   },
   {
-    id: "BES2",
+    id: "BES6",
     name: "Prisma",
     level: "Beginner",
     icon: <SiPrisma />,
   },
   {
-    id: "BES3",
+    id: "BES7",
     name: "Express",
     level: "Intermediate",
     icon: <BsFillPatchCheckFill />,

@@ -1,4 +1,4 @@
-.portfolio__container {
+.portfolioContainer {
   padding-block: 2.5rem;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -8,7 +8,7 @@
 /* ============ MEDIA QUERIES (MEDIUM DEVICES) ====================== */
 
 @media screen and (max-width: 1024px) {
-  .portfolio__container {
+  .portfolioContainer {
     grid-template-columns: 1fr 1fr;
     gap: 1.2rem;
   }
@@ -17,7 +17,7 @@
 /* ============ MEDIA QUERIES (SMALL DEVICES) ====================== */
 
 @media screen and (max-width: 600px) {
-  .portfolio__container {
+  .portfolioContainer {
     grid-template-columns: 1fr;
     gap: 1rem;
   }

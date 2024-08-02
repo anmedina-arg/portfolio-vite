@@ -1,11 +1,7 @@
 import { useState, useEffect } from 'react';
+import { ItemsNavProps } from '../mockData/navItems'
 
-type NavbarItem = {
-  title: string;
-  path: string;
-};
-
-export const useScrollSpy = (items: NavbarItem[]) => {
+export const useScrollSpy = (items: ItemsNavProps[]) => {
   const [activeSection, setActiveSection] = useState('');
 
   useEffect(() => {

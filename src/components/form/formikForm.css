@@ -13,7 +13,6 @@ form {
 	height: 50px;
 	box-shadow: 0 0px 30px 20px rgb(32 26 37 / 20%);
 	background: white;
-	/* background: red; */
 	position: relative;
 	display: flex;
 	align-items: center;
@@ -27,7 +26,6 @@ form {
 input,
 textarea {
 	background: rgba(360, 360, 360, 0.95);
-	/* background: red; */
 	width: 100%;
 	border: none;
 	padding: 5px;
@@ -58,8 +56,6 @@ textarea:focus {
 	color: #888888;
 }
 
-/* .animate-label input:valid+label,
-.animate-label textarea:valid+label, */
 .animate-label input:not(:placeholder-shown)+label,
 .animate-label textarea:not(:placeholder-shown)+label,
 .animate-label input:focus+label,
@@ -73,7 +69,7 @@ textarea:focus {
 	color: #4285f4;
 }
 
-.animate-label line:before {
+.animate-label .lineAnimated:before {
 	content: '';
 	position: absolute;
 	background: #4285f4;
@@ -83,8 +79,8 @@ textarea:focus {
 	bottom: 0;
 }
 
-.animate-label input:focus~line:before,
-.animate-label textarea:focus~line:before {
+.animate-label input:focus~.lineAnimated:before,
+.animate-label textarea:focus~.lineAnimated:before {
 	width: 100%;
 	right: 0;
 	transition: all 0.3s ease;

@@ -1,14 +1,15 @@
-
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import "./skillCard.css";
+import { SkillsProps } from '../../mockData/skills';
 
-const SkillCard = ({ skill }: any) => {
-  const { id, icon, name } = skill;
+type SkillCardProps = {
+  skill: SkillsProps
+}
+
+const SkillCard: React.FC<SkillCardProps> = ({ skill: { icon, name } }) => {
+
   return (
-    <article className="skillCardContainer" key={id}>
-      <div className="skillCardIcon">
-        {icon}
-      </div>
+    <article className="skillCardContainer">
+      <div className="skillCardIcon">{icon}</div>
       <span>{name}</span>
     </article>
   );

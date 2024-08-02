@@ -4,14 +4,7 @@
   justify-content: center;
 }
 
-.contactSocials {
-  display: flex;
-  border: 1px solid red;
-  width: 50vw;
-  height: 10vh;
-}
-
-.contact__option {
+.contactOption {
   text-decoration: none;
   color: var(--color-text-default);
   font-size: 1rem;
@@ -22,10 +15,10 @@
   transition: var(--transition);
 }
 
-.contact__option:hover {
+.contactOption:hover {
   transform: scale(1.2);
 }
 
-.contact__option-icon {
+.contactOption-icon {
   font-size: 1.5rem;
 }
