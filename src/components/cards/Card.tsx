@@ -4,7 +4,7 @@ import { ProjectProps } from '../../mockData/projects';
 
 import Button from "../ui/buttons/Button";
 
-type CardProps = {
+export type CardProps = {
   project: ProjectProps
 }
 

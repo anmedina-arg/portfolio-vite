@@ -30,6 +30,9 @@
 }
 
 .sideContentTextHome {
+  position: absolute;
+  bottom: 5rem;
+  right: 1rem;
   align-self: center;
 }
 
@@ -81,8 +84,8 @@
 
   .sideContentTextHome {
     position: absolute;
+    bottom: 5rem;
     right: 0;
-    bottom: 0;
   }
 
   .contentIconHome {
