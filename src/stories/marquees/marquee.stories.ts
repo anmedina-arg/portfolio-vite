@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import Marquee from '../components/maarquee/marquee';
+import Marquee from '../../components/maarquee/marquee';
 
 
 const meta = {
-  title: 'Marquee',
+  title: 'Marquees/Marquee',
   component: Marquee,
 //   parameters: {
 //     layout: 'centered',

@@ -1,9 +1,10 @@
 import "./portfolio.css";
-import Card from "../../components/cards/Card";
-import { projects } from "../../mockData/projects";
 import { Section } from "../../components/layout/section";
 import MySubtitle from "../../components/titles/MySubtitle/MySubtitle";
 import SectionTitle from "../../components/titles/sectionTitle/sectionTitle";
+import PortfolioWorks from "../../components/myWork/portfolio/portfolioWorks";
+import PortfolioLabs from "../../components/myWork/labs/portfolioLabs";
+import Tabs, { Tab } from "../../components/tabs/tabs";
 
 const Portfolio: React.FC = () => {
   return (
@@ -14,9 +15,15 @@ const Portfolio: React.FC = () => {
       <MySubtitle size="small" label="Algunos proyectos tienen su repositorio privado, por lo que seras redirigido a mi Github" color="default" />
       <hr style={{ marginBlock: "1rem", background: "transparent", border: "none" }}></hr>
 
-      <div className="portfolioContainer">
-        {projects.map((project) => <Card key={project.id} project={project} />)}
-      </div>
+      <Tabs>
+        <Tab key="1" label="Pestaña 1" component={<PortfolioWorks />} />
+
+        <Tab key="2" label="Pestaña 2" component={<PortfolioLabs />} />
+
+
+      </Tabs>
+
+
 
     </Section>
   );

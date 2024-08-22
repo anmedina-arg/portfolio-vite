@@ -1,0 +1,24 @@
+.portfolioLabsContainer {
+	padding-block: 2.5rem;
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 2.5rem;
+}
+
+/* ============ MEDIA QUERIES (MEDIUM DEVICES) ====================== */
+
+@media screen and (max-width: 1024px) {
+	.portfolioLabsContainer {
+		grid-template-columns: 1fr 1fr;
+		gap: 1.2rem;
+	}
+}
+
+/* ============ MEDIA QUERIES (SMALL DEVICES) ====================== */
+
+@media screen and (max-width: 600px) {
+	.portfolioLabsContainer {
+		grid-template-columns: 1fr;
+		gap: 1rem;
+	}
+}

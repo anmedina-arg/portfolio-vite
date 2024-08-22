@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import Card from '../components/cards/Card';
-import TiltEffectComponent from '../components/tiltEffectComponent/tiltEffectComponent';
-import { projects } from '../mockData/projects';
+import Card from '../../components/cards/Card';
+import TiltEffectComponent from '../../components/tiltEffectComponent/tiltEffectComponent';
+import { projects } from '../../mockData/projects';
 
 const meta = {
-  title: 'TiltEffectComponent',
+  title: 'Cards/TiltEffectComponent',
   component: TiltEffectComponent,
   // subcomponents: {Card},
   parameters: {

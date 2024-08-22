@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import SkillCard from '../components/cards/SkillCard';
-import { FRONTEND_SKIL } from '../mockData/skills'
+import SkillCard from '../../components/cards/SkillCard';
+import { FRONTEND_SKIL } from '../../mockData/skills'
 import { object } from 'yup';
 
 const meta = {
-  title: 'SkillCard',
+  title: 'Cards/SkillCard',
   component: SkillCard,
   parameters: {
     layout: 'centered',

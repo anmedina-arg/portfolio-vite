@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import Card from '../components/cards/Card';
-import { projects } from '../mockData/projects';
+import Card from '../../components/cards/Card';
+import { projects } from '../../mockData/projects';
 
 
 const meta = {
-  title: 'Card',
+  title: 'Cards/Card',
   component: Card,
   parameters: {
     layout: 'centered',

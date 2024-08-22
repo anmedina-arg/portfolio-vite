@@ -3,6 +3,7 @@ import "./card.css";
 import { ProjectProps } from '../../mockData/projects';
 
 import Button from "../ui/buttons/Button";
+import MemoizedRenderIconFromAList from "../renderIconFromAList/renderIconFromAList";
 
 export type CardProps = {
   project: ProjectProps
@@ -21,6 +22,7 @@ const Card: React.FC<CardProps> = ({ project: { image, title, github, demo, skil
               alt="imagen de proyecto"
             />
             <h3>{title}</h3>
+            <MemoizedRenderIconFromAList technologies={skill} />
             <ul>
               {skill?.map((skill) => <li key={skill}>{skill}</li>)}
             </ul>

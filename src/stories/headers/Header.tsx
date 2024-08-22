@@ -1,5 +1,5 @@
 
-import { Button } from './Button';
+import { Button } from '../buttons/Button';
 import './header.css';
 
 type User = {
