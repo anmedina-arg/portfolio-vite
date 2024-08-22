@@ -55,7 +55,7 @@ export const projects: ProjectProps[] = [
   "EmmailJS"
     ],
   },
-  {
+ /* {
     id: 13,
     image: Orderix,
     title: "Orderix",
@@ -71,7 +71,7 @@ export const projects: ProjectProps[] = [
       "Prisma",
       "SQL",
     ],
-  },
+  },*/
   {
     id: 12,
     image: Coolco,
@@ -81,7 +81,7 @@ export const projects: ProjectProps[] = [
     description: "Buy a ticket, and get an NFT's gift",
     skill: ["Typescript", "NextJS", "React", "Styled-components"],
   },
-  {
+  /*{
     id: 11,
     image: Apes,
     title: "Apes International",
@@ -89,7 +89,7 @@ export const projects: ProjectProps[] = [
     demo: "https://www.apesgroup.net/",
     description: "TO COMPLETE... building in progress...",
     skill: ["Typescript", "NextJS", "React", "Styled-components"],
-  },
+  },*/
   {
     id: 10,
     image: Gallery,
@@ -99,7 +99,7 @@ export const projects: ProjectProps[] = [
     description: "TO COMPLETE... building in progress...",
     skill: ["Typescript", "React", "Styled-components"],
   },
-  {
+  /*{
     id: 9,
     image: Cats,
     title: "Cats and dogs",
@@ -124,13 +124,13 @@ export const projects: ProjectProps[] = [
       "SQL - Postgres",
       "Pasarela de pago MELI",
     ],
-  },
+  },*/
   {
     id: 7,
     image: PICountry,
     title: "PI - Countries Henry",
     github: "http://github.com",
-    demo: "https://www.youtube.com/watch?v=2mivlbmIUsA&t=6s",
+    demo: "https://pi-henry-neon.vercel.app/",
     description:
       "NOT RESPONSIVE YET. An individual project for Henry's bootcamp. It is a SPA in which requests are made to an external API, but you can also generate and add your own tourist activities for one or more countries. In this SPA, filters, searches, CRUD, paging and relations between tourist activities and one or more countries are carried out",
     skill: ["Javascript", "React", "Redux", "SQL - Postgres"],
