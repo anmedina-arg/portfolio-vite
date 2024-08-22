@@ -1,61 +1,49 @@
-import PICountry from "../assets/PI-Country.webp";
-import Ecommerce from "../assets/Ecommerce.webp";
+import PICountry from '../assets/PI-Country.webp';
+// import Ecommerce from "../assets/Ecommerce.webp";
 //import MyPortfolio from "../../assets/Portfolio.webp";
-import Coolco from "../assets/Coolco.webp";
-import Gallery from "../assets/The-gallery.webp";
-import Cats from "../assets/Cats-and-dog.webp";
-import Apes from "../assets/Apes.webp";
-import Tateti from "../assets/tateti.webp";
-import Memory from "../assets/memory_card_game.webp";
-import Sudoku from "../assets/sudoku.webp";
-import Pelis from "../assets/buscador_peliculas.webp";
-import Todo from "../assets/todoapp.webp";
-import Orderix from "../assets/Orderix.webp";
-import Kurve from "../assets/kurve.webp";
-import CABSA from "../assets/cabsa.webp";
+import Coolco from '../assets/Coolco.webp';
+import Gallery from '../assets/The-gallery.webp';
+// import Cats from "../assets/Cats-and-dog.webp";
+// import Apes from "../assets/Apes.webp";
+import Tateti from '../assets/tateti.webp';
+import Memory from '../assets/memory_card_game.webp';
+import Sudoku from '../assets/sudoku.webp';
+import Pelis from '../assets/buscador_peliculas.webp';
+import Todo from '../assets/todoapp.webp';
+// import Orderix from "../assets/Orderix.webp";
+import Kurve from '../assets/kurve.webp';
+import CABSA from '../assets/cabsa.webp';
 
 export type ProjectProps = {
-  id: number,
-  image: string,
-  title: string,
-  github: string,
-  demo: string,
-  description: string,
-  skill: Array<string>
-}
+  id: number;
+  image: string;
+  title: string;
+  github: string;
+  demo: string;
+  description: string;
+  skill: Array<string>;
+};
 
 export const projects: ProjectProps[] = [
-	{
+  {
     id: 15,
     image: CABSA,
-    title: "CABSA",
-    github: "https://github.com",
-    demo: "https://www.cabsaintl.com/",
-    description: "",
-    skill: [
-      "Next",
-      "Typescript",
-	"React",
-      "CSS",
-  "EmmailJS"
-    ],
+    title: 'CABSA',
+    github: 'https://github.com',
+    demo: 'https://www.cabsaintl.com/',
+    description: '',
+    skill: ['Next', 'Typescript', 'React', 'CSS', 'EmmailJS'],
   },
-	{
+  {
     id: 14,
     image: Kurve,
-    title: "Kurve",
-    github: "https://github.com",
-    demo: "https://kurve.ai//",
-    description: "",
-    skill: [
-      "Vite",
-      "Typescript",
-	"React",
-      "CSS",
-  "EmmailJS"
-    ],
+    title: 'Kurve',
+    github: 'https://github.com',
+    demo: 'https://kurve.ai//',
+    description: '',
+    skill: ['Vite', 'Typescript', 'React', 'CSS', 'EmmailJS'],
   },
- /* {
+  /* {
     id: 13,
     image: Orderix,
     title: "Orderix",
@@ -75,11 +63,11 @@ export const projects: ProjectProps[] = [
   {
     id: 12,
     image: Coolco,
-    title: "Coolco",
-    github: "http://github.com",
-    demo: "https://www.coolco.io/",
+    title: 'Coolco',
+    github: 'http://github.com',
+    demo: 'https://www.coolco.io/',
     description: "Buy a ticket, and get an NFT's gift",
-    skill: ["Typescript", "NextJS", "React", "Styled-components"],
+    skill: ['Typescript', 'NextJS', 'React', 'Styled-components'],
   },
   /*{
     id: 11,
@@ -93,11 +81,11 @@ export const projects: ProjectProps[] = [
   {
     id: 10,
     image: Gallery,
-    title: "The Gallery",
-    github: "http://github.com",
-    demo: "https://www.thegallery.live/",
-    description: "TO COMPLETE... building in progress...",
-    skill: ["Typescript", "React", "Styled-components"],
+    title: 'The Gallery',
+    github: 'http://github.com',
+    demo: 'https://www.thegallery.live/',
+    description: 'TO COMPLETE... building in progress...',
+    skill: ['Typescript', 'React', 'Styled-components'],
   },
   /*{
     id: 9,
@@ -128,12 +116,12 @@ export const projects: ProjectProps[] = [
   {
     id: 7,
     image: PICountry,
-    title: "PI - Countries Henry",
-    github: "http://github.com",
-    demo: "https://pi-henry-neon.vercel.app/",
+    title: 'PI - Countries Henry',
+    github: 'http://github.com',
+    demo: 'https://pi-henry-neon.vercel.app/',
     description:
       "NOT RESPONSIVE YET. An individual project for Henry's bootcamp. It is a SPA in which requests are made to an external API, but you can also generate and add your own tourist activities for one or more countries. In this SPA, filters, searches, CRUD, paging and relations between tourist activities and one or more countries are carried out",
-    skill: ["Javascript", "React", "Redux", "SQL - Postgres"],
+    skill: ['Javascript', 'React', 'Redux', 'SQL - Postgres'],
   },
   // {
   //   id: 6,
@@ -154,46 +142,46 @@ export const projects: ProjectProps[] = [
   {
     id: 5,
     image: Memory,
-    title: "Memory card game",
-    github: "https://github.com/anmedina-arg/memory-card-game",
-    demo: "https://anmedina-arg.github.io/memory-card-game/",
-    description: "",
-    skill: ["Javascript vanilla", "CSS modules"],
+    title: 'Memory card game',
+    github: 'https://github.com/anmedina-arg/memory-card-game',
+    demo: 'https://anmedina-arg.github.io/memory-card-game/',
+    description: '',
+    skill: ['Javascript vanilla', 'CSS modules'],
   },
   {
     id: 4,
     image: Tateti,
-    title: "tic tac toe",
-    github: "https://github.com/anmedina-arg/ta-te-ti-next",
-    demo: "https://ta-te-ti-anmedina-arg.vercel.app/",
-    description: "",
-    skill: ["Typescript", "Next", "React", "Tailwind"],
+    title: 'tic tac toe',
+    github: 'https://github.com/anmedina-arg/ta-te-ti-next',
+    demo: 'https://ta-te-ti-anmedina-arg.vercel.app/',
+    description: '',
+    skill: ['Typescript', 'Next', 'React', 'Tailwind'],
   },
   {
     id: 3,
     image: Sudoku,
-    title: "Sudoku",
-    github: "https://github.com/anmedina-arg/sudoku-game-nextjs",
-    demo: "https://sudoku-game-nextjs.vercel.app/",
-    description: "",
-    skill: ["Typescript", "Next", "React", "Tailwind"],
+    title: 'Sudoku',
+    github: 'https://github.com/anmedina-arg/sudoku-game-nextjs',
+    demo: 'https://sudoku-game-nextjs.vercel.app/',
+    description: '',
+    skill: ['Typescript', 'Next', 'React', 'Tailwind'],
   },
   {
     id: 2,
     image: Pelis,
-    title: "buscador de peliculas",
-    github: "https://github.com/anmedina-arg/buscador-de-peliculas-vite",
-    demo: "https://6481e3d5c714880092eaaac7--fantastic-daffodil-aada43.netlify.app/",
-    description: "",
-    skill: ["Javascript", "React"],
+    title: 'buscador de peliculas',
+    github: 'https://github.com/anmedina-arg/buscador-de-peliculas-vite',
+    demo: 'https://6481e3d5c714880092eaaac7--fantastic-daffodil-aada43.netlify.app/',
+    description: '',
+    skill: ['Javascript', 'React'],
   },
   {
     id: 1,
     image: Todo,
-    title: "to do app",
-    github: "https://github.com/anmedina-arg/to-do-app-next",
-    demo: "https://to-do-app-next.vercel.app/",
-    description: "",
-    skill: ["Typescript", "Next", "React", "Tailwind"],
+    title: 'to do app',
+    github: 'https://github.com/anmedina-arg/to-do-app-next',
+    demo: 'https://to-do-app-next.vercel.app/',
+    description: '',
+    skill: ['Typescript', 'Next', 'React', 'Tailwind'],
   },
 ];
