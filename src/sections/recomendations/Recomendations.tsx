@@ -35,11 +35,13 @@ const Recomendations: React.FC = () => {
           return (
             <SwiperSlide key={id} className="testimonial">
               <MainBackground>
-                <div className="clientAvatar">
-                  <img src={avatar} alt="foto de perfil de una persona que da la recomendacion" />
+                <div style={{ padding: "1rem" }}>
+                  <div className="clientAvatar">
+                    <img src={avatar} alt="foto de perfil de una persona que da la recomendacion" />
+                  </div>
+                  <h5 className="clientName">{name}</h5>
+                  <small className="clientReview">{review}</small>
                 </div>
-                <h5 className="clientName">{name}</h5>
-                <small className="clientReview">{review}</small>
               </MainBackground>
             </SwiperSlide>
           );
