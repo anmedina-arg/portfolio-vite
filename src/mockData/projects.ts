@@ -1,16 +1,16 @@
 import PICountry from '../assets/PI-Country.webp';
-// import Ecommerce from "../assets/Ecommerce.webp";
+//import Ecommerce from "../assets/Ecommerce.webp";
 //import MyPortfolio from "../../assets/Portfolio.webp";
 import Coolco from '../assets/Coolco.webp';
 import Gallery from '../assets/The-gallery.webp';
-// import Cats from "../assets/Cats-and-dog.webp";
-// import Apes from "../assets/Apes.webp";
+//import Cats from "../assets/Cats-and-dog.webp";
+//import Apes from "../assets/Apes.webp";
 import Tateti from '../assets/tateti.webp';
 import Memory from '../assets/memory_card_game.webp';
 import Sudoku from '../assets/sudoku.webp';
 import Pelis from '../assets/buscador_peliculas.webp';
 import Todo from '../assets/todoapp.webp';
-// import Orderix from "../assets/Orderix.webp";
+//import Orderix from "../assets/Orderix.webp";
 import Kurve from '../assets/kurve.webp';
 import CABSA from '../assets/cabsa.webp';
 
