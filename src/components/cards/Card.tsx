@@ -2,7 +2,6 @@ import "./card.css";
 
 import { ProjectProps } from '../../mockData/projects';
 
-import Button from "../ui/buttons/Button";
 import MemoizedRenderIconFromAList from "../renderIconFromAList/renderIconFromAList";
 import ShineButton from "../ui/buttons/shineButton";
 

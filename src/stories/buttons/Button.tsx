@@ -6,7 +6,7 @@ interface ButtonProps {
   size?: 'small' | 'medium' | 'large';
   label: string;
   onClick?: () => void;
-  href: string
+  href?: string
 }
 
 export const Button = ({
