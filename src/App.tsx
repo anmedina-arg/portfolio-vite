@@ -15,8 +15,8 @@ function App(): ReactElement {
     <>
       <Nav items={itemsNav} />
       <Home />
-      <Experience />
       <Portfolio />
+      <Experience />
       <Recomendations />
       <Contact />
       <Footer />

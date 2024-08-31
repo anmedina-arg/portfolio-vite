@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import Billboard from '../components/billboard/billboard';
+import Billboard from '../../components/billboard/billboard';
 
 const meta = {
-  title: 'Billboard',
+  title: 'Cards/Billboard',
   component: Billboard,
   parameters: {
     layout: 'centered',

@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import Anchor from '../components/anchor/Anchor';
+import Anchor from '../../components/anchor/Anchor';
 import { HiOutlineHome } from "react-icons/hi";
 import { IconBase } from 'react-icons'; // y esto??
 
 const meta = {
-  title: 'Anchor',
+  title: 'Buttons/Anchor',
   component: Anchor,
   parameters: {
     layout: 'centered',

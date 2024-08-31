@@ -13,6 +13,7 @@ import Todo from '../assets/todoapp.webp';
 //import Orderix from "../assets/Orderix.webp";
 import Kurve from '../assets/kurve.webp';
 import CABSA from '../assets/cabsa.webp';
+import { ValidSkills } from './technologies';
 
 export type ProjectProps = {
   id: number;
@@ -21,7 +22,7 @@ export type ProjectProps = {
   github: string;
   demo: string;
   description: string;
-  skill: Array<string>;
+  skill: ValidSkills[];
 };
 
 export const projects: ProjectProps[] = [
@@ -32,7 +33,7 @@ export const projects: ProjectProps[] = [
     github: 'https://github.com',
     demo: 'https://www.cabsaintl.com/',
     description: '',
-    skill: ['Next', 'Typescript', 'React', 'CSS', 'EmmailJS'],
+    skill: ['NextJS', 'Typescript', 'React', 'CSS'],
   },
   {
     id: 14,
@@ -41,23 +42,23 @@ export const projects: ProjectProps[] = [
     github: 'https://github.com',
     demo: 'https://kurve.ai//',
     description: '',
-    skill: ['Vite', 'Typescript', 'React', 'CSS', 'EmmailJS'],
+    skill: ['Vite', 'Typescript', 'React', 'CSS'],
   },
   /* {
     id: 13,
     image: Orderix,
-    title: "Orderix",
-    github: "https://github.com",
-    demo: "https://orderix.co/",
-    description: "",
+    title: 'Orderix',
+    github: 'https://github.com',
+    demo: 'https://orderix.co/',
+    description: '',
     skill: [
-      "Typescript",
-      "Next",
-      "React",
-      "Tailwind",
-      "NodeJS",
-      "Prisma",
-      "SQL",
+      'Typescript',
+      'NextJS',
+      'React',
+      'Tailwind',
+      'NodeJS',
+      'Prisma',
+      'SQL',
     ],
   },*/
   {
@@ -67,7 +68,7 @@ export const projects: ProjectProps[] = [
     github: 'http://github.com',
     demo: 'https://www.coolco.io/',
     description: "Buy a ticket, and get an NFT's gift",
-    skill: ['Typescript', 'NextJS', 'React', 'Styled-components'],
+    skill: ['Typescript', 'NextJS', 'React', 'StyledComponents'],
   },
   /*{
     id: 11,
@@ -85,32 +86,32 @@ export const projects: ProjectProps[] = [
     github: 'http://github.com',
     demo: 'https://www.thegallery.live/',
     description: 'TO COMPLETE... building in progress...',
-    skill: ['Typescript', 'React', 'Styled-components'],
+    skill: ['Typescript', 'React', 'StyledComponents'],
   },
   /*{
     id: 9,
     image: Cats,
-    title: "Cats and dogs",
-    github: "http://github.com",
-    demo: "https://www.catsanddogs.io/",
-    description: "TO COMPLETE... building in progress...",
-    skill: ["Typescript", "React", "Material UI"],
+    title: 'Cats and dogs',
+    github: 'http://github.com',
+    demo: 'https://www.catsanddogs.io/',
+    description: 'TO COMPLETE... building in progress...',
+    skill: ['Typescript', 'React', 'Material UI'],
   },
   {
     id: 8,
     image: Ecommerce,
-    title: "Team Project - E-commerce Davo´s shoes",
-    github: "https://github.com/Nikl4auss/henry-final-project",
-    demo: "https://github.com/Nikl4auss/henry-final-project",
+    title: 'Team Project - E-commerce Davo´s shoes',
+    github: 'https://github.com/Nikl4auss/henry-final-project',
+    demo: 'https://github.com/Nikl4auss/henry-final-project',
     description:
       "NOT RESPONSIVE YET. The project is an e-commerce of sports shoes. Developed as a team to present at Henry's bootcamp. This project has user administration, different functionalities depending on the profile. In the administrator profile you can control and create stock, manage orders and manage registered users. The shopping cart is managed with Local Storege, you can leave the page and then resume the purchase from your cart without losing the addition! The SPA has a search bar, filters by products according to their stock, registration with Google, MeLi payment gateway and sends emails to the user with the status of their order, among other features. In addition to strengthening our technical knowledge, we have lived the experience of working as a team! with agile methodologies, organization of tasks in Trello and versioning in Github. Really great teamwork!. The technology used: Javascript | react | React-Redux | Pure CSS (modules) | Express | Node | SQL | Sequelize | Auth0 | Mailgun | MeLi payment gateway",
     skill: [
-      "Javascript",
-      "React - Redux",
-      "CSS 3",
-      "Node - Express",
-      "SQL - Postgres",
-      "Pasarela de pago MELI",
+      'JS',
+      'React - Redux',
+      'CSS 3',
+      'Node - Express',
+      'SQL - Postgres',
+      'Pasarela de pago MELI',
     ],
   },*/
   {
@@ -121,7 +122,7 @@ export const projects: ProjectProps[] = [
     demo: 'https://pi-henry-neon.vercel.app/',
     description:
       "NOT RESPONSIVE YET. An individual project for Henry's bootcamp. It is a SPA in which requests are made to an external API, but you can also generate and add your own tourist activities for one or more countries. In this SPA, filters, searches, CRUD, paging and relations between tourist activities and one or more countries are carried out",
-    skill: ['Javascript', 'React', 'Redux', 'SQL - Postgres'],
+    skill: ['Javascript', 'React', 'Redux', 'Postgres'],
   },
   // {
   //   id: 6,
@@ -146,7 +147,7 @@ export const projects: ProjectProps[] = [
     github: 'https://github.com/anmedina-arg/memory-card-game',
     demo: 'https://anmedina-arg.github.io/memory-card-game/',
     description: '',
-    skill: ['Javascript vanilla', 'CSS modules'],
+    skill: ['Javascript', 'CSS'],
   },
   {
     id: 4,
@@ -155,7 +156,7 @@ export const projects: ProjectProps[] = [
     github: 'https://github.com/anmedina-arg/ta-te-ti-next',
     demo: 'https://ta-te-ti-anmedina-arg.vercel.app/',
     description: '',
-    skill: ['Typescript', 'Next', 'React', 'Tailwind'],
+    skill: ['Typescript', 'NextJS', 'React', 'Tailwind'],
   },
   {
     id: 3,
@@ -164,7 +165,7 @@ export const projects: ProjectProps[] = [
     github: 'https://github.com/anmedina-arg/sudoku-game-nextjs',
     demo: 'https://sudoku-game-nextjs.vercel.app/',
     description: '',
-    skill: ['Typescript', 'Next', 'React', 'Tailwind'],
+    skill: ['Typescript', 'NextJS', 'React', 'Tailwind'],
   },
   {
     id: 2,
@@ -182,6 +183,6 @@ export const projects: ProjectProps[] = [
     github: 'https://github.com/anmedina-arg/to-do-app-next',
     demo: 'https://to-do-app-next.vercel.app/',
     description: '',
-    skill: ['Typescript', 'Next', 'React', 'Tailwind'],
+    skill: ['Typescript', 'NextJS', 'React', 'Tailwind'],
   },
 ];
