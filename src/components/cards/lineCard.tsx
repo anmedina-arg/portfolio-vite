@@ -1,6 +1,8 @@
 import MemoizedRenderIconFromAList from '../renderIconFromAList/renderIconFromAList';
 import './lineCard.css';
 import { ProjectProps } from '../../mockData/projects';
+import ShineButton from '../ui/buttons/shineButton';
+// import Button from '../ui/buttons/Button';
 
 type LineCardProps = {
 	project: ProjectProps,
@@ -9,8 +11,14 @@ type LineCardProps = {
 const LineCard: React.FC<LineCardProps> = ({ project }) => {
 	return (
 		<div className='lineCardContainer'>
-			<span>hola soy line card</span>
-			<MemoizedRenderIconFromAList technologies={project.skill} />
+			<span className='spanContainerLineCard'>{project.title}</span>
+			<div className='iconsContainerLineCard'>
+				<MemoizedRenderIconFromAList technologies={project.skill} withoutBackground />
+			</div>
+			<div className='divButtonContainerLineCard'>
+				<ShineButton label='Github' href={project.github} />
+				<ShineButton label='Ver' href={project.demo} />
+			</div>
 		</div>
 	)
 }

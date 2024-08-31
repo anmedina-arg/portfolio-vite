@@ -4,6 +4,7 @@ import { ProjectProps } from '../../mockData/projects';
 
 import Button from "../ui/buttons/Button";
 import MemoizedRenderIconFromAList from "../renderIconFromAList/renderIconFromAList";
+import ShineButton from "../ui/buttons/shineButton";
 
 export type CardProps = {
   project: ProjectProps
@@ -21,15 +22,15 @@ const Card: React.FC<CardProps> = ({ project: { image, title, github, demo, skil
               src={image}
               alt="imagen de proyecto"
             />
-            <h3>{title}</h3>
             <MemoizedRenderIconFromAList technologies={skill} />
-            <ul>
+            <h3>{title}</h3>
+            {/* <ul>
               {skill?.map((skill) => <li key={skill}>{skill}</li>)}
-            </ul>
+            </ul> */}
           </div>
           <div className="portfolioItemCta">
-            <Button text="Github" reference={github} target="_blank" />
-            <Button text="Link" reference={demo} target="_blank" />
+            <ShineButton label="Github" href={github} />
+            <ShineButton label="Link" href={demo} />
           </div>
         </div>
       </article>

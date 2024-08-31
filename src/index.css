@@ -63,7 +63,10 @@
   --var-color-gradient-buton: #33cbeb 0%, #28d662 30%, #f07739 70%, #e3366b 100%;
 
   /*gradientes de esferas*/
-  --color-esphere-gray: white 13%, #d3d3d3, #a9a9a9, #808080 80% 80%, #c0c0c0
+  --color-esphere-gray: white 13%, #d3d3d3, #a9a9a9, #808080 80% 80%, #c0c0c0;
+  /*variables relacionadas con las tabs*/
+  --background-tab: #63b3d1;
+  --background-tab-no-select: #348fa3
 }
 
 [data-theme='dark'] {
@@ -99,6 +102,10 @@
   --color-esphere-gray: #a9a9a9 13%, #808080, #696969, #464646 80% 80%, #2f4f4f;
 
   --color-bg-variant-experience: #2c2c6c;
+
+  /*variables relacionadas con las tabs*/
+  --background-tab: #38335c;
+  --background-tab-no-select: #1d1e3b
 }
 
 html {

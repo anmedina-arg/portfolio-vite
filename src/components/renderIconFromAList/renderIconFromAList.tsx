@@ -1,20 +1,22 @@
 import React from "react";
 import { technologyIconsToMap } from "../../mockData/technologies";
+import './renderIconFromAList.css'
 
 type RenderIconFromAListProps = {
 	technologies: string[];
+	withoutBackground?: boolean
 };
 
-const RenderIconFromAList: React.FC<RenderIconFromAListProps> = ({ technologies }) => {
+const RenderIconFromAList: React.FC<RenderIconFromAListProps> = ({ technologies, withoutBackground }) => {
 	return (
-		<div className="technology-icons">
+		<div className="technologyIcons">
 			{technologies.map((tech) =>
 				technologyIconsToMap[tech] ? (
-					<span key={tech} className="rendererIcon" style={{ color: technologyIconsToMap[tech].color }}>
-						{technologyIconsToMap[tech].icon}
+					<span key={tech} className={`rendererIcon ${withoutBackground ? 'withoutBackground' : ''}`} >
+						{technologyIconsToMap[tech]}
 					</span>
 				) : (
-					<span key={tech} className="rendererIcon">
+					<span key={tech} className="rendererTextByIcon">
 						{tech}
 					</span>
 				)

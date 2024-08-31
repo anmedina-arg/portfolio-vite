@@ -26,7 +26,7 @@ const Tabs: React.FC<TabsProps> = ({ children, className = '' }) => {
 	const childrenArray = React.Children.toArray(children) as React.ReactElement<TabProps>[];
 
 	return (
-		<div className={`tabs-container ${className}`}>
+		<div className={`tabsContainer ${className}`}>
 			<div className="tabs" role="tablist">
 				{childrenArray.map((child, index) => {
 					const { label } = child.props;
@@ -46,7 +46,7 @@ const Tabs: React.FC<TabsProps> = ({ children, className = '' }) => {
 			</div>
 			<div
 				id={`tabpanel-${activeTab}`}
-				className="tab-content"
+				className="tabContent"
 				role="tabpanel"
 				aria-labelledby={`tab-${activeTab}`}
 			>

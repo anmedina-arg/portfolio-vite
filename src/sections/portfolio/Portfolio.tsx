@@ -16,9 +16,9 @@ const Portfolio: React.FC = () => {
       <hr style={{ marginBlock: "1rem", background: "transparent", border: "none" }}></hr>
 
       <Tabs>
-        <Tab key="1" label="Pestaña 1" component={<PortfolioWorks />} />
+        <Tab key="1" label="Freelance works" component={<PortfolioWorks />} />
 
-        <Tab key="2" label="Pestaña 2" component={<PortfolioLabs />} />
+        <Tab key="2" label="Labs Proyects" component={<PortfolioLabs />} />
 
 
       </Tabs>

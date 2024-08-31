@@ -1,8 +1,8 @@
 .portfolioLabsContainer {
 	padding-block: 2.5rem;
-	display: grid;
-	grid-template-columns: repeat(3, 1fr);
-	gap: 2.5rem;
+	display: flex;
+	flex-direction: column;
+	gap: 1.5rem;
 }
 
 /* ============ MEDIA QUERIES (MEDIUM DEVICES) ====================== */

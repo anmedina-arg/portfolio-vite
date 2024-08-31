@@ -1,26 +1,18 @@
 import { labsProjects } from "../../../mockData/labsProjects";
 import './portfolioLabs.css';
+import LineCard from "../../cards/lineCard";
+import MainBackground from "../../backgrounds/mainBackground";
 
 const PortfolioLabs = () => {
 	return (
 		<div className="portfolioLabsContainer">
-			{labsProjects.map((project) => <CardLine key={project.id} label={project.title} link={project.demo} />)}
+			{labsProjects.map((project) => (
+				<MainBackground>
+					<LineCard key={project.id} project={project} />
+				</MainBackground>
+			))}
 		</div>
 	)
 };
 
 export default PortfolioLabs;
-
-type CardLineProps = {
-	label: string,
-	link: string
-}
-
-const CardLine: React.FC<CardLineProps> = ({ label, link }) => {
-	return (
-		<div>
-			<span>{label}</span>
-			<a href={link} target="_blank">ver</a>
-		</div>
-	)
-}
