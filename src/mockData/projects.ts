@@ -13,6 +13,7 @@ import Todo from '../assets/todoapp.webp';
 //import Orderix from "../assets/Orderix.webp";
 import Kurve from '../assets/kurve.webp';
 import CABSA from '../assets/cabsa.webp';
+import { ValidSkills } from './technologies';
 
 export type ProjectProps = {
   id: number;
@@ -21,7 +22,7 @@ export type ProjectProps = {
   github: string;
   demo: string;
   description: string;
-  skill: Array<string>;
+  skill: ValidSkills[];
 };
 
 export const projects: ProjectProps[] = [
@@ -32,7 +33,7 @@ export const projects: ProjectProps[] = [
     github: 'https://github.com',
     demo: 'https://www.cabsaintl.com/',
     description: '',
-    skill: ['NextJS', 'Typescript', 'React', 'CSS', 'EmailJS'],
+    skill: ['NextJS', 'Typescript', 'React', 'CSS'],
   },
   {
     id: 14,
@@ -41,16 +42,7 @@ export const projects: ProjectProps[] = [
     github: 'https://github.com',
     demo: 'https://kurve.ai//',
     description: '',
-    skill: ['Vite', 'Typescript', 'React', 'CSS', 'EmmailJS'],
-  },
-  {
-    id: 14,
-    image: Kurve,
-    title: 'Kurve',
-    github: 'https://github.com',
-    demo: 'https://kurve.ai//',
-    description: '',
-    skill: ['Vite', 'Typescript', 'React', 'CSS', 'EmmailJS'],
+    skill: ['Vite', 'Typescript', 'React', 'CSS'],
   },
   /* {
     id: 13,
@@ -114,7 +106,7 @@ export const projects: ProjectProps[] = [
     description:
       "NOT RESPONSIVE YET. The project is an e-commerce of sports shoes. Developed as a team to present at Henry's bootcamp. This project has user administration, different functionalities depending on the profile. In the administrator profile you can control and create stock, manage orders and manage registered users. The shopping cart is managed with Local Storege, you can leave the page and then resume the purchase from your cart without losing the addition! The SPA has a search bar, filters by products according to their stock, registration with Google, MeLi payment gateway and sends emails to the user with the status of their order, among other features. In addition to strengthening our technical knowledge, we have lived the experience of working as a team! with agile methodologies, organization of tasks in Trello and versioning in Github. Really great teamwork!. The technology used: Javascript | react | React-Redux | Pure CSS (modules) | Express | Node | SQL | Sequelize | Auth0 | Mailgun | MeLi payment gateway",
     skill: [
-      'Javascript',
+      'JS',
       'React - Redux',
       'CSS 3',
       'Node - Express',
@@ -130,7 +122,7 @@ export const projects: ProjectProps[] = [
     demo: 'https://pi-henry-neon.vercel.app/',
     description:
       "NOT RESPONSIVE YET. An individual project for Henry's bootcamp. It is a SPA in which requests are made to an external API, but you can also generate and add your own tourist activities for one or more countries. In this SPA, filters, searches, CRUD, paging and relations between tourist activities and one or more countries are carried out",
-    skill: ['Javascript', 'React', 'Redux', 'SQL - Postgres'],
+    skill: ['Javascript', 'React', 'Redux', 'Postgres'],
   },
   // {
   //   id: 6,
@@ -155,7 +147,7 @@ export const projects: ProjectProps[] = [
     github: 'https://github.com/anmedina-arg/memory-card-game',
     demo: 'https://anmedina-arg.github.io/memory-card-game/',
     description: '',
-    skill: ['Javascript vanilla', 'CSS modules'],
+    skill: ['Javascript', 'CSS'],
   },
   {
     id: 4,
@@ -191,6 +183,6 @@ export const projects: ProjectProps[] = [
     github: 'https://github.com/anmedina-arg/to-do-app-next',
     demo: 'https://to-do-app-next.vercel.app/',
     description: '',
-    skill: ['Typescript', 'Next', 'React', 'Tailwind'],
+    skill: ['Typescript', 'NextJS', 'React', 'Tailwind'],
   },
 ];
