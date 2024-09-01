@@ -79,15 +79,15 @@ export const projects: ProjectProps[] = [
     description: "TO COMPLETE... building in progress...",
     skill: ["Typescript", "NextJS", "React", "Styled-components"],
   },*/
-  {
-    id: 10,
-    image: Gallery,
-    title: 'The Gallery',
-    github: 'http://github.com',
-    demo: 'https://www.thegallery.live/',
-    description: 'TO COMPLETE... building in progress...',
-    skill: ['Typescript', 'React', 'StyledComponents'],
-  },
+  // {
+  //   id: 10,
+  //   image: Gallery,
+  //   title: 'The Gallery',
+  //   github: 'http://github.com',
+  //   demo: 'https://www.thegallery.live/',
+  //   description: 'TO COMPLETE... building in progress...',
+  //   skill: ['Typescript', 'React', 'StyledComponents'],
+  // },
   /*{
     id: 9,
     image: Cats,

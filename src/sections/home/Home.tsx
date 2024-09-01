@@ -37,7 +37,7 @@ const Home: React.FC = () => {
         </MainBackground>
       </TiltEffectComponent>
       <div className="sideContentTextHome">
-        <a href="#experience" className="contentIconHome">
+        <a href="#portfolio" className="contentIconHome">
           <FaArrowDown />
         </a>
       </div>
