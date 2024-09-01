@@ -2,7 +2,7 @@ import PICountry from '../assets/PI-Country.webp';
 //import Ecommerce from "../assets/Ecommerce.webp";
 //import MyPortfolio from "../../assets/Portfolio.webp";
 import Coolco from '../assets/Coolco.webp';
-import Gallery from '../assets/The-gallery.webp';
+// import Gallery from '../assets/The-gallery.webp';
 //import Cats from "../assets/Cats-and-dog.webp";
 //import Apes from "../assets/Apes.webp";
 import Tateti from '../assets/tateti.webp';
