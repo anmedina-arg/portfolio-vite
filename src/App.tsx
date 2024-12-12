@@ -7,7 +7,7 @@ import Home from "./sections/home/Home";
 import Nav from "../src/components/nav/Nav";
 import Portfolio from "./sections/portfolio/Portfolio";
 import Recomendations from "./sections/recomendations/Recomendations";
-import Blog from "./components/blog/Blog";
+// import Blog from "./components/blog/Blog";
 
 import { itemsNav } from "./mockData/navItems";
 
