@@ -1,4 +1,5 @@
 .containerSwitch {
+    position: sticky;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -8,21 +9,21 @@
     margin-bottom: 1rem;
 }
 
+.containerSwitch>span {
+    font-size: 0.75rem;
+    color: var(--color-text-default)
+}
+
 .switchLine {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 1rem;
-}
-
-.containerSwitch>span {
-    font-size: 1rem;
-    color: var(--color-text-default)
+    gap: 0.5rem;
 }
 
 .sun,
 .moon {
-    font-size: 2rem;
+    font-size: 1.5rem;
     text-align: center;
     display: flex;
     align-items: center;
@@ -32,10 +33,11 @@
 .switch {
     position: relative;
     display: inline-block;
-    width: 3.5em;
+    /* es el ancho del switch */
+    width: 2em;
     height: 1em;
-    cursor: pointer;
     /* Asegura que el cursor sea un puntero sobre el interruptor */
+    cursor: pointer;
 }
 
 /* El input ahora cubre toda el área del switch */
@@ -70,7 +72,7 @@
     height: 0.8em;
     width: 0.8em;
     border-radius: 50%;
-    left: 0.1rem;
+    left: 1.1rem;
     bottom: 0.1rem;
     background-color: var(--color-text-default);
     transition: .4s;
@@ -84,5 +86,6 @@ input:checked+.slider {
 }
 
 input:checked+.slider:before {
-    transform: translateX(2.5em);
+    transform: translateX(-1em);
+    /* <-- movimiento del switch */
 }
