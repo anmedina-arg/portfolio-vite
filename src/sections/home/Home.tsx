@@ -19,7 +19,7 @@ const Home: React.FC = () => {
 
         <MainBackground>
           <div className="homeLayout">
-            <Billboard mainWord="frontend" neonWord="developer" />
+            <Billboard mainWord="fullstack" neonWord="developer" />
             <div className="contentHome">
               <div className="contentTextHome">
                 <hr style={{ marginBlock: "1rem" }}></hr>
