@@ -8,6 +8,12 @@
 	/* flex-wrap: wrap; */
 }
 
+.lineCardLeftContainer {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
 .spanContainerLineCard {
 	flex-grow: 1;
 	text-overflow: clip;
@@ -32,6 +38,10 @@
 	.lineCardContainer {
 		flex-direction: column;
 		gap: 0.5rem;
+	}
+
+	.lineCardLeftContainer {
+		flex-direction: column;
 	}
 
 	.spanContainerLineCard {
