@@ -6,7 +6,7 @@ interface ButtonProps {
   size?: 'small' | 'medium' | 'large';
   label: string;
   onClick?: () => void;
-  href?: string
+  href?: string;
 }
 
 export const Button = ({
@@ -25,7 +25,7 @@ export const Button = ({
       style={{ backgroundColor }}
       {...props}
     >
-      <a href={href} target='_blank' style={{ textDecoration: 'none' }}>
+      <a href={href} target="_blank" rel="noreferrer" style={{ textDecoration: 'none' }}>
         {label}
       </a>
     </button>

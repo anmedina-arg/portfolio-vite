@@ -1,15 +1,15 @@
-import { HiOutlineHome } from "react-icons/hi";
-import { AiOutlineUser } from "react-icons/ai";
-import { BiMessageRoundedEdit } from "react-icons/bi";
-import { GiSkills } from "react-icons/gi";
-import { ImFolderOpen } from "react-icons/im";
-import { ReactElement } from "react";
+import { HiOutlineHome } from 'react-icons/hi';
+import { AiOutlineUser } from 'react-icons/ai';
+import { BiMessageRoundedEdit } from 'react-icons/bi';
+import { GiSkills } from 'react-icons/gi';
+import { ImFolderOpen } from 'react-icons/im';
+import { ReactElement } from 'react';
 
 export type ItemsNavProps = {
-  title: string,
-  path: string,
-  icon?: ReactElement
-}
+  title: string;
+  path: string;
+  icon?: ReactElement;
+};
 
 export const itemsNav: ItemsNavProps[] = [
   {
@@ -42,4 +42,4 @@ export const itemsNav: ItemsNavProps[] = [
     icon: <BiMessageRoundedEdit />,
     // className: 'active === "#contact" ? "active" : ""'
   },
-]
+];

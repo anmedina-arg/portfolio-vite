@@ -1,17 +1,16 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import Marquee from '../../components/maarquee/marquee';
 
-
 const meta = {
   title: 'Marquees/Marquee',
   component: Marquee,
-//   parameters: {
-//     layout: 'centered',
-//   },
+  //   parameters: {
+  //     layout: 'centered',
+  //   },
   tags: ['autodocs'],
-//   argTypes: {
-//     text: 'string'
-//   },
+  //   argTypes: {
+  //     text: 'string'
+  //   },
 } satisfies Meta<typeof Marquee>;
 
 export default meta;

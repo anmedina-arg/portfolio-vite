@@ -10,7 +10,10 @@
   justify-content: center;
   color: var(--color-text-default);
   /* font-size: 1.1rem; */
-  transition: transform 0.25s linear, background-color 0.25s linear, border-radius 0.25s linear;
+  transition:
+    transform 0.25s linear,
+    background-color 0.25s linear,
+    border-radius 0.25s linear;
 }
 
 .active {
@@ -40,7 +43,9 @@
   border-radius: 5px;
   font-size: 0.5rem;
   text-align: center;
-  transition: visibility 0.25s, opacity 0.25s linear;
+  transition:
+    visibility 0.25s,
+    opacity 0.25s linear;
   text-wrap: nowrap;
 }
 
@@ -57,5 +62,4 @@
     visibility: visible;
     opacity: 1;
   }
-
 }

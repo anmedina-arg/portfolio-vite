@@ -1,8 +1,8 @@
-import CVENG from "../../assets/CV_Andres_Medina_eng.pdf";
-import CVESP from "../../assets/CV_Andres_Medina_esp.pdf";
+import CVENG from '../../assets/CV_Andres_Medina_eng.pdf';
+import CVESP from '../../assets/CV_Andres_Medina_esp.pdf';
 // import Button from "../ui/buttons/Button";
-import DownloadButton from "../ui/buttons/DownloadButton";
-import "./download-nav.css";
+import DownloadButton from '../ui/buttons/DownloadButton';
+import './download-nav.css';
 
 function DownloadNav() {
   return (

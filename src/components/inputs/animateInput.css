@@ -1,58 +1,58 @@
 .animate-label {
-	width: 350px;
-	height: 50px;
-	/* box-shadow: 0 12px 4px 0 rgba(249, 1, 1, 0.2); */
-	background: rgba(360, 360, 360, 0.95);
-	position: relative;
-	display: flex;
-	align-items: center;
-	border-radius: 10px 10px 0 0;
+  width: 350px;
+  height: 50px;
+  /* box-shadow: 0 12px 4px 0 rgba(249, 1, 1, 0.2); */
+  background: rgba(360, 360, 360, 0.95);
+  position: relative;
+  display: flex;
+  align-items: center;
+  border-radius: 10px 10px 0 0;
 }
 
 input {
-	width: 100%;
-	border: none;
-	padding: 5px;
-	margin-bottom: 0;
-	bottom: 5px;
-	position: absolute;
+  width: 100%;
+  border: none;
+  padding: 5px;
+  margin-bottom: 0;
+  bottom: 5px;
+  position: absolute;
 }
 
 input:focus {
-	outline: none;
+  outline: none;
 }
 
 .animate-label label {
-	position: absolute;
-	left: 10px;
-	transition: 0.3s all ease;
-	font-size: 14px;
-	width: 100%;
-	color: #888888;
+  position: absolute;
+  left: 10px;
+  transition: 0.3s all ease;
+  font-size: 14px;
+  width: 100%;
+  color: #888888;
 }
 
-.animate-label input:valid+label,
-.animate-label input:focus+label {
-	top: 5px;
-	font-size: 10px;
+.animate-label input:valid + label,
+.animate-label input:focus + label {
+  top: 5px;
+  font-size: 10px;
 }
 
-.animate-label input:focus+label {
-	color: #4285f4;
+.animate-label input:focus + label {
+  color: #4285f4;
 }
 
 .animate-label line:before {
-	content: '';
-	position: absolute;
-	background: #4285f4;
-	width: 0px;
-	height: 4px;
-	right: 50%;
-	bottom: 0;
+  content: '';
+  position: absolute;
+  background: #4285f4;
+  width: 0px;
+  height: 4px;
+  right: 50%;
+  bottom: 0;
 }
 
-.animate-label input:focus~line:before {
-	width: 100%;
-	right: 0;
-	transition: all 0.3s ease;
+.animate-label input:focus ~ line:before {
+  width: 100%;
+  right: 0;
+  transition: all 0.3s ease;
 }

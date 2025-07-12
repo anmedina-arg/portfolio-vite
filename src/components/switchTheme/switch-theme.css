@@ -1,91 +1,91 @@
 .containerSwitch {
-    position: sticky;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    z-index: 2;
-    /* margin: 0.5rem 0 -2rem 0; */
-    margin-bottom: 1rem;
+  position: sticky;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+  /* margin: 0.5rem 0 -2rem 0; */
+  margin-bottom: 1rem;
 }
 
-.containerSwitch>span {
-    font-size: 0.75rem;
-    color: var(--color-text-default)
+.containerSwitch > span {
+  font-size: 0.75rem;
+  color: var(--color-text-default);
 }
 
 .switchLine {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 0.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 .sun,
 .moon {
-    font-size: 1.5rem;
-    text-align: center;
-    display: flex;
-    align-items: center;
-    color: var(--color-text-default)
+  font-size: 1.5rem;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  color: var(--color-text-default);
 }
 
 .switch {
-    position: relative;
-    display: inline-block;
-    /* es el ancho del switch */
-    width: 2em;
-    height: 1em;
-    /* Asegura que el cursor sea un puntero sobre el interruptor */
-    cursor: pointer;
+  position: relative;
+  display: inline-block;
+  /* es el ancho del switch */
+  width: 2em;
+  height: 1em;
+  /* Asegura que el cursor sea un puntero sobre el interruptor */
+  cursor: pointer;
 }
 
 /* El input ahora cubre toda el área del switch */
 .switch input {
-    opacity: 0;
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 1;
-    /* Asegúrate de que el input esté sobre el slider */
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  /* Asegúrate de que el input esté sobre el slider */
 }
 
 /* Ajuste del slider */
 .slider {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: transparent;
-    transition: .4s;
-    border-radius: 30px;
-    outline: 1px solid var(--color-text-default);
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: transparent;
+  transition: 0.4s;
+  border-radius: 30px;
+  outline: 1px solid var(--color-text-default);
 }
 
 /* La esfera que se mueve dentro del slider */
 .slider:before {
-    position: absolute;
-    content: "";
-    height: 0.8em;
-    width: 0.8em;
-    border-radius: 50%;
-    left: 1.1rem;
-    bottom: 0.1rem;
-    background-color: var(--color-text-default);
-    transition: .4s;
-    z-index: 2;
-    /* Asegúrate de que la esfera esté sobre el slider */
+  position: absolute;
+  content: '';
+  height: 0.8em;
+  width: 0.8em;
+  border-radius: 50%;
+  left: 1.1rem;
+  bottom: 0.1rem;
+  background-color: var(--color-text-default);
+  transition: 0.4s;
+  z-index: 2;
+  /* Asegúrate de que la esfera esté sobre el slider */
 }
 
-input:checked+.slider {
-    background-color: transparent;
-    padding: 0.2rem;
+input:checked + .slider {
+  background-color: transparent;
+  padding: 0.2rem;
 }
 
-input:checked+.slider:before {
-    transform: translateX(-1em);
-    /* <-- movimiento del switch */
+input:checked + .slider:before {
+  transform: translateX(-1em);
+  /* <-- movimiento del switch */
 }

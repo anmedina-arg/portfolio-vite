@@ -1,20 +1,20 @@
 :root {
   /* Set neon color */
-  --neon-text-color: #D70088;
+  --neon-text-color: #d70088;
   --billboard-mainWord-size: 10vw;
-  --billboard-neonWord-size: calc(var(--billboard-mainWord-size)/2.25)
+  --billboard-neonWord-size: calc(var(--billboard-mainWord-size) / 2.25);
 }
 
 .billboardContainer {
   position: relative;
   width: fit-content;
 
-  margin-bottom: calc(var(--billboard-neonWord-size)/2);
+  margin-bottom: calc(var(--billboard-neonWord-size) / 2);
 }
 
 .mainWord {
   /* font-family: "Oswald", sans-serif; */
-  font-family: "Poppins", sans-serif;
+  font-family: 'Poppins', sans-serif;
   font-optical-sizing: auto;
   font-weight: 700;
   font-style: normal;
@@ -29,14 +29,14 @@
 }
 
 .neon {
-  font-family: "Tilt Neon", sans-serif;
+  font-family: 'Tilt Neon', sans-serif;
   font-optical-sizing: auto;
   font-weight: 200;
   font-style: normal;
   font-size: var(--billboard-neonWord-size);
   position: absolute;
-  bottom: calc(var(--billboard-mainWord-size)*(-0.15));
-  right: calc(var(--billboard-mainWord-size)*(-0.1));
+  bottom: calc(var(--billboard-mainWord-size) * (-0.15));
+  right: calc(var(--billboard-mainWord-size) * (-0.1));
   color: #fff;
   animation: flicker 1.5s 3 alternate forwards;
   line-height: 1;
@@ -44,7 +44,6 @@
 }
 
 @keyframes flicker {
-
   0%,
   5.75%,
   6.25%,

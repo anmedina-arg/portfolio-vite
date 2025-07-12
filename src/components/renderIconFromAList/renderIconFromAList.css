@@ -1,27 +1,27 @@
 .technologyIcons {
-	display: flex;
-	align-items: center;
-	width: 100%;
-	justify-content: center;
-	gap: 1rem;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: center;
+  gap: 1rem;
 }
 
 .rendererIcon {
-	padding: 0.5rem;
-	font-size: 2rem;
-	line-height: 0;
-	border: 1px solid #636363;
-	border-radius: 5px;
-	background-color: #272727;
+  padding: 0.5rem;
+  font-size: 2rem;
+  line-height: 0;
+  border: 1px solid #636363;
+  border-radius: 5px;
+  background-color: #272727;
 }
 
 .withoutBackground {
-	background: transparent;
-	border: 0;
+  background: transparent;
+  border: 0;
 }
 
 .rendererTextByIcon {
-	font-size: 1rem;
+  font-size: 1rem;
 }
 
 /* @media screen and (max-width: 768px) {

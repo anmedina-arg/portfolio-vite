@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import Anchor from '../../components/anchor/Anchor';
-import { HiOutlineHome } from "react-icons/hi";
+import { HiOutlineHome } from 'react-icons/hi';
 import { IconBase } from 'react-icons'; // y esto??
 
 const meta = {
@@ -26,6 +26,6 @@ export const AnchorPrimary: Story = {
     icon: <HiOutlineHome />,
     href: '',
     className: '',
-    title: 'titulo'
+    title: 'titulo',
   },
 };

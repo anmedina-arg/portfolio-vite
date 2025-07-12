@@ -41,7 +41,9 @@
   display: flex;
   align-items: center;
   color: white;
-  box-shadow: -7px -7px 48px rgba(0, 0, 0, 0.8) inset, 2px 2px 6px rgba(255, 255, 255, 0.8) inset;
+  box-shadow:
+    -7px -7px 48px rgba(0, 0, 0, 0.8) inset,
+    2px 2px 6px rgba(255, 255, 255, 0.8) inset;
   background: -webkit-radial-gradient(top left, white 13%, #85e9f2, #1caaba, #00393f 80%, #026f7b);
   height: fit-content;
   border-radius: 50%;
@@ -64,12 +66,12 @@
 
 /* ============ MEDIA QUERIES (MEDIUM DEVICES) ====================== */
 
-@media screen and (max-width: 1024px) {}
+@media screen and (max-width: 1024px) {
+}
 
 /* ============ MEDIA QUERIES (SMALL DEVICES) ====================== */
 
 @media screen and (max-width: 680px) {
-
   .inlineText {
     justify-content: center;
   }
@@ -78,7 +80,7 @@
     margin: 1.5rem 0 0.5rem 0;
   }
 
-  .sideContentTextHome>h2 {
+  .sideContentTextHome > h2 {
     display: none;
   }
 

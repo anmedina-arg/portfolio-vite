@@ -3,15 +3,15 @@ import Nav from '../../components/nav/Nav';
 import { itemsNav } from '../../mockData/navItems';
 
 const meta = {
-	title: 'Navbars/Nav',
-	component: Nav,
-	parameters: {
-		layout: 'centered',
-	},
-	tags: ['autodocs'],
-	argTypes: {
-		// backgroundColor: { control: 'color' },
-	},
+  title: 'Navbars/Nav',
+  component: Nav,
+  parameters: {
+    layout: 'centered',
+  },
+  tags: ['autodocs'],
+  argTypes: {
+    // backgroundColor: { control: 'color' },
+  },
 } satisfies Meta<typeof Nav>;
 
 export default meta;
@@ -19,7 +19,7 @@ type Story = StoryObj<typeof meta>;
 
 // More on writing stories with args: https://storybook.js.org/docs/writing-stories/args
 export const NavBar: Story = {
-	args: {
-		items: itemsNav
-	}
+  args: {
+    items: itemsNav,
+  },
 };

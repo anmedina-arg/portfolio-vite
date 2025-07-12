@@ -5,24 +5,24 @@ import ShineButton from '../ui/buttons/shineButton';
 // import Button from '../ui/buttons/Button';
 
 type LineCardProps = {
-	project: ProjectProps,
+  project: ProjectProps;
 };
 
 const LineCard: React.FC<LineCardProps> = ({ project }) => {
-	return (
-		<div className='lineCardContainer'>
-			<div className='lineCardLeftContainer'>
-				<span className='spanContainerLineCard'>{project.title}</span>
-				<div className='iconsContainerLineCard'>
-					<MemoizedRenderIconFromAList technologies={project.skill} withoutBackground />
-				</div>
-			</div>
-			<div className='divButtonContainerLineCard'>
-				<ShineButton label='Github' href={project.github} />
-				<ShineButton label='Ver' href={project.demo} />
-			</div>
-		</div>
-	)
-}
+  return (
+    <div className="lineCardContainer">
+      <div className="lineCardLeftContainer">
+        <span className="spanContainerLineCard">{project.title}</span>
+        <div className="iconsContainerLineCard">
+          <MemoizedRenderIconFromAList technologies={project.skill} withoutBackground />
+        </div>
+      </div>
+      <div className="divButtonContainerLineCard">
+        <ShineButton label="Github" href={project.github} />
+        <ShineButton label="Ver" href={project.demo} />
+      </div>
+    </div>
+  );
+};
 
 export default LineCard;

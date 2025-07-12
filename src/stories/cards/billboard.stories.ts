@@ -9,8 +9,8 @@ const meta = {
   },
   tags: ['autodocs'],
   argTypes: {
-    mainWord: { control: 'text' },  // Especifica un control de texto
-    neonWord: { control: 'text' },  // Especifica un control de texto
+    mainWord: { control: 'text' }, // Especifica un control de texto
+    neonWord: { control: 'text' }, // Especifica un control de texto
   },
 } satisfies Meta<typeof Billboard>;
 
@@ -20,6 +20,6 @@ type Story = StoryObj<typeof meta>;
 export const GreatBillboard: Story = {
   args: {
     mainWord: 'frontend',
-    neonWord: "developer"
+    neonWord: 'developer',
   },
 };

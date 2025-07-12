@@ -1,14 +1,14 @@
 .portfolioWorkContainer {
-	padding-block: 2.5rem;
-	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-	gap: 32px;
+  padding-block: 2.5rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 32px;
 }
 
 /* ============ MEDIA QUERIES (MEDIUM DEVICES) ====================== */
 
 @media screen and (max-width: 1024px) {
-	/* .portfolioWorkContainer {
+  /* .portfolioWorkContainer {
 		grid-template-columns: 1fr 1fr;
 		gap: 1.2rem;
 	} */
@@ -17,7 +17,7 @@
 /* ============ MEDIA QUERIES (SMALL DEVICES) ====================== */
 
 @media screen and (max-width: 600px) {
-	/* .portfolioWorkContainer {
+  /* .portfolioWorkContainer {
 		grid-template-columns: 1fr;
 		gap: 1rem;
 	} */

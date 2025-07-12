@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700;900&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700;900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&family=Tilt+Neon:YROT@45&display=swap');
 
 * {
@@ -44,11 +44,9 @@
   /* --color-bg-transition-one: #0172af;
   --color-bg-transition-two: #74febd; */
 
-
   /*COLORES DEL TEXTO*/
-  --color-text-default: #0E0B2E;
+  --color-text-default: #0e0b2e;
   /* --color-text-primary: #ab00b4; */
-
 
   /*colores de MainBackground*/
   --color-mainBackground-bg-primary: #1caaba;
@@ -66,7 +64,7 @@
   --color-esphere-gray: white 13%, #d3d3d3, #a9a9a9, #808080 80% 80%, #c0c0c0;
   /*variables relacionadas con las tabs*/
   --background-tab: #63b3d1;
-  --background-tab-no-select: #348fa3
+  --background-tab-no-select: #348fa3;
 }
 
 [data-theme='dark'] {
@@ -77,10 +75,8 @@
 
   /*variables relacionadas con el billboard*/
   --color-billboard-text-shadow:
-    1px 0 10px rgba(255, 255, 255, 0.5),
-    -1px 0 10px rgba(255, 255, 255, 0.5),
-    0 1px 10px rgba(255, 255, 255, 0.5),
-    0 -1px 10px rgba(255, 255, 255, 0.5);
+    1px 0 10px rgba(255, 255, 255, 0.5), -1px 0 10px rgba(255, 255, 255, 0.5),
+    0 1px 10px rgba(255, 255, 255, 0.5), 0 -1px 10px rgba(255, 255, 255, 0.5);
 
   /*COLORES DEL TEXTO*/
   --color-text-default: #e8e8e8;
@@ -105,7 +101,7 @@
 
   /*variables relacionadas con las tabs*/
   --background-tab: #38335c;
-  --background-tab-no-select: #1d1e3b
+  --background-tab-no-select: #1d1e3b;
 }
 
 html {
@@ -117,7 +113,7 @@ html {
 }
 
 body {
-  font-family: "Poppins", sans-serif;
+  font-family: 'Poppins', sans-serif;
   background: var(--bg-linear-gradient), var(--bg-pattern);
   background-blend-mode: var(--bg-blend-mode);
   transition: var(--transition);

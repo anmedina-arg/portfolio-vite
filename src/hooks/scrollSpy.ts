@@ -1,12 +1,12 @@
 import { useState, useEffect } from 'react';
-import { ItemsNavProps } from '../mockData/navItems'
+import { ItemsNavProps } from '../mockData/navItems';
 
 export const useScrollSpy = (items: ItemsNavProps[]) => {
   const [activeSection, setActiveSection] = useState('');
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = items.map(item => document.querySelector(item.path));
+      const sections = items.map((item) => document.querySelector(item.path));
       let currentSection = '';
 
       sections.forEach((section) => {

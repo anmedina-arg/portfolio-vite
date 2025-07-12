@@ -9,7 +9,7 @@ const meta = {
   },
   tags: ['autodocs'],
   argTypes: {
-    text: 'string'
+    text: 'string',
   },
 } satisfies Meta<typeof TypingText>;
 
@@ -18,6 +18,6 @@ type Story = StoryObj<typeof meta>;
 
 export const TypingTextAnimated: Story = {
   args: {
-    text: 'hola mi nombre es andres'
+    text: 'hola mi nombre es andres',
   },
 };

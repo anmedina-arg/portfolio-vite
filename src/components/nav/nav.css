@@ -16,8 +16,8 @@ nav {
   transition: all 1s ease;
 }
 
-.hideNavBar{
-    transform: translateX(-50%) translateY(100px); /* Mueve fuera de la vista */
+.hideNavBar {
+  transform: translateX(-50%) translateY(100px); /* Mueve fuera de la vista */
   opacity: 0; /* Transparente */
 }
 

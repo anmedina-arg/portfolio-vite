@@ -1,4 +1,4 @@
-import "./footer.css";
+import './footer.css';
 
 function Footer() {
   return <h5 className="powered">Powered by Andres Medina Fullstack</h5>;

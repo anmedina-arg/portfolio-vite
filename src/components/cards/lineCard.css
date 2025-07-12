@@ -1,51 +1,51 @@
 .lineCardContainer {
-	width: 100%;
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-	padding: 0.25rem 0.5rem;
-	color: var(--color-text-default);
-	/* flex-wrap: wrap; */
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.25rem 0.5rem;
+  color: var(--color-text-default);
+  /* flex-wrap: wrap; */
 }
 
 .lineCardLeftContainer {
-	display: flex;
-	align-items: center;
-	justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .spanContainerLineCard {
-	flex-grow: 1;
-	text-overflow: clip;
-	text-align: start;
+  flex-grow: 1;
+  text-overflow: clip;
+  text-align: start;
 }
 
 .iconsContainerLineCard {
-	flex-grow: 1;
-	display: flex;
-	justify-content: center;
-	align-items: flex-start;
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
 }
 
 .divButtonContainerLineCard {
-	flex-grow: 1;
-	display: flex;
-	gap: 0.5rem;
-	justify-content: flex-end;
+  flex-grow: 1;
+  display: flex;
+  gap: 0.5rem;
+  justify-content: flex-end;
 }
 
 @media screen and (max-width: 680px) {
-	.lineCardContainer {
-		flex-direction: column;
-		gap: 0.5rem;
-	}
+  .lineCardContainer {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
 
-	.lineCardLeftContainer {
-		flex-direction: column;
-	}
+  .lineCardLeftContainer {
+    flex-direction: column;
+  }
 
-	.spanContainerLineCard {
-		text-align: center;
-		font-size: 0.75rem;
-	}
+  .spanContainerLineCard {
+    text-align: center;
+    font-size: 0.75rem;
+  }
 }
