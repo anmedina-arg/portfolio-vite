@@ -1,0 +1,64 @@
+/* PROTOTYPE — throwaway. One desaturated accent, editorial/minimal palette. */
+
+.pr-root {
+  --pr-accent: #7c9885;
+  --pr-accent-strong: #5a7563;
+  --pr-bg: #faf9f6;
+  --pr-bg-raised: #ffffff;
+  --pr-text: #1c1c1a;
+  --pr-text-muted: #5c5c57;
+  --pr-border: #e4e2db;
+  --pr-font-display: Georgia, 'Times New Roman', serif;
+  --pr-font-body:
+    -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+
+  /* Conserva el fondo real de producción (patrón + gradiente, ya theme-aware vía [data-theme]) en vez de un color plano. */
+  background: var(--bg-linear-gradient), var(--bg-pattern);
+  background-blend-mode: var(--bg-blend-mode);
+  color: var(--pr-text);
+  font-family: var(--pr-font-body);
+  min-height: 100vh;
+}
+
+body[data-theme='dark'] .pr-root {
+  --pr-accent: #8fae97;
+  --pr-accent-strong: #a9c4b0;
+  --pr-bg: #15161a;
+  --pr-bg-raised: #1d1f24;
+  --pr-text: #ecece7;
+  --pr-text-muted: #a3a39c;
+  --pr-border: #2c2e34;
+}
+
+.pr-root * {
+  box-sizing: border-box;
+}
+
+.pr-root a {
+  color: inherit;
+}
+
+.pr-container {
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.pr-accent-text {
+  color: var(--pr-accent-strong);
+}
+
+.pr-pill {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  border: 1px solid var(--pr-border);
+  border-radius: 999px;
+  font-size: 0.8rem;
+  color: var(--pr-text-muted);
+}
+
+.pr-card {
+  background: var(--pr-bg-raised);
+  border: 1px solid var(--pr-border);
+  border-radius: 8px;
+}

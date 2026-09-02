@@ -10,7 +10,13 @@ import Recomendations from './sections/recomendations/Recomendations';
 
 import { itemsNav } from './mockData/navItems';
 
+// PROTOTYPE hook — remove along with src/prototype-redesign-v2/ once a variant is chosen.
+import ProfessionalRedesign from './prototype-redesign-v2/ProfessionalRedesign';
+
 function App(): ReactElement {
+  const isRedesignPrototype = new URLSearchParams(window.location.search).has('variant');
+  if (isRedesignPrototype) return <ProfessionalRedesign />;
+
   return (
     <>
       <Nav items={itemsNav} />
