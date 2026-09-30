@@ -19,7 +19,7 @@ export const contactDetails: contactDetailsProps[] = [
     icon: <BsLinkedin />,
   },
   {
-    title: 'Github',
+    title: 'GitHub',
     href: 'https://github.com/anmedina-arg',
     icon: <BsGithub />,
   },

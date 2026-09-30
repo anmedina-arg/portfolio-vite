@@ -1,0 +1,71 @@
+# Product
+
+<!-- impeccable:product-schema 1 -->
+
+## Platform
+
+web
+
+## Users
+
+Primary: **recruiters and hiring managers** evaluating Andrés Medina for a remote **Full Stack Developer or Product Engineer** role, including companies abroad. They skim fast, decide in minutes whether he is worth an interview, and look for real production work, seniority signals, and a CV to forward.
+
+Secondary: **prospective freelance/consulting clients** deciding whether to hire him to build a product end to end. They look for delivered products with real users and evidence he can run the whole cycle (discovery → production).
+
+When a decision has to favour one audience, it favours the recruiter.
+
+## Product Purpose
+
+A curated personal site that communicates Andrés's track record and current work. It is not a blog and not a product. Success = a recruiter (or client) leaves with enough conviction to contact him or download his CV.
+
+## Positioning
+
+A Full Stack Developer who builds products end to end, from the client discovery to production, and who today **maintains two products in production with real users** (Chaskyapp, Reforest). Before software he spent 9 years as a process engineer at Grupo Arcor leading continuous improvement, and he brings that discipline to development: specification first, documented decisions, measured results — working with Claude Code under Spec-Driven Development.
+
+He is **actively available** for Full Stack / Product Engineer roles; the site says so plainly.
+
+## Operating Context
+
+- Visitors usually arrive from LinkedIn, a job application, or a direct link, often on desktop during screening, also on mobile.
+- Recruiters forward the CV PDF and verify claims (credentials link to public verification pages).
+- Clients want to see the product itself: live links or screenshots, stack, and scope of his role.
+
+## Capabilities and Constraints
+
+- Existing codebase: Vite + React 18 + TypeScript, GSAP, EmailJS contact form (Formik + Yup). Light/dark theme already exists.
+- Redesign in progress: **Variant B (split identity rail — identity column left, content right)** is the chosen layout (`src/prototype-redesign-v2/`, decided 2026-09-28). Not yet folded into production.
+- Planned architecture: feature-colocated folders, Storybook removed (`docs/adr/0001-feature-colocated-architecture.md`).
+- **Bilingual: Spanish + English**, with a language switcher. Current content exists only in Spanish; English copy is still to be written (open).
+- Sections: Bio, Mis trabajos (only "Trabajo profesional"; Labs and Proyectos personales removed as junior signal — a future "Open source" tab is allowed), Experiencia (timeline with Arcor as the one full case study), Tecnologías, Credenciales, Recomendaciones, Contacto.
+- Domain terminology lives in `CONTEXT.md`.
+
+## Brand Commitments
+
+- Voice: technical but casual, first person, no empty corporate jargon.
+- Editorial restraint and level of polish referenced from estebanburgos.com.ar (direction, not a template).
+- Keep the existing dotted-pattern + gradient background (theme-aware) from production.
+
+## Evidence on Hand
+
+Real content source of truth: `src/portfolio-contenido-variante-B.md` and `src/prototype-redesign-v2/contentB.ts`.
+
+- Products in production: Chaskyapp (multi-tenant SaaS, live with Market del Cevil since Mar 2026 and Yo Heladerías since Aug 2026), Reforest (used daily by 10 people; 4 roles + RLS; 48+ SQL migrations). In development: Rapitrago (client Cumbre-tech).
+- Earlier client work: CABSA, Kurve, Coolco (2022–2023).
+- Experience timeline including Desafío Latam teaching (~240 students, 4 cohorts) and Arcor metrics (line efficiency 88% → 93%; line start-up to 80%; performance review system for ~300 people).
+- 4 Anthropic Academy credentials (2026).
+- Existing recommendations.
+
+Open / must not be fabricated:
+- New CV PDF (current one is outdated).
+- Public URLs or screenshots for Chaskyapp; anonymized, client-approved screenshots for Reforest.
+- Verification URLs for the credentials (currently `#`).
+- Newer recommendations (Satori, Market del Cevil, Desafío Latam, Plug-Zone).
+- English translations of all copy.
+
+## Product Principles
+
+1. **Production proof over lists of skills.** Real products with real users lead; stack grids support.
+2. **Recruiter-scannable first.** Role, availability, current work and CV reachable within the first viewport and seconds of reading.
+3. **Curated, not exhaustive.** Remove anything that signals junior (course exercises, bootcamp as experience).
+4. **Verifiable claims only.** Every metric, credential and client is real and, where possible, linkable; gaps stay visible TODOs, never invented.
+5. **Engineering discipline as differentiator.** The Arcor → specification/ADRs/measured results thread is the story no neighbouring portfolio can copy.

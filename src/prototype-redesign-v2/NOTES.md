@@ -1,6 +1,7 @@
 # Prototype status — redesign v2
 
-PROTOTYPE — throwaway. Not final, not folded into production.
+PROTOTYPE — throwaway. **Decided: Variant B, no longer being compared against
+alternatives.** Still not folded into production — see "Next steps" below.
 
 ## Question this answers
 
@@ -12,37 +13,309 @@ now abandoned) built 3 variants in isolation without a concrete reference — no
 convinced. This round fixed that by grounding each variant in real content and a
 real reference site.
 
-## Current status (2026-09-02)
+## Decision (2026-09-28)
 
-- **Variant B (split identity rail) is the leading direction** — confirmed by
-  Andrés on first pass, but explicitly **not final**: "aun considero que faltan
-  muchas pasadas más para llegar al diseño que tengo pensado."
+**Variant B (split identity rail) won.** Andrés: "vamos a trabajar solo con la
+variante B y ese va a ser mi portfolio." Variants A and C were deleted —
+their code is preserved in git history on `dev` at commit `f51c934` if ever
+needed for reference (`git show f51c934:src/prototype-redesign-v2/variants/VariantA.tsx`,
+same for `VariantC.tsx`/`.css` and the old `PrototypeSwitcher`).
+
+`ProfessionalRedesign.tsx` no longer branches on `?variant=` value or renders
+a switcher — it always renders `VariantB`. `content.ts` was trimmed to only
+what B still needs (`contactDetails`, `reviews`); everything else lives in
+`contentB.ts`.
+
 - **Keep the production background**: the dotted-pattern + linear-gradient body
   background from `src/index.css` (`--bg-pattern`, `--bg-linear-gradient`,
   `--bg-blend-mode`, already theme-aware) is intentionally preserved in
-  `tokens.css` instead of a flat color — Andrés wants that texture kept even as
-  layout/typography change.
-- Variants A and C are still in the codebase for comparison but are not the
-  current direction.
+  `tokens.css` instead of a flat color.
 
 ## Known issue hit while building this
 
 `src/components/nav/nav.css` has an unscoped bare `nav {}` selector
-(`position: fixed`) that collides with any real `<nav>` element — this broke
-variants A/C's top nav until worked around locally (rendered as `<div>` instead
-of `<nav>`). Not fixed at the source; still pending as part of the cleanup
-already agreed in `docs/adr/0001-feature-colocated-architecture.md` / CONTEXT.md.
+(`position: fixed`) that collides with any real `<nav>` element. Variant B's
+identity rail is an `<aside>`, not a `<nav>`, so it never hit this — it only
+affected the now-deleted A/C. Still pending as its own fix, part of the
+cleanup already agreed in `docs/adr/0001-feature-colocated-architecture.md` /
+CONTEXT.md.
+
+## Content update (2026-09-28)
+
+Variant B's content was enriched per `src/portfolio-contenido-variante-B.md`
+(Andrés's own brief) — new bio, real Experience timeline (Plug-Zone end date
+now known: nov. 2023 – ene. 2026; Arcor kept as the featured case study but
+moved to its correct chronological position, last), current products
+(Chaskyapp, Reforest, Rapitrago) replacing the old "Descripción pendiente"
+placeholders, categorized Tecnologías, and a 4th credential added. Labs and
+Proyectos personales tabs were dropped per that brief (junior signal).
+
+Two `TODO(Andrés)` items are rendered as visible dashed-border notes in the
+page itself (CV PDF still the old one; Chaskyapp/Reforest links need
+confirmation) — not silently invented.
+
+Verified visually in-browser after both this content update and the A/C
+cleanup: no console errors, `tsc`/`eslint` clean.
+
+## Visual refinement pass (2026-09-28)
+
+First refinement pass on B's visual execution, per Andrés's ask to bring the
+typography/spacing/card polish closer to estebanburgos.com.ar (reference for
+level of polish and editorial restraint, not a template — layout/structure
+untouched, still the same split identity rail). Reviewed the reference site
+live (hero, empresas/clientes strip, "Sobre mí" quote block, data-point grid,
+numbered project cards with browser-chrome mockups, stats row) before
+touching any code.
+
+Changes, all in `tokens.css` and `variants/VariantB.css` — **no JSX/content
+changes**, everything below is CSS-only so it couldn't touch copy:
+
+- `tokens.css`: added a type scale (`--pr-text-xs`..`--pr-text-xl`), a spacing
+  scale (`--pr-space-1`..`--pr-space-5`), shadow/radius/easing tokens, an
+  `--pr-accent-soft` tint for hover/quick-info backgrounds, and a
+  `--pr-text-faint` step between muted and border for label hierarchy. Added
+  `:focus-visible` outlines (were relying on browser default before) and hover
+  transitions on `.pr-pill`/`.pr-card`.
+- Quick info (Ubicación/Idiomas/Disponibilidad) now renders as bordered,
+  tinted boxes echoing the reference's data-point grid, instead of a plain
+  definition list.
+- Section headings (`h2`) get a short accent dash before the text (decorative
+  `::before`, no new copy) instead of plain serif text — a restrained nod to
+  the reference's "—— SECCIÓN" label pattern.
+- Work cards (`Mis trabajos`) and legacy project rows now show a
+  CSS-`counter()`-generated index number (01, 02, 03…), same idea as the
+  reference's numbered project list, without adding any data or JSX.
+- Arcor case-study card gets a left accent border + hover lift to read as the
+  clearly-featured entry; other timeline rows get a subtle tinted hover.
+- Theme toggle checkbox restyled as a proper switch (still the same
+  `<input type="checkbox">`, purely CSS) instead of a bare native checkbox.
+- Added hover states across the board: rail links (underline-on-hover),
+  footer links, credentials links, legacy project cards (image
+  grayscale-to-color + slide), review cards (lift), work cards (lift + border
+  accent).
+- Reviews get a large decorative quote glyph (CSS content, not text).
+- Removed dead CSS (`.vb-tabs`, `.vb-list`) left over from the deleted
+  Labs/Proyectos personales tabs.
+- Added `prefers-reduced-motion` override and `overflow-y: auto` on the rail
+  for safety on short viewports.
+
+Verified: `npx tsc --noEmit` and `npx eslint src/prototype-redesign-v2 --ext
+ts,tsx` both clean. Re-screenshotted `?variant=B` in light and dark after the
+change, no console errors on reload.
+
+## Interaction/motion pass (2026-09-28)
+
+Andrés's verdict on the visual-refinement pass above: "lo veo muy parecido a
+la version anterior... todavía lo veo bastante básico." He named three things
+estebanburgos.com.ar has that were missing: illustration/animation, real
+scroll/interaction transitions (not just hover color changes), and "some kind
+of interaction" on the sidebar. Re-reviewed the reference live before touching
+code — confirmed: its rail nav highlights the active item with a tinted pill +
+small dot as you scroll; its avatar/stat numbers fade/stagger in on scroll;
+its project cards are numbered browser-chrome mockups (already had an
+equivalent via the numbered-card pass). This round goes past CSS-only tokens
+into actual JSX/logic changes in `VariantB.tsx`, as the brief anticipated.
+
+Changes:
+
+- **Rail jump-nav with scroll-spy highlighting.** Added a small in-page nav in
+  the rail (Sobre mí / Experiencia / Tecnologías / Mis trabajos /
+  Recomendaciones / Contacto) driven by a new `useRailSpy` hook
+  (`src/prototype-redesign-v2/useRailSpy.ts`) — adapted from
+  `src/hooks/scrollSpy.ts`'s `useScrollSpy` (same "which section's midpoint
+  crosses the viewport center" algorithm), simplified to plain string ids
+  instead of `ItemsNavProps` so it doesn't pull in the real site's
+  icon-heavy nav item type. The active item gets a tinted pill background + a
+  filled accent dot, echoing the reference's sidebar treatment. Clicking an
+  item smooth-scrolls to the section (`scrollIntoView`, instant if
+  `prefers-reduced-motion: reduce`). Added `id="about"` to the bio section and
+  `id="tech"` to the Tecnologías section so all six nav targets exist
+  (Experiencia/Mis trabajos/Recomendaciones/Contacto already had ids).
+  **Gotcha hit and worked around:** a real `<nav>` element collides with the
+  unscoped `nav {}` rule in `src/components/nav/nav.css` (`position: fixed`,
+  pinned to viewport bottom-center — the known issue logged above, which
+  previously only mattered for A/C since the rail is an `<aside>`). Used
+  `<div role="navigation">` instead of `<nav>` to get the same semantics
+  without the collision — did not touch `nav.css` itself, still out of scope.
+- **GSAP + ScrollTrigger reveal animations.** Registered `ScrollTrigger` and
+  `@gsap/react`'s `useGSAP` (both already dependencies, unused elsewhere in
+  the codebase beyond a bare `gsap.to` example) and added a fade+rise-in
+  (`autoAlpha` + `y`, 0.7s, `power2.out`) triggered per-element as it enters
+  the viewport (`start: 'top 88%'`, `toggleActions: 'play none none
+reverse'`) — applied to bio paragraphs, the h2 section headings, each
+  Experience timeline entry (including the Arcor case-study card), each
+  Tecnologías category group and credential row, each work card, each legacy
+  project card, and each review card. Entirely gated behind
+  `gsap.matchMedia('(prefers-reduced-motion: no-preference)')`, so under
+  reduced motion none of this runs at all and content just renders at full
+  opacity — extends (via JS, not CSS) the reduced-motion override already in
+  place from the last pass.
+- **Two decorative illustrative elements**, both aria-hidden SVGs (no new
+  copy):
+  - An accent squiggle line under the name/role in the identity block, drawn
+    in via `stroke-dashoffset` on mount, then a very slow (5s) idle horizontal
+    drift — a restrained graphic touch near the identity block, per Andrés's
+    specific example.
+  - A small efficiency sparkline (88% → 93%, the number already stated in the
+    existing Arcor bullet — the SVG doesn't add the text, just illustrates it)
+    inside the Arcor case-study card, drawing in with its own ScrollTrigger
+    when the card enters the viewport, with the endpoint marker popping in
+    right after — per Andrés's other specific example ("an animated element
+    tied to the Arcor case-study card").
+
+Verified in-browser at `?variant=B`, both themes: nav highlighting tracks
+scroll position correctly, clicking a nav item smooth-scrolls to the right
+section, reveal animations fire once and don't re-fire oddly on scroll-up
+(toggleActions handles that), the accent line and sparkline both draw in as
+expected, theme toggle still works, no console errors or GSAP/ScrollTrigger
+warnings on load or during scroll. `npx tsc --noEmit` and `npx eslint
+src/prototype-redesign-v2 --ext ts,tsx` both clean.
 
 ## Next steps (whoever picks this up)
 
-Keep refining Variant B specifically per Andrés's next round of feedback.
-Don't regenerate from scratch — adjust `variants/VariantB.tsx` /
-`variants/VariantB.css` directly. Run via `npm run dev`, visit
-`?variant=B` (switcher bar also cycles A/C for comparison).
+Andrés said more refinement passes are still expected on B itself (layout
+details, not a redesign of the direction) — bring specifics and adjust
+`variants/VariantB.tsx`/`.css` directly, still via `npm run dev` + `?variant=B`.
 
-## To do when a variant actually wins
+Whenever B is considered actually done (no more passes planned): fold it into
+the real feature-colocated structure from ADR-0001, remove the `?variant=`
+gate from `App.tsx`, and delete this whole folder from `dev`/`main` — per the
+prototype skill, capture that final answer in a commit message when it happens.
 
-Per the prototype skill: capture the answer (which variant, why) in a commit or
-issue, fold the winner into the real feature-colocated structure from
-ADR-0001, then move this whole folder + the `?variant=` gate in `App.tsx` onto
-a throwaway branch — out of `dev`/`main`.
+## Layout pass (2026-09-30)
+
+From the `/impeccable critique` P0 (production proof buried, no primary action):
+
+- Main column reordered: Bio → Mis trabajos → Experiencia → Tecnologías/Credenciales →
+  Recomendaciones → Contacto (rail jump-nav order matches; `useRailSpy` relies on DOM order).
+- Bio split around a new "En producción hoy" ledger (`nowB` in `contentB.ts`): claim → proof →
+  origin. Facts restate the Chaskyapp/Reforest cards (no new claims); rows jump to the cards.
+- Rail: quick info moved up, then a "Descargar CV" (ink-filled) + "Escribime" (outlined)
+  button pair; Email left the plain link list (it's the Escribime mailto). CV path unchanged
+  (still `/src/assets/...`, breaks in prod build — pending for `harden`).
+- `useRailSpy`: last section whose top crossed 30% of the viewport, last id at page bottom.
+  Fixes "Experiencia" marked on load and "Sobre mí"/"Contacto" never activating.
+- Mobile (≤860px): jump-nav hidden (no sticky rail), quick info packs two-up; ledger rows
+  wrap the fact under the product at ≤520px.
+
+## Clarify pass (2026-09-30)
+
+- "Sobre mí" h2 added (bio had no heading; nav label reused for consistent terms).
+- Disponibilidad moved first in quick info, rendered as live status (ledger dot + accent).
+- Freelance timeline note rewritten to stand alone (no "ver 'Mis trabajos'"): same facts.
+- Theme toggle: static "Modo oscuro" label + role="switch" (was the state, "Oscuro"/"Claro").
+- Legacy project thumbnails: alt="" (title already names the link) + sr-only "abre en una
+  pestaña nueva".
+- Contacto is now a closing section: h2, restated availability, visible copyable email,
+  LinkedIn/GitHub.
+- "Github" → "GitHub" in src/mockData/contact.tsx (also fixes the production site label).
+
+## Decision pending implementation (2026-09-30)
+
+Andrés: the Arcor case study's 3px sage left border ("tabbed file") gets **replaced** in the
+`bolder` pass (detector flags it as side-tab). When that lands, update DESIGN.md too — its
+Shapes/Components sections still describe the tabbed border as the case-study signature.
+
+## Bolder pass — "Cómo trabajo" (2026-09-30)
+
+Resolves the pending side-tab decision above. The Arcor case-study card (3px sage left
+border, padding bug from `.vb-timeline > li.vb-casestudy { padding: 0 }`, unlabeled
+decorative sparkline, placed last) is replaced by a "Cómo trabajo" folio opening
+Experiencia: same construction as the "En producción hoy" ledger (lifted at rest, header
+row, hairline columns). Columns _En planta_ (Arcor bullets) / _En software_ (facts already
+in the work cards). The sparkline became an honest two-point slope chart (88% → 93%,
+80–100% scale, labeled, captioned, role="img"); its GSAP draw-in now sets strokeDasharray
+(it never actually drew before). No new claims: thesis = the bio's own sentence.
+Arcor stays in the timeline as a compact chronological row. `featured`/`bullets` removed
+from ExperienceEntryB. DESIGN.md + .impeccable/design.json updated to match.
+
+## Colorize pass (2026-09-30)
+
+Restrained strategy kept (one accent, paper + ink); fixes are contrast and surfaces:
+
+- Tokens: Ink Faint #8b8b83→#6b6b64 (light), #75756f→#909089 (dark); Sage Field Deep
+  #5a7563→#56705f (light). All text now ≥4.5:1 on paper, raised and wash, both themes —
+  measured in-browser: 0 failures / 184 text nodes, minimum 4.62:1.
+- Rail + main column are opaque paper; the dotted production background survives only
+  in the right gutter (main column reads as a sheet with a right hairline). Mobile: full paper.
+- Quick-info labels 0.65rem→0.7rem (11.2px); work-card numerals Rule→Ink Faint (~1.2:1 before);
+  work-card description got its own size (was browser default); `.vb-main p` max 65ch.
+- Skip link ("Saltar al contenido", first focus stop) → `main#main`; aria-current="location".
+- Measurement note: the test browser keeps its tab "hidden", which freezes CSS transitions
+  at t=0 — contrast must be measured after `document.getAnimations().forEach(a => a.finish())`.
+
+## Harden pass — bilingual + production fixes (2026-09-30)
+
+- **ES/EN.** `useLang` (URL `?lang=` → localStorage → browser language → es) keeps
+  `<html lang>` in sync. Copy lives in `contentB.ts` (`contentB_es`, `uiEs`) and
+  `contentB.en.ts` (`contentB_en`, typed as `ContentB`, so a missing English string is a
+  type error). English is a **draft translation pending Andrés's review** — no new claims;
+  one addition: "(UTC−3)" in the English location line for recruiters abroad.
+- **Recommendations are never translated** (other people's words): rendered with
+  `lang="es"` plus "Original quotes, in Spanish." in English mode.
+- **CV link fixed for production:** PDFs are imported as assets (`cvUrl` per language:
+  `_esp.pdf` / `_eng.pdf`); verified in a `vite build` that both ship. Previously
+  `/src/assets/...` 404ed after build. Both PDFs are still the 2024 versions (TODO stands).
+- Credentials without a verification URL render as text, not `href="#"`.
+- TODO notes render only in development (`import.meta.env.DEV`), as the content brief asked.
+- Broken legacy thumbnails hide themselves (`onError`).
+- Lists key by index so switching language updates nodes in place (GSAP state kept).
+- Rail: language switch + theme toggle share one "preferences" row at the top (a row each
+  overflowed a 945px viewport; a corner placement overlapped the name at desktop width).
+
+## Adapt pass — touch targets + English on mobile (2026-09-30)
+
+- Two tiers: WCAG 2.5.8 floor (24px) for everyone — "Dark mode" label (19px) and
+  LinkedIn/GitHub links (21px) failed it before; `pointer: coarse` gets 44px for language
+  options, buttons, nav items, theme toggle and text links (underline moves to
+  text-decoration so it stays under the words). Mouse keeps the dense dossier sizing.
+- `hover: none`: hover lifts disabled (they stuck after a tap); `:active` wash / press instead.
+- Touch + sticky rail (≥861px): quick info two-up and social links in a row.
+- Verified (Chromium, iframe viewports; coarse/hover:none blocks force-enabled via CSSOM
+  since pointer type can't be emulated from the tool — no physical device tested):
+  English at 320/360px no horizontal overflow; 0 targets under 24px (mouse) / 44px (touch)
+  at 360 and 1024px; landscape 844×390 fine.
+- **Open (structural, not a target-size issue):** the sticky rail is taller than short
+  viewports — ~101px internal overflow at 1280×800 with a mouse, ~180px on a 1024×768 touch
+  tablet (production, no TODO note). Identity, availability and the CTA stay in view; the
+  jump-nav falls into the rail's own scroll. Needs a height-based decision (e.g. compact
+  rail under ~900px tall).
+
+## Polish pass — final (2026-09-30)
+
+- Motion: rail accent line draws once and stays (the infinite drift violated WCAG 2.2.2);
+  scroll reveals and the "Cómo trabajo" chart play once (no fade-out on scroll-up).
+- Legacy thumbnails: `loading="lazy"`, `decoding="async"`, intrinsic 96×64 (no layout shift).
+- `src/index.css` body transition `all 400ms` → `background-color, color` only
+  (**touches the production site too**; it only affects the theme-switch fade).
+- Short viewports (≥861px wide, ≤900px tall): rail spacing steps down one notch. Rail
+  overflow in production: 0 at 1280×800 / 1366×768 / 1440×900 (was ~101px at 1280×800);
+  52px on a 1024×768 touch tablet (was ~180px).
+- DESIGN.md scale now documents rounded.focus 2px, rounded.xs 4px, and type steps
+  numeral / quote-mark / label-micro → detector: 0 findings.
+- Removed orphan `.pr-container`; Prettier applied to the prototype files.
+- Verified: no console errors, tsc/eslint clean, `vite build` ships both CV PDFs.
+
+## Next steps (agreed 2026-09-30, after critique run 2)
+
+Critique trend: 20/32 → 23/32 (snapshots in `.impeccable/critique/`; the latest one holds
+the full findings). Andrés's decisions for the next round:
+
+- **Scope: only the two P1s.** Order: accessibility first, then evidence, then polish.
+- **Junior signals stay as they are** for now (bootcamp recommendations, short 2022–23
+  stints, "Introduction to…" credentials) — revisit when new recommendations/URLs exist.
+
+1. `/impeccable harden src/prototype-redesign-v2/variants/VariantB.tsx` — **P1 a11y**: GSAP
+   reveals use `autoAlpha` → `visibility: hidden` until scrolled into view, so unrevealed
+   links (ledger rows, CABSA/Kurve/Coolco) are unreachable by Tab, headings are missing from
+   screen-reader heading nav and Ctrl+F can't find text. Animate opacity/y only; show
+   whatever is above the fold on load; content must stay visible if ScrollTrigger fails.
+2. `/impeccable layout` — **P1 evidence weight**: flagships (Chaskyapp, Reforest) have no
+   visual/link while 2022 sites have thumbnails + live links. Doable now: demote "Trabajos
+   anteriores" visually (no deletion). Needs Andrés: Chaskyapp public store URLs or
+   screenshots; anonymized Reforest screenshots with client permission.
+3. `/impeccable polish` — final pass (desktop + mobile, ES + EN).
+
+Still pending from Andrés (unchanged): review the English draft in `contentB.en.ts`; export
+new CV PDFs (same filenames in `src/assets/`); credential verification URLs; new
+work-context recommendations.

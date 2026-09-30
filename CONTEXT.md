@@ -5,11 +5,11 @@ Sitio personal de Andrés Medina: se usa tanto para que recruiters evalúen un r
 ## Language
 
 **Audiencia**:
-Los dos perfiles de visitante que el sitio busca convencer, con el mismo peso: recruiters evaluando un rol senior remoto, y clientes evaluando contratar freelance/consultoría. Ninguna decisión de contenido prioriza uno sobre el otro.
+Los dos perfiles de visitante que el sitio busca convencer: recruiters evaluando un rol remoto Full Stack / Product Engineer (primarios), y clientes evaluando contratar freelance/consultoría (secundarios). Cuando una decisión tiene que favorecer a uno, favorece al recruiter (cambio confirmado 2026-09-29; antes pesaban igual).
 _Avoid_: "usuarios", "visitantes" (demasiado genérico, no distingue los dos perfiles)
 
 **Posicionamiento**:
-El mensaje central que el sitio comunica sobre Andrés: senior con trayectoria real, selectivo pero abierto a la oportunidad correcta. Deliberadamente evita transmitir urgencia o disponibilidad inmediata.
+El mensaje central que el sitio comunica sobre Andrés: Full Stack que construye productos de punta a punta y hoy mantiene productos en producción con usuarios reales, con la disciplina de ingeniería de procesos de Arcor como diferencial. Disponible activamente para roles Full Stack o Product Engineer, y lo dice claramente (cambio confirmado 2026-09-29; antes era "selectivo, sin transmitir disponibilidad inmediata").
 _Avoid_: "tagline" (el tagline es la frase puntual que expresa el posicionamiento en el hero; el posicionamiento es el concepto más amplio que gobierna todo el copy)
 
 **Proyecto destacado**:
