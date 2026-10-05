@@ -43,7 +43,7 @@ He is **actively available** for Full Stack / Product Engineer roles; the site s
 
 - Voice: technical but casual, first person, no empty corporate jargon.
 - Editorial restraint and level of polish referenced from estebanburgos.com.ar (direction, not a template).
-- Keep the existing dotted-pattern + gradient background (theme-aware) from production.
+- Background: the production dotted pattern is kept as a soft texture on a flat paper surface; the production grey gradient was dropped on 2026-10-05 (Andrés's decision — it cut off where the content column ended).
 
 ## Evidence on Hand
 
@@ -56,6 +56,7 @@ Real content source of truth: `src/portfolio-contenido-variante-B.md` and `src/p
 - Existing recommendations.
 
 Open / must not be fabricated:
+
 - New CV PDF (current one is outdated).
 - Public URLs or screenshots for Chaskyapp; anonymized, client-approved screenshots for Reforest.
 - Verification URLs for the credentials (currently `#`).

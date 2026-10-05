@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-09-30T12:10:18.434Z",
+  "generatedAt": "2026-10-05T13:15:36.504Z",
   "title": "Design System: Andrés Medina — Portfolio",
   "extensions": {
     "colorMeta": {
@@ -159,9 +159,9 @@
       }
     ],
     "background": {
-      "light": "linear-gradient(to left, #a5a5a5, #d4d4d4 20% 80%, #a5a5a5), radial-gradient(#111111 0 1px, transparent 1px 10px) 0 0 / 40px 40px; blend: multiply",
-      "dark": "linear-gradient(to left, #1f1f1f, #3a3a3a 20% 80%, #1f1f1f), radial-gradient(#505050 0 1px, transparent 1px 10px) 0 0 / 40px 40px; blend: screen",
-      "purpose": "Kept from production src/index.css (--bg-linear-gradient, --bg-pattern, --bg-blend-mode). Gutter only since 2026-09-30: rail and main column are opaque Paper."
+      "light": "background-color: #faf9f6; background-image: radial-gradient(rgb(28 28 26 / 0.06) 0 1px, transparent 1.5px); background-size: 28px 28px",
+      "dark": "background-color: #15161a; background-image: radial-gradient(rgb(236 236 231 / 0.06) 0 1px, transparent 1.5px); background-size: 28px 28px",
+      "purpose": "Flat paper over the whole viewport; the production dot pattern kept as a soft texture (6% alpha cap = contrast budget for Ink Faint). The production grey gradient was dropped 2026-10-05."
     }
   },
   "components": [
@@ -236,7 +236,7 @@
       "One accent (Sage Field), used as marks, rules, active states and status, never as large fills.",
       "Serif display for names and section heads; system sans for everything else.",
       "Numbered, boxed, dated evidence: 01, 02… on work cards, bordered data points, date pills.",
-      "Light and dark themes with the same structure; the dotted pattern + gradient background survives from production."
+      "Light and dark themes with the same structure; flat paper everywhere with the production dot pattern as a soft texture."
     ],
     "rules": [
       {
@@ -275,7 +275,7 @@
       "Do reserve Georgia for the name, section headings and numerals; everything else in the system sans.",
       "Do give interactive elements a clear, tactile response: lift (translateY(-2px) + Lifted shadow) and/or accent border/underline, 200ms standard ease.",
       "Do number and box evidence (work counters, data points, date pills) so the page reads as a filed dossier.",
-      "Do keep the production dotted-pattern + gradient background and support both themes with the same tokens.",
+      "Do keep the page one continuous paper surface with the dot texture at ≤6% alpha, and support both themes with the same tokens.",
       "Do gate GSAP motion behind prefers-reduced-motion: no-preference and zero out CSS transitions under reduced motion; keep :focus-visible outlines (2px Sage Field Deep, 2px offset)."
     ],
     "donts": [
@@ -284,7 +284,8 @@
       "Don't add a second accent colour or fill large areas with the accent.",
       "Don't add decoration that proves nothing; every illustrative element must organise or evidence real content (like the 88% → 93% slope chart, which plots only the two real measurements).",
       "Don't make hovers so faint they read as broken; components here are firm, not whisper-quiet.",
-      "Don't put a thick coloured border on one side of a card or row; emphasis comes from elevation, structure and the accent as a mark."
+      "Don't put a thick coloured border on one side of a card or row; emphasis comes from elevation, structure and the accent as a mark.",
+      "Don't reintroduce the grey side-vignette gradient or any surface edge in the page background; a visible seam where the content ends was the reason it was dropped."
     ]
   }
 }

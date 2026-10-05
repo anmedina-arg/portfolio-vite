@@ -35,7 +35,6 @@
 /* ---------- Identity rail ---------- */
 
 .vb-rail {
-  background: var(--pr-bg);
   width: 320px;
   flex-shrink: 0;
   position: sticky;
@@ -394,10 +393,6 @@
 /* ---------- Main column ---------- */
 
 .vb-main {
-  /* colorize pass: opaque paper sheet — the dotted production background stays visible
-     only in the gutter to the right, never behind text. */
-  background: var(--pr-bg);
-  border-right: 1px solid var(--pr-border);
   flex: 1;
   min-width: 0;
   padding: var(--pr-space-4) var(--pr-space-4) 7rem;
@@ -1042,7 +1037,6 @@
   .vb-main {
     padding: var(--pr-space-3) 1.25rem 4rem;
     max-width: none;
-    border-right: none;
   }
   /* Without a sticky rail the jump-nav scrolls away after the first screen —
      it only adds height before the content, so it goes. */

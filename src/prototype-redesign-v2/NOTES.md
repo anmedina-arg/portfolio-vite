@@ -319,3 +319,22 @@ the full findings). Andrés's decisions for the next round:
 Still pending from Andrés (unchanged): review the English draft in `contentB.en.ts`; export
 new CV PDFs (same filenames in `src/assets/`); credential verification URLs; new
 work-context recommendations.
+
+## Background: paper everywhere (2026-10-05)
+
+Andrés noticed a seam: dark paper under the content, then the grey gradient + dots where
+the column ended (rail 320px + main max 740px ≈ 1060px, the rest of a wide screen showed
+the production background). Cause: the colorize pass put opaque paper on rail/main only.
+Decision (option 2 of 3): extend the paper over the whole viewport and keep the dots only
+as a soft texture.
+
+- `.pr-root`: `background-color: var(--pr-bg)` + 1px dot every 28px at 6% (`--pr-dot`).
+  Production gradient (`--bg-linear-gradient`) no longer used by the prototype.
+- `.vb-rail` / `.vb-main`: opaque backgrounds and the main column's right hairline removed
+  (the rail keeps its own right divider).
+- 6% is a contrast budget: Ink Faint on a dot pixel ≈4.5:1 light / ≈4.9:1 dark (computed;
+  re-measure before raising). PRODUCT.md brand commitment and DESIGN.md updated.
+- Not covered: `body` still carries the production gradient behind `.pr-root`; it can only
+  show on overscroll bounce.
+- **Visual check pending**: the dev server was down when this was applied; tsc/eslint/
+  detector are clean but the render was not inspected.
