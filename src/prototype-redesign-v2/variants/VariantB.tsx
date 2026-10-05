@@ -97,24 +97,37 @@ const VariantB: React.FC<Props> = ({ theme, toggleTheme }) => {
 
         // Scroll-triggered reveal, once: content no longer fades out again when a reader
         // scrolls back up to re-scan it (polish).
+        // Harden (2026-10-05): opacity + y only. `autoAlpha` also set `visibility: hidden`,
+        // which removed unrevealed links from the tab order, headings from screen-reader
+        // navigation and text from Ctrl+F. Opacity keeps everything in the accessibility tree.
+        // Elements already inside the fold are never hidden, and any failure in the setup
+        // clears the inline styles so content can't stay stuck invisible.
         const revealTargets = gsap.utils.toArray<HTMLElement>('.vb-reveal', mainRef.current);
-        revealTargets.forEach((el) => {
-          gsap.fromTo(
-            el,
-            { autoAlpha: 0, y: 26 },
-            {
-              autoAlpha: 1,
-              y: 0,
-              duration: 0.7,
-              ease: 'power2.out',
-              scrollTrigger: {
-                trigger: el,
-                start: 'top 88%',
-                toggleActions: 'play none none none',
-              },
-            },
-          );
-        });
+        const foldLine = window.innerHeight * 0.88;
+        try {
+          revealTargets
+            .filter((el) => el.getBoundingClientRect().top > foldLine)
+            .forEach((el) => {
+              gsap.fromTo(
+                el,
+                { opacity: 0, y: 26 },
+                {
+                  opacity: 1,
+                  y: 0,
+                  duration: 0.7,
+                  ease: 'power2.out',
+                  clearProps: 'opacity,transform',
+                  scrollTrigger: {
+                    trigger: el,
+                    start: 'top 88%',
+                    toggleActions: 'play none none none',
+                  },
+                },
+              );
+            });
+        } catch {
+          gsap.set(revealTargets, { clearProps: 'opacity,transform' });
+        }
 
         // "Cómo trabajo" slope (88% → 93%) — the line draws in, then the end point pops in.
         const sparkPath = sparkPathRef.current;

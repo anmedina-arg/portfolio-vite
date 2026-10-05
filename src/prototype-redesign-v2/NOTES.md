@@ -336,5 +336,68 @@ as a soft texture.
   re-measure before raising). PRODUCT.md brand commitment and DESIGN.md updated.
 - Not covered: `body` still carries the production gradient behind `.pr-root`; it can only
   show on overscroll bounce.
-- **Visual check pending**: the dev server was down when this was applied; tsc/eslint/
+- Visual check: done by Andrés 2026-10-05 (approved). Earlier: tsc/eslint/
   detector are clean but the render was not inspected.
+
+## Plan to production (agreed 2026-10-05)
+
+Goal: ship Variant B as the real site. State on 2026-10-05: prototype only renders behind
+`?variant=` (`src/App.tsx`); `index.html` still has `lang="en"`, title "Portfolio - AMedina",
+Vite favicon, no meta description / Open Graph; deploy target not yet confirmed (no
+`vercel.json` / `netlify.toml` in the repo).
+
+**Phase 0 — close pending (done).** Background change visually approved and committed (`d8b0f54`).
+
+**Phase 1 — content (Andrés; blocks Phase 2.2 and the launch of those items).**
+- New CV PDFs ES + EN, same filenames in `src/assets/`.
+- Chaskyapp: public store URLs, or 2–3 screenshots (PNG/WebP, width >= 1200px).
+- Reforest: 2–3 anonymized screenshots + the client's written OK.
+- Verification URL for each of the 4 Anthropic credentials (`verifyUrl: '#'` today).
+- Review the English draft in `contentB.en.ts`.
+- Optional, second batch: new recommendations (Satori, Market del Cevil, Desafío Latam, Plug-Zone).
+- Rule: a missing item ships without that element (no link / no screenshot) instead of an
+  empty slot. Reforest screenshots and new recommendations may go in a second batch.
+
+**Phase 2 — code (Claude).**
+1. `/impeccable harden` — remove `autoAlpha` from reveals. **Done 2026-10-05** (see below).
+2. `/impeccable layout` — demote "Trabajos anteriores", give Chaskyapp/Reforest visuals + links
+   (when Phase 1 material arrives). Make link/screenshot optional in the data so the card
+   degrades cleanly without them.
+3. `/impeccable polish` — final pass (desktop + mobile, ES + EN).
+
+**Phase 3 — integration (Claude; independent of Phase 1).**
+1. Make B the default home in `App.tsx`; drop the `?variant` gate.
+2. Delete the old home (`sections/`, `components/nav`, old `mockData`, etc.) and Storybook per
+   ADR 0001 — separate commit so it can be reverted alone.
+3. Move `prototype-redesign-v2/` to its final feature-colocated location; rename `VariantB`
+   and `ProfessionalRedesign` to real names; drop the throwaway markers in comments.
+4. Remove the dev-only TODO rendering (`SHOW_TODOS`) once the content exists; add
+   `vite-*.log` to `.gitignore`.
+
+**Phase 4 — launch readiness.**
+- `index.html`: dynamic `lang` (follow the active language), real title + description, Open
+  Graph image, own favicon.
+- Contact form: EmailJS keys as env vars in the deploy; test one real send.
+- `npm run build` + `preview`; Lighthouse (performance, a11y, SEO); real-phone check; ES + EN;
+  CV downloads work.
+- Deploy a preview URL before touching the domain.
+
+**Phase 5 — release.** PR `dev → main`, review on the preview, merge, verify on the real
+domain; rollback = revert the merge. Then `/impeccable critique` (target > 23/32) and the
+second content batch.
+
+**Open questions for Andrés:** where is the site deployed today (host + domain)? launch with
+what's available (recommended) or wait for all content?
+
+### Harden pass (2026-10-05) — P1 a11y reveals
+
+- `VariantB.tsx` reveals now animate `opacity` + `y` only (no `visibility`), so every link,
+  heading and text stays in the tab order / accessibility tree / Ctrl+F while waiting to
+  reveal.
+- Only elements below the fold (`top > 88%` of the viewport at setup) get a reveal; whatever
+  is already visible on load is never hidden.
+- `clearProps` after the tween; a `try/catch` around the setup clears inline styles if
+  anything throws, and `mm.revert()` still restores everything on cleanup. With reduced
+  motion nothing is animated at all (unchanged).
+- Not covered: a late ScrollTrigger failure after setup (e.g. the library never fires)
+  would leave below-fold items at opacity 0 — they remain accessible but visually faint.
