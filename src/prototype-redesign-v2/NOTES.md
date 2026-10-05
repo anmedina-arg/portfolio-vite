@@ -388,7 +388,7 @@ second content batch.
 
 **Decisions (Andrés, 2026-10-05):** host is Vercel (project `portfolio-e8ai`, team scope
 `anmedinaargs-projects`; the Vercel MCP got 403 on that scope, so the production branch was
-NOT verified — check Project Settings > Git > Production Branch). Launch with the **complete
+verified by Andrés 2026-10-05 via Project Settings > Environments: Production tracks `main`, Preview = every other branch, so `dev` never touches production; Production domain `portfolio-andres-medina-arg.vercel.app` +2). Deploy of `dev` failed because the project Node version was `20.x` (discontinued) — set it to `24.x` in Project Settings (Andrés' action). Launch with the **complete
 content** (not a partial launch), so Phase 1 blocks the release. Until then, pushes to `dev`
 only expose the redesign behind `?variant=B`; the real home stays the old site.
 

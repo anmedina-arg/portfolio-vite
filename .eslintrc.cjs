@@ -5,7 +5,6 @@ module.exports = {
     'plugin:react/recommended',
     'plugin:@typescript-eslint/recommended',
     'plugin:react-hooks/recommended',
-    'plugin:storybook/recommended',
     'prettier', // <-- descomenta cuando configures Prettier
   ],
   parser: '@typescript-eslint/parser',
