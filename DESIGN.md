@@ -98,7 +98,7 @@ components:
 
 # Design System: Andrés Medina — Portfolio
 
-<!-- Source of truth today: src/prototype-redesign-v2/tokens.css (--pr-* tokens scoped to .pr-root) and variants/VariantB.css (.vb-*). Variant B was chosen 2026-09-28 but is not yet folded into production; the legacy production styles in src/index.css are NOT this system (only their theme-aware background is kept). -->
+<!-- Source of truth today: src/portfolio/tokens.css (--pr-* tokens scoped to .pr-root) and src/portfolio/PortfolioPage.css (.vb-*). Variant B was chosen 2026-09-28 but is not yet folded into production; the legacy production styles in src/index.css are NOT this system (only their theme-aware background is kept). -->
 
 ## Overview
 

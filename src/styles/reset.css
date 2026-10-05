@@ -1,0 +1,25 @@
+/* Global reset for the portfolio. Everything else is scoped under `.pr-root` (portfolio/tokens.css).
+   Deliberately NOT carried over from the old index.css: `user-select: none` (visitors must be able to
+   copy the email and CV text), hidden scrollbars, unconditional smooth scroll (ignores
+   prefers-reduced-motion; in-page jumps handle it in JS) and the Poppins/Oswald font imports. */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+/* Matches the paper colour of each theme so overscroll / first paint never shows another surface. */
+body {
+  background-color: #15161a;
+  transition: background-color 400ms ease;
+}
+
+body[data-theme='light'] {
+  background-color: #faf9f6;
+}

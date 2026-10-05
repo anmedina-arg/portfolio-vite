@@ -1,0 +1,115 @@
+/* Portfolio tokens: one desaturated accent, editorial/minimal palette. */
+
+.pr-root {
+  --pr-accent: #7c9885;
+  /* colorize pass 2026-09-30: #5a7563 → #56705f so accent text clears 4.5:1 on the wash too. */
+  --pr-accent-strong: #56705f;
+  --pr-accent-soft: rgb(90 117 99 / 0.08);
+  --pr-bg: #faf9f6;
+  --pr-bg-raised: #ffffff;
+  --pr-text: #1c1c1a;
+  --pr-text-muted: #5c5c57;
+  --pr-text-faint: #6b6b64; /* was #8b8b83 (3.3:1) → ≥4.6:1 on paper, raised and wash */
+  --pr-border: #e4e2db;
+  --pr-font-display: Georgia, 'Times New Roman', serif;
+  --pr-font-body:
+    -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+
+  /* Type scale (editorial rhythm — 1.25 ratio-ish, hand-tuned) */
+  --pr-text-xs: 0.7rem;
+  --pr-text-sm: 0.8rem;
+  --pr-text-base: 0.95rem;
+  --pr-text-md: 1.05rem;
+  --pr-text-lg: 1.3rem;
+  --pr-text-xl: 1.75rem;
+
+  /* Spacing rhythm */
+  --pr-space-1: 0.4rem;
+  --pr-space-2: 0.75rem;
+  --pr-space-3: 1.25rem;
+  --pr-space-4: 2rem;
+  --pr-space-5: 3.25rem;
+
+  --pr-radius-sm: 6px;
+  --pr-radius: 10px;
+  --pr-shadow-sm: 0 1px 2px rgb(28 28 26 / 0.04);
+  --pr-shadow-md: 0 14px 32px -18px rgb(28 28 26 / 0.28);
+  --pr-ease: 200ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* Paper covers the whole viewport (2026-10-05: Andrés chose "extend the paper" over
+     keeping the production gradient, which cut off where the content column ended).
+     The production dotted pattern survives as a soft texture. Dot alpha is capped at 6%
+     so Ink Faint stays >=4.5:1 even on a dot pixel (measured: ~4.5:1 light, ~4.9:1 dark). */
+  --pr-dot: rgb(28 28 26 / 0.06);
+  background-color: var(--pr-bg);
+  background-image: radial-gradient(var(--pr-dot) 0 1px, transparent 1.5px);
+  background-size: 28px 28px;
+  color: var(--pr-text);
+  font-family: var(--pr-font-body);
+  min-height: 100vh;
+  line-height: 1.5;
+}
+
+body[data-theme='dark'] .pr-root {
+  --pr-accent: #8fae97;
+  --pr-accent-strong: #a9c4b0;
+  --pr-accent-soft: rgb(169 196 176 / 0.1);
+  --pr-bg: #15161a;
+  --pr-bg-raised: #1d1f24;
+  --pr-text: #ecece7;
+  --pr-text-muted: #a3a39c;
+  --pr-text-faint: #909089; /* was #75756f (3.9:1) → ≥4.6:1 on paper, raised and wash */
+  --pr-border: #2c2e34;
+  --pr-dot: rgb(236 236 231 / 0.06);
+  --pr-shadow-sm: 0 1px 2px rgb(0 0 0 / 0.3);
+  --pr-shadow-md: 0 16px 36px -18px rgb(0 0 0 / 0.6);
+}
+
+.pr-root * {
+  box-sizing: border-box;
+}
+
+.pr-root a {
+  color: inherit;
+  text-decoration-color: var(--pr-border);
+  text-underline-offset: 0.2em;
+  transition:
+    color var(--pr-ease),
+    text-decoration-color var(--pr-ease);
+}
+
+.pr-root a:focus-visible,
+.pr-root button:focus-visible,
+.pr-root input:focus-visible {
+  outline: 2px solid var(--pr-accent-strong);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+.pr-accent-text {
+  color: var(--pr-accent-strong);
+}
+
+.pr-pill {
+  display: inline-block;
+  padding: 0.3rem 0.8rem;
+  border: 1px solid var(--pr-border);
+  border-radius: 999px;
+  font-size: var(--pr-text-sm);
+  color: var(--pr-text-muted);
+  transition:
+    border-color var(--pr-ease),
+    color var(--pr-ease),
+    background-color var(--pr-ease);
+}
+
+.pr-card {
+  background: var(--pr-bg-raised);
+  border: 1px solid var(--pr-border);
+  border-radius: var(--pr-radius);
+  box-shadow: var(--pr-shadow-sm);
+  transition:
+    box-shadow var(--pr-ease),
+    border-color var(--pr-ease),
+    transform var(--pr-ease);
+}

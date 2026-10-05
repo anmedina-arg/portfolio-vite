@@ -32,9 +32,9 @@ He is **actively available** for Full Stack / Product Engineer roles; the site s
 
 ## Capabilities and Constraints
 
-- Existing codebase: Vite + React 18 + TypeScript, GSAP, EmailJS contact form (Formik + Yup). Light/dark theme already exists.
-- Redesign in progress: **Variant B (split identity rail — identity column left, content right)** is the chosen layout (`src/prototype-redesign-v2/`, decided 2026-09-28). Not yet folded into production.
-- Planned architecture: feature-colocated folders, Storybook removed (`docs/adr/0001-feature-colocated-architecture.md`).
+- Codebase: Vite + React 18 + TypeScript, GSAP. No contact form (the old EmailJS/Formik form was removed 2026-10-05): contact is the visible email address (mailto) plus LinkedIn/GitHub. Light/dark theme.
+- Redesign in progress: **Variant B (split identity rail — identity column left, content right)** is the chosen layout (`src/portfolio/`, decided 2026-09-28). Promoted to the home route on `dev` (2026-10-05); not on `main`/production yet.
+- Architecture: a single feature folder `src/portfolio/` (ADR 0001 + 0002); Storybook removed.
 - **Bilingual: Spanish + English**, with a language switcher. Current content exists only in Spanish; English copy is still to be written (open).
 - Sections: Bio, Mis trabajos (only "Trabajo profesional"; Labs and Proyectos personales removed as junior signal — a future "Open source" tab is allowed), Experiencia (timeline with Arcor as the one full case study), Tecnologías, Credenciales, Recomendaciones, Contacto.
 - Domain terminology lives in `CONTEXT.md`.
@@ -47,7 +47,7 @@ He is **actively available** for Full Stack / Product Engineer roles; the site s
 
 ## Evidence on Hand
 
-Real content source of truth: `src/portfolio-contenido-variante-B.md` and `src/prototype-redesign-v2/contentB.ts`.
+Real content source of truth: `docs/content/portfolio-contenido-variante-B.md` and `src/portfolio/content/content.es.ts`.
 
 - Products in production: Chaskyapp (multi-tenant SaaS, live with Market del Cevil since Mar 2026 and Yo Heladerías since Aug 2026), Reforest (used daily by 10 people; 4 roles + RLS; 48+ SQL migrations). In development: Rapitrago (client Cumbre-tech).
 - Earlier client work: CABSA, Kurve, Coolco (2022–2023).
