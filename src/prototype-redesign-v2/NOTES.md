@@ -386,8 +386,11 @@ Vite favicon, no meta description / Open Graph; deploy target not yet confirmed 
 domain; rollback = revert the merge. Then `/impeccable critique` (target > 23/32) and the
 second content batch.
 
-**Open questions for Andrés:** where is the site deployed today (host + domain)? launch with
-what's available (recommended) or wait for all content?
+**Decisions (Andrés, 2026-10-05):** host is Vercel (project `portfolio-e8ai`, team scope
+`anmedinaargs-projects`; the Vercel MCP got 403 on that scope, so the production branch was
+NOT verified — check Project Settings > Git > Production Branch). Launch with the **complete
+content** (not a partial launch), so Phase 1 blocks the release. Until then, pushes to `dev`
+only expose the redesign behind `?variant=B`; the real home stays the old site.
 
 ### Harden pass (2026-10-05) — P1 a11y reveals
 
