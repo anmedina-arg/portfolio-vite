@@ -49,17 +49,16 @@ He is **actively available** for Full Stack / Product Engineer roles; the site s
 
 Real content source of truth: `docs/content/portfolio-contenido-variante-B.md` and `src/portfolio/content/content.es.ts`.
 
-- Products in production: Chaskyapp (multi-tenant SaaS, live with Market del Cevil since Mar 2026 and Yo Heladerías since Aug 2026), Reforest (used daily by 10 people; 4 roles + RLS; 48+ SQL migrations). In development: Rapitrago (client Cumbre-tech).
+- Products in production: Chaskyapp (multi-tenant SaaS, live with Market del Cevil since Mar 2026 and Yo Heladerías since Aug 2026), Reforest (used daily by 10 people; 4 roles + RLS; 48+ SQL migrations). In development: **Rapitrago** (client Cumbre-tech), which Andrés ranks as his most important project by business, technologies, learning, dedicated work and scope: a Laravel 11 backend (panel and API for administration, driver, store and kitchen) plus three React Native / Expo apps that consume it (customer, store, driver), all four worked on by him. It is featured first, with its architecture diagram and the customer app's home (taken from the public hero mockup on rapitrago.com, cut out with transparency; permission from Cumbre-tech to use it is still to be confirmed). It is about to go to production, so its status pill shows no lifecycle state (just "Backend + 3 apps móviles") and never needs updating when it launches (his request, 2026-10-06).
 - Earlier client work: CABSA, Kurve, Coolco (2022–2023).
 - Experience timeline including Desafío Latam teaching (~240 students, 4 cohorts) and Arcor metrics (line efficiency 88% → 93%; line start-up to 80%; performance review system for ~300 people).
-- 4 Anthropic Academy credentials (2026).
+- 5 Anthropic Education credentials (May–Sep 2026): Claude Code 101, Claude Code in Action, Building with the Claude API, Introduction to Model Context Protocol, Introduction to Agent Skills. Each links to its public Skilljar verification page and shows the certificate image.
 - Existing recommendations.
 
 Open / must not be fabricated:
 
 - New CV PDF (current one is outdated).
 - Public URLs or screenshots for Chaskyapp; anonymized, client-approved screenshots for Reforest.
-- Verification URLs for the credentials (currently `#`).
 - Newer recommendations (Satori, Market del Cevil, Desafío Latam, Plug-Zone).
 - A native-speaker review of the English copy.
 - Phase dates for the Plug-Zone contract (frontend → backend → infrastructure → NetIQ connectors and workflows): the timeline shows it as one bar until real dates exist.

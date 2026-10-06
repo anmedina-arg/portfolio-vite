@@ -197,7 +197,7 @@ Scale tokens: xs 0.7rem · sm 0.8rem · base 0.95rem · md 1.05rem · lg 1.3rem 
 
 ## Elevation & Depth
 
-Mostly flat with hairlines, with permission for selective layering. Cards sit on Paper Raised with a near-invisible resting shadow; interaction lifts them. Layered presence at rest is allowed for pieces that deserve emphasis — today exactly two: the "En producción hoy" ledger (hero) and the "Cómo trabajo" folio (Experiencia) — but depth stays soft and neutral, never glowing or coloured.
+Mostly flat with hairlines, with permission for selective layering. Cards sit on Paper Raised with a near-invisible resting shadow; interaction lifts them. Layered presence at rest is allowed for pieces that deserve emphasis — today exactly three: the "En producción hoy" ledger (hero), the featured work card (Rapitrago) and the "Cómo trabajo" folio (Experiencia) — but depth stays soft and neutral, never glowing or coloured.
 
 ### Shadow Vocabulary
 
@@ -229,6 +229,7 @@ Firm and tactile: every interactive element gives a clear, immediate answer (col
 - **Border:** 1px Rule; turns Sage Field on hover for work cards and legacy projects.
 - **Internal Padding:** 1.25rem.
 - **Work grid and disclosure:** work cards sit in a fluid two-column grid; each shows two highlight bullets and the rest sits behind a native `<details>` "Ver detalle" in Sage Field Deep (underline on hover). The fully visible content is the claim; the detail is one click away.
+- **Featured work card:** hierarchy among projects is spatial, not labelled. The project with the most scope (Rapitrago: a backend plus three apps) is the one whose data carries a `system`: it leads the list, spans the whole row, shows all its highlights, uses the 1.3rem head, rests lifted (Earned Lift Rule) and sits beside its architecture diagram. The other cards keep two columns. Chosen by Andrés, 2026-10-06: by business, technologies, learning, dedicated work and scope it outweighs the other two. Layout: text and the product shot on top (a work item's optional `image`, cut out with transparency so a client's gradient never leaks into the one-hue palette; `drop-shadow`, 15rem wide), the system diagram as a hairline-separated band below; it stacks to one column under 44rem of the list's own width.
 - **Variants:** _Work card_ (large serif decimal-leading-zero counter top-right in Rule colour), _legacy project row_ (thumbnail 96×64, 15% greyscale until hover, small serif counter, slides `translateX(2px)`), _recommendation_ (serif “ quote mark in Sage Field at 60% opacity, italic body).
 
 ### Proof Panels (signature): ledger and folio
@@ -237,6 +238,14 @@ The page's two evidence blocks share one construction: Paper Raised, 1px Rule bo
 
 - **"En producción hoy" ledger** (hero): label row with a Sage Field Deep status dot, then one row per product — name + one-line purpose left, the fact in Sage Field Deep (tabular numerals) + detail right, an authored arrow. Rows link to the work cards; hover = Wash + arrow nudges 3px.
 - **"Cómo trabajo" folio** (opens Experiencia): serif h3 + the thesis sentence in the header; two columns, _En planta_ (Grupo Arcor) and _En software_ (hoy), with uppercase Sage Field Deep column labels and the source in Ink Muted. The plant column carries an honest two-point slope chart — only the two real measurements (88% → 93%) on an 80–100% scale, open "before" point, filled "after" point, serif value labels, "Antes / Después" axis, caption = the factual sentence (`role="img"` labelled by it). Line draws in on scroll (reduced-motion gated). Columns stack under 640px.
+
+### Credentials gallery
+
+Credentials are shown as the certificates themselves: an auto-fit grid (13rem minimum, five across on wide screens) of the certificate image (1px Rule border, 6px radius, resting shadow), the course name (600), issuer and month, and a "Verificar certificado" link in Sage Field Deep. The whole item is one link to the public verification page; the image is decorative because the text names it. Hover lifts the image 2px with the accent border (pointer devices only). The certificates bring their own colours (blue, olive, sage): they are artifacts, not site decoration, so they are exempt from the One Voice Rule.
+
+### System diagram
+
+A project's architecture, drawn with the timeline chart's grammar and no boxes inside the card: the backend as the hub (filled Sage Field Deep point), a 2px bracket, and one open point per app that consumes it, each a real text row (name + stack). Lines are decoration (CSS); the names stay readable text in a list; a caption states the relation ("Un backend y tres apps que lo consumen."). Under 30rem of its own width the hub connects downward into the bracket. Data lives in `WorkItem.system`; only facts true of the real system go in it.
 
 ### Hero (signature)
 

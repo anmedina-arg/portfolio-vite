@@ -470,3 +470,52 @@ an illustration was not built yet (candidate: Chaskyapp architecture diagram wit
 
 **Docs updated:** DESIGN.md (fluid layout, hero, typed line, timeline, new rules), PRODUCT.md,
 CONTEXT.md, `.impeccable/design.json`.
+
+### Rapitrago featured (2026-10-06, after the push)
+
+Andrés: by business, technologies, learning, dedicated work and scope, Rapitrago is his most
+important project (a Laravel backend + three Expo/React Native apps, all worked on by him) and
+must outrank Chaskyapp and Reforest. Source of the facts: `_clientes/cumbre/CLAUDE.md`.
+
+- `professionalWork`: Rapitrago first, with 4 highlights and a new `system` field
+  (`WorkSystem`: backend + apps + caption). The English array is positional, so it was
+  reordered too. Status stays "En desarrollo" (Andrés's call, even though he also counts it
+  among the products he maintains). The experience note now leads with Rapitrago.
+- Featured work card (`.is-featured`): whole row, all highlights visible, lifted at rest,
+  with `SystemDiagram.tsx` beside it (hub = filled point, apps = open points on a bracket).
+  The "odd last card spans the row" rule was replaced by this one.
+- The hero ledger is unchanged on purpose: its title says "En producción hoy" and Rapitrago is
+  in development. Open: retitle the ledger to include it, or leave production proof as is.
+- Open: PRODUCT.md positioning still says "two products in production"; what can be shown
+  of the client's product (screenshots, merchant/order numbers) needs Cumbre-tech's permission.
+
+- Status (same day, later): Rapitrago is about to go to production and Andrés does not want to
+  edit the site again for that, so its pill no longer carries a lifecycle state ("Backend + 3
+  apps móviles"). The experience note does not state it either.
+- Screenshots for the featured card: the link Andrés sent (`verify.skilljar.com/c/okrmqu3mbxvq`)
+  is his **Claude Code 101** certificate (Anthropic Education, 2026-09-07), not Rapitrago; no
+  captures taken yet. It could become a credential `verifyUrl` if that course is added.
+
+- Screenshots (same day): Andrés then sent the right page, https://www.rapitrago.com/. It is a
+  public marketing site (hero with the customer app mockup, then "Pedí. Vendé. Repartí.", a
+  three-app ecosystem section whose tabs are text cards, no app screens for store/driver).
+  Used only the hero phone: `src/assets/rapitrago-app.webp` (490x610, 22 KB), cut out with a
+  flood-fill matte from the page's orange/violet gradient (it clashes with the one-hue rule),
+  checked on light and dark. Not used on purpose: the landing's "40+ comercios / 25 min / 4,8"
+  figures are labelled "metas de lanzamiento" (launch goals), not facts. The apps are not in
+  the stores yet ("las apps llegan muy pronto"). Open: Cumbre-tech's OK to use the image, and
+  real captures of the store and driver apps.
+
+### Credentials with certificates (2026-10-06)
+
+Andrés sent the five Skilljar verification URLs. All five are Anthropic Education certificates
+issued to him (Claude Code 101 2026-09-07; Claude Code in Action 05-31; Building with the
+Claude API 05-29; Introduction to Model Context Protocol 05-25; Introduction to Agent Skills
+05-18). The list grew from 4 to 5 (Claude Code 101 is new), is sorted newest first, and every
+item now links to its real verification page (closing the critique's "credentials have no URL").
+Each is illustrated with the certificate image captured from its page (`src/assets/certs/`,
+720px webp, 8-16 KB). Dates are stored as `issued` (ISO) and formatted per language. The issuer
+reads "Anthropic Education" because that is what the verification pages state (the site used
+"Anthropic Academy", the platform's name). Note: the Building-with-the-Claude-API certificate
+image itself reads "Claude with the Anthropic API" (the course's earlier name); the page title
+and the site use "Building with the Claude API".
