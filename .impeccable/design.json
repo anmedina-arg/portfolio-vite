@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-10-06T16:58:29.000Z",
+  "generatedAt": "2026-10-06T18:47:27.000Z",
   "title": "Design System: Andrés Medina — Portfolio",
   "extensions": {
     "colorMeta": {
@@ -305,6 +305,11 @@
       {
         "name": "The Mark, Not Fill Rule",
         "body": "The accent appears as lines, dots, text, markers and 8–10% washes, never as a solid block behind content.",
+        "section": "colors"
+      },
+      {
+        "name": "The Client Artifact Exception",
+        "body": "A client's own identity may bring its own colour, only inside the card of that client's project and only on its artifacts: Rapitrago's logo, its app capture and the product icons use its orange (`#faa61b` on the dark theme, a deeper `#c4730a` on the light theme so the icons keep 3:1 against paper). Never for text, never for the card's background, no gradients, and no other client colour. The credential certificates are exempt for the same reason.",
         "section": "colors"
       },
       {

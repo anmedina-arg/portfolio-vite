@@ -519,3 +519,23 @@ reads "Anthropic Education" because that is what the verification pages state (t
 "Anthropic Academy", the platform's name). Note: the Building-with-the-Claude-API certificate
 image itself reads "Claude with the Anthropic API" (the course's earlier name); the page title
 and the site use "Building with the Claude API".
+
+### Rapitrago card redesigned (2026-10-06)
+
+`/impeccable shape` produced a brief, then `generate` three compositions ("the scene", "the
+brand stage", "an order's journey"); Andrés accepted **the scene** (text left; the customer
+app's capture beside the four products, Pedí tied to it). Decisions behind it:
+- **No technology on the card** (client confidentiality; a stack choice can read as a success
+  or a failure). The old diagram (backend + 3 apps, with framework names) was removed with
+  `SystemDiagram.tsx`; the card now shows four products by function (Pedí, Vendé, Repartí, admin
+  panel; the backend's admin panel counts as a product). Andrés chose to leave the earlier
+  published mentions as they are: the repo is public, so "Laravel" and the auth details added
+  earlier the same day remain in the pushed history and in the experience note.
+- **Rapitrago's identity as the one extra colour**, contained to its card (logo, capture, icons):
+  DESIGN.md "The Client Artifact Exception". Logo taken from rapitrago.com's inline SVG and
+  re-rendered with exact transparency (two-background matting) in two inks, for dark and light.
+- The status pill has no lifecycle state; the card's tag pills are gone.
+- Structure: the featured card now has its own JSX block (`featuredWork`) instead of living in
+  the `map`; the live wrapper of a variant must span the grid row (preview-only rule).
+Closed the same day: Andrés confirmed he may use the logo and the capture and that the related
+TODOs are fine, so the card's TODO note was removed. No other captures of the other apps exist.

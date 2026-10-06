@@ -157,6 +157,8 @@ A restrained paper-and-ink palette with a single muted sage accent.
 
 **The Mark, Not Fill Rule.** The accent appears as lines, dots, text, markers and 8–10% washes, never as a solid block behind content.
 
+**The Client Artifact Exception.** A client's own identity may bring its own colour, only inside the card of that client's project and only on its artifacts: Rapitrago's logo, its app capture and the product icons use its orange (`#faa61b` on the dark theme, a deeper `#c4730a` on the light theme so the icons keep 3:1 against paper). Never for text, never for the card's background, no gradients, and no other client colour. The credential certificates are exempt for the same reason.
+
 ## Typography
 
 **Display Font:** Georgia (with 'Times New Roman', serif)
@@ -229,7 +231,7 @@ Firm and tactile: every interactive element gives a clear, immediate answer (col
 - **Border:** 1px Rule; turns Sage Field on hover for work cards and legacy projects.
 - **Internal Padding:** 1.25rem.
 - **Work grid and disclosure:** work cards sit in a fluid two-column grid; each shows two highlight bullets and the rest sits behind a native `<details>` "Ver detalle" in Sage Field Deep (underline on hover). The fully visible content is the claim; the detail is one click away.
-- **Featured work card:** hierarchy among projects is spatial, not labelled. The project with the most scope (Rapitrago: a backend plus three apps) is the one whose data carries a `system`: it leads the list, spans the whole row, shows all its highlights, uses the 1.3rem head, rests lifted (Earned Lift Rule) and sits beside its architecture diagram. The other cards keep two columns. Chosen by Andrés, 2026-10-06: by business, technologies, learning, dedicated work and scope it outweighs the other two. Layout: text and the product shot on top (a work item's optional `image`, cut out with transparency so a client's gradient never leaks into the one-hue palette; `drop-shadow`, 15rem wide), the system diagram as a hairline-separated band below; it stacks to one column under 44rem of the list's own width.
+- **Featured work card:** hierarchy among projects is spatial, not labelled. The project with the most scope (Rapitrago: four products) is the one whose data carries `products`: it leads the list, spans the whole row, shows all its highlights, uses the 1.3rem head, and rests lifted (Earned Lift Rule). Chosen by Andrés, 2026-10-06: by business, technologies, learning, dedicated work and scope it outweighs the other two. The other cards keep two columns.
 - **Variants:** _Work card_ (large serif decimal-leading-zero counter top-right in Rule colour), _legacy project row_ (thumbnail 96×64, 15% greyscale until hover, small serif counter, slides `translateX(2px)`), _recommendation_ (serif “ quote mark in Sage Field at 60% opacity, italic body).
 
 ### Proof Panels (signature): ledger and folio
@@ -243,9 +245,9 @@ The page's two evidence blocks share one construction: Paper Raised, 1px Rule bo
 
 Credentials are shown as the certificates themselves: an auto-fit grid (13rem minimum, five across on wide screens) of the certificate image (1px Rule border, 6px radius, resting shadow), the course name (600), issuer and month, and a "Verificar certificado" link in Sage Field Deep. The whole item is one link to the public verification page; the image is decorative because the text names it. Hover lifts the image 2px with the accent border (pointer devices only). The certificates bring their own colours (blue, olive, sage): they are artifacts, not site decoration, so they are exempt from the One Voice Rule.
 
-### System diagram
+### Featured project scene
 
-A project's architecture, drawn with the timeline chart's grammar and no boxes inside the card: the backend as the hub (filled Sage Field Deep point), a 2px bracket, and one open point per app that consumes it, each a real text row (name + stack). Lines are decoration (CSS); the names stay readable text in a list; a caption states the relation ("Un backend y tres apps que lo consumen."). Under 30rem of its own width the hub connects downward into the bracket. Data lives in `WorkItem.system`; only facts true of the real system go in it.
+Chosen from three generated compositions (2026-10-06, "the scene"). Inside the featured card: text on the left (the client's logo, title, status, a short description and two highlights) and, on the right, the product itself: the customer app's capture (cut out with transparency, 15rem, drop shadow) beside the four products as hairline-separated rows (icon in a 1.5px brand-orange ring, name, one line of function). Pedí, the app in the capture, is tied to it by a short brand-orange line ending in an open point (the slope chart's grammar). No technology appears anywhere in the card: a client's stack is not public material, so every piece is described by what it does. The status pill carries no lifecycle state (it must never go stale at launch). The logo comes in two inks (`brand.logoOnDark` / `logoOnLight`) and the card shows the one that matches `body[data-theme]`. Under 56rem of the list's own width the card is one column and the tie line is hidden. Data: `WorkItem.products`, `brand`, `image`; icons: `ProductIcon.tsx` (drawn in the site's stroke weight, not taken from the client).
 
 ### Hero (signature)
 
