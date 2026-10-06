@@ -9,6 +9,8 @@ import cvEsUrl from '../../assets/CV_Andres_Medina_esp.pdf';
 export const profile = {
   name: 'Andrés Medina',
   role: 'Full Stack Developer',
+  // Typed one after another before the page settles on `role` (TypedRole.tsx).
+  roleCycle: ['Product Engineer', 'Primero la spec, después el código'],
   tagline: 'Construyo productos de punta a punta, del relevamiento con el cliente a producción.',
   location: 'Tucumán, Argentina · remoto',
   languages: 'Español (nativo) · Inglés (B2)',
@@ -43,6 +45,10 @@ export type ExperienceEntry = {
   role: string;
   company: string;
   dates: string;
+  // Decimal years (2023.5 = mid-2023) that place the entry on the timeline chart; `end: null`
+  // means ongoing. Not shown as text: `dates` is the displayed (and translated) string.
+  start: number;
+  end: number | null;
   note?: string;
 };
 
@@ -52,37 +58,61 @@ export const experience: ExperienceEntry[] = [
     role: 'Freelance Full Stack Developer',
     company: 'Independiente',
     dates: 'ene. 2023 — actualidad',
+    start: 2023,
+    end: null,
     note: 'Construyo y mantengo Chaskyapp y Reforest, ambos en producción; desarrollo Rapitrago para Cumbre-tech. Antes: sitios para CABSA, Kurve y Coolco.',
   },
   {
     role: 'Docente Desarrollador Fullstack JavaScript',
     company: 'Desafío Latam',
     dates: 'abr. 2024 — actualidad',
+    start: 2024.25,
+    end: null,
     note: '4 generaciones, ~240 estudiantes de toda LATAM (entre 30 y 120 por generación). HTML, CSS, JavaScript, React, Node, Express y PostgreSQL. Di la masterclass "Micro diseño para desarrolladores web".',
   },
   {
     role: 'Contractor',
     company: 'Plug-Zone',
     dates: 'nov. 2023 — ene. 2026',
+    start: 2023.83,
+    end: 2026,
     note: 'Empecé en el frontend de una app de logística y facturación integrada con SAP, y amplié el rol por iniciativa propia a backend, arquitectura y DevOps. Me formé como implementador IAM (NetIQ Identity Manager).',
   },
   {
     role: 'Fullstack Developer',
     company: 'Virtual Remote Partner',
     dates: 'sep. 2023 — dic. 2023',
+    start: 2023.67,
+    end: 2024,
   },
-  { role: 'Fullstack Developer', company: 'Aythen', dates: 'sep. 2023 — nov. 2023' },
+  {
+    role: 'Fullstack Developer',
+    company: 'Aythen',
+    dates: 'sep. 2023 — nov. 2023',
+    start: 2023.67,
+    end: 2023.92,
+  },
   {
     role: 'Frontend Developer & Mentor técnico',
     company: 'DIUM',
     dates: 'jul. 2022 — sep. 2023',
+    start: 2022.5,
+    end: 2023.67,
     note: 'Lideré la adopción de Next.js, Tailwind y Storybook.',
   },
-  { role: 'Fullstack Developer', company: 'Totono (GetDeli)', dates: 'sep. 2022 — abr. 2023' },
+  {
+    role: 'Fullstack Developer',
+    company: 'Totono (GetDeli)',
+    dates: 'sep. 2022 — abr. 2023',
+    start: 2022.67,
+    end: 2023.33,
+  },
   {
     role: 'Process Engineer',
     company: 'Grupo Arcor',
     dates: 'may. 2013 — may. 2022 · 9 años',
+    start: 2013.33,
+    end: 2022.33,
     note: 'Referente de mejora continua de la planta (TPM).',
   },
 ];
@@ -281,6 +311,8 @@ export const uiEs = {
   nowTitle: 'En producción hoy',
   legacySubhead: 'Trabajos anteriores (2022–2023)',
   newTab: '(abre en una pestaña nueva)',
+  moreDetail: 'Ver detalle',
+  todayLabel: 'Hoy',
   howTitle: 'Cómo trabajo',
   chartBefore: 'Antes',
   chartAfter: 'Después',

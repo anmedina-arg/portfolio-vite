@@ -43,6 +43,8 @@ export const contentEn: Content = {
     nowTitle: 'In production today',
     legacySubhead: 'Earlier work (2022–2023)',
     newTab: '(opens in a new tab)',
+    moreDetail: 'Show more',
+    todayLabel: 'Today',
     howTitle: 'How I work',
     chartBefore: 'Before',
     chartAfter: 'After',
@@ -56,6 +58,7 @@ export const contentEn: Content = {
     location: 'Tucumán, Argentina · remote (UTC−3)',
     languages: 'Spanish (native) · English (B2)',
     availability: 'Available for Full Stack or Product Engineer roles',
+    roleCycle: ['Product Engineer', 'Spec first, code later'],
     bioParagraphs: [
       'Full Stack Developer. I currently maintain two products in production: Chaskyapp, a multi-tenant SaaS for WhatsApp ordering used by two real brands, and Reforest, the production management system a forestry lab team uses every day.',
       "Before software, I spent 9 years as a process engineer at Grupo Arcor, leading the plant's continuous improvement. I bring that way of working to development: specification first, documented decisions and measured results. I work with Claude Code using Spec-Driven Development.",

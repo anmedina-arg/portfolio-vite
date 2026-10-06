@@ -17,6 +17,8 @@ import { contentEs } from './content/content.es';
 import { contentEn } from './content/content.en';
 import { useRailSpy } from './hooks/useRailSpy';
 import { useLang, type Lang } from './hooks/useLang';
+import ExperienceTimeline from './ExperienceTimeline';
+import TypedRole from './TypedRole';
 
 gsap.registerPlugin(ScrollTrigger, useGSAP);
 
@@ -59,8 +61,6 @@ const PortfolioPage: React.FC<Props> = ({ theme, toggleTheme }) => {
   const { ui } = c;
 
   const activeSection = useRailSpy(railNavIds as unknown as string[]);
-
-  const [bioLead, ...bioRest] = c.profile.bioParagraphs;
 
   // Slope chart geometry: honest two-point chart on an 80–100% scale (only the two
   // real measurements are drawn — no invented trajectory in between).
@@ -294,13 +294,27 @@ const PortfolioPage: React.FC<Props> = ({ theme, toggleTheme }) => {
       </aside>
 
       <main id="main" tabIndex={-1} className="vb-main" ref={mainRef}>
-        {/* Claim → proof → origin: the first bio sentence names the two products,
-            the ledger proves it within the first viewport, the Arcor paragraph follows. */}
-        <section id="about" className="vb-section">
-          <h2 className="vb-reveal">{ui.nav.about}</h2>
-          <p className="vb-bio vb-reveal">{bioLead}</p>
-
-          <div className="vb-now vb-reveal" role="group" aria-labelledby="vb-now-title">
+        {/* Hero: identity (name, role, tagline, availability) then proof (the ledger), in the
+            first viewport. On the split layout the rail hides its own identity block and this
+            one shows; stacked, it is the other way round (CSS), so the name is never doubled. */}
+        <section id="about" className="vb-section vb-hero">
+          <div className="vb-hero-id">
+            <h1 className="vb-hero-name">{c.profile.name}</h1>
+            <span className="vb-hero-rule" aria-hidden="true" />
+            <p className="vb-hero-role">
+              <TypedRole
+                texts={[...c.profile.roleCycle, c.profile.role]}
+                cursor="underscore"
+                prompt=">"
+              />
+            </p>
+            <p className="vb-hero-tagline">{c.profile.tagline}</p>
+            <p className="vb-hero-status">
+              <span className="vb-now-dot" aria-hidden="true" />
+              {c.profile.availability}
+            </p>
+          </div>
+          <div className="vb-now" role="group" aria-labelledby="vb-now-title">
             <p className="vb-now-title" id="vb-now-title">
               <span className="vb-now-dot" aria-hidden="true" />
               {ui.nowTitle}
@@ -339,12 +353,6 @@ const PortfolioPage: React.FC<Props> = ({ theme, toggleTheme }) => {
               ))}
             </ul>
           </div>
-
-          {bioRest.map((p, i) => (
-            <p key={i} className="vb-bio vb-reveal">
-              {p}
-            </p>
-          ))}
         </section>
 
         <section id="portfolio" className="vb-section">
@@ -364,10 +372,20 @@ const PortfolioPage: React.FC<Props> = ({ theme, toggleTheme }) => {
                 <p className="vb-work-desc">{p.description}</p>
                 {p.highlights && (
                   <ul className="vb-bullets">
-                    {p.highlights.map((h, i) => (
+                    {p.highlights.slice(0, 2).map((h, i) => (
                       <li key={i}>{h}</li>
                     ))}
                   </ul>
+                )}
+                {p.highlights && p.highlights.length > 2 && (
+                  <details className="vb-more">
+                    <summary>{ui.moreDetail}</summary>
+                    <ul className="vb-bullets">
+                      {p.highlights.slice(2).map((h, i) => (
+                        <li key={i}>{h}</li>
+                      ))}
+                    </ul>
+                  </details>
                 )}
                 <div className="vb-tags">
                   {p.stack.map((s) => (
@@ -522,30 +540,25 @@ const PortfolioPage: React.FC<Props> = ({ theme, toggleTheme }) => {
             </div>
           </article>
 
-          <ul className="vb-timeline">
-            {c.experience.map((e, i) => (
-              <li key={i} className="vb-reveal">
-                <strong>{e.role}</strong> — {e.company} <span className="pr-pill">{e.dates}</span>
-                {e.note && <p>{e.note}</p>}
-              </li>
-            ))}
-          </ul>
+          <ExperienceTimeline entries={c.experience} todayLabel={ui.todayLabel} />
         </section>
 
         <section id="tech" className="vb-section">
           <h2 className="vb-reveal">{ui.nav.tech}</h2>
-          {c.tech.map((cat, i) => (
-            <div key={i} className="vb-tech-group vb-reveal">
-              <h3>{cat.label}</h3>
-              <div className="vb-tags">
-                {cat.items.map((t) => (
-                  <span key={t} className="pr-pill">
-                    {t}
-                  </span>
-                ))}
+          <div className="vb-tech-grid">
+            {c.tech.map((cat, i) => (
+              <div key={i} className="vb-tech-group vb-reveal">
+                <h3>{cat.label}</h3>
+                <div className="vb-tags">
+                  {cat.items.map((t) => (
+                    <span key={t} className="pr-pill">
+                      {t}
+                    </span>
+                  ))}
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
           <h3>{ui.credentials}</h3>
           <ul className="vb-credentials">
             {c.credentials.map((cred) => (
