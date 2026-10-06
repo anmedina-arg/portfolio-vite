@@ -49,6 +49,7 @@ export const contentEn: Content = {
     chartBefore: 'Before',
     chartAfter: 'After',
     credentials: 'Credentials',
+    verifyCert: 'Verify certificate',
     reviewsNote: 'Original quotes, in Spanish.',
     writeMeAt: 'Write to me at',
   },
@@ -76,7 +77,7 @@ export const contentEn: Content = {
     {
       company: 'Independent',
       dates: 'Jan 2023 — present',
-      note: 'I build and maintain Chaskyapp and Reforest, both in production, and develop Rapitrago for Cumbre-tech. Before that: websites for CABSA, Kurve and Coolco.',
+      note: 'I develop Rapitrago for Cumbre-tech (a Laravel backend and three mobile apps); I build and maintain Chaskyapp and Reforest, both in production. Before that: websites for CABSA, Kurve and Coolco.',
     },
     {
       role: 'Full Stack JavaScript Instructor',
@@ -128,6 +129,32 @@ export const contentEn: Content = {
   },
   work: withText(professionalWork, [
     {
+      status: 'Backend + 3 mobile apps',
+      subtitle: 'Beverage delivery platform (client: Cumbre-tech)',
+      description:
+        'I work on all four pieces of the system: a Laravel backend (admin panel and API for administration, drivers, stores and kitchen) and three React Native / Expo mobile apps that consume it: customer, store and driver.',
+      highlights: [
+        'A Laravel 11 backend with four fronts: administration, driver, store and kitchen (KDS)',
+        'Three Expo / React Native mobile apps that consume the same backend',
+        'Customer app with email OTP and Google/Apple sign-in, and Sanctum on the backend',
+        'Multi-store cart with a product-first home',
+      ],
+      imageAlt:
+        'Rapitrago customer app: home with categories, open stores and live delivery tracking.',
+      system: {
+        backend: {
+          name: 'Laravel 11 backend',
+          detail: 'Panel and API: administration, driver, store and kitchen (KDS)',
+        },
+        apps: [
+          { name: 'Customer app', detail: 'React Native · Expo' },
+          { name: 'Store app', detail: 'React Native · Expo' },
+          { name: 'Driver app', detail: 'React Native · Expo' },
+        ],
+        caption: 'One backend and three apps that consume it.',
+      },
+    },
+    {
       status: 'Multi-tenant SaaS · In production',
       subtitle: 'WhatsApp ordering for retailers, with a catalog and a management dashboard',
       description:
@@ -150,12 +177,6 @@ export const contentEn: Content = {
         '48+ versioned SQL migrations',
         'Requirements gathering, business analysis and a functional manual for the client',
       ],
-    },
-    {
-      status: 'Mobile app + backend · In development',
-      subtitle: 'Beverage delivery platform (client: Cumbre-tech)',
-      description:
-        'I work on the customer app (React Native / Expo) and on the admin dashboard and backend (Laravel).',
     },
   ]),
   legacy: withText(legacyWork, [

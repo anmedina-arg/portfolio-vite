@@ -19,6 +19,7 @@ import { useRailSpy } from './hooks/useRailSpy';
 import { useLang, type Lang } from './hooks/useLang';
 import ExperienceTimeline from './ExperienceTimeline';
 import TypedRole from './TypedRole';
+import SystemDiagram from './SystemDiagram';
 
 gsap.registerPlugin(ScrollTrigger, useGSAP);
 
@@ -358,45 +359,66 @@ const PortfolioPage: React.FC<Props> = ({ theme, toggleTheme }) => {
         <section id="portfolio" className="vb-section">
           <h2 className="vb-reveal">{ui.nav.portfolio}</h2>
           <div className="vb-work-list">
-            {c.work.map((p) => (
-              <div
-                key={p.title}
-                id={workAnchor(p.title)}
-                className="vb-work-card pr-card vb-reveal"
-              >
-                <div className="vb-work-head">
-                  <strong>{p.title}</strong>
-                  {p.status && <span className="pr-pill pr-accent-text">{p.status}</span>}
-                </div>
-                {p.subtitle && <p className="vb-work-subtitle">{p.subtitle}</p>}
-                <p className="vb-work-desc">{p.description}</p>
-                {p.highlights && (
-                  <ul className="vb-bullets">
-                    {p.highlights.slice(0, 2).map((h, i) => (
-                      <li key={i}>{h}</li>
-                    ))}
-                  </ul>
-                )}
-                {p.highlights && p.highlights.length > 2 && (
-                  <details className="vb-more">
-                    <summary>{ui.moreDetail}</summary>
-                    <ul className="vb-bullets">
-                      {p.highlights.slice(2).map((h, i) => (
-                        <li key={i}>{h}</li>
+            {c.work.map((p) => {
+              const featured = Boolean(p.system);
+              // The featured project shows all its highlights; the rest keep two and a disclosure.
+              const shown = featured ? p.highlights : p.highlights?.slice(0, 2);
+              const rest = featured ? undefined : p.highlights?.slice(2);
+              return (
+                <div
+                  key={p.title}
+                  id={workAnchor(p.title)}
+                  className={`vb-work-card pr-card vb-reveal${featured ? ' is-featured' : ''}`}
+                >
+                  <div className="vb-work-main">
+                    <div className="vb-work-head">
+                      <strong>{p.title}</strong>
+                      {p.status && <span className="pr-pill pr-accent-text">{p.status}</span>}
+                    </div>
+                    {p.subtitle && <p className="vb-work-subtitle">{p.subtitle}</p>}
+                    <p className="vb-work-desc">{p.description}</p>
+                    {shown && (
+                      <ul className="vb-bullets">
+                        {shown.map((h, i) => (
+                          <li key={i}>{h}</li>
+                        ))}
+                      </ul>
+                    )}
+                    {rest && rest.length > 0 && (
+                      <details className="vb-more">
+                        <summary>{ui.moreDetail}</summary>
+                        <ul className="vb-bullets">
+                          {rest.map((h, i) => (
+                            <li key={i}>{h}</li>
+                          ))}
+                        </ul>
+                      </details>
+                    )}
+                    <div className="vb-tags">
+                      {p.stack.map((s) => (
+                        <span key={s} className="pr-pill">
+                          {s}
+                        </span>
                       ))}
-                    </ul>
-                  </details>
-                )}
-                <div className="vb-tags">
-                  {p.stack.map((s) => (
-                    <span key={s} className="pr-pill">
-                      {s}
-                    </span>
-                  ))}
+                    </div>
+                    {SHOW_TODOS && p.todoNote && <p className="vb-todo">{p.todoNote}</p>}
+                  </div>
+                  {featured && p.image && (
+                    <figure className="vb-work-shot">
+                      <img
+                        src={p.image}
+                        alt={p.imageAlt ?? ''}
+                        width={490}
+                        height={610}
+                        loading="lazy"
+                        decoding="async"
+                      />
+                    </figure>
+                  )}
+                  {p.system && <SystemDiagram system={p.system} />}
                 </div>
-                {SHOW_TODOS && p.todoNote && <p className="vb-todo">{p.todoNote}</p>}
-              </div>
-            ))}
+              );
+            })}
           </div>
 
           <h3 className="vb-work-subhead">{ui.legacySubhead}</h3>
@@ -562,14 +584,30 @@ const PortfolioPage: React.FC<Props> = ({ theme, toggleTheme }) => {
           <h3>{ui.credentials}</h3>
           <ul className="vb-credentials">
             {c.credentials.map((cred) => (
-              <li key={cred.name} className="vb-reveal">
-                {/* No verification URL yet → plain text, not a dead link to the top of the page. */}
-                {cred.verifyUrl && cred.verifyUrl !== '#' ? (
-                  <a href={cred.verifyUrl}>{cred.name}</a>
-                ) : (
-                  <span className="vb-credential-name">{cred.name}</span>
-                )}{' '}
-                — {cred.issuer} · {cred.date}
+              <li key={cred.verifyUrl} className="vb-reveal">
+                {/* The certificate image is decorative: the link text names it. */}
+                <a className="vb-cert" href={cred.verifyUrl} target="_blank" rel="noreferrer">
+                  <img
+                    src={cred.image}
+                    alt=""
+                    width={720}
+                    height={544}
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  <strong>
+                    {cred.name}
+                    <span className="vb-sr-only"> {ui.newTab}</span>
+                  </strong>
+                  <span className="vb-cert-meta">
+                    {cred.issuer} ·{' '}
+                    {new Date(`${cred.issued}T12:00:00`).toLocaleDateString(c.lang, {
+                      month: 'short',
+                      year: 'numeric',
+                    })}
+                  </span>
+                  <span className="vb-cert-verify">{ui.verifyCert}</span>
+                </a>
               </li>
             ))}
           </ul>

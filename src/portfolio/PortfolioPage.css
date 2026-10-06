@@ -1041,9 +1041,215 @@
   counter-reset: vb-work;
 }
 
-/* An odd card out (Rapitrago: no highlights) takes the whole last row. */
-.vb-work-list > .vb-work-card:last-child:nth-child(odd) {
+/* The featured project (the one with a `system`) leads the list across the whole row:
+   all its highlights visible, its architecture drawn beside it, and it rests lifted: the
+   most important piece of the section (Earned Lift Rule). The others share two columns. */
+.vb-work-list {
+  container-type: inline-size;
+}
+
+.vb-work-card.is-featured {
   grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 15rem);
+  grid-template-areas:
+    'main shot'
+    'system system';
+  gap: var(--pr-space-4) var(--pr-space-5);
+  align-items: center;
+  padding: var(--pr-space-4) 4rem var(--pr-space-4) var(--pr-space-4);
+  box-shadow: var(--pr-shadow-md);
+}
+
+.vb-work-card.is-featured .vb-work-head {
+  font-size: var(--pr-text-lg);
+}
+
+.vb-work-main {
+  grid-area: main;
+  min-width: 0;
+}
+
+/* The product shot: the app's home, cut out with transparency so the client's gradient
+   does not leak into the page's one-hue palette. */
+.vb-work-shot {
+  grid-area: shot;
+  margin: 0;
+}
+
+.vb-work-shot img {
+  display: block;
+  width: 100%;
+  height: auto;
+  filter: drop-shadow(0 16px 22px rgb(0 0 0 / 0.28));
+}
+
+/* The architecture sits under both, as a band. */
+.vb-work-card.is-featured .vb-system {
+  grid-area: system;
+  padding-top: var(--pr-space-4);
+  border-top: 1px solid var(--pr-border);
+}
+
+.vb-work-card.is-featured .vb-system-map {
+  max-width: 46rem;
+}
+
+@container (max-width: 44rem) {
+  .vb-work-card.is-featured {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas:
+      'main'
+      'shot'
+      'system';
+  }
+  .vb-work-shot {
+    max-width: 15rem;
+    justify-self: center;
+  }
+}
+
+/* ---------- System diagram (SystemDiagram.tsx) ----------
+   Backend as the hub, apps as branches, in the slope chart's grammar: filled point = hub,
+   open points = branches, 2px sage lines. Names are real text; the lines are decoration. */
+
+.vb-system {
+  container-type: inline-size;
+  margin: 0;
+  min-width: 0;
+}
+
+.vb-system-map {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr);
+  column-gap: 2.75rem;
+  align-items: center;
+}
+
+.vb-system-backend {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  min-width: 0;
+}
+
+.vb-system-backend::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: -2.75rem;
+  width: 2.75rem;
+  height: 2px;
+  margin-top: -1px;
+  background: var(--pr-accent-strong);
+}
+
+.vb-system-backend::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: -2.75rem;
+  width: 10px;
+  height: 10px;
+  margin: -5px 0 0 -5px;
+  border-radius: 50%;
+  background: var(--pr-accent-strong);
+}
+
+.vb-system-apps {
+  list-style: none;
+  margin: 0;
+  padding: 0 0 0 2rem;
+}
+
+.vb-system-apps > li {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  padding: 0.7rem 0;
+}
+
+/* Tick from the bracket to an open point at each app. */
+.vb-system-apps > li::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: -2rem; /* the list's padding is 2rem: the tick starts on the bracket */
+  width: 1.25rem;
+  height: 2px;
+  margin-top: -1px;
+  background: var(--pr-accent-strong);
+}
+
+.vb-system-apps > li::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: -0.75rem;
+  width: 9px;
+  height: 9px;
+  box-sizing: border-box;
+  margin: -4.5px 0 0 -4.5px;
+  border-radius: 50%;
+  border: 2px solid var(--pr-accent-strong);
+  background: var(--pr-bg-raised);
+}
+
+/* The bracket: one vertical line through the ticks, from the first centre to the last. */
+.vb-system-apps {
+  position: relative;
+}
+
+.vb-system-apps::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  width: 2px;
+  top: calc(0.7rem + 0.75em);
+  bottom: calc(0.7rem + 0.75em);
+  background: var(--pr-accent-strong);
+}
+
+.vb-system strong {
+  font-size: var(--pr-text-base);
+  font-weight: 600;
+  color: var(--pr-text);
+}
+
+.vb-system-map span {
+  font-size: var(--pr-text-sm);
+  line-height: 1.45;
+  color: var(--pr-text-muted);
+}
+
+.vb-system figcaption {
+  margin-top: var(--pr-space-3);
+  font-size: var(--pr-text-sm);
+  color: var(--pr-text-faint);
+}
+
+@container (max-width: 30rem) {
+  .vb-system-map {
+    grid-template-columns: minmax(0, 1fr);
+    row-gap: 1rem;
+  }
+  .vb-system-backend::before {
+    display: none;
+  }
+  /* The hub connects downwards into the bracket instead of sideways. */
+  .vb-system-backend::after {
+    top: 100%;
+    right: auto;
+    left: 0;
+    width: 2px;
+    height: 1rem;
+    margin: 0;
+  }
+  .vb-system-apps::before {
+    top: 0;
+  }
 }
 
 .vb-more {
@@ -1132,24 +1338,72 @@
   gap: 0.5rem;
 }
 
+/* Credentials: the certificates themselves, each linking to its public verification page.
+   A gallery of artifacts, so the images carry the section; the hover answers like the work
+   cards (accent border, lift) without moving on touch. */
 .vb-credentials {
   list-style: none;
   margin: 0;
   padding: 0;
-  font-size: var(--pr-text-sm);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 13rem), 1fr));
+  gap: var(--pr-space-3);
+}
+
+.vb-cert {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
-}
-
-.vb-credentials a {
+  gap: 0.2rem;
+  height: 100%;
   text-decoration: none;
-  border-bottom: 1px solid var(--pr-border);
+  color: inherit;
+  font-size: var(--pr-text-sm);
 }
 
-.vb-credentials a:hover {
+.vb-cert img {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin-bottom: 0.45rem;
+  border: 1px solid var(--pr-border);
+  border-radius: var(--pr-radius-sm);
+  box-shadow: var(--pr-shadow-sm);
+  transition:
+    border-color var(--pr-ease),
+    box-shadow var(--pr-ease),
+    transform var(--pr-ease);
+}
+
+.vb-cert strong {
+  color: var(--pr-text);
+  font-weight: 600;
+  line-height: 1.35;
+}
+
+.vb-cert-meta {
+  color: var(--pr-text-muted);
+}
+
+.vb-cert-verify {
+  margin-top: auto;
+  padding-top: 0.2rem;
+  font-weight: 600;
   color: var(--pr-accent-strong);
-  border-bottom-color: var(--pr-accent-strong);
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  text-underline-offset: 0.2em;
+  transition: text-decoration-color var(--pr-ease);
+}
+
+@media (hover: hover) {
+  .vb-cert:hover img {
+    border-color: var(--pr-accent);
+    box-shadow: var(--pr-shadow-md);
+    transform: translateY(-2px);
+  }
+  .vb-cert:hover .vb-cert-verify {
+    text-decoration-color: currentColor;
+  }
 }
 
 .vb-projects {

@@ -5,6 +5,12 @@ import { projects } from '../data/legacyProjects';
 // Imported (not a /src/... string href) so Vite fingerprints and ships the PDF in the
 // production build — the old href 404ed after `vite build` (harden pass 2026-09-30).
 import cvEsUrl from '../../assets/CV_Andres_Medina_esp.pdf';
+import rapitragoApp from '../../assets/rapitrago-app.webp';
+import certClaudeCode101 from '../../assets/certs/cert-claude-code-101.webp';
+import certClaudeCodeInAction from '../../assets/certs/cert-claude-code-in-action.webp';
+import certClaudeApi from '../../assets/certs/cert-claude-api.webp';
+import certMcp from '../../assets/certs/cert-mcp.webp';
+import certAgentSkills from '../../assets/certs/cert-agent-skills.webp';
 
 export const profile = {
   name: 'Andrés Medina',
@@ -60,7 +66,7 @@ export const experience: ExperienceEntry[] = [
     dates: 'ene. 2023 — actualidad',
     start: 2023,
     end: null,
-    note: 'Construyo y mantengo Chaskyapp y Reforest, ambos en producción; desarrollo Rapitrago para Cumbre-tech. Antes: sitios para CABSA, Kurve y Coolco.',
+    note: 'Desarrollo Rapitrago para Cumbre-tech (backend Laravel y tres apps móviles); construyo y mantengo Chaskyapp y Reforest, ambos en producción. Antes: sitios para CABSA, Kurve y Coolco.',
   },
   {
     role: 'Docente Desarrollador Fullstack JavaScript',
@@ -148,6 +154,14 @@ export const howIWork = {
   },
 };
 
+// A project's architecture, drawn as a diagram next to its card: one backend and the apps
+// that consume it. Only facts that are true of the real system.
+export type WorkSystem = {
+  backend: { name: string; detail: string };
+  apps: { name: string; detail: string }[];
+  caption: string;
+};
+
 export type WorkItem = {
   title: string;
   status?: string;
@@ -155,15 +169,52 @@ export type WorkItem = {
   description: string;
   highlights?: string[];
   stack: string[];
+  system?: WorkSystem;
   todoNote?: string;
   image?: string;
+  imageAlt?: string;
   demo?: string;
 };
 
 const legacyProject = (title: string) => projects.find((p) => p.title === title);
 
-// Current products first, older work after (per doc).
+// Rapitrago leads: by scope, business, technologies and dedicated work it is the largest
+// project (a backend plus three apps), so it opens the list and gets the featured card.
 export const professionalWork: WorkItem[] = [
+  {
+    title: 'Rapitrago',
+    // No lifecycle state on purpose: it is about to go to production and the pill must not
+    // go stale. Add it back only when it is worth a line.
+    status: 'Backend + 3 apps móviles',
+    subtitle: 'Plataforma de delivery de bebidas (cliente: Cumbre-tech)',
+    description:
+      'Trabajo en las cuatro piezas del sistema: un backend Laravel (panel y API para administración, repartidores, comercios y cocina) y tres apps móviles en React Native / Expo que lo consumen: cliente, comercio y repartidor.',
+    highlights: [
+      'Un backend Laravel 11 con cuatro frentes: administración, repartidor, comercio y cocina (KDS)',
+      'Tres apps móviles en Expo / React Native que consumen el mismo backend',
+      'App de cliente con login por OTP de email y Google/Apple, y Sanctum del lado del backend',
+      'Carrito multi-comercio con una home orientada a producto',
+    ],
+    stack: ['React Native', 'Expo', 'Expo Router', 'Zustand', 'Laravel 11', 'PHP'],
+    // The app's home from rapitrago.com's public hero mockup (cut out with transparency).
+    image: rapitragoApp,
+    imageAlt:
+      'App de cliente de Rapitrago: home con categorías, comercios abiertos y seguimiento del repartidor en vivo.',
+    system: {
+      backend: {
+        name: 'Backend Laravel 11',
+        detail: 'Panel y API: administración, repartidor, comercio y cocina (KDS)',
+      },
+      apps: [
+        { name: 'App de cliente', detail: 'React Native · Expo' },
+        { name: 'App de comercio', detail: 'React Native · Expo' },
+        { name: 'App de repartidor', detail: 'React Native · Expo' },
+      ],
+      caption: 'Un backend y tres apps que lo consumen.',
+    },
+    todoNote:
+      'TODO(Andrés): la imagen es el mockup de la hero pública de rapitrago.com, recortado con transparencia. Confirmar con Cumbre-tech que se puede usar y sumar capturas reales de las apps de comercio y repartidor.',
+  },
   {
     title: 'Chaskyapp',
     status: 'SaaS multi-tenant · En producción',
@@ -203,14 +254,6 @@ export const professionalWork: WorkItem[] = [
     stack: ['Next.js', 'React 19', 'Supabase', 'shadcn/ui', 'TanStack Table', 'Zod'],
     todoNote:
       'Sistema privado del cliente. TODO(Andrés): capturas anonimizadas, con permiso del cliente.',
-  },
-  {
-    title: 'Rapitrago',
-    status: 'App mobile + backend · En desarrollo',
-    subtitle: 'Plataforma de delivery de bebidas (cliente: Cumbre-tech)',
-    description:
-      'Trabajo en la app para clientes (React Native / Expo) y en el panel de administración y backend (Laravel).',
-    stack: ['React Native', 'Expo', 'Expo Router', 'Zustand', 'Laravel 11', 'PHP'],
   },
 ];
 
@@ -264,26 +307,44 @@ export const techCategories = [
   },
 ];
 
-// 4 credentials now (doc: "Introduction to Model Context Protocol" was missing before).
+// 5 credentials, newest first. Each links to its public Skilljar verification page and shows
+// the certificate itself. `issued` is the date on that page (shown localised, month + year);
+// the issuer is the one the verification pages state.
 export const credentials = [
-  { name: 'Claude Code in Action', issuer: 'Anthropic Academy', date: '2026', verifyUrl: '#' },
+  {
+    name: 'Claude Code 101',
+    issuer: 'Anthropic Education',
+    issued: '2026-09-07',
+    verifyUrl: 'https://verify.skilljar.com/c/okrmqu3mbxvq',
+    image: certClaudeCode101,
+  },
+  {
+    name: 'Claude Code in Action',
+    issuer: 'Anthropic Education',
+    issued: '2026-05-31',
+    verifyUrl: 'https://verify.skilljar.com/c/8zg74fgjk4kp',
+    image: certClaudeCodeInAction,
+  },
   {
     name: 'Building with the Claude API',
-    issuer: 'Anthropic Academy',
-    date: '2026',
-    verifyUrl: '#',
+    issuer: 'Anthropic Education',
+    issued: '2026-05-29',
+    verifyUrl: 'https://verify.skilljar.com/c/zwj2jwz2oiwj',
+    image: certClaudeApi,
   },
   {
     name: 'Introduction to Model Context Protocol',
-    issuer: 'Anthropic Academy',
-    date: '2026',
-    verifyUrl: '#',
+    issuer: 'Anthropic Education',
+    issued: '2026-05-25',
+    verifyUrl: 'https://verify.skilljar.com/c/hsgb55wskkrt',
+    image: certMcp,
   },
   {
     name: 'Introduction to Agent Skills',
-    issuer: 'Anthropic Academy',
-    date: '2026',
-    verifyUrl: '#',
+    issuer: 'Anthropic Education',
+    issued: '2026-05-18',
+    verifyUrl: 'https://verify.skilljar.com/c/qyhq5zk9q8xx',
+    image: certAgentSkills,
   },
 ];
 
@@ -317,6 +378,7 @@ export const uiEs = {
   chartBefore: 'Antes',
   chartAfter: 'Después',
   credentials: 'Credenciales',
+  verifyCert: 'Verificar certificado',
   // Shown only when the recommendations are in a different language than the page.
   reviewsNote: '',
   writeMeAt: 'Escribime a',
