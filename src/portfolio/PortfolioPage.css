@@ -1048,32 +1048,74 @@
   container-type: inline-size;
 }
 
+/* The featured project's card: the most important piece of the section, so it spans the row,
+   rests lifted (Earned Lift Rule) and shows the product itself: the customer app's capture
+   beside the four products it is made of. Text on the left, the scene on the right. */
 .vb-work-card.is-featured {
+  --brand: #c4730a;
+  --brand-ink: #16140f;
   grid-column: 1 / -1;
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 15rem);
-  grid-template-areas:
-    'main shot'
-    'system system';
-  gap: var(--pr-space-4) var(--pr-space-5);
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.5fr);
+  gap: var(--pr-space-5);
   align-items: center;
-  padding: var(--pr-space-4) 4rem var(--pr-space-4) var(--pr-space-4);
+  padding: var(--pr-space-5) 4rem var(--pr-space-5) var(--pr-space-5);
   box-shadow: var(--pr-shadow-md);
+}
+
+/* A client's identity inside its own card: the one extra colour on the page, used for its
+   logo, its capture and the product icons only (never for text). The dark theme gets the
+   brand orange as is; the light theme a deeper orange that keeps 3:1 against paper. */
+body[data-theme='dark'] .vb-work-card.is-featured {
+  --brand: #faa61b;
+}
+
+.vb-brand-logo {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.vb-brand-logo.on-dark {
+  display: none;
+}
+
+body[data-theme='dark'] .vb-brand-logo.on-dark {
+  display: block;
+}
+
+body[data-theme='dark'] .vb-brand-logo.on-light {
+  display: none;
 }
 
 .vb-work-card.is-featured .vb-work-head {
   font-size: var(--pr-text-lg);
 }
 
+.vb-work-card.is-featured .vb-work-desc {
+  max-width: 44ch;
+}
+
 .vb-work-main {
-  grid-area: main;
   min-width: 0;
+}
+
+.vb-work-logo {
+  display: block;
+  width: 6.5rem;
+  margin-bottom: 0.9rem;
+}
+
+.vb-work-stage {
+  display: grid;
+  grid-template-columns: minmax(0, 15rem) minmax(0, 1fr);
+  gap: 3rem;
+  align-items: center;
 }
 
 /* The product shot: the app's home, cut out with transparency so the client's gradient
    does not leak into the page's one-hue palette. */
 .vb-work-shot {
-  grid-area: shot;
   margin: 0;
 }
 
@@ -1081,174 +1123,102 @@
   display: block;
   width: 100%;
   height: auto;
-  filter: drop-shadow(0 16px 22px rgb(0 0 0 / 0.28));
+  filter: drop-shadow(0 18px 24px rgb(0 0 0 / 0.3));
 }
 
-/* The architecture sits under both, as a band. */
-.vb-work-card.is-featured .vb-system {
-  grid-area: system;
-  padding-top: var(--pr-space-4);
+/* The four products, each with an icon, a name and one line of function. Pedí (the app in
+   the capture) is tied to it by a short line ending in an open point. */
+.vb-products {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.vb-product {
+  position: relative;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  column-gap: 0.9rem;
+  align-items: center;
+  padding: 0.85rem 0;
+  border-bottom: 1px solid var(--pr-border);
+}
+
+.vb-product:first-child {
   border-top: 1px solid var(--pr-border);
 }
 
-.vb-work-card.is-featured .vb-system-map {
-  max-width: 46rem;
+.vb-product > span:last-child {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
 }
 
-@container (max-width: 44rem) {
-  .vb-work-card.is-featured {
-    grid-template-columns: minmax(0, 1fr);
-    grid-template-areas:
-      'main'
-      'shot'
-      'system';
-  }
-  .vb-work-shot {
-    max-width: 15rem;
-    justify-self: center;
-  }
-}
-
-/* ---------- System diagram (SystemDiagram.tsx) ----------
-   Backend as the hub, apps as branches, in the slope chart's grammar: filled point = hub,
-   open points = branches, 2px sage lines. Names are real text; the lines are decoration. */
-
-.vb-system {
-  container-type: inline-size;
-  margin: 0;
-  min-width: 0;
-}
-
-.vb-system-map {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr);
-  column-gap: 2.75rem;
+.vb-product-icon {
+  display: inline-flex;
   align-items: center;
-}
-
-.vb-system-backend {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  gap: 0.2rem;
-  min-width: 0;
-}
-
-.vb-system-backend::after {
-  content: '';
-  position: absolute;
-  top: 50%;
-  right: -2.75rem;
-  width: 2.75rem;
-  height: 2px;
-  margin-top: -1px;
-  background: var(--pr-accent-strong);
-}
-
-.vb-system-backend::before {
-  content: '';
-  position: absolute;
-  top: 50%;
-  right: -2.75rem;
-  width: 10px;
-  height: 10px;
-  margin: -5px 0 0 -5px;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 2.4rem;
+  height: 2.4rem;
   border-radius: 50%;
-  background: var(--pr-accent-strong);
+  border: 1.5px solid var(--brand);
+  color: var(--brand);
 }
 
-.vb-system-apps {
-  list-style: none;
-  margin: 0;
-  padding: 0 0 0 2rem;
-}
-
-.vb-system-apps > li {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  gap: 0.15rem;
-  padding: 0.7rem 0;
-}
-
-/* Tick from the bracket to an open point at each app. */
-.vb-system-apps > li::before {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: -2rem; /* the list's padding is 2rem: the tick starts on the bracket */
-  width: 1.25rem;
-  height: 2px;
-  margin-top: -1px;
-  background: var(--pr-accent-strong);
-}
-
-.vb-system-apps > li::after {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: -0.75rem;
-  width: 9px;
-  height: 9px;
-  box-sizing: border-box;
-  margin: -4.5px 0 0 -4.5px;
-  border-radius: 50%;
-  border: 2px solid var(--pr-accent-strong);
-  background: var(--pr-bg-raised);
-}
-
-/* The bracket: one vertical line through the ticks, from the first centre to the last. */
-.vb-system-apps {
-  position: relative;
-}
-
-.vb-system-apps::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  width: 2px;
-  top: calc(0.7rem + 0.75em);
-  bottom: calc(0.7rem + 0.75em);
-  background: var(--pr-accent-strong);
-}
-
-.vb-system strong {
-  font-size: var(--pr-text-base);
+.vb-product-name {
+  font-size: var(--pr-text-md);
   font-weight: 600;
   color: var(--pr-text);
 }
 
-.vb-system-map span {
+.vb-product-fn {
   font-size: var(--pr-text-sm);
   line-height: 1.45;
   color: var(--pr-text-muted);
 }
 
-.vb-system figcaption {
-  margin-top: var(--pr-space-3);
-  font-size: var(--pr-text-sm);
-  color: var(--pr-text-faint);
+.vb-product.is-tied::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: -3rem;
+  width: 2.2rem;
+  height: 2px;
+  margin-top: -1px;
+  background: var(--brand);
 }
 
-@container (max-width: 30rem) {
-  .vb-system-map {
+.vb-product.is-tied::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: -0.8rem;
+  width: 9px;
+  height: 9px;
+  box-sizing: border-box;
+  margin: -4.5px 0 0 -4.5px;
+  border-radius: 50%;
+  border: 2px solid var(--brand);
+  background: var(--pr-bg-raised);
+}
+
+@container (max-width: 56rem) {
+  .vb-work-card.is-featured {
     grid-template-columns: minmax(0, 1fr);
-    row-gap: 1rem;
+    padding-right: var(--pr-space-4);
   }
-  .vb-system-backend::before {
+  .vb-work-stage {
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--pr-space-4);
+  }
+  .vb-work-shot {
+    max-width: 14rem;
+    justify-self: center;
+  }
+  .vb-product.is-tied::before,
+  .vb-product.is-tied::after {
     display: none;
-  }
-  /* The hub connects downwards into the bracket instead of sideways. */
-  .vb-system-backend::after {
-    top: 100%;
-    right: auto;
-    left: 0;
-    width: 2px;
-    height: 1rem;
-    margin: 0;
-  }
-  .vb-system-apps::before {
-    top: 0;
   }
 }
 

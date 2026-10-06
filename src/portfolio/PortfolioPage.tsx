@@ -19,7 +19,7 @@ import { useRailSpy } from './hooks/useRailSpy';
 import { useLang, type Lang } from './hooks/useLang';
 import ExperienceTimeline from './ExperienceTimeline';
 import TypedRole from './TypedRole';
-import SystemDiagram from './SystemDiagram';
+import ProductIcon from './ProductIcon';
 
 gsap.registerPlugin(ScrollTrigger, useGSAP);
 
@@ -60,6 +60,9 @@ const PortfolioPage: React.FC<Props> = ({ theme, toggleTheme }) => {
   const [lang, setLang] = useLang();
   const c = lang === 'en' ? contentEn : contentEs;
   const { ui } = c;
+  // The featured project (the one made of products) has its own card; the others share one shape.
+  const featuredWork = c.work.find((p) => p.products);
+  const otherWork = c.work.filter((p) => !p.products);
 
   const activeSection = useRailSpy(railNavIds as unknown as string[]);
 
@@ -359,16 +362,94 @@ const PortfolioPage: React.FC<Props> = ({ theme, toggleTheme }) => {
         <section id="portfolio" className="vb-section">
           <h2 className="vb-reveal">{ui.nav.portfolio}</h2>
           <div className="vb-work-list">
-            {c.work.map((p) => {
-              const featured = Boolean(p.system);
-              // The featured project shows all its highlights; the rest keep two and a disclosure.
-              const shown = featured ? p.highlights : p.highlights?.slice(0, 2);
-              const rest = featured ? undefined : p.highlights?.slice(2);
+            {featuredWork && (
+              <div
+                id={workAnchor(featuredWork.title)}
+                className="vb-work-card pr-card vb-reveal is-featured"
+              >
+                <div className="vb-work-main">
+                  {featuredWork.brand && (
+                    <span className="vb-work-logo" aria-hidden="true">
+                      <img
+                        className="vb-brand-logo on-dark"
+                        src={featuredWork.brand.logoOnDark}
+                        alt=""
+                        width={480}
+                        height={361}
+                        loading="lazy"
+                        decoding="async"
+                      />
+                      <img
+                        className="vb-brand-logo on-light"
+                        src={featuredWork.brand.logoOnLight}
+                        alt=""
+                        width={480}
+                        height={361}
+                        loading="lazy"
+                        decoding="async"
+                      />
+                    </span>
+                  )}
+                  <div className="vb-work-head">
+                    <strong>{featuredWork.title}</strong>
+                    {featuredWork.status && (
+                      <span className="pr-pill pr-accent-text">{featuredWork.status}</span>
+                    )}
+                  </div>
+                  {featuredWork.subtitle && (
+                    <p className="vb-work-subtitle">{featuredWork.subtitle}</p>
+                  )}
+                  <p className="vb-work-desc">{featuredWork.description}</p>
+                  {featuredWork.highlights && (
+                    <ul className="vb-bullets">
+                      {featuredWork.highlights.map((h, i) => (
+                        <li key={i}>{h}</li>
+                      ))}
+                    </ul>
+                  )}
+                  {SHOW_TODOS && featuredWork.todoNote && (
+                    <p className="vb-todo">{featuredWork.todoNote}</p>
+                  )}
+                </div>
+                <div className="vb-work-stage">
+                  {featuredWork.image && (
+                    <figure className="vb-work-shot">
+                      <img
+                        src={featuredWork.image}
+                        alt={featuredWork.imageAlt ?? ''}
+                        width={490}
+                        height={610}
+                        loading="lazy"
+                        decoding="async"
+                      />
+                    </figure>
+                  )}
+                  <ul className="vb-products">
+                    {featuredWork.products?.map((pr) => (
+                      <li
+                        key={pr.id}
+                        className={`vb-product${pr.id === 'customer' ? ' is-tied' : ''}`}
+                      >
+                        <span className="vb-product-icon">
+                          <ProductIcon id={pr.id} />
+                        </span>
+                        <span>
+                          <strong className="vb-product-name">{pr.name}</strong>
+                          <span className="vb-product-fn">{pr.audience}</span>
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            )}
+            {otherWork.map((p) => {
+              const rest = p.highlights?.slice(2);
               return (
                 <div
                   key={p.title}
                   id={workAnchor(p.title)}
-                  className={`vb-work-card pr-card vb-reveal${featured ? ' is-featured' : ''}`}
+                  className="vb-work-card pr-card vb-reveal"
                 >
                   <div className="vb-work-main">
                     <div className="vb-work-head">
@@ -377,9 +458,9 @@ const PortfolioPage: React.FC<Props> = ({ theme, toggleTheme }) => {
                     </div>
                     {p.subtitle && <p className="vb-work-subtitle">{p.subtitle}</p>}
                     <p className="vb-work-desc">{p.description}</p>
-                    {shown && (
+                    {p.highlights && (
                       <ul className="vb-bullets">
-                        {shown.map((h, i) => (
+                        {p.highlights.slice(0, 2).map((h, i) => (
                           <li key={i}>{h}</li>
                         ))}
                       </ul>
@@ -394,28 +475,17 @@ const PortfolioPage: React.FC<Props> = ({ theme, toggleTheme }) => {
                         </ul>
                       </details>
                     )}
-                    <div className="vb-tags">
-                      {p.stack.map((s) => (
-                        <span key={s} className="pr-pill">
-                          {s}
-                        </span>
-                      ))}
-                    </div>
+                    {p.stack.length > 0 && (
+                      <div className="vb-tags">
+                        {p.stack.map((s) => (
+                          <span key={s} className="pr-pill">
+                            {s}
+                          </span>
+                        ))}
+                      </div>
+                    )}
                     {SHOW_TODOS && p.todoNote && <p className="vb-todo">{p.todoNote}</p>}
                   </div>
-                  {featured && p.image && (
-                    <figure className="vb-work-shot">
-                      <img
-                        src={p.image}
-                        alt={p.imageAlt ?? ''}
-                        width={490}
-                        height={610}
-                        loading="lazy"
-                        decoding="async"
-                      />
-                    </figure>
-                  )}
-                  {p.system && <SystemDiagram system={p.system} />}
                 </div>
               );
             })}

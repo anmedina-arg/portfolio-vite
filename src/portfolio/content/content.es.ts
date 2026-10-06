@@ -6,6 +6,8 @@ import { projects } from '../data/legacyProjects';
 // production build — the old href 404ed after `vite build` (harden pass 2026-09-30).
 import cvEsUrl from '../../assets/CV_Andres_Medina_esp.pdf';
 import rapitragoApp from '../../assets/rapitrago-app.webp';
+import rapitragoLogoOnDark from '../../assets/rapitrago-logo-onDark.webp';
+import rapitragoLogoOnLight from '../../assets/rapitrago-logo-onLight.webp';
 import certClaudeCode101 from '../../assets/certs/cert-claude-code-101.webp';
 import certClaudeCodeInAction from '../../assets/certs/cert-claude-code-in-action.webp';
 import certClaudeApi from '../../assets/certs/cert-claude-api.webp';
@@ -154,12 +156,12 @@ export const howIWork = {
   },
 };
 
-// A project's architecture, drawn as a diagram next to its card: one backend and the apps
-// that consume it. Only facts that are true of the real system.
-export type WorkSystem = {
-  backend: { name: string; detail: string };
-  apps: { name: string; detail: string }[];
-  caption: string;
+// A project made of several products (apps and panels), each for a different kind of user.
+// Described by function only: a client's technology choices are not public material.
+export type WorkProduct = {
+  id: 'customer' | 'store' | 'driver' | 'admin';
+  name: string;
+  audience: string;
 };
 
 export type WorkItem = {
@@ -169,7 +171,9 @@ export type WorkItem = {
   description: string;
   highlights?: string[];
   stack: string[];
-  system?: WorkSystem;
+  products?: WorkProduct[];
+  // A client's logo (two inks, one per theme): shown inside the card only, never as chrome.
+  brand?: { logoOnDark: string; logoOnLight: string };
   todoNote?: string;
   image?: string;
   imageAlt?: string;
@@ -184,36 +188,39 @@ export const professionalWork: WorkItem[] = [
   {
     title: 'Rapitrago',
     // No lifecycle state on purpose: it is about to go to production and the pill must not
-    // go stale. Add it back only when it is worth a line.
-    status: 'Backend + 3 apps móviles',
+    // go stale. No technology either: the client's stack is not public material.
+    status: 'Cuatro productos',
     subtitle: 'Plataforma de delivery de bebidas (cliente: Cumbre-tech)',
     description:
-      'Trabajo en las cuatro piezas del sistema: un backend Laravel (panel y API para administración, repartidores, comercios y cocina) y tres apps móviles en React Native / Expo que lo consumen: cliente, comercio y repartidor.',
+      'Una plataforma completa: la app donde se pide, la de los comercios, la de los repartidores y el panel desde el que se administra todo. Trabajo en los cuatro productos.',
     highlights: [
-      'Un backend Laravel 11 con cuatro frentes: administración, repartidor, comercio y cocina (KDS)',
-      'Tres apps móviles en Expo / React Native que consumen el mismo backend',
-      'App de cliente con login por OTP de email y Google/Apple, y Sanctum del lado del backend',
-      'Carrito multi-comercio con una home orientada a producto',
+      'Cuatro productos conectados, cada uno pensado para un tipo de usuario',
+      'Seguimiento del pedido en tiempo real y carrito con varios comercios',
     ],
-    stack: ['React Native', 'Expo', 'Expo Router', 'Zustand', 'Laravel 11', 'PHP'],
-    // The app's home from rapitrago.com's public hero mockup (cut out with transparency).
+    stack: [],
+    // The customer app's home from rapitrago.com's public hero mockup (cut out with transparency).
     image: rapitragoApp,
     imageAlt:
       'App de cliente de Rapitrago: home con categorías, comercios abiertos y seguimiento del repartidor en vivo.',
-    system: {
-      backend: {
-        name: 'Backend Laravel 11',
-        detail: 'Panel y API: administración, repartidor, comercio y cocina (KDS)',
+    brand: { logoOnDark: rapitragoLogoOnDark, logoOnLight: rapitragoLogoOnLight },
+    products: [
+      {
+        id: 'customer',
+        name: 'Pedí',
+        audience: 'App para quienes piden: catálogo de varios comercios y seguimiento del pedido',
       },
-      apps: [
-        { name: 'App de cliente', detail: 'React Native · Expo' },
-        { name: 'App de comercio', detail: 'React Native · Expo' },
-        { name: 'App de repartidor', detail: 'React Native · Expo' },
-      ],
-      caption: 'Un backend y tres apps que lo consumen.',
-    },
-    todoNote:
-      'TODO(Andrés): la imagen es el mockup de la hero pública de rapitrago.com, recortado con transparencia. Confirmar con Cumbre-tech que se puede usar y sumar capturas reales de las apps de comercio y repartidor.',
+      { id: 'store', name: 'Vendé', audience: 'App para los comercios: pedidos, catálogo y stock' },
+      {
+        id: 'driver',
+        name: 'Repartí',
+        audience: 'App para repartidores: reciben y entregan los pedidos',
+      },
+      {
+        id: 'admin',
+        name: 'Panel de administración',
+        audience: 'Desde donde se gestiona toda la plataforma',
+      },
+    ],
   },
   {
     title: 'Chaskyapp',

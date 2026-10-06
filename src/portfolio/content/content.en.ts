@@ -129,30 +129,35 @@ export const contentEn: Content = {
   },
   work: withText(professionalWork, [
     {
-      status: 'Backend + 3 mobile apps',
+      status: 'Four products',
       subtitle: 'Beverage delivery platform (client: Cumbre-tech)',
       description:
-        'I work on all four pieces of the system: a Laravel backend (admin panel and API for administration, drivers, stores and kitchen) and three React Native / Expo mobile apps that consume it: customer, store and driver.',
+        'A complete platform: the app where people order, the one for stores, the one for drivers, and the panel that runs it all. I work on all four products.',
       highlights: [
-        'A Laravel 11 backend with four fronts: administration, driver, store and kitchen (KDS)',
-        'Three Expo / React Native mobile apps that consume the same backend',
-        'Customer app with email OTP and Google/Apple sign-in, and Sanctum on the backend',
-        'Multi-store cart with a product-first home',
+        'Four connected products, each built for a different kind of user',
+        'Live order tracking and a cart that spans several stores',
       ],
       imageAlt:
         'Rapitrago customer app: home with categories, open stores and live delivery tracking.',
-      system: {
-        backend: {
-          name: 'Laravel 11 backend',
-          detail: 'Panel and API: administration, driver, store and kitchen (KDS)',
+      products: [
+        {
+          id: 'customer',
+          name: 'Pedí',
+          audience:
+            'App for people ordering: a catalog from several stores and live order tracking',
         },
-        apps: [
-          { name: 'Customer app', detail: 'React Native · Expo' },
-          { name: 'Store app', detail: 'React Native · Expo' },
-          { name: 'Driver app', detail: 'React Native · Expo' },
-        ],
-        caption: 'One backend and three apps that consume it.',
-      },
+        { id: 'store', name: 'Vendé', audience: 'App for stores: orders, catalog and stock' },
+        {
+          id: 'driver',
+          name: 'Repartí',
+          audience: 'App for drivers: they receive and deliver the orders',
+        },
+        {
+          id: 'admin',
+          name: 'Admin panel',
+          audience: 'Where the whole platform is managed',
+        },
+      ],
     },
     {
       status: 'Multi-tenant SaaS · In production',
