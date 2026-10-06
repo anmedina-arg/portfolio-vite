@@ -18,6 +18,12 @@ typography:
     fontWeight: 700
     lineHeight: 1.15
     letterSpacing: '-0.01em'
+  hero-name:
+    fontFamily: "Georgia, 'Times New Roman', serif"
+    fontSize: 'clamp(3.25rem, 2rem + 6vw, 6rem)'
+    fontWeight: 700
+    lineHeight: 1.02
+    letterSpacing: '-0.025em'
   headline:
     fontFamily: "Georgia, 'Times New Roman', serif"
     fontSize: '1.3rem'
@@ -44,6 +50,9 @@ typography:
     fontFamily: "Georgia, 'Times New Roman', serif"
     fontSize: '2.2rem'
     lineHeight: 1
+  terminal:
+    fontFamily: 'ui-monospace, SFMono-Regular, Menlo, Consolas, monospace'
+    fontSize: '0.92em'
   label-micro:
     fontFamily: "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif"
     fontSize: '0.7rem'
@@ -93,28 +102,29 @@ components:
     rounded: '{rounded.sm}'
     padding: '0.55rem 0.7rem'
   identity-rail:
-    width: '320px'
+    width: 'clamp(18rem, 20vw, 21rem)'
 ---
 
 # Design System: Andrés Medina — Portfolio
 
-<!-- Source of truth today: src/portfolio/tokens.css (--pr-* tokens scoped to .pr-root) and src/portfolio/PortfolioPage.css (.vb-*). Variant B was chosen 2026-09-28 but is not yet folded into production; the legacy production styles in src/index.css are NOT this system (only their theme-aware background is kept). -->
+<!-- Source of truth today: src/portfolio/tokens.css (--pr-* tokens scoped to .pr-root) and src/portfolio/PortfolioPage.css (.vb-*, .tr-*). Variant B was chosen 2026-09-28 and promoted to the home route on `dev` 2026-10-05 (not on `main`/production yet); the legacy production styles were removed (src/styles/reset.css replaces them). Chart and typing logic: src/portfolio/ExperienceTimeline.tsx, src/portfolio/TypedRole.tsx. Updated 2026-10-06: fluid layout, hero, charted timeline, typed role line. -->
 
 ## Overview
 
 **Creative North Star: "The Engineer's Dossier"**
 
-The site reads like a well-kept technical dossier: a fixed identity sheet on the left (who, role, location, availability, contact) and, on the right, filed evidence (bio, numbered work, a dated timeline, credentials, recommendations). Every visual device earns its place by organising or proving something: numbers index the work, boxed data points hold facts, one sparkline draws a real measured improvement (88% → 93%). Decoration that proves nothing does not belong.
+The site reads like a well-kept technical dossier: a fixed rail on the left (preferences, quick facts, CV and contact, jump-nav) and, on the right, a hero that gives the name at full scale and the proof of what runs today, followed by filed evidence (numbered work, a charted timeline, credentials, recommendations). Every visual device earns its place by organising or proving something: numbers index the work, boxed data points hold facts, one sparkline draws a real measured improvement (88% → 93%), and one bar chart places the career on a real time axis. Decoration that proves nothing does not belong.
 
-Density is editorial and calm: narrow reading column (≈740px), generous section spacing, small uppercase labels, a single desaturated accent used for marks rather than fills. Warmth comes from the serif headings and the off-white paper over the kept dotted-pattern background. Components are **firm and tactile**: they answer the pointer clearly (lift, shadow, accent border) instead of barely reacting.
+Density is editorial and calm: a fluid content column that takes the space the rail leaves (capped only on ultra-wide screens) with reading measure set per paragraph (≤65ch), generous section spacing, small uppercase labels, a single desaturated accent used for marks rather than fills. Warmth comes from the serif headings and the off-white paper over the kept dotted-pattern background. Components are **firm and tactile**: they answer the pointer clearly (lift, shadow, accent border) instead of barely reacting.
 
 Confirmed anti-references: the **neon/gamer portfolio** (the current production site: neon gradients, violets, Poppins, attention-grabbing effects) and the **corporate CV** (formal, grey, HR-document feel).
 
 **Key Characteristics:**
 
-- Split layout: sticky 320px identity rail + single content column.
+- Split layout: sticky fluid rail (`clamp(18rem, 20vw, 21rem)`) + a fluid content column that opens with the hero.
 - One accent (Sage Field), used as marks, rules, active states and status, never as large fills.
-- Serif display for names and section heads; system sans for everything else.
+- Serif display for names and section heads; system sans for everything else; one typed terminal line in system monospace.
+- Evidence drawn on real axes: the 88% → 93% slope and the 2013–today timeline share one grammar (open point = start, filled point = end).
 - Numbered, boxed, dated evidence: `01`, `02`… on work cards, bordered data points, date pills.
 - Light and dark themes with the same structure; flat paper everywhere with the production dot pattern as a soft texture.
 
@@ -151,12 +161,14 @@ A restrained paper-and-ink palette with a single muted sage accent.
 
 **Display Font:** Georgia (with 'Times New Roman', serif)
 **Body Font:** System UI sans (-apple-system, Segoe UI, Roboto, Helvetica, Arial)
+**Terminal Font:** System monospace (ui-monospace, SFMono-Regular, Menlo, Consolas), the typed role line only
 
 **Character:** A bookish serif for the name and section heads against a neutral, native sans for reading and data: a dossier title page over typed notes.
 
 ### Hierarchy
 
-- **Display** (700, 1.75rem, 1.15): The name in the identity rail. Only one per page.
+- **Hero name** (700, `clamp(3.25rem, 2rem + 6vw, 6rem)`, 1.02, -0.025em): The name in the hero on the split layout; the page's one display-size moment (6rem is the ceiling).
+- **Display** (700, 1.75rem, 1.15): The name in the stacked (mobile) rail. Only one name is visible at a time.
 - **Headline** (700, 1.3rem): Section headings (`h2`), always preceded by a 1.35rem × 2px Sage Field Deep rule.
 - **Title** (600, 0.95rem): Role line, work-card heads, ledger product names, timeline role names.
 - **Body** (400, 1.05rem, 1.75): The bio. Max 62ch.
@@ -169,20 +181,23 @@ Scale tokens: xs 0.7rem · sm 0.8rem · base 0.95rem · md 1.05rem · lg 1.3rem 
 
 ### Named Rules
 
-**The Serif Is a Signature Rule.** Georgia is reserved for the name, section headings, and numerals (work counters, quote mark). Body, UI and data are always sans.
+**The Serif Is a Signature Rule.** Georgia is reserved for the name, section headings, and numerals (work counters, quote mark, timeline years). Body, UI and data are always sans.
+
+**The Typed Input Exception.** One line leaves the sans: the hero's typed role line uses the system monospace stack (`ui-monospace, SFMono-Regular, Menlo, Consolas, monospace`, no download) because it imitates terminal input. Nothing else on the page is monospace.
 
 **The Quiet Label Rule.** Structure is labelled with small uppercase Ink Faint text, never with bigger or bolder headings.
 
 ## Layout
 
-- **Split identity rail (≥861px):** `flex` row. Rail: 320px, `position: sticky; top: 0; height: 100vh`, scrolls internally, right hairline border, stacked blocks (identity → jump-nav → quick info → links → theme toggle) separated by top hairlines. Main column: `flex: 1`, `max-width: 740px`, padding 2rem 2rem 7rem.
-- **Stacked (≤860px):** rail becomes a static header block with a bottom hairline; main padding 1.25rem sides, 4rem bottom.
+- **Split rail (≥861px):** `flex` row. Rail: `clamp(18rem, 20vw, 21rem)`, `position: sticky; top: 0; height: 100vh`, scrolls internally, right hairline border, stacked blocks (preferences → quick info → CV/Email → jump-nav → links) separated by hairlines. Its identity block, tagline and availability box are hidden here: the hero states them. Main column: `flex: 1`, `max-width: 88rem` (a ceiling for ultra-wide screens only), padding `2rem clamp(1.5rem, 4vw, 4rem) 7rem`.
+- **Stacked (≤860px):** rail becomes a static header block with a bottom hairline and shows its identity block again; the hero then shows only the ledger (`display: none` on the hero's identity, so there is always exactly one `h1`). Main padding 1.25rem sides, 4rem bottom.
+- **Fluid grids, no fixed column counts:** repeated content uses `repeat(auto-fit, minmax(min(100%, X), 1fr))`: work cards 26rem (an odd last card spans the row), earlier work 22rem, recommendations 20rem, tech groups 16rem. Components in columns of unknown width use container queries (ledger 30rem, timeline 42rem), never viewport guesses. Fixed pixel widths are limits (`clamp`, `minmax`, `max-width`), not the layout.
 - **Rhythm:** spacing scale 0.4 / 0.75 / 1.25 / 2 / 3.25rem. Sections separated by 3.25rem; in-section groups by 1.25rem; tight inline gaps 0.5–0.6rem.
 - **Jump-nav** is a scroll-spy (`useRailSpy`) marking the section in view.
 
 ## Elevation & Depth
 
-Mostly flat with hairlines, with permission for selective layering. Cards sit on Paper Raised with a near-invisible resting shadow; interaction lifts them. Layered presence at rest is allowed for pieces that deserve emphasis — today exactly two: the "En producción hoy" ledger (About) and the "Cómo trabajo" folio (Experiencia) — but depth stays soft and neutral, never glowing or coloured.
+Mostly flat with hairlines, with permission for selective layering. Cards sit on Paper Raised with a near-invisible resting shadow; interaction lifts them. Layered presence at rest is allowed for pieces that deserve emphasis — today exactly two: the "En producción hoy" ledger (hero) and the "Cómo trabajo" folio (Experiencia) — but depth stays soft and neutral, never glowing or coloured.
 
 ### Shadow Vocabulary
 
@@ -213,14 +228,27 @@ Firm and tactile: every interactive element gives a clear, immediate answer (col
 - **Shadow Strategy:** Resting at rest; Lifted + `translateY(-2px)` on hover (see Elevation).
 - **Border:** 1px Rule; turns Sage Field on hover for work cards and legacy projects.
 - **Internal Padding:** 1.25rem.
+- **Work grid and disclosure:** work cards sit in a fluid two-column grid; each shows two highlight bullets and the rest sits behind a native `<details>` "Ver detalle" in Sage Field Deep (underline on hover). The fully visible content is the claim; the detail is one click away.
 - **Variants:** _Work card_ (large serif decimal-leading-zero counter top-right in Rule colour), _legacy project row_ (thumbnail 96×64, 15% greyscale until hover, small serif counter, slides `translateX(2px)`), _recommendation_ (serif “ quote mark in Sage Field at 60% opacity, italic body).
 
 ### Proof Panels (signature): ledger and folio
 
 The page's two evidence blocks share one construction: Paper Raised, 1px Rule border, 10px radius, Lifted at rest, a header row separated by a hairline, content in hairline-divided rows or columns.
 
-- **"En producción hoy" ledger** (About): label row with a Sage Field Deep status dot, then one row per product — name + one-line purpose left, the fact in Sage Field Deep (tabular numerals) + detail right, an authored arrow. Rows link to the work cards; hover = Wash + arrow nudges 3px.
+- **"En producción hoy" ledger** (hero): label row with a Sage Field Deep status dot, then one row per product — name + one-line purpose left, the fact in Sage Field Deep (tabular numerals) + detail right, an authored arrow. Rows link to the work cards; hover = Wash + arrow nudges 3px.
 - **"Cómo trabajo" folio** (opens Experiencia): serif h3 + the thesis sentence in the header; two columns, _En planta_ (Grupo Arcor) and _En software_ (hoy), with uppercase Sage Field Deep column labels and the source in Ink Muted. The plant column carries an honest two-point slope chart — only the two real measurements (88% → 93%) on an 80–100% scale, open "before" point, filled "after" point, serif value labels, "Antes / Después" axis, caption = the factual sentence (`role="img"` labelled by it). Line draws in on scroll (reduced-motion gated). Columns stack under 640px.
+
+### Hero (signature)
+
+The page opens on the name at full scale (Hero name, Ink), a 3.5rem × 2px Sage Field Deep rule (the section-heading rule turned up), the role line in Sage Field Deep (1.3rem, 600), the tagline in Ink Muted (≤34ch), a live availability line with the status dot, and below it the "En producción hoy" ledger (max 56rem). One display moment, everything else quiet around it. The name is the page's single `h1` (see Layout for how the rail hides its own copy).
+
+### Typed role line
+
+The role line types itself like terminal input: a `>` prompt in Ink Faint, system monospace (see The Typed Input Exception), an underscore caret in Sage Field Deep. It types "Product Engineer", erases it key by key (backspace), types the motto ("Spec first, code later" / "Primero la spec, después el código"), erases it, and rests on the real role. **It plays once (~4.6s) and never loops**; the caret is solid while typing, blinks three times, then goes. Screen readers get all three texts once (visually hidden copy); reduced motion shows the final role immediately with no caret. The texts live in `content.*.ts` as `profile.roleCycle` plus `profile.role`.
+
+### Experience timeline (parallel bars)
+
+Experience is drawn as parallel bars on a real time axis, one lane per role: a 2px Sage Field Deep line, an open point at the start and a filled point at the end (the slope chart's grammar), Arcor in Ink Faint because the accent marks software work. Overlapping contracts overlap on the page, which is the truthful picture of independent work. The axis is **broken on purpose**: 2013–2022 is squeezed into the left 18% with a drawn break mark, and 2022 to today gets the rest, labelled every year through 2026 with an accent "Hoy"/"Today" marker and hairline. Dates come from `start`/`end` in the content (decimal years, `null` = ongoing), "today" from the clock. Under 42rem of its own width each row stacks (label above bar). Notes stay visible under each role.
 
 ### Navigation (rail jump-nav)
 
@@ -251,6 +279,9 @@ Development-only visible placeholder: dashed Rule border, 6px radius, 0.7rem ita
 
 ### Do:
 
+- **Do** give the page one authored motion moment (the typed role line) and let everything else stay still or respond to the pointer; gate it behind `prefers-reduced-motion`.
+- **Do** keep claims readable without interaction and put detail behind `<details>`, not behind hover.
+
 - **Do** keep a single accent (Sage Field family) and use it as marks: rules, dots, borders, text, 8–10% washes.
 - **Do** reserve Georgia for the name, section headings and numerals; everything else in the system sans.
 - **Do** give interactive elements a clear, tactile response: lift (`translateY(-2px)` + Lifted shadow) and/or accent border/underline, 200ms standard ease.
@@ -259,6 +290,11 @@ Development-only visible placeholder: dashed Rule border, 6px radius, 0.7rem ita
 - **Do** gate GSAP motion behind `prefers-reduced-motion: no-preference` and zero out CSS transitions under reduced motion; keep `:focus-visible` outlines (2px Sage Field Deep, 2px offset).
 
 ### Don't:
+
+- **Don't** loop or auto-scroll content (marquees, idle drifts, endless rotators): it fails WCAG 2.2.2 and the dossier tone. A motion sequence plays once and settles on the true state.
+- **Don't** draw a time axis that stops before the present or hides recent years: it makes live work read as stale. The timeline labels every year to 2026 and marks "Hoy".
+- **Don't** set a width in pixels as the layout: use `clamp`, `minmax`, `auto-fit` and container queries; pixels are limits.
+- **Don't** make a second monospace moment: the typed role line is the one exception to "sans for everything else".
 
 - **Don't** reintroduce the grey side-vignette gradient or any surface edge in the page background; a visible seam where the content ends was the reason it was dropped.
 - **Don't** drift toward the neon/gamer look of the current production site: no neon gradients, violets, Poppins/Oswald, glow shadows, or flashy effects.

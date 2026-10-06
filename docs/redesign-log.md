@@ -425,3 +425,48 @@ promotion + old-site removal.
 - Docs moved: `NOTES.md` → `docs/redesign-log.md`; content brief → `docs/content/`.
 - Still open for this phase: `index.html` (lang, title, description, OG, favicon), theme
   persistence, the `SHOW_TODOS` dev notes (remove when the content exists).
+
+## Session 2026-10-06 — critique, fluid layout, hero, charted timeline, typed role
+
+Done on `dev` (not committed at the time of writing). Impeccable critique snapshot:
+`.impeccable/critique/2026-10-06T12-29-31Z__src-portfolio-portfoliopage-tsx.md` (22/32 over
+8 heuristics, 7 and 10 n/a).
+
+**Critique findings still open:** P0 stale CV as the primary button; P1 credentials have no
+verification URLs and the recommendations are weak for a recruiter; P1 mobile has no nav and
+the rail eats the first screen, tap targets under 24px (`summary`, email link, theme switch);
+P2 rail is overloaded and clipped on short laptops.
+
+**Layout made fluid (Andrés: "el sitio no aprovecha bien el ancho").** Rail
+`clamp(18rem, 20vw, 21rem)`; main column no longer capped at 740px (`max-width: 88rem`,
+padding `clamp`); repeated content on `auto-fit` grids (work 26rem, earlier work 22rem,
+recommendations 20rem, tech 16rem); ledger and timeline use container queries. Work cards show
+two highlights and a native `<details>` "Ver detalle" for the rest (`ui.moreDetail`).
+Fixed the ledger header hairline that `.vb-main p { max-width }` cut short (needed a
+two-class selector).
+
+**Timeline drawn as a chart (`ExperienceTimeline.tsx`).** Generated with `/impeccable generate`
+(layout). Round 1 was rejected: the axis stopped at 2025, grouping by start year hid 2025–2026
+and made 2023 look crowded. Round 2, variant 1 accepted: parallel bars, broken axis (2013–2022
+squeezed to 18%), every year to 2026 plus a "Hoy" marker. The "Independiente" lane variant was
+discarded. `ExperienceEntry` gained `start`/`end` (decimal years, `null` = ongoing).
+Per Andrés, Plug-Zone, Virtual Remote Partner and Aythen were contractor engagements, not
+employment (see CONTEXT.md, "Contractor").
+
+**Hero (generate, bolder).** Variant 1 (name leads) accepted with density 0.8 and the loud name
+scale. The name is the single `h1` in the hero on the split layout; the rail's identity block,
+tagline and availability box are hidden ≥861px and shown again when stacked (the hero's identity
+is hidden ≤860px), so one name is visible at a time. The long "Sobre mí" paragraphs are no longer
+rendered (still in `content.*.ts`). `id="about"` now sits on the hero for the scroll-spy.
+
+**Typed role line (`TypedRole.tsx`).** Andrés's idea: roles that swap, in the manner of a CLI
+(letters appear one at a time, erased with backspace). Variant 2 accepted (`>` prompt, system
+monospace, underscore caret). Sequence: Product Engineer → "Spec first, code later" → the real
+role; plays once (~4.6s), no loop; reduced motion shows the final role. Texts in
+`profile.roleCycle` (ES/EN) + `profile.role`. The monospace stack is a registered detector
+exception (`design-system-font`, `.impeccable/config.json`) and a documented exception in
+DESIGN.md. A marquee was not built (auto-moving content without a pause control, WCAG 2.2.2);
+an illustration was not built yet (candidate: Chaskyapp architecture diagram with real facts).
+
+**Docs updated:** DESIGN.md (fluid layout, hero, typed line, timeline, new rules), PRODUCT.md,
+CONTEXT.md, `.impeccable/design.json`.

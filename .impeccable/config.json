@@ -1,0 +1,14 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "design-system-font",
+        "value": "sfmono-regular",
+        "createdAt": "2026-10-06T14:45:10.988Z",
+        "reason": "Intentional: system monospace stack for the typed terminal line in the hero role (TypedRole). Flagged to the user as a departure from the sans rule when the variant was offered; they accepted that variant. Not an explicit font approval. DESIGN.md still needs the exception documented."
+      }
+    ]
+  }
+}

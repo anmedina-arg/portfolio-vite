@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-10-05T13:15:36.504Z",
+  "generatedAt": "2026-10-06T14:58:01.000Z",
   "title": "Design System: Andrés Medina — Portfolio",
   "extensions": {
     "colorMeta": {
@@ -92,7 +92,7 @@
     "typographyMeta": {
       "display": {
         "displayName": "Display",
-        "purpose": "The name in the identity rail. One per page."
+        "purpose": "The name in the stacked (mobile) rail. One name is visible at a time."
       },
       "headline": {
         "displayName": "Headline",
@@ -104,7 +104,7 @@
       },
       "body": {
         "displayName": "Body",
-        "purpose": "The bio, max 62ch."
+        "purpose": "Running text, max 62-65ch (set per paragraph, not on the column)."
       },
       "body-small": {
         "displayName": "Body small",
@@ -113,6 +113,14 @@
       "label": {
         "displayName": "Label",
         "purpose": "Uppercase sub-headings in Ink Faint."
+      },
+      "hero-name": {
+        "displayName": "Hero name",
+        "purpose": "The name in the hero on the split layout; the one display-size moment (6rem ceiling)."
+      },
+      "terminal": {
+        "displayName": "Terminal",
+        "purpose": "The typed role line only: system monospace, imitates terminal input."
       }
     },
     "shadows": [
@@ -139,6 +147,11 @@
         "name": "gsap-reveals",
         "value": "GSAP + ScrollTrigger, gated by gsap.matchMedia('(prefers-reduced-motion: no-preference)')",
         "purpose": "Play once, never reverse: rail accent line draws in and stays (no idle loop, WCAG 2.2.2); section reveals; \"Cómo trabajo\" slope line draw-in."
+      },
+      {
+        "name": "typed-role",
+        "value": "JS timers (no library): type 45ms/key, hold 600ms, erase 22ms/key, 160ms gap; plays once (~4.6s)",
+        "purpose": "The one authored motion moment: the hero role line types and erases two texts then rests on the real role. Caret blinks 3 times then goes. Reduced motion shows the final role immediately."
       }
     ],
     "breakpoints": [
@@ -156,6 +169,21 @@
         "name": "touch",
         "value": "pointer: coarse / hover: none",
         "purpose": "44px targets; hover lifts off, :active feedback on."
+      },
+      {
+        "name": "ledger-container",
+        "value": "@container (max-width: 30rem)",
+        "purpose": "Ledger rows stack the fact under the product name."
+      },
+      {
+        "name": "timeline-container",
+        "value": "@container (max-width: 42rem)",
+        "purpose": "Timeline rows stack the label above the bar."
+      },
+      {
+        "name": "fluid-grids",
+        "value": "repeat(auto-fit, minmax(min(100%, X), 1fr)) with X = 26rem work, 22rem earlier work, 20rem recommendations, 16rem tech",
+        "purpose": "No fixed column counts; the content column is fluid (max-width 88rem)."
       }
     ],
     "background": {
@@ -226,19 +254,49 @@
       "description": "Custom switch over native checkbox.",
       "html": "<label class=\"ds-toggle\"><input type=\"checkbox\"> Modo oscuro</label>",
       "css": ".ds-toggle { display: flex; align-items: center; gap: 0.6rem; font: 0.8rem -apple-system, 'Segoe UI', Roboto, sans-serif; color: #5c5c57; cursor: pointer; } .ds-toggle input { appearance: none; -webkit-appearance: none; margin: 0; width: 2.1rem; height: 1.15rem; border-radius: 999px; border: 1px solid #e4e2db; background: #ffffff; position: relative; cursor: pointer; transition: background-color 200ms, border-color 200ms; } .ds-toggle input::before { content: ''; position: absolute; top: 1px; left: 1px; width: 0.95rem; height: 0.95rem; border-radius: 50%; background: #6b6b64; transition: transform 200ms cubic-bezier(0.4,0,0.2,1), background-color 200ms; } .ds-toggle input:checked { border-color: #7c9885; background: rgb(90 117 99 / 0.08); } .ds-toggle input:checked::before { transform: translateX(0.95rem); background: #56705f; } .ds-toggle input:focus-visible { outline: 2px solid #56705f; outline-offset: 2px; }"
+    },
+    {
+      "name": "Hero Identity",
+      "kind": "custom",
+      "refersTo": "hero-name",
+      "description": "The name at full scale, accent rule, role, tagline and live status that open the page.",
+      "html": "<div class=\"ds-hero\"><h1 class=\"ds-hero-name\">Andrés Medina</h1><span class=\"ds-hero-rule\"></span><p class=\"ds-hero-role\">Full Stack Developer</p><p class=\"ds-hero-tag\">I build products end to end, from client discovery to production.</p><p class=\"ds-hero-status\"><span class=\"ds-dot\"></span>Available for Full Stack or Product Engineer roles</p></div>",
+      "css": ".ds-hero { font-family: -apple-system, 'Segoe UI', Roboto, sans-serif; color: #1c1c1a; } .ds-hero-name { margin: 0; font: 700 3.5rem/1.02 Georgia, 'Times New Roman', serif; letter-spacing: -0.025em; } .ds-hero-rule { display: block; width: 3.5rem; height: 2px; margin: 0.88rem 0; background: #56705f; } .ds-hero-role { margin: 0; font-size: 1.3rem; font-weight: 600; color: #56705f; } .ds-hero-tag { margin: 0.9rem 0 0; max-width: 34ch; font-size: 1.2rem; line-height: 1.45; color: #5c5c57; } .ds-hero-status { display: flex; align-items: center; gap: 0.55rem; margin: 1rem 0 0; font-weight: 600; color: #56705f; } .ds-dot { width: 7px; height: 7px; border-radius: 50%; background: #56705f; }"
+    },
+    {
+      "name": "Typed Role Line",
+      "kind": "custom",
+      "refersTo": "terminal",
+      "description": "The role line imitating terminal input: prompt, monospace text, underscore caret. Types, erases, rests.",
+      "html": "<p class=\"ds-typed\"><span class=\"ds-prompt\">&gt;</span><span>Spec first, code later</span><span class=\"ds-caret\"></span></p>",
+      "css": ".ds-typed { display: inline-flex; align-items: baseline; margin: 0; font: 600 1.2rem ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; color: #56705f; } .ds-prompt { margin-right: 0.6ch; color: #6b6b64; } .ds-caret { display: inline-block; width: 0.6em; height: 2px; margin-left: 2px; background: #56705f; transform: translateY(0.08em); }"
+    },
+    {
+      "name": "Timeline Row",
+      "kind": "custom",
+      "refersTo": "card",
+      "description": "One lane of the experience chart: label left, bar on the time axis right. Open point = start, filled = end.",
+      "html": "<div class=\"ds-tl\"><div class=\"ds-tl-label\"><strong>Contractor</strong> — Plug-Zone <span class=\"ds-pill\">Nov 2023 — Jan 2026</span></div><div class=\"ds-tl-track\"><span class=\"ds-tl-line\"></span><span class=\"ds-tl-dot\"></span><span class=\"ds-tl-dot ds-tl-end\"></span></div></div>",
+      "css": ".ds-tl { display: grid; grid-template-columns: minmax(0, 16rem) minmax(0, 1fr); column-gap: 2rem; align-items: center; padding: 0.7rem 0.25rem; border-bottom: 1px solid #e4e2db; font: 0.8rem/1.5 -apple-system, 'Segoe UI', Roboto, sans-serif; color: #5c5c57; } .ds-tl-label strong { color: #1c1c1a; font-weight: 600; } .ds-pill { display: inline-block; padding: 0.3rem 0.8rem; border: 1px solid #e4e2db; border-radius: 999px; } .ds-tl-track { position: relative; height: 1.25rem; } .ds-tl-line { position: absolute; top: 50%; left: 36%; width: 52%; height: 2px; margin-top: -1px; border-radius: 2px; background: #56705f; } .ds-tl-dot { position: absolute; top: 50%; left: 36%; width: 9px; height: 9px; margin: -4.5px 0 0 -4.5px; box-sizing: border-box; border-radius: 50%; border: 2px solid #56705f; background: #fff; } .ds-tl-dot.ds-tl-end { left: 88%; background: #56705f; }"
     }
   ],
   "narrative": {
     "northStar": "The Engineer's Dossier",
-    "overview": "The site reads like a well-kept technical dossier: a fixed identity sheet on the left (who, role, location, availability, contact) and, on the right, filed evidence (bio, numbered work, a dated timeline, credentials, recommendations). Every visual device earns its place by organising or proving something: numbers index the work, boxed data points hold facts, one sparkline draws a real measured improvement (88% → 93%). Decoration that proves nothing does not belong.\n\nDensity is editorial and calm: narrow reading column (≈740px), generous section spacing, small uppercase labels, a single desaturated accent used for marks rather than fills. Warmth comes from the serif headings and the off-white paper over the kept dotted-pattern background. Components are firm and tactile: they answer the pointer clearly (lift, shadow, accent border) instead of barely reacting.\n\nConfirmed anti-references: the neon/gamer portfolio (the current production site: neon gradients, violets, Poppins, attention-grabbing effects) and the corporate CV (formal, grey, HR-document feel).",
+    "overview": "The site reads like a well-kept technical dossier: a fixed rail on the left (preferences, quick facts, CV and contact, jump-nav) and, on the right, a hero that gives the name at full scale and the proof of what runs today, followed by filed evidence (numbered work, a charted timeline, credentials, recommendations). Every visual device earns its place by organising or proving something: numbers index the work, boxed data points hold facts, one sparkline draws a real measured improvement (88% → 93%), and one bar chart places the career on a real time axis. Decoration that proves nothing does not belong.\n\nDensity is editorial and calm: a fluid content column that takes the space the rail leaves (capped only on ultra-wide screens) with reading measure set per paragraph (≤65ch), generous section spacing, small uppercase labels, a single desaturated accent used for marks rather than fills. Warmth comes from the serif headings and the off-white paper over the kept dotted-pattern background. Components are firm and tactile: they answer the pointer clearly (lift, shadow, accent border) instead of barely reacting.\n\nConfirmed anti-references: the neon/gamer portfolio (the current production site: neon gradients, violets, Poppins, attention-grabbing effects) and the corporate CV (formal, grey, HR-document feel).",
     "keyCharacteristics": [
-      "Split layout: sticky 320px identity rail + single content column.",
+      "Split layout: sticky fluid rail (`clamp(18rem, 20vw, 21rem)`) + a fluid content column that opens with the hero.",
       "One accent (Sage Field), used as marks, rules, active states and status, never as large fills.",
-      "Serif display for names and section heads; system sans for everything else.",
-      "Numbered, boxed, dated evidence: 01, 02… on work cards, bordered data points, date pills.",
+      "Serif display for names and section heads; system sans for everything else; one typed terminal line in system monospace.",
+      "Evidence drawn on real axes: the 88% → 93% slope and the 2013–today timeline share one grammar (open point = start, filled point = end).",
+      "Numbered, boxed, dated evidence: `01`, `02`… on work cards, bordered data points, date pills.",
       "Light and dark themes with the same structure; flat paper everywhere with the production dot pattern as a soft texture."
     ],
     "rules": [
+      {
+        "name": "The AA Floor Rule",
+        "body": "Every text token clears 4.5:1 on Paper, Paper Raised _and_ Sage Field Wash, in both themes (measured minimum 4.62:1). Ink Faint and Sage Field Deep were darkened/lightened for this; new tokens must meet the same floor before use.",
+        "section": "colors"
+      },
       {
         "name": "The One Voice Rule",
         "body": "Sage Field is the only hue. No second accent, no gradients between hues; everything else is paper, ink and rule.",
@@ -251,7 +309,12 @@
       },
       {
         "name": "The Serif Is a Signature Rule",
-        "body": "Georgia is reserved for the name, section headings, and numerals (work counters, quote mark). Body, UI and data are always sans.",
+        "body": "Georgia is reserved for the name, section headings, and numerals (work counters, quote mark, timeline years). Body, UI and data are always sans.",
+        "section": "typography"
+      },
+      {
+        "name": "The Typed Input Exception",
+        "body": "One line leaves the sans: the hero's typed role line uses the system monospace stack (`ui-monospace, SFMono-Regular, Menlo, Consolas, monospace`, no download) because it imitates terminal input. Nothing else on the page is monospace.",
         "section": "typography"
       },
       {
@@ -263,29 +326,30 @@
         "name": "The Earned Lift Rule",
         "body": "Elevation signals either interaction or importance. A piece may rest lifted only if it is the most important thing in its section.",
         "section": "elevation"
-      },
-      {
-        "name": "The AA Floor Rule",
-        "body": "Every text token clears 4.5:1 on Paper, Paper Raised and Sage Field Wash, in both themes (measured minimum 4.62:1). New tokens must meet the same floor before use.",
-        "section": "colors"
       }
     ],
     "dos": [
+      "Do give the page one authored motion moment (the typed role line) and let everything else stay still or respond to the pointer; gate it behind `prefers-reduced-motion`.",
+      "Do keep claims readable without interaction and put detail behind `<details>`, not behind hover.",
       "Do keep a single accent (Sage Field family) and use it as marks: rules, dots, borders, text, 8–10% washes.",
       "Do reserve Georgia for the name, section headings and numerals; everything else in the system sans.",
-      "Do give interactive elements a clear, tactile response: lift (translateY(-2px) + Lifted shadow) and/or accent border/underline, 200ms standard ease.",
+      "Do give interactive elements a clear, tactile response: lift (`translateY(-2px)` + Lifted shadow) and/or accent border/underline, 200ms standard ease.",
       "Do number and box evidence (work counters, data points, date pills) so the page reads as a filed dossier.",
       "Do keep the page one continuous paper surface with the dot texture at ≤6% alpha, and support both themes with the same tokens.",
-      "Do gate GSAP motion behind prefers-reduced-motion: no-preference and zero out CSS transitions under reduced motion; keep :focus-visible outlines (2px Sage Field Deep, 2px offset)."
+      "Do gate GSAP motion behind `prefers-reduced-motion: no-preference` and zero out CSS transitions under reduced motion; keep `:focus-visible` outlines (2px Sage Field Deep, 2px offset)."
     ],
     "donts": [
+      "Don't loop or auto-scroll content (marquees, idle drifts, endless rotators): it fails WCAG 2.2.2 and the dossier tone. A motion sequence plays once and settles on the true state.",
+      "Don't draw a time axis that stops before the present or hides recent years: it makes live work read as stale. The timeline labels every year to 2026 and marks \"Hoy\".",
+      "Don't set a width in pixels as the layout: use `clamp`, `minmax`, `auto-fit` and container queries; pixels are limits.",
+      "Don't make a second monospace moment: the typed role line is the one exception to \"sans for everything else\".",
+      "Don't reintroduce the grey side-vignette gradient or any surface edge in the page background; a visible seam where the content ends was the reason it was dropped.",
       "Don't drift toward the neon/gamer look of the current production site: no neon gradients, violets, Poppins/Oswald, glow shadows, or flashy effects.",
       "Don't drift toward a corporate CV: no grey formality, no dense document tables, no stiff HR tone.",
       "Don't add a second accent colour or fill large areas with the accent.",
       "Don't add decoration that proves nothing; every illustrative element must organise or evidence real content (like the 88% → 93% slope chart, which plots only the two real measurements).",
-      "Don't make hovers so faint they read as broken; components here are firm, not whisper-quiet.",
       "Don't put a thick coloured border on one side of a card or row; emphasis comes from elevation, structure and the accent as a mark.",
-      "Don't reintroduce the grey side-vignette gradient or any surface edge in the page background; a visible seam where the content ends was the reason it was dropped."
+      "Don't make hovers so faint they read as broken; components here are firm, not whisper-quiet."
     ]
   }
 }
