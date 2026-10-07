@@ -20,8 +20,7 @@ import { useLang, type Lang } from './hooks/useLang';
 import ExperienceTimeline from './ExperienceTimeline';
 import TypedRole from './TypedRole';
 import ProductIcon from './ProductIcon';
-import TechLoop from './TechLoop';
-import { techRows } from './data/techRows';
+import TechRibbon from './TechRibbon';
 
 gsap.registerPlugin(ScrollTrigger, useGSAP);
 
@@ -32,7 +31,7 @@ const railNavIds = [
   'about',
   'portfolio',
   'experience',
-  'tech',
+  'credentials',
   'recomendations',
   'contact',
 ] as const;
@@ -53,11 +52,21 @@ const langOptions: { value: Lang; short: string; name: string }[] = [
   { value: 'en', short: 'EN', name: 'English' },
 ];
 
+// Wraps the figures in a sentence (88%, ~300, 13+) so results read first.
+const emph = (s: string) =>
+  s.split(/(~?\d[\d.,]*[+%]?)/).map((t, k) =>
+    k % 2 ? (
+      <strong key={k} className="hw-num">
+        {t}
+      </strong>
+    ) : (
+      t
+    ),
+  );
+
 const PortfolioPage: React.FC<Props> = ({ theme, toggleTheme }) => {
   const mainRef = useRef<HTMLElement>(null);
   const accentPathRef = useRef<SVGPathElement>(null);
-  const sparkPathRef = useRef<SVGPathElement>(null);
-  const sparkDotRef = useRef<SVGCircleElement>(null);
 
   const [lang, setLang] = useLang();
   const c = lang === 'en' ? contentEn : contentEs;
@@ -68,11 +77,7 @@ const PortfolioPage: React.FC<Props> = ({ theme, toggleTheme }) => {
 
   const activeSection = useRailSpy(railNavIds as unknown as string[]);
 
-  // Slope chart geometry: honest two-point chart on an 80–100% scale (only the two
-  // real measurements are drawn — no invented trajectory in between).
   const { metric } = c.howIWork.plant;
-  const slopeY = (pct: number) => 96 - (pct - 80) * 3.6;
-  const slope = { x1: 34, y1: slopeY(metric.from), x2: 196, y2: slopeY(metric.to) };
 
   const jumpTo = (id: string) => (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
@@ -133,33 +138,6 @@ const PortfolioPage: React.FC<Props> = ({ theme, toggleTheme }) => {
             });
         } catch {
           gsap.set(revealTargets, { clearProps: 'opacity,transform' });
-        }
-
-        // "Cómo trabajo" slope (88% → 93%) — the line draws in, then the end point pops in.
-        const sparkPath = sparkPathRef.current;
-        if (sparkPath) {
-          const sparkLength = sparkPath.getTotalLength();
-          gsap.set(sparkPath, { strokeDasharray: sparkLength });
-          const sparkline = gsap.timeline({
-            scrollTrigger: {
-              trigger: sparkPath,
-              start: 'top 85%',
-              toggleActions: 'play none none none',
-            },
-          });
-          sparkline.fromTo(
-            sparkPath,
-            { strokeDashoffset: sparkLength },
-            { strokeDashoffset: 0, duration: 1.1, ease: 'power2.out' },
-          );
-          if (sparkDotRef.current) {
-            sparkline.fromTo(
-              sparkDotRef.current,
-              { scale: 0, transformOrigin: 'center' },
-              { scale: 1, duration: 0.35, ease: 'back.out(2)' },
-              '-=0.15',
-            );
-          }
         }
       });
 
@@ -299,7 +277,7 @@ const PortfolioPage: React.FC<Props> = ({ theme, toggleTheme }) => {
       </aside>
 
       <main id="main" tabIndex={-1} className="vb-main" ref={mainRef}>
-        {/* Hero: identity (name, role, tagline, availability) then proof (the ledger), in the
+        {/* Hero: identity (name, role, tagline, availability) beside a line illustration, in the
             first viewport. On the split layout the rail hides its own identity block and this
             one shows; stacked, it is the other way round (CSS), so the name is never doubled. */}
         <section id="about" className="vb-section vb-hero">
@@ -319,46 +297,42 @@ const PortfolioPage: React.FC<Props> = ({ theme, toggleTheme }) => {
               {c.profile.availability}
             </p>
           </div>
-          <div className="vb-now" role="group" aria-labelledby="vb-now-title">
-            <p className="vb-now-title" id="vb-now-title">
-              <span className="vb-now-dot" aria-hidden="true" />
-              {ui.nowTitle}
-            </p>
-            <ul className="vb-now-list">
-              {c.now.map((item) => (
-                <li key={item.anchor}>
-                  <a className="vb-now-row" href={`#${item.anchor}`} onClick={jumpTo(item.anchor)}>
-                    <span className="vb-now-product">
-                      <strong>{item.product}</strong>
-                      <span className="vb-now-what">{item.what}</span>
-                    </span>
-                    <span className="vb-now-fact">
-                      <strong>{item.fact}</strong>
-                      <span className="vb-now-detail">{item.detail}</span>
-                    </span>
-                    <svg
-                      className="vb-now-arrow"
-                      viewBox="0 0 16 16"
-                      width="14"
-                      height="14"
-                      aria-hidden="true"
-                      focusable="false"
-                    >
-                      <path
-                        d="M3 8h9.5M8.75 4.25 12.5 8l-3.75 3.75"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="1.6"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                    </svg>
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
+          <svg className="vb-hero-art" viewBox="0 0 480 400" aria-hidden="true" focusable="false">
+            <g fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+              <g strokeWidth="1" style={{ stroke: "var(--pr-text-faint)" }}>
+                <path d="M40 46h300M40 40v12M340 40v12" />
+                <path d="M16 70v210M10 70h12M10 280h12" />
+                <path d="M300 104h130M300 98v12M430 98v12" />
+                <path d="M10 338h460" strokeDasharray="2 6" style={{ stroke: "var(--pr-border)" }} />
+              </g>
+              <g stroke="none" fontSize="11" style={{ fill: "var(--pr-text-faint)", fontFamily: "var(--pr-font-body)" }}>
+                <text x="190" y="34" textAnchor="middle">web</text>
+                <text x="365" y="92" textAnchor="middle">mobile</text>
+              </g>
+              <rect x="40" y="70" width="300" height="210" rx="10" style={{ fill: "var(--pr-bg-raised)" }} />
+              <path d="M40 102h300" />
+              <circle cx="62" cy="86" r="3.5" />
+              <circle cx="78" cy="86" r="3.5" />
+              <circle cx="94" cy="86" r="3.5" />
+              <rect x="64" y="126" width="120" height="12" rx="3" style={{ fill: "var(--pr-accent-soft)" }} />
+              <path d="M64 158h200M64 172h160M64 186h180" strokeWidth="5" style={{ stroke: "var(--pr-border)" }} />
+              <rect x="64" y="208" width="76" height="52" rx="6" />
+              <rect x="152" y="208" width="76" height="52" rx="6" />
+              <rect x="240" y="208" width="76" height="52" rx="6" />
+              <rect x="300" y="120" width="130" height="250" rx="20" style={{ fill: "var(--pr-bg)" }} />
+              <path d="M346 136h38" />
+              <path d="M320 168h56" strokeWidth="5" style={{ stroke: "var(--pr-border)" }} />
+              <circle cx="410" cy="168" r="4" style={{ fill: "currentColor" }} stroke="none" />
+              <circle cx="410" cy="168" r="9" style={{ stroke: "var(--pr-accent-soft)" }} strokeWidth="2" />
+              <rect x="318" y="196" width="86" height="30" rx="10" style={{ fill: "var(--pr-bg-raised)" }} />
+              <rect x="338" y="240" width="74" height="30" rx="10" style={{ fill: "var(--pr-accent-soft)" }} />
+              <rect x="318" y="284" width="64" height="30" rx="10" style={{ fill: "var(--pr-bg-raised)" }} />
+              <rect x="318" y="336" width="94" height="20" rx="10" />
+            </g>
+          </svg>
         </section>
+
+        <TechRibbon row="ai" lang={lang} />
 
         <section id="portfolio" className="vb-section">
           <h2 className="vb-reveal">{ui.nav.portfolio}</h2>
@@ -536,128 +510,47 @@ const PortfolioPage: React.FC<Props> = ({ theme, toggleTheme }) => {
           </div>
         </section>
 
+        <TechRibbon row="back" lang={lang} />
+
         <section id="experience" className="vb-section">
           <h2 className="vb-reveal">{ui.nav.experience}</h2>
-
-          {/* "Cómo trabajo" (bolder pass 2026-09-30): the Arcor → software thread as one
-              lifted folio, same vocabulary as the "En producción hoy" ledger. Replaces the
-              case-study card and its side-tab border. */}
-          <article className="vb-how vb-reveal" aria-labelledby="vb-how-title">
-            <header className="vb-how-head">
+          <article className="hw" aria-labelledby="vb-how-title">
+            <header className="hw-head">
               <h3 id="vb-how-title">{ui.howTitle}</h3>
-              <p className="vb-how-thesis">{c.howIWork.thesis}</p>
+              <p className="hw-thesis">{c.howIWork.thesis}</p>
             </header>
-            <div className="vb-how-cols">
-              <div className="vb-how-col">
-                <p className="vb-how-label">
+            <div className="hw-cols">
+              <div className="hw-col">
+                <p className="hw-label">
                   {c.howIWork.plant.label}
-                  <span className="vb-how-source">{c.howIWork.plant.source}</span>
+                  <span>{c.howIWork.plant.source}</span>
                 </p>
-                <figure className="vb-how-chart">
-                  <svg
-                    viewBox="0 0 230 124"
-                    role="img"
-                    aria-labelledby="vb-how-chart-caption"
-                    focusable="false"
-                  >
-                    <line className="vb-how-axis" x1="34" y1="96" x2="196" y2="96" />
-                    <line
-                      className="vb-how-tick"
-                      x1={slope.x1}
-                      y1={slope.y1}
-                      x2={slope.x1}
-                      y2="96"
-                    />
-                    <line
-                      className="vb-how-tick"
-                      x1={slope.x2}
-                      y1={slope.y2}
-                      x2={slope.x2}
-                      y2="96"
-                    />
-                    <path
-                      ref={sparkPathRef}
-                      className="vb-how-slope"
-                      d={`M${slope.x1} ${slope.y1} L${slope.x2} ${slope.y2}`}
-                    />
-                    <circle className="vb-how-point is-from" cx={slope.x1} cy={slope.y1} r="4" />
-                    <circle
-                      ref={sparkDotRef}
-                      className="vb-how-point"
-                      cx={slope.x2}
-                      cy={slope.y2}
-                      r="5"
-                    />
-                    <text
-                      className="vb-how-value is-from"
-                      x={slope.x1}
-                      y={slope.y1 - 12}
-                      textAnchor="middle"
-                    >
-                      {metric.from}%
-                    </text>
-                    <text
-                      className="vb-how-value"
-                      x={slope.x2}
-                      y={slope.y2 - 13}
-                      textAnchor="middle"
-                    >
-                      {metric.to}%
-                    </text>
-                    <text className="vb-how-axis-label" x={slope.x1} y="116" textAnchor="middle">
-                      {ui.chartBefore}
-                    </text>
-                    <text className="vb-how-axis-label" x={slope.x2} y="116" textAnchor="middle">
-                      {ui.chartAfter}
-                    </text>
-                  </svg>
-                  <figcaption id="vb-how-chart-caption">{metric.caption}</figcaption>
-                </figure>
-                <ul className="vb-bullets">
+                <p className="hw-lead">{emph(metric.caption)}</p>
+                <ul className="hw-list">
                   {c.howIWork.plant.points.map((p, i) => (
-                    <li key={i}>{p}</li>
+                    <li key={i}>{emph(p)}</li>
                   ))}
                 </ul>
               </div>
-              <div className="vb-how-col">
-                <p className="vb-how-label">
+              <div className="hw-col">
+                <p className="hw-label">
                   {c.howIWork.software.label}
-                  <span className="vb-how-source">{c.howIWork.software.source}</span>
+                  <span>{c.howIWork.software.source}</span>
                 </p>
-                <ul className="vb-bullets vb-how-list">
-                  {c.howIWork.software.points.map((p, i) => (
-                    <li key={i}>{p}</li>
+                <p className="hw-lead">{emph(c.howIWork.software.points[0])}</p>
+                <ul className="hw-list">
+                  {c.howIWork.software.points.slice(1).map((p, i) => (
+                    <li key={i}>{emph(p)}</li>
                   ))}
                 </ul>
               </div>
             </div>
           </article>
-
           <ExperienceTimeline entries={c.experience} todayLabel={ui.todayLabel} />
         </section>
 
-        <section id="tech" className="vb-section">
-          <h2 className="vb-reveal">{ui.nav.tech}</h2>
-          <div className="vb-tech-ledger">
-            {techRows.map((row) => (
-              <div key={row.id} className={`vb-tech-row is-${row.id} vb-reveal`}>
-                <h3 className="vb-tech-label">{row.label[lang]}</h3>
-                <div className="tl-window">
-                  <TechLoop
-                    className={row.dir === 'right' ? 'tl-track is-right' : 'tl-track'}
-                    items={row.items}
-                    render={(it) => (
-                      <span className="vb-tech-item">
-                        <it.icon aria-hidden="true" />
-                        {it.name}
-                      </span>
-                    )}
-                  />
-                </div>
-              </div>
-            ))}
-          </div>
-          <h3>{ui.credentials}</h3>
+        <section id="credentials" className="vb-section">
+          <h2 className="vb-reveal">{ui.nav.credentials}</h2>
           <ul className="vb-credentials">
             {c.credentials.map((cred) => (
               <li key={cred.verifyUrl} className="vb-reveal">
@@ -687,6 +580,7 @@ const PortfolioPage: React.FC<Props> = ({ theme, toggleTheme }) => {
               </li>
             ))}
           </ul>
+          <TechRibbon row="ui" lang={lang} />
         </section>
 
         <section id="recomendations" className="vb-section">

@@ -29,7 +29,7 @@ export const contentEn: Content = {
       about: 'About',
       portfolio: 'Work',
       experience: 'Experience',
-      tech: 'Technologies',
+      credentials: 'Credentials',
       recomendations: 'Recommendations',
       contact: 'Contact',
     },

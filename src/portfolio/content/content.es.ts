@@ -339,7 +339,7 @@ export const uiEs = {
     about: 'Sobre mí',
     portfolio: 'Mis trabajos',
     experience: 'Experiencia',
-    tech: 'Tecnologías',
+    credentials: 'Credenciales',
     recomendations: 'Recomendaciones',
     contact: 'Contacto',
   },

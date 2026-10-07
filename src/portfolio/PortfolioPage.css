@@ -439,15 +439,46 @@
    accent rule from the section headings turned up, then role, tagline and live status. */
 
 .vb-hero {
-  padding-top: calc(var(--pr-space-4) * 0.8);
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 1.1fr);
+  column-gap: var(--pr-space-5);
+  align-items: center;
+  padding-top: 0;
+}
+
+.vb-hero-name {
+  text-wrap: balance;
+}
+
+/* Hero illustration: line drawing in the accent colour (a web window and a phone). */
+.vb-hero-art {
+  display: block;
+  width: 100%;
+  height: auto;
+  color: var(--pr-accent-strong);
+}
+
+@media (max-width: 860px) {
+  .vb-hero {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .vb-hero-art {
+    max-width: 26rem;
+    margin-inline: auto;
+  }
+}
+
+.vb-hero-id {
+  padding: 6rem 0 4.5rem;
 }
 
 .vb-hero-name {
   margin: 0;
   font-family: var(--pr-font-display);
-  font-size: clamp(3.25rem, 2rem + 6vw, 6rem);
-  line-height: 1.02;
-  letter-spacing: -0.025em;
+  font-size: clamp(3.5rem, 1.5rem + 7vw, 6rem);
+  line-height: 0.98;
+  letter-spacing: -0.03em;
   color: var(--pr-text);
 }
 
@@ -455,13 +486,13 @@
   display: block;
   width: 3.5rem;
   height: 2px;
-  margin: 0.88rem 0;
+  margin: 1.6rem 0 1.4rem;
   background: var(--pr-accent-strong);
 }
 
 .vb-hero-role {
   margin: 0;
-  font-size: var(--pr-text-lg);
+  font-size: var(--pr-text-xl);
   font-weight: 600;
   color: var(--pr-accent-strong);
 }
@@ -535,9 +566,9 @@
 }
 
 .vb-hero .vb-hero-tagline {
-  max-width: 34ch;
-  margin: 0.9rem 0 0;
-  font-size: clamp(1.1rem, 0.9rem + 0.7vw, 1.4rem);
+  max-width: 30ch;
+  margin: 1.6rem 0 0;
+  font-size: clamp(1.25rem, 1rem + 0.9vw, 1.6rem);
   line-height: 1.45;
   color: var(--pr-text-muted);
 }
@@ -546,7 +577,7 @@
   display: flex;
   align-items: center;
   gap: 0.55rem;
-  margin: 1rem 0 0;
+  margin: 2rem 0 0;
   font-size: var(--pr-text-base);
   font-weight: 600;
   color: var(--pr-accent-strong);
@@ -837,159 +868,115 @@
   }
 }
 
-/* ---------- "Cómo trabajo" folio (bolder pass 2026-09-30) ----------
-   Replaces the Arcor case-study card and its 3px side-tab. Same vocabulary as the
-   "En producción hoy" ledger — full hairline border, header row, lifted at rest
-   (the section's most important piece, Earned Lift Rule) — so the page's two proof
-   blocks read as one system: what runs today, and the discipline behind it. */
+/* ---------- "Cómo trabajo" (live pass 2026-10-07) ----------
+   Typographic, no box: the thesis as the section's statement, then two columns that each
+   open with their lead result in display type. Figures inside sentences (88%, ~300, 13+)
+   are set in the display face and accent colour so the results read first. */
 
-.vb-how {
-  margin: 0 0 var(--pr-space-4);
-  background: var(--pr-bg-raised);
-  border: 1px solid var(--pr-border);
-  border-radius: var(--pr-radius);
-  box-shadow: var(--pr-shadow-md);
-  overflow: hidden;
+.hw {
+  margin: 0 0 var(--pr-space-5);
 }
 
-.vb-how-head {
-  padding: var(--pr-space-3);
-  border-bottom: 1px solid var(--pr-border);
+.hw-head {
+  margin-bottom: 1.5rem;
 }
 
-.vb-section .vb-how-head h3 {
-  margin: 0 0 0.45rem;
+.vb-section .hw-head h3 {
+  margin: 0 0 0.9rem;
+  font-family: var(--pr-font-body);
+  font-size: var(--pr-text-xs);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--pr-accent-strong);
+}
+
+.hw-thesis {
+  margin: 0;
+  max-width: 22ch;
   font-family: var(--pr-font-display);
-  font-size: var(--pr-text-lg);
-  font-weight: 700;
-  letter-spacing: -0.005em;
+  font-size: clamp(1.9rem, 1.2rem + 2.6vw, 3rem);
+  line-height: 1.12;
+  letter-spacing: -0.02em;
+  color: var(--pr-text);
+  text-wrap: balance;
+}
+
+.hw-cols {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: var(--pr-space-5);
+}
+
+.hw-col {
+  min-width: 0;
+  padding-top: var(--pr-space-3);
+  border-top: 1px solid var(--pr-border);
+}
+
+.hw-label {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.25rem 0.75rem;
+  margin: 0 0 var(--pr-space-3);
+  font-size: var(--pr-text-xs);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--pr-text-muted);
+}
+
+.hw-label span {
+  font-size: var(--pr-text-sm);
+  font-weight: 500;
+  letter-spacing: 0;
   text-transform: none;
+}
+
+.hw-lead {
+  margin: 0 0 var(--pr-space-3);
+  max-width: 26ch;
+  font-family: var(--pr-font-display);
+  font-size: clamp(1.4rem, 1.05rem + 1vw, 1.9rem);
+  line-height: 1.25;
+  letter-spacing: -0.01em;
   color: var(--pr-text);
 }
 
-.vb-how-thesis {
+.hw-list {
   margin: 0;
-  max-width: 48ch;
-  font-size: var(--pr-text-md);
+  padding: 0;
+  list-style: none;
+}
+
+.hw-list li {
+  max-width: 44ch;
+  padding: 0.85rem 0;
+  border-top: 1px solid var(--pr-border);
+  font-size: var(--pr-text-base);
   line-height: 1.5;
   color: var(--pr-text-muted);
 }
 
-.vb-how-cols {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-}
-
-.vb-how-col {
-  padding: var(--pr-space-3);
-  min-width: 0;
-}
-
-.vb-how-col + .vb-how-col {
-  border-left: 1px solid var(--pr-border);
-}
-
-.vb-how-label {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 0.25rem 0.75rem;
-  margin: 0 0 var(--pr-space-2);
-  font-size: var(--pr-text-xs);
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--pr-accent-strong);
-}
-
-.vb-how-source {
-  font-weight: 500;
-  text-transform: none;
-  letter-spacing: 0;
-  font-size: var(--pr-text-sm);
-  color: var(--pr-text-muted);
-}
-
-.vb-how-chart {
-  margin: 0 0 var(--pr-space-2);
-}
-
-.vb-how-chart svg {
-  display: block;
-  width: 100%;
-  max-width: 260px;
-  height: auto;
-  overflow: visible;
-}
-
-.vb-how-axis {
-  stroke: var(--pr-border);
-  stroke-width: 1;
-}
-
-.vb-how-tick {
-  stroke: var(--pr-border);
-  stroke-width: 1;
-  stroke-dasharray: 2 3;
-}
-
-.vb-how-slope {
-  fill: none;
-  stroke: var(--pr-accent-strong);
-  stroke-width: 2.5;
-  stroke-linecap: round;
-}
-
-.vb-how-point {
-  fill: var(--pr-accent-strong);
-}
-
-.vb-how-point.is-from {
-  fill: var(--pr-bg-raised);
-  stroke: var(--pr-accent-strong);
-  stroke-width: 2;
-}
-
-.vb-how-value {
+.hw-num {
   font-family: var(--pr-font-display);
-  font-size: var(--pr-text-lg);
+  font-size: 1.8em;
   font-weight: 700;
-  fill: var(--pr-accent-strong);
+  line-height: 1;
+  letter-spacing: -0.01em;
+  color: var(--pr-accent-strong);
+  white-space: nowrap;
 }
 
-.vb-how-value.is-from {
-  font-size: var(--pr-text-md);
-  fill: var(--pr-text-muted);
+.hw-lead .hw-num {
+  font-size: 1.15em;
 }
 
-.vb-how-axis-label {
-  font-size: var(--pr-text-xs);
-  font-weight: 600;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  fill: var(--pr-text-muted);
-}
-
-.vb-how-chart figcaption {
-  margin-top: 0.35rem;
-  font-size: var(--pr-text-sm);
-  font-weight: 600;
-  color: var(--pr-text);
-}
-
-.vb-how-list {
-  margin-top: 0;
-  gap: 0.6rem;
-}
-
-@media (max-width: 640px) {
-  .vb-how-cols {
+@media (max-width: 760px) {
+  .hw-cols {
     grid-template-columns: minmax(0, 1fr);
-  }
-  .vb-how-col + .vb-how-col {
-    border-left: none;
-    border-top: 1px solid var(--pr-border);
+    row-gap: var(--pr-space-4);
   }
 }
 
@@ -1009,68 +996,49 @@
 
 /* ---------- Tecnologías ---------- */
 
-/* Technologies: a ledger of three marquee rows (layer label fixed on the left, the track
-   sliding on the right) between hairlines. Rows differ slightly in speed so they never move
-   as one block. The loop mechanics are the shared .tl-* rules below. */
-.vb-tech-ledger {
-  border-top: 1px solid var(--pr-border);
-  margin-bottom: var(--pr-space-3);
-  --tl-gap: 2.5rem;
+/* Technology ribbons (TechRibbon): each marquee row is a seam between two sections, one row
+   per seam, never stacked. Hairlines above and below frame the band; it carries no heading. The
+   loop mechanics are the shared .tl-* rules below. */
+.vb-ribbon {
+  margin: 0 0 var(--pr-space-5);
+  padding: 1.1rem 0;
+  border-block: 1px solid var(--pr-border);
+  --tl-gap: 3rem;
+  --tl-speed: 120s;
 }
 
-.vb-tech-row {
-  display: grid;
-  grid-template-columns: minmax(8rem, 11rem) minmax(0, 1fr);
-  align-items: center;
-  gap: var(--pr-space-3);
-  padding: 1.15rem 0;
-  border-bottom: 1px solid var(--pr-border);
-  --tl-speed: calc(110 * var(--m, 1) * 1s);
+.vb-ribbon.is-back {
+  --tl-speed: 140s;
 }
 
-.vb-tech-row.is-back {
-  --m: 1.2;
+.vb-ribbon.is-ai {
+  --tl-speed: 100s;
 }
 
-.vb-tech-row.is-ai {
-  --m: 0.85;
-}
-
-.vb-tech-label {
-  margin: 0;
-  font-size: var(--pr-text-xs);
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--pr-text-faint);
+/* Inside a section (closing the credentials) it hangs below the content instead. */
+.vb-section > .vb-ribbon {
+  margin: var(--pr-space-5) 0 0;
 }
 
 .vb-tech-item {
   display: inline-flex;
   align-items: center;
-  gap: 0.6rem;
+  gap: 0.75rem;
   white-space: nowrap;
-  font-size: var(--pr-text-md);
+  font-size: var(--pr-text-lg);
   font-weight: 500;
   color: var(--pr-text-muted);
   transition: color var(--pr-ease);
 }
 
 .vb-tech-item svg {
-  width: 1.2rem;
-  height: 1.2rem;
+  width: 1.5rem;
+  height: 1.5rem;
   flex: none;
 }
 
 .vb-tech-item:hover {
   color: var(--pr-accent-strong);
-}
-
-@media (max-width: 640px) {
-  .vb-tech-row {
-    grid-template-columns: minmax(0, 1fr);
-    gap: 0.6rem;
-  }
 }
 
 /* Marquee mechanics shared by every technology row (TechLoop). The track holds the list twice
@@ -1433,8 +1401,8 @@ body[data-theme='dark'] .vb-brand-logo.on-light {
   margin: 0;
   padding: 0;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 13rem), 1fr));
-  gap: var(--pr-space-3);
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr));
+  gap: 1.75rem;
 }
 
 .vb-cert {
