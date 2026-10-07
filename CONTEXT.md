@@ -23,7 +23,7 @@ _Avoid_: tono estrictamente formal/corporativo
 ### Secciones
 
 **Hero**:
-El inicio de la columna de contenido: el nombre a escala grande, la línea de rol, el tagline, la disponibilidad y el panel "En producción hoy". Es la única presentación visible de la identidad en el layout de dos columnas (el rail oculta la suya; apilado en mobile ocurre al revés). El nav lo llama "Sobre mí".
+El inicio de la columna de contenido: el nombre a escala grande, la línea de rol, el tagline, la disponibilidad y una ilustración de línea (el panel "En producción hoy" se retiró el 2026-10-07: repetía los dos productos que ya muestra "Mis trabajos"). Es la única presentación visible de la identidad en el layout de dos columnas (el rail oculta la suya; apilado en mobile ocurre al revés). El nav lo llama "Sobre mí".
 _Avoid_: "Bio" o "About" como sección aparte con párrafos largos — la bio larga ya no se muestra; el contenido sigue en `content.*.ts`
 
 **Línea de rol**:
@@ -34,9 +34,13 @@ _Avoid_: pensarla como un carrusel o marquee — no hay bucles; cualquier movimi
 Sección con la trayectoria real de Andrés (roles, fechas, logros), dibujada como barras paralelas sobre un eje de tiempo real (2013–hoy, con quiebre marcado para comprimir Arcor), más el bloque "Cómo trabajo". No confundir con la grilla de stack.
 _Avoid_: usar "Experiencia" para la grilla de tecnologías — esa colisión existía en el sitio antes de esta sesión (el nav "experience" apuntaba a la grilla de stack)
 
-**Tecnologías**:
-Sección con la grilla de herramientas/stack que Andrés usa, separada en frontend/backend. Antes vivía bajo el nombre "Experience".
-_Avoid_: "Experience", "Skills" (ambiguo con el término "skill" individual dentro de la grilla)
+**Cinta de tecnologías**:
+Una de las tres filas de herramientas/stack (interfaz; backend, datos y mobile; desarrollo con IA), usada sola como separador entre dos secciones: nunca apiladas. Desde el 2026-10-07 no existe una sección "Tecnologías": el stack se reparte en tres cintas (`TechRibbon`) a lo largo de la página.
+_Avoid_: "Tecnologías" como sección, "Experience", "Skills" (ambiguo con el término "skill" individual)
+
+**Credenciales** (sección):
+Sección propia (id `credentials`, en el nav) con los certificados verificables; antes compartía sección con las tecnologías. Cierra con una cinta de tecnologías.
+_Avoid_: llamarla "Tecnologías"
 
 **Trabajo profesional**:
 Tab de "Mis trabajos" con proyectos entregados a clientes reales o en el marco de un rol remunerado. Incluye una fila de proyectos destacados curada aparte del listado completo.

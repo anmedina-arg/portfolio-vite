@@ -560,6 +560,21 @@ three styles (ledger, raised panel of chips, AI row promoted); Andrés accepted 
   one. It pauses under the pointer and is static under reduced motion. Open gap: no pause control
   for keyboard or touch (WCAG 2.2.2), to add before this reaches `main`.
 - **Removed:** `techCategories` and the `tech` content key (ES and EN), no longer rendered, and the
-  old `.vb-tech-grid` / `.vb-tech-group` styles. The nav label `ui.nav.tech` stays.
+  old `.vb-tech-grid` / `.vb-tech-group` styles. The nav label `ui.nav.tech` stayed then; it became `ui.nav.credentials` the same day (see the live pass below).
 - Files: `src/portfolio/TechLoop.tsx`, `src/portfolio/data/techRows.ts`, `.vb-tech-*` and shared
   `.tl-*` rules in `PortfolioPage.css`.
+
+### Live pass: hero, "How I work", credentials and ribbons (2026-10-07)
+
+Run with `/impeccable live`: Andrés picked elements in the browser and chose among three generated variants each time.
+- **Hero:** asked for more air and presence, then for an illustration and an end to the redundancy between the hero's "En producción hoy" ledger and the work list. Chosen: the technical blueprint (a web window and a phone with chat bubbles) beside the name, largest size, tightest header space. The ledger was removed from the hero. Rejected: a process-flow band under the name and an isometric stack behind it.
+- **"Cómo trabajo":** felt generic and empty (a two-point chart, small grey bullets). Chosen: the open typographic variant, thesis as a statement, a lead result per column, figures set in display type via `emph()` (numerals 1.8em, no box). The slope chart, its geometry, refs and scroll animation were deleted as dead code. Rejected: a vertical Arcor → software thread, and three columns mapped to the thesis clauses (that one relied on list positions, which does not survive content edits).
+- **Credentials and ribbons:** Andrés asked to split the old Tecnologías section: credentials on their own and the marquees used separately as decoration, never the three together. Decided (option A of two): one ribbon per seam. Final placement: AI between the hero and "Mis trabajos", Backend between "Mis trabajos" and "Experiencia", Interfaz closing "Credenciales" (AI and Interfaz were swapped at his request after the first placement). `TechRibbon` replaces the ledger markup; the nav id and label went from `tech` / "Tecnologías" to `credentials` / "Credenciales" (ES and EN). The AI row belongs with the Anthropic certificates, which is why it first sat under them.
+- **Live-mode notes:** a variant can only replace the element it wraps, so edits to other seams were made directly, after the variants were discarded. A session left in error state kept the browser from selecting the right element until it was closed with `live-complete --discarded`. A regex written through a shell lost its backslashes once and highlighted the letter "d" everywhere; check escapes when generating code with scripts.
+
+Open after this pass:
+- The `now` data in `content.es.ts` / `content.en.ts` and the `.vb-now*` styles are no longer used by anything.
+- The stack is no longer readable in one place; if recruiters need it at a glance, add a plain-text line or fold it into a project card.
+- No pause control on the ribbons for keyboard or touch users (WCAG 2.2.2), still to add before `main`.
+- `.impeccable/design.json` was not regenerated; run `/impeccable document`.
+- None of this pass was reviewed on screen by the assistant; Andrés judged each result in the browser.
