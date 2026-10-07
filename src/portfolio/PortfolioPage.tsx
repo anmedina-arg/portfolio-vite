@@ -268,7 +268,6 @@ const PortfolioPage: React.FC<Props> = ({ theme, toggleTheme }) => {
               </a>
             )}
           </div>
-          {SHOW_TODOS && <span className="vb-todo">{c.profile.cvTodo}</span>}
         </div>
 
         {/* A real <nav> element collides with the unscoped `nav {}` rule in

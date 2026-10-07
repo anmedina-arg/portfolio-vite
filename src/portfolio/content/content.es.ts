@@ -27,7 +27,6 @@ export const profile = {
     'Full Stack Developer. Hoy mantengo dos productos en producción: Chaskyapp, un SaaS multi-tenant de pedidos por WhatsApp que usan dos marcas reales, y Reforest, el sistema de gestión de producción que un equipo de laboratorio forestal usa todos los días.',
     'Antes del software fui ingeniero de procesos en Grupo Arcor durante 9 años, liderando la mejora continua de la planta. Esa forma de trabajar la aplico al desarrollo: primero la especificación, las decisiones documentadas y los resultados medidos. Trabajo con Claude Code bajo Spec-Driven Development.',
   ],
-  cvTodo: 'TODO(Andrés): CV desactualizado — exportar el nuevo y reemplazar el PDF',
 };
 
 // "En producción hoy" ledger in the first viewport — every fact restates what the
