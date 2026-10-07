@@ -288,32 +288,6 @@ export const legacyWork: WorkItem[] = [
   },
 ];
 
-export const techCategories = [
-  {
-    label: 'Frontend',
-    items: [
-      'TypeScript',
-      'JavaScript',
-      'React',
-      'Next.js',
-      'Tailwind',
-      'shadcn/ui',
-      'Zustand',
-      'TanStack Query',
-      'Zod',
-    ],
-  },
-  { label: 'Mobile', items: ['React Native', 'Expo'] },
-  {
-    label: 'Backend y datos',
-    items: ['Node.js', 'Express', 'Supabase', 'PostgreSQL', 'Prisma', 'Laravel'],
-  },
-  {
-    label: 'Desarrollo con IA',
-    items: ['Claude Code', 'Spec-Driven Development', 'Agent Skills', 'MCP'],
-  },
-];
-
 // 5 credentials, newest first. Each links to its public Skilljar verification page and shows
 // the certificate itself. `issued` is the date on that page (shown localised, month + year);
 // the issuer is the one the verification pages state.
@@ -401,7 +375,6 @@ export const contentEs = {
   howIWork: howIWork,
   work: professionalWork,
   legacy: legacyWork,
-  tech: techCategories,
   credentials: credentials,
 };
 

@@ -107,7 +107,7 @@ components:
 
 # Design System: Andrés Medina — Portfolio
 
-<!-- Source of truth today: src/portfolio/tokens.css (--pr-* tokens scoped to .pr-root) and src/portfolio/PortfolioPage.css (.vb-*, .tr-*). Variant B was chosen 2026-09-28 and promoted to the home route on `dev` 2026-10-05 (not on `main`/production yet); the legacy production styles were removed (src/styles/reset.css replaces them). Chart and typing logic: src/portfolio/ExperienceTimeline.tsx, src/portfolio/TypedRole.tsx. Updated 2026-10-06: fluid layout, hero, charted timeline, typed role line. -->
+<!-- Source of truth today: src/portfolio/tokens.css (--pr-* tokens scoped to .pr-root) and src/portfolio/PortfolioPage.css (.vb-*, .tr-*). Variant B was chosen 2026-09-28 and promoted to the home route on `dev` 2026-10-05 (not on `main`/production yet); the legacy production styles were removed (src/styles/reset.css replaces them). Chart and typing logic: src/portfolio/ExperienceTimeline.tsx, src/portfolio/TypedRole.tsx. Technology ledger: src/portfolio/TechLoop.tsx, src/portfolio/data/techRows.ts (.vb-tech-*, shared .tl-* loop mechanics). Updated 2026-10-06: fluid layout, hero, charted timeline, typed role line. Updated 2026-10-07: technology section redrawn as a ledger of three marquee rows with logos. -->
 
 ## Overview
 
@@ -193,7 +193,7 @@ Scale tokens: xs 0.7rem · sm 0.8rem · base 0.95rem · md 1.05rem · lg 1.3rem 
 
 - **Split rail (≥861px):** `flex` row. Rail: `clamp(18rem, 20vw, 21rem)`, `position: sticky; top: 0; height: 100vh`, scrolls internally, right hairline border, stacked blocks (preferences → quick info → CV/Email → jump-nav → links) separated by hairlines. Its identity block, tagline and availability box are hidden here: the hero states them. Main column: `flex: 1`, `max-width: 88rem` (a ceiling for ultra-wide screens only), padding `2rem clamp(1.5rem, 4vw, 4rem) 7rem`.
 - **Stacked (≤860px):** rail becomes a static header block with a bottom hairline and shows its identity block again; the hero then shows only the ledger (`display: none` on the hero's identity, so there is always exactly one `h1`). Main padding 1.25rem sides, 4rem bottom.
-- **Fluid grids, no fixed column counts:** repeated content uses `repeat(auto-fit, minmax(min(100%, X), 1fr))`: work cards 26rem (an odd last card spans the row), earlier work 22rem, recommendations 20rem, tech groups 16rem. Components in columns of unknown width use container queries (ledger 30rem, timeline 42rem), never viewport guesses. Fixed pixel widths are limits (`clamp`, `minmax`, `max-width`), not the layout.
+- **Fluid grids, no fixed column counts:** repeated content uses `repeat(auto-fit, minmax(min(100%, X), 1fr))`: work cards 26rem (an odd last card spans the row), earlier work 22rem, recommendations 20rem (the technology ledger is not a grid: it is three full-width rows). Components in columns of unknown width use container queries (ledger 30rem, timeline 42rem), never viewport guesses. Fixed pixel widths are limits (`clamp`, `minmax`, `max-width`), not the layout.
 - **Rhythm:** spacing scale 0.4 / 0.75 / 1.25 / 2 / 3.25rem. Sections separated by 3.25rem; in-section groups by 1.25rem; tight inline gaps 0.5–0.6rem.
 - **Jump-nav** is a scroll-spy (`useRailSpy`) marking the section in view.
 
@@ -221,7 +221,7 @@ Firm and tactile: every interactive element gives a clear, immediate answer (col
 ### Pills (chips)
 
 - **Style:** Transparent, 1px Rule border, full radius, 0.8rem Ink Muted text, 0.3rem × 0.8rem padding.
-- **Uses:** Dates in the timeline, tech stack tags, and the **status pill** ("En producción" etc.) in Sage Field Deep text.
+- **Uses:** Dates in the timeline and the **status pill** ("En producción" etc.) in Sage Field Deep text.
 
 ### Cards / Containers
 
@@ -240,6 +240,16 @@ The page's two evidence blocks share one construction: Paper Raised, 1px Rule bo
 
 - **"En producción hoy" ledger** (hero): label row with a Sage Field Deep status dot, then one row per product — name + one-line purpose left, the fact in Sage Field Deep (tabular numerals) + detail right, an authored arrow. Rows link to the work cards; hover = Wash + arrow nudges 3px.
 - **"Cómo trabajo" folio** (opens Experiencia): serif h3 + the thesis sentence in the header; two columns, _En planta_ (Grupo Arcor) and _En software_ (hoy), with uppercase Sage Field Deep column labels and the source in Ink Muted. The plant column carries an honest two-point slope chart — only the two real measurements (88% → 93%) on an 80–100% scale, open "before" point, filled "after" point, serif value labels, "Antes / Después" axis, caption = the factual sentence (`role="img"` labelled by it). Line draws in on scroll (reduced-motion gated). Columns stack under 640px.
+
+### Technology ledger (marquee rows)
+
+Technologies are not tags: they are a ledger of three rows between 1px Rule hairlines, grouped by layer — _Interfaz_ (HTML, CSS, TypeScript, React, Next.js, Tailwind, shadcn/ui, Zustand, TanStack Query, Zod), _Backend, datos y mobile_ (Node.js, Express, PHP, Laravel, Supabase, PostgreSQL, Prisma, React Native, Expo) and _Desarrollo con IA_ (Claude, Claude Code, Agent Skills, Subagentes, Hooks, MCP, Claude API, SDD; limited to what the Anthropic credentials cover, plus SDD, which is the working method). Chosen by Andrés from three generated compositions (2026-10-07: ledger, raised panel of chips, AI row promoted); the evidence matrix proposed first was dropped because it tied technologies to two products and hid bootcamp teaching and other real use.
+
+- **Row:** a two-column grid, the layer label fixed on the left (label micro: 0.7rem, 600, 0.08em, uppercase, Ink Faint; 8–11rem) and the marquee window on the right; the label sits above the track under 640px. 1.15rem vertical padding, hairline below each row.
+- **Item:** the technology's logo (1.2rem, monochrome, drawn in `currentColor` so it takes the text colour; Simple Icons marks, Tabler glyphs where no logo exists) + its name (1.05rem, 500, Ink Muted). Hover = Sage Field Deep. Brand colours never appear: the One Voice Rule holds for logos.
+- **Motion:** each row slides continuously, rows 1 and 3 toward the left and row 2 toward the right, at about 110s per half-track (rows 0.85×/1×/1.2× so they never move as one block). The track holds four copies of the list and moves by half its width, so the loop is seamless even on an ultra-wide column; only the first copy is exposed to assistive tech. The window fades to transparent over its outer 7% on each side. It pauses while the pointer is over it.
+- **Reduced motion:** no animation, no mask, the extra copies are removed and each row wraps as a plain list.
+- **Data:** `techRows` (labels in ES/EN; names are not translated). Mechanics are shared `.tl-*` rules in `PortfolioPage.css`, the component is `TechLoop`.
 
 ### Credentials gallery
 
@@ -290,7 +300,7 @@ Development-only visible placeholder: dashed Rule border, 6px radius, 0.7rem ita
 
 ### Do:
 
-- **Do** give the page one authored motion moment (the typed role line) and let everything else stay still or respond to the pointer; gate it behind `prefers-reduced-motion`.
+- **Do** give the page one authored motion moment (the typed role line) plus the one sanctioned loop (the technology marquee), and let everything else stay still or respond to the pointer; gate both behind `prefers-reduced-motion`.
 - **Do** keep claims readable without interaction and put detail behind `<details>`, not behind hover.
 
 - **Do** keep a single accent (Sage Field family) and use it as marks: rules, dots, borders, text, 8–10% washes.
@@ -302,7 +312,7 @@ Development-only visible placeholder: dashed Rule border, 6px radius, 0.7rem ita
 
 ### Don't:
 
-- **Don't** loop or auto-scroll content (marquees, idle drifts, endless rotators): it fails WCAG 2.2.2 and the dossier tone. A motion sequence plays once and settles on the true state.
+- **Don't** loop or auto-scroll content (idle drifts, endless rotators, a second marquee): it fails WCAG 2.2.2 and the dossier tone. A motion sequence plays once and settles on the true state. The one exception, chosen by Andrés on 2026-10-07, is the technology marquee: it is slow, carries no claim that is not also in the page text, pauses under the pointer and disappears under reduced motion. **Open gap:** it has no pause control for keyboard or touch users, which WCAG 2.2.2 asks for on motion longer than 5s; add one before this goes to `main`.
 - **Don't** draw a time axis that stops before the present or hides recent years: it makes live work read as stale. The timeline labels every year to 2026 and marks "Hoy".
 - **Don't** set a width in pixels as the layout: use `clamp`, `minmax`, `auto-fit` and container queries; pixels are limits.
 - **Don't** make a second monospace moment: the typed role line is the one exception to "sans for everything else".

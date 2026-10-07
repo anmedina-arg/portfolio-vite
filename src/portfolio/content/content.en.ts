@@ -12,7 +12,6 @@ import {
   experience,
   legacyWork,
   professionalWork,
-  techCategories,
   type Content,
 } from './content.es';
 
@@ -188,12 +187,6 @@ export const contentEn: Content = {
     { description: 'Progressive website with a blog, built from Figma designs.' },
     { description: 'Complete, responsive corporate website built from Figma designs.' },
     { description: 'Landing page with routes for ticket and NFT sales.' },
-  ]),
-  tech: withText(techCategories, [
-    {},
-    {},
-    { label: 'Backend & data' },
-    { label: 'AI-assisted development' },
   ]),
   credentials: contentEs.credentials,
 };

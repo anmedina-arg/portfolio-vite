@@ -539,3 +539,27 @@ app's capture beside the four products, Pedí tied to it). Decisions behind it:
   the `map`; the live wrapper of a variant must span the grid row (preview-only rule).
 Closed the same day: Andrés confirmed he may use the logo and the capture and that the related
 TODOs are fine, so the card's TODO note was removed. No other captures of the other apps exist.
+
+### Technologies as marquee rows (2026-10-07)
+
+The section was 21 loose pills in four groups: it listed, it did not prove anything. Andrés asked
+for a redesign with animation and marquees. `/impeccable shape` proposed three directions; he
+dropped the evidence matrix I recommended (tying technologies to Chaskyapp and Reforest ignored
+his CSS depth and the bootcamp teaching, and Arcor used no software tools) and asked instead for
+logos on every pill and a third row for AI concepts backed by his courses. `generate` produced
+three styles (ledger, raised panel of chips, AI row promoted); Andrés accepted **the ledger** at
+110 s per lap.
+- **Three rows, grouped by layer:** Interfaz, Backend/datos/mobile, Desarrollo con IA. Added HTML,
+  CSS (his strength) and PHP, which the old list lacked. The AI row is Claude, Claude Code, Agent
+  Skills, Subagentes, Hooks, MCP, Claude API and SDD. Open: which course covers Subagentes, Hooks
+  and SDD (SDD is the method, not a course), so nothing links to a certificate yet.
+- **Logos:** Simple Icons marks in `currentColor` (one-hue rule holds), Tabler glyphs where there is
+  no logo (Zustand, Claude, MCP and the AI concepts). The Lucide pack was tried first and left Vite's
+  dependency optimizer stuck on a 504, which blanked the page until it was swapped for Tabler.
+- **A bounded exception to "no looping content":** DESIGN.md forbade marquees; Andrés chose this
+  one. It pauses under the pointer and is static under reduced motion. Open gap: no pause control
+  for keyboard or touch (WCAG 2.2.2), to add before this reaches `main`.
+- **Removed:** `techCategories` and the `tech` content key (ES and EN), no longer rendered, and the
+  old `.vb-tech-grid` / `.vb-tech-group` styles. The nav label `ui.nav.tech` stays.
+- Files: `src/portfolio/TechLoop.tsx`, `src/portfolio/data/techRows.ts`, `.vb-tech-*` and shared
+  `.tl-*` rules in `PortfolioPage.css`.

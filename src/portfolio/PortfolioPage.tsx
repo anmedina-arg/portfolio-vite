@@ -20,6 +20,8 @@ import { useLang, type Lang } from './hooks/useLang';
 import ExperienceTimeline from './ExperienceTimeline';
 import TypedRole from './TypedRole';
 import ProductIcon from './ProductIcon';
+import TechLoop from './TechLoop';
+import { techRows } from './data/techRows';
 
 gsap.registerPlugin(ScrollTrigger, useGSAP);
 
@@ -637,16 +639,21 @@ const PortfolioPage: React.FC<Props> = ({ theme, toggleTheme }) => {
 
         <section id="tech" className="vb-section">
           <h2 className="vb-reveal">{ui.nav.tech}</h2>
-          <div className="vb-tech-grid">
-            {c.tech.map((cat, i) => (
-              <div key={i} className="vb-tech-group vb-reveal">
-                <h3>{cat.label}</h3>
-                <div className="vb-tags">
-                  {cat.items.map((t) => (
-                    <span key={t} className="pr-pill">
-                      {t}
-                    </span>
-                  ))}
+          <div className="vb-tech-ledger">
+            {techRows.map((row) => (
+              <div key={row.id} className={`vb-tech-row is-${row.id} vb-reveal`}>
+                <h3 className="vb-tech-label">{row.label[lang]}</h3>
+                <div className="tl-window">
+                  <TechLoop
+                    className={row.dir === 'right' ? 'tl-track is-right' : 'tl-track'}
+                    items={row.items}
+                    render={(it) => (
+                      <span className="vb-tech-item">
+                        <it.icon aria-hidden="true" />
+                        {it.name}
+                      </span>
+                    )}
+                  />
                 </div>
               </div>
             ))}
