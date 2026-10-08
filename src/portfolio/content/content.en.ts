@@ -5,7 +5,7 @@
 // Spanish data by index, so only the words live here. `Content` enforces the shape.
 //
 // Feedback quotes are NOT translated on purpose: they are other people's words, so
-// they render in their original Spanish (marked lang="es") with `ui.feedbackNote`.
+// they render in their original Spanish (marked lang="es") with `ui.feedbackLead`.
 import cvEnUrl from '../../assets/CV_Andres_Medina_eng.pdf';
 import {
   contentEs,
@@ -49,11 +49,8 @@ export const contentEn: Content = {
     chartAfter: 'After',
     credentials: 'Credentials',
     verifyCert: 'Verify certificate',
-    feedbackNote:
-      'Verbatim excerpts from Desafío Latam class observation reports and comments from peers, in their original Spanish. The reports also list areas to improve.',
-    carouselRole: 'carousel',
-    prevLabel: 'Previous',
-    nextLabel: 'Next',
+    feedbackLead:
+      'Four observation reports of my classes at Desafío Latam (2024–2026, two cohorts). Verbatim excerpts, in their original Spanish.',
     writeMeAt: 'Write to me at',
   },
   profile: {

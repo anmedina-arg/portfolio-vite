@@ -360,11 +360,8 @@ export const uiEs = {
   credentials: 'Credenciales',
   verifyCert: 'Verificar certificado',
   // Shown only when the recommendations are in a different language than the page.
-  feedbackNote:
-    'Fragmentos textuales de informes de observación de clases de Desafío Latam y comentarios de compañeros. Los informes también señalan oportunidades de mejora.',
-  carouselRole: 'carrusel',
-  prevLabel: 'Anterior',
-  nextLabel: 'Siguiente',
+  feedbackLead:
+    'Cuatro informes de observación de mis clases en Desafío Latam (2024–2026, dos cohortes). Fragmentos textuales.',
   writeMeAt: 'Escribime a',
 };
 

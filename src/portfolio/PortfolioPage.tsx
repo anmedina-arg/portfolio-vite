@@ -11,7 +11,6 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useGSAP } from '@gsap/react';
 import './PortfolioPage.css';
-import FeedbackCarousel from './FeedbackCarousel';
 import { feedback } from './data/feedback';
 import { contactDetails } from './data/contact';
 import { contentEs } from './content/content.es';
@@ -578,20 +577,17 @@ const PortfolioPage: React.FC<Props> = ({ theme, toggleTheme }) => {
 
         <section id="feedback" className="vb-section">
           <h2 className="vb-reveal">{ui.nav.feedback}</h2>
-          <p className="vb-feedback-note">{ui.feedbackNote}</p>
-          <FeedbackCarousel
-            slides={feedback.map((f) => ({
-              id: f.id,
-              quote: f.quote,
-              author: typeof f.author === 'string' ? f.author : f.author[lang],
-              context: f.context?.[lang],
-            }))}
-            quoteLang={REVIEWS_LANG}
-            label={ui.nav.feedback}
-            roleDescription={ui.carouselRole}
-            prevLabel={ui.prevLabel}
-            nextLabel={ui.nextLabel}
-          />
+          <p className="vb-feedback-lead">{ui.feedbackLead}</p>
+          <ul className="vb-feedback">
+            {feedback.map((f) => (
+              <li key={f.id}>
+                <figure className="vb-quote">
+                  <blockquote lang={REVIEWS_LANG}>&ldquo;{f.quote}&rdquo;</blockquote>
+                  <figcaption>{f.context[lang]}</figcaption>
+                </figure>
+              </li>
+            ))}
+          </ul>
         </section>
 
         {/* Closing destination: restates availability (peak-end) and shows the address

@@ -1544,11 +1544,11 @@ body[data-theme='dark'] .vb-brand-logo.on-light {
   margin: 0.2rem 0 0;
 }
 
-/* ---------- Feedback (carousel) ---------- */
+/* ---------- Feedback ---------- */
 
-/* Observation-report excerpts and peers' words in one manual carousel: a scroll-snap track with
-   two buttons, never autoplaying or looping. The next card is left peeking as the affordance. */
-.vb-feedback-note {
+/* Two verbatim excerpts, set as plain quotes: a fact line first, then the words. No carousel,
+   no cards: with this little material the text itself is the object. */
+.vb-feedback-lead {
   margin: calc(var(--pr-space-2) * -1) 0 var(--pr-space-3);
   max-width: 62ch;
   font-size: var(--pr-text-sm);
@@ -1556,109 +1556,42 @@ body[data-theme='dark'] .vb-brand-logo.on-light {
   color: var(--pr-text-muted);
 }
 
-.fb-nav {
-  display: flex;
-  justify-content: flex-end;
-  gap: 0.5rem;
-  margin-bottom: var(--pr-space-2);
-}
-
-.fb-btn {
+.vb-feedback {
   display: grid;
-  place-items: center;
-  width: 2.5rem;
-  height: 2.5rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--pr-space-4);
+  margin: 0;
   padding: 0;
-  color: var(--pr-text);
-  background: var(--pr-bg-raised);
-  border: 1px solid var(--pr-border);
-  border-radius: 50%;
-  cursor: pointer;
-  transition:
-    border-color var(--pr-ease),
-    color var(--pr-ease),
-    opacity var(--pr-ease);
-}
-
-.fb-btn:hover:not(:disabled) {
-  color: var(--pr-accent-strong);
-  border-color: var(--pr-accent);
-}
-
-.fb-btn:disabled {
-  opacity: 0.4;
-  cursor: default;
-}
-
-.fb-track {
-  display: flex;
-  gap: var(--pr-space-3);
-  margin: 0;
-  padding: 0.25rem 0;
   list-style: none;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  scrollbar-width: none;
 }
 
-.fb-track::-webkit-scrollbar {
-  display: none;
-}
-
-.fb-slide {
-  flex: 0 0 min(30rem, 86%);
-  scroll-snap-align: start;
-}
-
-.fb-card {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  height: 100%;
+.vb-quote {
   margin: 0;
-  padding: var(--pr-space-3) var(--pr-space-3) var(--pr-space-3) 2.9rem;
-  background: var(--pr-bg-raised);
-  border: 1px solid var(--pr-border);
-  border-radius: var(--pr-radius);
-  box-shadow: var(--pr-shadow-sm);
+  padding-left: var(--pr-space-3);
+  border-left: 2px solid var(--pr-accent);
 }
 
-.fb-card::before {
-  content: '“';
-  position: absolute;
-  top: 0.45rem;
-  left: 0.9rem;
-  font-family: var(--pr-font-display);
-  font-size: 2.6rem;
-  line-height: 1;
-  color: var(--pr-accent);
-  opacity: 0.6;
-}
-
-.fb-card blockquote {
-  margin: 0 0 var(--pr-space-3);
+.vb-quote blockquote {
+  margin: 0 0 var(--pr-space-2);
   max-width: none;
+  font-family: var(--pr-font-display);
   font-size: var(--pr-text-md);
   font-style: italic;
-  line-height: 1.6;
+  line-height: 1.55;
   color: var(--pr-text);
 }
 
-.fb-card figcaption {
-  display: flex;
-  flex-direction: column;
-  gap: 0.15rem;
-  margin-top: auto;
-  padding-top: var(--pr-space-2);
-  border-top: 1px solid var(--pr-border);
-  font-size: var(--pr-text-sm);
+.vb-quote figcaption {
+  font-size: var(--pr-text-xs);
   line-height: 1.4;
   color: var(--pr-text-muted);
 }
 
-.fb-card figcaption strong {
-  font-weight: 600;
-  color: var(--pr-text);
+@media (max-width: 760px) {
+  .vb-feedback {
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--pr-space-3);
+  }
 }
 
 /* ---------- Contacto (closing section) ---------- */
