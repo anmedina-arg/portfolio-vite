@@ -35,8 +35,8 @@ He is **actively available** for Full Stack / Product Engineer roles; the site s
 - Codebase: Vite + React 18 + TypeScript, GSAP. No contact form (the old EmailJS/Formik form was removed 2026-10-05): contact is the visible email address (mailto) plus LinkedIn/GitHub. Light/dark theme.
 - Redesign in progress: **Variant B (split rail — fixed rail left, content right)** is the chosen layout (`src/portfolio/`, decided 2026-09-28). Promoted to the home route on `dev` (2026-10-05); not on `main`/production yet. Since 2026-10-06 the layout is **fluid** (the content column takes the space the rail leaves; grids are `auto-fit`) and the identity (name, typed role line, availability) lives in a **hero** at the top of the content column, with the rail keeping nav, quick facts and CV/contact.
 - Architecture: a single feature folder `src/portfolio/` (ADR 0001 + 0002); Storybook removed.
-- **Bilingual: Spanish + English**, with a language switcher. English copy exists for every section (`content.en.ts`); recommendations stay in their original Spanish, tagged as such. No native-speaker review of the English is recorded in the repo.
-- Sections: Hero (name, typed role line, availability, a line illustration; nav label "Sobre mí"; the "En producción hoy" ledger was removed 2026-10-07 because the work list shows the same products in full), Mis trabajos (only "Trabajo profesional"; Labs and Proyectos personales removed as junior signal — a future "Open source" tab is allowed), Experiencia ("Cómo trabajo", an open typographic block with measured figures set in display type, with Arcor as the one full case study, plus the career drawn as parallel bars on a broken time axis), Credenciales (its own section; it replaced "Tecnologías" in the nav on 2026-10-07), Recomendaciones, Contacto. There is no technologies section any more: the three marquee rows (interface; backend, data and mobile; AI-assisted development, the last limited to what the Anthropic credentials cover plus SDD) are ribbons used one per seam between sections, a deliberate, bounded exception to the no-looping-content rule.
+- **Bilingual: Spanish + English**, with a language switcher. English copy exists for every section (`content.en.ts`); the feedback excerpts stay in their original Spanish, tagged as such. No native-speaker review of the English is recorded in the repo.
+- Sections: Hero (name, typed role line, availability, a line illustration; nav label "Sobre mí"; the "En producción hoy" ledger was removed 2026-10-07 because the work list shows the same products in full), Mis trabajos (only "Trabajo profesional"; Labs and Proyectos personales removed as junior signal — a future "Open source" tab is allowed), Experiencia ("Cómo trabajo", an open typographic block with measured figures set in display type, with Arcor as the one full case study, plus the career drawn as parallel bars on a broken time axis), Credenciales (its own section; it replaced "Tecnologías" in the nav on 2026-10-07), Feedback (renamed from "Recomendaciones" on 2026-10-08: two verbatim excerpts of Desafío Latam observation reports, set as plain quotes under a one-line fact; see the log), Contacto. There is no technologies section any more: the three marquee rows (interface; backend, data and mobile; AI-assisted development, the last limited to what the Anthropic credentials cover plus SDD) are ribbons used one per seam between sections, a deliberate, bounded exception to the no-looping-content rule.
 - Domain terminology lives in `CONTEXT.md`.
 
 ## Brand Commitments
@@ -53,13 +53,13 @@ Real content source of truth: `docs/content/portfolio-contenido-variante-B.md` a
 - Earlier client work: CABSA, Kurve, Coolco (2022–2023).
 - Experience timeline including Desafío Latam teaching (~240 students, 4 cohorts) and Arcor metrics (line efficiency 88% → 93%; line start-up to 80%; performance review system for ~300 people).
 - 5 Anthropic Education credentials (May–Sep 2026): Claude Code 101, Claude Code in Action, Building with the Claude API, Introduction to Model Context Protocol, Introduction to Agent Skills. Each links to its public Skilljar verification page and shows the certificate image.
-- Existing recommendations.
+- Two verbatim excerpts of Desafío Latam observation reports (unnamed reviewers; strengths only). Publishing permission from ADL is NOT confirmed. The bootcamp peers' quotes were removed on 2026-10-08.
 
 Open / must not be fabricated:
 
 - New CV PDF (current one is outdated).
 - Public URLs or screenshots for Chaskyapp; anonymized, client-approved screenshots for Reforest.
-- Newer recommendations (Satori, Market del Cevil, Desafío Latam, Plug-Zone).
+- Signed recommendations with a name and role (Satori, Market del Cevil, Desafío Latam, Plug-Zone): one outranks the anonymous report excerpts, which are the weakest evidence on the page.
 - A native-speaker review of the English copy.
 - Phase dates for the Plug-Zone contract (frontend → backend → infrastructure → NetIQ connectors and workflows): the timeline shows it as one bar until real dates exist.
 

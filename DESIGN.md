@@ -113,7 +113,7 @@ components:
 
 **Creative North Star: "The Engineer's Dossier"**
 
-The site reads like a well-kept technical dossier: a fixed rail on the left (preferences, quick facts, CV and contact, jump-nav) and, on the right, a hero that gives the name at full scale beside a line illustration, followed by filed evidence (numbered work, a charted timeline, credentials, recommendations). Every visual device earns its place by organising or proving something: numbers index the work, boxed data points hold facts, measured results are set as display numerals inside their sentences (88% → 93%), and one bar chart places the career on a real time axis. Decoration that proves nothing does not belong, with two exceptions chosen by Andrés on 2026-10-07: the hero illustration and the technology ribbons.
+The site reads like a well-kept technical dossier: a fixed rail on the left (preferences, quick facts, CV and contact, jump-nav) and, on the right, a hero that gives the name at full scale beside a line illustration, followed by filed evidence (numbered work, a charted timeline, credentials, feedback). Every visual device earns its place by organising or proving something: numbers index the work, boxed data points hold facts, measured results are set as display numerals inside their sentences (88% → 93%), and one bar chart places the career on a real time axis. Decoration that proves nothing does not belong, with two exceptions chosen by Andrés on 2026-10-07: the hero illustration and the technology ribbons.
 
 Density is editorial and calm: a fluid content column that takes the space the rail leaves (capped only on ultra-wide screens) with reading measure set per paragraph (≤65ch), generous section spacing, small uppercase labels, a single desaturated accent used for marks rather than fills. Warmth comes from the serif headings and the off-white paper over the kept dotted-pattern background. Components are **firm and tactile**: they answer the pointer clearly (lift, shadow, accent border) instead of barely reacting.
 
@@ -134,7 +134,7 @@ A restrained paper-and-ink palette with a single muted sage accent.
 
 ### Primary
 
-- **Sage Field** (light `#7c9885`, dark `#8fae97`): Borders on hover, the recommendation quote mark, the checked toggle border. The softer voice of the accent.
+- **Sage Field** (light `#7c9885`, dark `#8fae97`): Borders on hover, the feedback quotes' left rule, the checked toggle border. The softer voice of the accent.
 - **Sage Field Deep** (light `#56705f`, dark `#a9c4b0`): The accent's working voice: role line, section-heading rule, "Cómo trabajo" kicker, figures and column labels, the hero illustration, active nav item, status pills, link hover, focus outline, list markers and the rail accent line.
 - **Sage Field Wash** (light `rgb(90 117 99 / 0.08)`, dark `rgb(169 196 176 / 0.1)`): Tinted backgrounds for the active nav item, nav hover, quick-info data points, timeline row hover, the checked toggle.
 
@@ -174,10 +174,10 @@ A restrained paper-and-ink palette with a single muted sage accent.
 - **Headline** (700, 1.3rem): Section headings (`h2`), always preceded by a 1.35rem × 2px Sage Field Deep rule.
 - **Title** (600, 0.95rem): Role line, work-card heads, featured-card product names, timeline role names.
 - **Body** (400, 1.05rem, 1.75): The bio. Max 62ch.
-- **Body small** (400, 0.8rem, 1.6): Tagline, timeline, bullets, credentials, recommendations (1.65, italic), footer. Most secondary content lives here.
+- **Body small** (400, 0.8rem, 1.6): Tagline, timeline, bullets, credentials, feedback captions, footer. Most secondary content lives here.
 - **Label** (600, 0.8rem, 0.06em, uppercase): Sub-headings (`h3`) and work sub-heads, in Ink Faint. Quick-info terms go smaller (0.65rem, 0.08em).
 
-Decorative serif glyphs have their own steps: **numeral** (1.1rem, work-card counters) and **quote-mark** (2.2rem, recommendations). **Label micro** (0.7rem, 0.08em, uppercase) is the floor for data-point terms and panel headers — nothing smaller (11px floor).
+Decorative serif glyphs have their own steps: **numeral** (1.1rem, work-card counters). **Label micro** (0.7rem, 0.08em, uppercase) is the floor for data-point terms and panel headers — nothing smaller (11px floor).
 
 Scale tokens: xs 0.7rem · sm 0.8rem · base 0.95rem · md 1.05rem · lg 1.3rem · xl 1.75rem (hand-tuned, ~1.25 ratio).
 
@@ -193,7 +193,7 @@ Scale tokens: xs 0.7rem · sm 0.8rem · base 0.95rem · md 1.05rem · lg 1.3rem 
 
 - **Split rail (≥861px):** `flex` row. Rail: `clamp(18rem, 20vw, 21rem)`, `position: sticky; top: 0; height: 100vh`, scrolls internally, right hairline border, stacked blocks (preferences → quick info → CV/Email → jump-nav → links) separated by hairlines. Its identity block, tagline and availability box are hidden here: the hero states them. Main column: `flex: 1`, `max-width: 88rem` (a ceiling for ultra-wide screens only), padding `2rem clamp(1.5rem, 4vw, 4rem) 7rem`.
 - **Stacked (≤860px):** rail becomes a static header block with a bottom hairline and shows its identity block again; the hero then shows only the illustration (`display: none` on the hero's identity, so there is always exactly one `h1`). Main padding 1.25rem sides, 4rem bottom.
-- **Fluid grids, no fixed column counts:** repeated content uses `repeat(auto-fit, minmax(min(100%, X), 1fr))`: work cards 26rem (an odd last card spans the row), earlier work 22rem, recommendations 20rem (the technology ribbons are not a grid: each is a full-width band). Components in columns of unknown width use container queries (timeline 42rem), never viewport guesses. Fixed pixel widths are limits (`clamp`, `minmax`, `max-width`), not the layout.
+- **Fluid grids, no fixed column counts:** repeated content uses `repeat(auto-fit, minmax(min(100%, X), 1fr))`: work cards 26rem (an odd last card spans the row), earlier work 22rem (the technology ribbons are not a grid: each is a full-width band). Components in columns of unknown width use container queries (timeline 42rem), never viewport guesses. Fixed pixel widths are limits (`clamp`, `minmax`, `max-width`), not the layout.
 - **Rhythm:** spacing scale 0.4 / 0.75 / 1.25 / 2 / 3.25rem. Sections separated by 3.25rem; in-section groups by 1.25rem; tight inline gaps 0.5–0.6rem.
 - **Jump-nav** is a scroll-spy (`useRailSpy`) marking the section in view.
 
@@ -204,7 +204,7 @@ Mostly flat with hairlines, with permission for selective layering. Cards sit on
 ### Shadow Vocabulary
 
 - **Resting** (`box-shadow: 0 1px 2px rgb(28 28 26 / 0.04)`; dark `0 1px 2px rgb(0 0 0 / 0.3)`): All cards at rest.
-- **Lifted** (`box-shadow: 0 14px 32px -18px rgb(28 28 26 / 0.28)`; dark `0 16px 36px -18px rgb(0 0 0 / 0.6)`): Hovered work cards and recommendations, paired with `translateY(-2px)`. Also the allowed resting elevation for an emphasised piece.
+- **Lifted** (`box-shadow: 0 14px 32px -18px rgb(28 28 26 / 0.28)`; dark `0 16px 36px -18px rgb(0 0 0 / 0.6)`): Hovered work cards, paired with `translateY(-2px)`. Also the allowed resting elevation for an emphasised piece.
 
 ### Named Rules
 
@@ -232,7 +232,7 @@ Firm and tactile: every interactive element gives a clear, immediate answer (col
 - **Internal Padding:** 1.25rem.
 - **Work grid and disclosure:** work cards sit in a fluid two-column grid; each shows two highlight bullets and the rest sits behind a native `<details>` "Ver detalle" in Sage Field Deep (underline on hover). The fully visible content is the claim; the detail is one click away.
 - **Featured work card:** hierarchy among projects is spatial, not labelled. The project with the most scope (Rapitrago: four products) is the one whose data carries `products`: it leads the list, spans the whole row, shows all its highlights, uses the 1.3rem head, and rests lifted (Earned Lift Rule). Chosen by Andrés, 2026-10-06: by business, technologies, learning, dedicated work and scope it outweighs the other two. The other cards keep two columns.
-- **Variants:** _Work card_ (large serif decimal-leading-zero counter top-right in Rule colour), _legacy project row_ (thumbnail 96×64, 15% greyscale until hover, small serif counter, slides `translateX(2px)`), _recommendation_ (serif “ quote mark in Sage Field at 60% opacity, italic body).
+- **Variants:** _Work card_ (large serif decimal-leading-zero counter top-right in Rule colour), _legacy project row_ (thumbnail 96×64, 15% greyscale until hover, small serif counter, slides `translateX(2px)`), _feedback quote_ (display-serif italic text with a 2px Sage Field rule on its left, no card, two columns that stack under 760px; a one-line fact above it and the source in small muted text below).
 
 ### "Cómo trabajo" (open typographic block)
 

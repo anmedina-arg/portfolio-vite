@@ -578,3 +578,13 @@ Open after this pass:
 - No pause control on the ribbons for keyboard or touch users (WCAG 2.2.2), still to add before `main`.
 - `.impeccable/design.json` was not regenerated; run `/impeccable document`.
 - None of this pass was reviewed on screen by the assistant; Andrés judged each result in the browser.
+
+### Feedback section and share metadata (2026-10-08)
+
+- **Rename:** "Recomendaciones" → "Feedback" (`ui.nav.feedback`, id `#feedback`, same in ES and EN). The old name promised recommendation letters; the content is observation reports.
+- **Why the content changed:** the bootcamp classmates' quotes were the known weak spot. Andrés supplied four Desafío Latam observation reports on his teaching (one per cohort plus audits, 2024–2026). `src/portfolio/data/feedback.ts` holds verbatim strengths only, in Spanish, with the reviewers unnamed and personal data and recording links left out.
+- **Built, then cut:** a manual scroll-snap carousel (`FeedbackCarousel.tsx`, commit `4e8c397`) with four report excerpts plus three peer quotes. After a blunt review (anonymous, rubric-like language, proves teaching rather than building, hidden behind arrows, advertises the negative side with a note), it became two static quotes in two columns under a one-line fact (commit `d66dddd`). The carousel, the peer quotes and the "reports also list areas to improve" note are gone; the history still has them. `data/recomendations.ts` is now unused.
+- **Kept:** the two excerpts that fit the profile (connecting learning to the professional world; supporting people through frustration).
+- **Open:** Desafío Latam's permission to publish the excerpts is unconfirmed; a signed recommendation with name and role would outweigh both. The March 2026 report is largely critical on the practical side and is not quoted.
+- **Share metadata (commit `6e53d5d`):** `index.html` now has the title "Andrés Medina · Full Stack Developer", description, canonical, Open Graph and Twitter tags, `lang="es"`, `theme-color`; `public/favicon.svg` (initials AM), `apple-touch-icon.png` and `og-image.png` (1200×630). The URL used is `portfolio-andres-medina-arg.vercel.app` (the log notes two more domains). Tags are static and Spanish only, so an `?lang=en` share still previews in Spanish. Link previews are cached: refresh LinkedIn's Post Inspector after the first release. `vite.svg` was removed.
+- **Still open before `main`:** ADL permission and Chaskyapp / Reforest evidence (public URLs, anonymised screenshots), the ribbons' pause control (WCAG 2.2.2), the unused `now` data and `.vb-now*` styles, the `SHOW_TODOS` notes, a new CV PDF.
