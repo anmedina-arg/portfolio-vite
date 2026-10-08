@@ -553,26 +553,18 @@ const PortfolioPage: React.FC<Props> = ({ theme, toggleTheme }) => {
           <h2 className="vb-reveal">{ui.nav.credentials}</h2>
           <ul className="vb-credentials">
             {c.credentials.map((cred) => (
-              <li key={cred.verifyUrl} className="vb-reveal">
-                {/* The certificate image is decorative: the link text names it. */}
+              <li key={cred.verifyUrl}>
                 <a className="vb-cert" href={cred.verifyUrl} target="_blank" rel="noreferrer">
-                  <img
-                    src={cred.image}
-                    alt=""
-                    width={720}
-                    height={544}
-                    loading="lazy"
-                    decoding="async"
-                  />
+                  <img src={cred.image} alt="" width={720} height={544} loading="lazy" decoding="async" />
                   <strong>
                     {cred.name}
                     <span className="vb-sr-only"> {ui.newTab}</span>
                   </strong>
                   <span className="vb-cert-meta">
-                    {cred.issuer} ·{' '}
+                    {cred.issuer} ·{" "}
                     {new Date(`${cred.issued}T12:00:00`).toLocaleDateString(c.lang, {
-                      month: 'short',
-                      year: 'numeric',
+                      month: "short",
+                      year: "numeric",
                     })}
                   </span>
                   <span className="vb-cert-verify">{ui.verifyCert}</span>

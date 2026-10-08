@@ -1401,18 +1401,35 @@ body[data-theme='dark'] .vb-brand-logo.on-light {
   margin: 0;
   padding: 0;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr));
-  gap: 1.75rem;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+/* Five credentials stay on one line; on a narrow screen the row scrolls instead of wrapping. */
+@media (max-width: 760px) {
+  .vb-credentials {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    padding-bottom: 0.6rem;
+    scrollbar-width: thin;
+    scrollbar-color: var(--pr-border) transparent;
+  }
+
+  .vb-credentials > li {
+    flex: 0 0 10.5rem;
+    scroll-snap-align: start;
+  }
 }
 
 .vb-cert {
   display: flex;
   flex-direction: column;
-  gap: 0.2rem;
+  gap: 0.15rem;
   height: 100%;
   text-decoration: none;
   color: inherit;
-  font-size: var(--pr-text-sm);
+  font-size: var(--pr-text-xs);
 }
 
 .vb-cert img {
@@ -1431,8 +1448,10 @@ body[data-theme='dark'] .vb-brand-logo.on-light {
 
 .vb-cert strong {
   color: var(--pr-text);
+  font-size: var(--pr-text-sm);
   font-weight: 600;
-  line-height: 1.35;
+  line-height: 1.3;
+  text-wrap: balance;
 }
 
 .vb-cert-meta {
