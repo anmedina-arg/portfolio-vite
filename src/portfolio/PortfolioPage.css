@@ -1544,55 +1544,121 @@ body[data-theme='dark'] .vb-brand-logo.on-light {
   margin: 0.2rem 0 0;
 }
 
-/* ---------- Recomendaciones ---------- */
+/* ---------- Feedback (carousel) ---------- */
 
-.vb-reviews {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr));
-  gap: var(--pr-space-2);
-}
-
-.vb-review {
-  position: relative;
-  padding: var(--pr-space-3) var(--pr-space-3) var(--pr-space-3) 2.6rem;
+/* Observation-report excerpts and peers' words in one manual carousel: a scroll-snap track with
+   two buttons, never autoplaying or looping. The next card is left peeking as the affordance. */
+.vb-feedback-note {
+  margin: calc(var(--pr-space-2) * -1) 0 var(--pr-space-3);
+  max-width: 62ch;
   font-size: var(--pr-text-sm);
-  line-height: 1.65;
+  line-height: 1.55;
+  color: var(--pr-text-muted);
 }
 
-.vb-review:hover {
-  box-shadow: var(--pr-shadow-md);
-  transform: translateY(-2px);
+.fb-nav {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5rem;
+  margin-bottom: var(--pr-space-2);
 }
 
-.vb-review::before {
-  content: '\201C';
+.fb-btn {
+  display: grid;
+  place-items: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  padding: 0;
+  color: var(--pr-text);
+  background: var(--pr-bg-raised);
+  border: 1px solid var(--pr-border);
+  border-radius: 50%;
+  cursor: pointer;
+  transition:
+    border-color var(--pr-ease),
+    color var(--pr-ease),
+    opacity var(--pr-ease);
+}
+
+.fb-btn:hover:not(:disabled) {
+  color: var(--pr-accent-strong);
+  border-color: var(--pr-accent);
+}
+
+.fb-btn:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+.fb-track {
+  display: flex;
+  gap: var(--pr-space-3);
+  margin: 0;
+  padding: 0.25rem 0;
+  list-style: none;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+}
+
+.fb-track::-webkit-scrollbar {
+  display: none;
+}
+
+.fb-slide {
+  flex: 0 0 min(30rem, 86%);
+  scroll-snap-align: start;
+}
+
+.fb-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  margin: 0;
+  padding: var(--pr-space-3) var(--pr-space-3) var(--pr-space-3) 2.9rem;
+  background: var(--pr-bg-raised);
+  border: 1px solid var(--pr-border);
+  border-radius: var(--pr-radius);
+  box-shadow: var(--pr-shadow-sm);
+}
+
+.fb-card::before {
+  content: '“';
   position: absolute;
-  top: 0.3rem;
-  left: 0.85rem;
+  top: 0.45rem;
+  left: 0.9rem;
   font-family: var(--pr-font-display);
-  font-size: 2.2rem;
+  font-size: 2.6rem;
   line-height: 1;
   color: var(--pr-accent);
   opacity: 0.6;
 }
 
-.vb-review p {
-  margin: 0;
+.fb-card blockquote {
+  margin: 0 0 var(--pr-space-3);
+  max-width: none;
+  font-size: var(--pr-text-md);
   font-style: italic;
+  line-height: 1.6;
+  color: var(--pr-text);
 }
 
-.vb-review strong {
-  display: block;
-  margin-top: 0.6rem;
-  font-style: normal;
-  color: var(--pr-text-muted);
-}
-
-.vb-reviews-note {
-  margin: calc(var(--pr-space-2) * -1) 0 var(--pr-space-2);
+.fb-card figcaption {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  margin-top: auto;
+  padding-top: var(--pr-space-2);
+  border-top: 1px solid var(--pr-border);
   font-size: var(--pr-text-sm);
-  font-style: italic;
+  line-height: 1.4;
   color: var(--pr-text-muted);
+}
+
+.fb-card figcaption strong {
+  font-weight: 600;
+  color: var(--pr-text);
 }
 
 /* ---------- Contacto (closing section) ---------- */
@@ -1764,8 +1830,7 @@ body[data-theme='dark'] .vb-brand-logo.on-light {
 @media (hover: none) {
   .vb-btn:hover,
   .vb-work-card:hover,
-  .vb-project:hover,
-  .vb-review:hover {
+  .vb-project:hover {
     transform: none;
   }
 

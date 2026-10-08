@@ -11,7 +11,8 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useGSAP } from '@gsap/react';
 import './PortfolioPage.css';
-import { reviews } from './data/recomendations';
+import FeedbackCarousel from './FeedbackCarousel';
+import { feedback } from './data/feedback';
 import { contactDetails } from './data/contact';
 import { contentEs } from './content/content.es';
 import { contentEn } from './content/content.en';
@@ -32,7 +33,7 @@ const railNavIds = [
   'portfolio',
   'experience',
   'credentials',
-  'recomendations',
+  'feedback',
   'contact',
 ] as const;
 
@@ -575,19 +576,22 @@ const PortfolioPage: React.FC<Props> = ({ theme, toggleTheme }) => {
           <TechRibbon row="ui" lang={lang} />
         </section>
 
-        <section id="recomendations" className="vb-section">
-          <h2 className="vb-reveal">{ui.nav.recomendations}</h2>
-          {lang !== REVIEWS_LANG && ui.reviewsNote && (
-            <p className="vb-reviews-note">{ui.reviewsNote}</p>
-          )}
-          <div className="vb-reviews">
-            {reviews.slice(0, 3).map((r) => (
-              <div key={r.id} className="pr-card vb-review vb-reveal">
-                <p lang={REVIEWS_LANG}>&ldquo;{r.review}&rdquo;</p>
-                <strong>{r.name}</strong>
-              </div>
-            ))}
-          </div>
+        <section id="feedback" className="vb-section">
+          <h2 className="vb-reveal">{ui.nav.feedback}</h2>
+          <p className="vb-feedback-note">{ui.feedbackNote}</p>
+          <FeedbackCarousel
+            slides={feedback.map((f) => ({
+              id: f.id,
+              quote: f.quote,
+              author: typeof f.author === 'string' ? f.author : f.author[lang],
+              context: f.context?.[lang],
+            }))}
+            quoteLang={REVIEWS_LANG}
+            label={ui.nav.feedback}
+            roleDescription={ui.carouselRole}
+            prevLabel={ui.prevLabel}
+            nextLabel={ui.nextLabel}
+          />
         </section>
 
         {/* Closing destination: restates availability (peak-end) and shows the address

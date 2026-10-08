@@ -340,7 +340,7 @@ export const uiEs = {
     portfolio: 'Mis trabajos',
     experience: 'Experiencia',
     credentials: 'Credenciales',
-    recomendations: 'Recomendaciones',
+    feedback: 'Feedback',
     contact: 'Contacto',
   },
   availabilityLabel: 'Disponibilidad',
@@ -360,7 +360,11 @@ export const uiEs = {
   credentials: 'Credenciales',
   verifyCert: 'Verificar certificado',
   // Shown only when the recommendations are in a different language than the page.
-  reviewsNote: '',
+  feedbackNote:
+    'Fragmentos textuales de informes de observación de clases de Desafío Latam y comentarios de compañeros. Los informes también señalan oportunidades de mejora.',
+  carouselRole: 'carrusel',
+  prevLabel: 'Anterior',
+  nextLabel: 'Siguiente',
   writeMeAt: 'Escribime a',
 };
 
