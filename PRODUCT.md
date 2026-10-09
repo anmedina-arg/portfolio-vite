@@ -50,6 +50,7 @@ He is **actively available** for Full Stack / Product Engineer roles; the site s
 Real content source of truth: `docs/content/portfolio-contenido-variante-B.md` and `src/portfolio/content/content.es.ts`.
 
 - Products in production: Chaskyapp (multi-tenant SaaS, live with Market del Cevil since Mar 2026 and Yo Heladerías since Aug 2026), Reforest (used daily by 10 people; 4 roles + RLS; 48+ SQL migrations). In development: **Rapitrago** (client Cumbre-tech), which Andrés ranks as his most important project by business, technologies, learning, dedicated work and scope. It is four products he works on: the customer app (Pedí), the store app (Vendé), the driver app (Repartí) and the admin panel. It is featured first, shown through the customer app's capture and the four products, with Rapitrago's logo and orange as a contained exception. **No technology of the client's stack is shown on the site** (Andrés, 2026-10-06: it is the client's, and a stack choice can read as a success or a failure); each product is described by its function. It is about to go to production, so its status pill shows no lifecycle state. The logo and the capture come from rapitrago.com's public site; Andrés confirmed (2026-10-06) that he may use them, and approved the one-line description of each product.
+- Live links on the work cards (2026-10-09): Rapitrago → rapitrago.com, Chaskyapp → chaskyapp.vercel.app. Chaskyapp's card is illustrated with captures of its public landing and Market del Cevil's public catalog; Reforest's with its logo only.
 - Earlier client work: CABSA, Kurve, Coolco (2022–2023).
 - Experience timeline including Desafío Latam teaching (~240 students, 4 cohorts) and Arcor metrics (line efficiency 88% → 93%; line start-up to 80%; performance review system for ~300 people).
 - 5 Anthropic Education credentials (May–Sep 2026): Claude Code 101, Claude Code in Action, Building with the Claude API, Introduction to Model Context Protocol, Introduction to Agent Skills. Each links to its public Skilljar verification page and shows the certificate image.
@@ -58,7 +59,7 @@ Real content source of truth: `docs/content/portfolio-contenido-variante-B.md` a
 Open / must not be fabricated:
 
 - New CV PDF (current one is outdated).
-- Public URLs or screenshots for Chaskyapp; anonymized, client-approved screenshots for Reforest.
+- Screenshots of Reforest (anonymized, client-approved): not planned. Andrés chose to show only its logo, so nothing of that system is displayed.
 - Signed recommendations with a name and role (Satori, Market del Cevil, Desafío Latam, Plug-Zone): one outranks the anonymous report excerpts, which are the weakest evidence on the page.
 - A native-speaker review of the English copy.
 - Phase dates for the Plug-Zone contract (frontend → backend → infrastructure → NetIQ connectors and workflows): the timeline shows it as one bar until real dates exist.

@@ -182,7 +182,7 @@
       },
       {
         "name": "fluid-grids",
-        "value": "repeat(auto-fit, minmax(min(100%, X), 1fr)) with X = 26rem work, 22rem earlier work; credentials are five equal columns on one line (a scroll strip under 760px)",
+        "value": "repeat(auto-fit, minmax(min(100%, X), 1fr)) with X = 22rem earlier work; the work list is a ten-column grid (featured 10, Chaskyapp 6, Reforest 4); credentials are five equal columns on one line (a scroll strip under 760px)",
         "purpose": "No fixed column counts; the content column is fluid (max-width 88rem). Technology ribbons are full-width bands, not a grid."
       },
       {
@@ -305,7 +305,7 @@
       },
       {
         "name": "The Client Artifact Exception",
-        "body": "A client's own identity may bring its own colour, only inside the card of that client's project and only on its artifacts: Rapitrago's logo, its app capture and the product icons use its orange (`#faa61b` on the dark theme, a deeper `#c4730a` on the light theme so the icons keep 3:1 against paper). Never for text, never for the card's background, no gradients, and no other client colour. The credential certificates are exempt for the same reason.",
+        "body": "A client's own identity may bring its own colour, only inside the card of that client's project and only on its artifacts: Rapitrago's logo, its app capture and the product icons use its orange (`#faa61b` on the dark theme, a deeper `#c4730a` on the light theme so the icons keep 3:1 against paper). Never for text, never for the card's background, no gradients, and no other client colour. The credential certificates are exempt for the same reason. Chaskyapp's captures (its own blue and yellow) and Reforest's logo follow the same rule: they appear only as the artwork of their own cards.",
         "section": "colors"
       },
       {
