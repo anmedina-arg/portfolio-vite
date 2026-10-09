@@ -1,0 +1,2208 @@
+/* Page styles (.vb-*). Visual refinement log: docs/redesign-log.md.
+   Style informed by estebanburgos.com.ar (editorial density, boxed data points,
+   numbered work items, subtle hover lift) — adapted to this site's desaturated
+   accent + serif/sans pairing, not copied. Layout/structure unchanged. */
+
+.vb {
+  display: flex;
+  min-height: 100vh;
+  /* The page never scrolls sideways: nothing inside may widen it. `clip` (not `hidden`) so it
+     does not become a scroll container and the sticky rail keeps working. */
+  max-width: 100%;
+  overflow-x: clip;
+}
+
+/* Skip link: first focus stop, jumps past the 10+ rail stops straight to content. */
+.vb-skip {
+  position: fixed;
+  top: var(--pr-space-2);
+  left: var(--pr-space-2);
+  z-index: 10;
+  padding: 0.55rem 0.9rem;
+  border-radius: var(--pr-radius-sm);
+  background: var(--pr-text);
+  color: var(--pr-bg);
+  font-size: var(--pr-text-sm);
+  font-weight: 600;
+  text-decoration: none;
+  transform: translateY(-200%);
+}
+
+.vb-skip:focus-visible {
+  transform: translateY(0);
+}
+
+.vb-main:focus {
+  outline: none;
+}
+
+/* ---------- Identity rail ---------- */
+
+.vb-rail {
+  width: clamp(18rem, 20vw, 21rem);
+  flex-shrink: 0;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow-y: auto;
+  padding: var(--pr-space-4) var(--pr-space-3) var(--pr-space-3);
+  border-right: 1px solid var(--pr-border);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: var(--pr-space-3);
+}
+
+/* Language switch (harden pass 2026-09-30): segmented ES | EN, first thing in the rail.
+   Same vocabulary as the rail's other controls: hairline border, wash for the pressed
+   state, accent text — no new colours. */
+/* Preferences row: language + theme share one row at the top of the rail (a row each
+   pushed the theme switch out of a 945px-tall viewport). */
+.vb-prefs {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--pr-space-2);
+  margin-bottom: var(--pr-space-3);
+}
+
+.vb-prefs .vb-theme-toggle {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.vb-lang {
+  display: inline-flex;
+  padding: 2px;
+  border: 1px solid var(--pr-border);
+  border-radius: var(--pr-radius-sm);
+  background: var(--pr-bg-raised);
+}
+
+.vb-lang-option {
+  min-width: 2.5rem;
+  min-height: 2rem;
+  padding: 0.3rem 0.6rem;
+  border: 0;
+  border-radius: 4px; /* rounded.xs: 6px group minus its 2px inner padding */
+  background: transparent;
+  color: var(--pr-text-muted);
+  font: inherit;
+  font-size: var(--pr-text-sm);
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  cursor: pointer;
+  transition:
+    background-color var(--pr-ease),
+    color var(--pr-ease);
+}
+
+.vb-lang-option:hover {
+  color: var(--pr-text);
+}
+
+.vb-lang-option[aria-pressed='true'] {
+  background: var(--pr-accent-soft);
+  color: var(--pr-accent-strong);
+}
+
+.vb-identity {
+  margin-bottom: 0.9rem;
+}
+
+.vb-rail h1 {
+  font-family: var(--pr-font-display);
+  font-size: var(--pr-text-xl);
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  margin: 0 0 0.3rem;
+}
+
+.vb-role {
+  font-size: var(--pr-text-base);
+  font-weight: 600;
+  margin: 0;
+}
+
+/* Decorative accent line, drawn in on mount (see VariantB.tsx) — a restrained
+   illustrative touch near the identity block, not just typography. */
+.vb-accent-line {
+  display: block;
+  margin-top: 0.4rem;
+  color: var(--pr-accent-strong);
+  opacity: 0.85;
+}
+
+.vb-tagline {
+  font-size: var(--pr-text-sm);
+  line-height: 1.6;
+  color: var(--pr-text-muted);
+}
+
+/* ---------- Rail primary action (layout pass 2026-09-30) ----------
+   Ink-filled primary + outlined secondary: the accent stays a mark (One Voice /
+   Mark-not-Fill), the weight comes from ink. Firm, tactile response on hover. */
+
+.vb-cta {
+  display: flex;
+  flex-direction: column;
+  gap: var(--pr-space-2);
+}
+
+.vb-cta-buttons {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.vb-btn {
+  flex: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  min-height: 2.5rem;
+  padding: 0.55rem 0.9rem;
+  border-radius: var(--pr-radius-sm);
+  border: 1px solid transparent;
+  font-size: var(--pr-text-sm);
+  font-weight: 600;
+  line-height: 1.2;
+  text-decoration: none;
+  white-space: nowrap;
+  transition:
+    background-color var(--pr-ease),
+    border-color var(--pr-ease),
+    color var(--pr-ease),
+    box-shadow var(--pr-ease),
+    transform var(--pr-ease);
+}
+
+.vb-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--pr-shadow-md);
+}
+
+.vb-btn:active {
+  transform: translateY(0);
+  box-shadow: var(--pr-shadow-sm);
+}
+
+.pr-root .vb-btn-primary {
+  background: var(--pr-text);
+  color: var(--pr-bg);
+}
+
+.pr-root .vb-btn-primary:hover {
+  background: color-mix(in srgb, var(--pr-text) 86%, var(--pr-accent-strong));
+}
+
+.pr-root .vb-btn-secondary {
+  background: var(--pr-bg-raised);
+  border-color: var(--pr-border);
+  color: var(--pr-text);
+}
+
+.pr-root .vb-btn-secondary:hover {
+  border-color: var(--pr-accent);
+  color: var(--pr-accent-strong);
+}
+
+.vb-cta .vb-todo {
+  margin-top: 0;
+}
+
+/* ---------- Rail jump-nav ---------- */
+
+.vb-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  padding: var(--pr-space-2) 0;
+  border-top: 1px solid var(--pr-border);
+  border-bottom: 1px solid var(--pr-border);
+  font-size: var(--pr-text-sm);
+}
+
+.vb-nav-item {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.4rem 0.55rem;
+  border-radius: var(--pr-radius-sm);
+  text-decoration: none;
+  color: var(--pr-text-muted);
+  transition:
+    background-color var(--pr-ease),
+    color var(--pr-ease);
+}
+
+.vb-nav-item:hover {
+  color: var(--pr-text);
+  background: var(--pr-accent-soft);
+}
+
+.vb-nav-dot {
+  width: 5px;
+  height: 5px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: var(--pr-border);
+  transition:
+    background-color var(--pr-ease),
+    transform var(--pr-ease);
+}
+
+.vb-nav-item.is-active {
+  color: var(--pr-accent-strong);
+  background: var(--pr-accent-soft);
+  font-weight: 600;
+}
+
+.vb-nav-item.is-active .vb-nav-dot {
+  background: var(--pr-accent-strong);
+  transform: scale(1.6);
+}
+
+.vb-quickinfo {
+  margin: 0;
+  padding-top: var(--pr-space-3);
+  border-top: 1px solid var(--pr-border);
+  font-size: var(--pr-text-sm);
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+
+.vb-quickinfo div {
+  padding: 0.55rem 0.7rem;
+  border: 1px solid var(--pr-border);
+  border-radius: var(--pr-radius-sm);
+  background: var(--pr-accent-soft);
+  transition:
+    border-color var(--pr-ease),
+    background-color var(--pr-ease);
+}
+
+.vb-quickinfo div:hover {
+  border-color: var(--pr-accent);
+}
+
+.vb-quickinfo dt {
+  color: var(--pr-text-faint);
+  text-transform: uppercase;
+  font-size: var(--pr-text-xs); /* was 0.65rem (10.4px), below the 11px floor */
+  font-weight: 600;
+  letter-spacing: 0.08em;
+}
+
+.vb-quickinfo dd {
+  margin: 0.2rem 0 0;
+  font-weight: 500;
+}
+
+/* Availability as live status (clarify pass 2026-09-30): same dot as the ledger,
+   accent text — the one quick-info fact that is a state, not a property. */
+.vb-quickinfo .vb-quickinfo-status dd {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  color: var(--pr-accent-strong);
+  font-weight: 600;
+}
+
+.vb-quickinfo-status .vb-now-dot {
+  position: relative;
+  top: -0.1em;
+}
+
+.vb-links {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding-top: var(--pr-space-2);
+  border-top: 1px solid var(--pr-border);
+  font-size: var(--pr-text-sm);
+}
+
+.vb-links a {
+  position: relative;
+  text-decoration: none;
+  width: fit-content;
+  padding-bottom: 1px;
+  border-bottom: 1px solid transparent;
+}
+
+.vb-links a:hover {
+  color: var(--pr-accent-strong);
+  border-bottom-color: var(--pr-accent-strong);
+}
+
+.vb-theme-toggle {
+  margin-top: 0.25rem;
+  padding-top: var(--pr-space-2);
+  border-top: 1px solid var(--pr-border);
+  font-size: var(--pr-text-sm);
+  color: var(--pr-text-muted);
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  cursor: pointer;
+  width: fit-content;
+}
+
+/* Custom switch look for the (unchanged) checkbox input */
+.vb-theme-toggle input {
+  appearance: none;
+  -webkit-appearance: none;
+  margin: 0;
+  width: 2.1rem;
+  height: 1.15rem;
+  border-radius: 999px;
+  border: 1px solid var(--pr-border);
+  background: var(--pr-bg-raised);
+  position: relative;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition:
+    background-color var(--pr-ease),
+    border-color var(--pr-ease);
+}
+
+.vb-theme-toggle input::before {
+  content: '';
+  position: absolute;
+  top: 1px;
+  left: 1px;
+  width: 0.95rem;
+  height: 0.95rem;
+  border-radius: 50%;
+  background: var(--pr-text-faint);
+  transition:
+    transform var(--pr-ease),
+    background-color var(--pr-ease);
+}
+
+.vb-theme-toggle input:checked {
+  border-color: var(--pr-accent);
+  background: var(--pr-accent-soft);
+}
+
+.vb-theme-toggle input:checked::before {
+  transform: translateX(0.95rem);
+  background: var(--pr-accent-strong);
+}
+
+/* ---------- Main column ---------- */
+
+.vb-main {
+  flex: 1;
+  min-width: 0;
+  /* Fluid: the column takes the space the rail leaves. Only ultra-wide screens get a
+     cap (in rem, so it scales with type). Reading measure is capped per paragraph
+     (`.vb-main p`, in ch), not on the column. */
+  padding: var(--pr-space-4) clamp(1.5rem, 4vw, 4rem) 7rem;
+  max-width: 88rem;
+}
+
+.vb-section {
+  margin-bottom: var(--pr-space-5);
+}
+
+.vb-section h2 {
+  font-family: var(--pr-font-display);
+  font-size: var(--pr-text-lg);
+  letter-spacing: -0.005em;
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  margin: 0 0 var(--pr-space-3);
+}
+
+.vb-section h2::before {
+  content: '';
+  display: inline-block;
+  width: 1.35rem;
+  height: 2px;
+  background: var(--pr-accent-strong);
+  flex-shrink: 0;
+}
+
+.vb-section h3 {
+  font-size: var(--pr-text-sm);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--pr-text-faint);
+  margin: var(--pr-space-3) 0 0.7rem;
+}
+
+/* ---------- Hero (name leads) ----------
+   The identity block carries the page's one display moment: the name at full scale, the
+   accent rule from the section headings turned up, then role, tagline and live status. */
+
+.vb-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 1.1fr);
+  column-gap: var(--pr-space-5);
+  align-items: center;
+  padding-top: 0;
+}
+
+.vb-hero-name {
+  text-wrap: balance;
+}
+
+/* Hero illustration: line drawing in the accent colour (a web window and a phone). */
+.vb-hero-art {
+  display: block;
+  width: 100%;
+  height: auto;
+  color: var(--pr-accent-strong);
+}
+
+@media (max-width: 860px) {
+  .vb-hero {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .vb-hero-art {
+    max-width: 26rem;
+    margin-inline: auto;
+  }
+}
+
+.vb-hero-id {
+  padding: 6rem 0 4.5rem;
+}
+
+.vb-hero-name {
+  margin: 0;
+  font-family: var(--pr-font-display);
+  font-size: clamp(3.5rem, 1.5rem + 7vw, 6rem);
+  line-height: 0.98;
+  letter-spacing: -0.03em;
+  color: var(--pr-text);
+}
+
+.vb-hero-rule {
+  display: block;
+  width: 3.5rem;
+  height: 2px;
+  margin: 1.6rem 0 1.4rem;
+  background: var(--pr-accent-strong);
+}
+
+.vb-hero-role {
+  margin: 0;
+  font-size: var(--pr-text-xl);
+  font-weight: 600;
+  color: var(--pr-accent-strong);
+}
+
+/* Typed role line (TypedRole.tsx): the caret is solid while keys are pressed, then blinks
+   three times and goes. The line keeps its height so nothing below it moves. */
+.tr-line {
+  display: inline-flex;
+  align-items: baseline;
+  min-height: 1.5em;
+  white-space: nowrap;
+}
+
+.tr-prompt {
+  margin-right: 0.6ch;
+  color: var(--pr-text-faint);
+}
+
+/* A literal terminal line: the system monospace stack, no download. The one place the
+   page leaves its sans for a typeface, because the line imitates typed input. */
+.vb-hero-role .tr-line {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.92em;
+}
+
+.tr-cursor {
+  display: inline-block;
+  flex-shrink: 0;
+  margin-left: 2px;
+  background: var(--pr-accent-strong);
+}
+
+.tr-cursor.tr-block {
+  width: 0.55em;
+  height: 1.05em;
+  transform: translateY(0.18em);
+}
+
+.tr-cursor.tr-underscore {
+  width: 0.6em;
+  height: 2px;
+  transform: translateY(0.08em);
+}
+
+.tr-cursor.tr-bar {
+  width: 2px;
+  height: 1.1em;
+  transform: translateY(0.2em);
+}
+
+.tr-cursor.is-done {
+  animation: tr-blink 0.9s steps(1, end) 3 forwards;
+}
+
+@keyframes tr-blink {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tr-cursor {
+    display: none;
+  }
+}
+
+.vb-hero .vb-hero-tagline {
+  max-width: 30ch;
+  margin: 1.6rem 0 0;
+  font-size: clamp(1.25rem, 1rem + 0.9vw, 1.6rem);
+  line-height: 1.45;
+  color: var(--pr-text-muted);
+}
+
+.vb-hero-status {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  margin: 2rem 0 0;
+  font-size: var(--pr-text-base);
+  font-weight: 600;
+  color: var(--pr-accent-strong);
+}
+
+.vb-hero .vb-now {
+  max-width: 56rem;
+  margin-top: calc(var(--pr-space-4) * 0.8);
+}
+
+/* One identity at a time: the hero's on the split layout, the rail's when stacked. The
+   rail's availability box goes too (the hero states it). `display: none` also removes
+   the hidden copy from the accessibility tree, so there is a single h1. */
+@media (min-width: 861px) {
+  .vb-rail .vb-identity,
+  .vb-rail .vb-tagline,
+  .vb-quickinfo .vb-quickinfo-status {
+    display: none;
+  }
+}
+
+@media (max-width: 860px) {
+  .vb-hero-id {
+    display: none;
+  }
+}
+
+/* ---------- "En producción hoy" ledger (layout pass 2026-09-30) ----------
+   The first-viewport proof. One bordered ledger with hairline rows — not a pair of
+   same-size cards. Rests lifted: the only earned elevation in the first viewport
+   (DESIGN.md, Earned Lift Rule). Rows jump to the matching work card. */
+
+.vb-now {
+  margin: 0;
+  container-type: inline-size;
+  background: var(--pr-bg-raised);
+  border: 1px solid var(--pr-border);
+  border-radius: var(--pr-radius);
+  box-shadow: var(--pr-shadow-md);
+  overflow: hidden;
+}
+
+.vb-now .vb-now-title {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  margin: 0;
+  max-width: none; /* it is a <p>: `.vb-main p` (higher specificity than one class) would cut its hairline short */
+  padding: 0.7rem var(--pr-space-3);
+  border-bottom: 1px solid var(--pr-border);
+  font-size: var(--pr-text-xs);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--pr-text-muted);
+}
+
+.vb-now-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--pr-accent-strong);
+  box-shadow: 0 0 0 3px var(--pr-accent-soft);
+  flex-shrink: 0;
+}
+
+.vb-now-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.vb-now-list li + li {
+  border-top: 1px solid var(--pr-border);
+}
+
+.vb-now-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto auto;
+  align-items: center;
+  gap: var(--pr-space-3);
+  padding: 0.9rem var(--pr-space-3);
+  text-decoration: none;
+  transition: background-color var(--pr-ease);
+}
+
+.vb-now-row:hover {
+  background: var(--pr-accent-soft);
+}
+
+.vb-now-product,
+.vb-now-fact {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  min-width: 0;
+}
+
+.vb-now-product strong {
+  font-size: var(--pr-text-md);
+}
+
+.vb-now-what,
+.vb-now-detail {
+  font-size: var(--pr-text-sm);
+  color: var(--pr-text-muted);
+}
+
+.vb-now-fact {
+  text-align: right;
+}
+
+.vb-now-fact strong {
+  font-size: var(--pr-text-base);
+  color: var(--pr-accent-strong);
+  font-variant-numeric: tabular-nums;
+}
+
+.vb-now-arrow {
+  color: var(--pr-text-faint);
+  transition:
+    color var(--pr-ease),
+    transform var(--pr-ease);
+}
+
+.vb-now-row:hover .vb-now-arrow {
+  color: var(--pr-accent-strong);
+  transform: translateX(3px);
+}
+
+.vb-work-card {
+  scroll-margin-top: var(--pr-space-4);
+}
+
+/* ---------- Experience ---------- */
+
+/* Parallel bars on a broken time axis (ExperienceTimeline.tsx). Track positions are
+   percentages set inline from the entries' start/end; the rest is structure. */
+
+.vb-timeline {
+  container-type: inline-size;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-size: var(--pr-text-sm);
+  display: flex;
+  flex-direction: column;
+}
+
+.vb-timeline > li {
+  border-bottom: 1px solid var(--pr-border);
+  border-radius: var(--pr-radius-sm);
+  transition: background-color var(--pr-ease);
+}
+
+.vb-timeline > li:not(.vb-tl-axis-item):hover {
+  background: var(--pr-accent-soft);
+}
+
+.vb-tl-row {
+  display: grid;
+  grid-template-columns: minmax(0, clamp(14rem, 34%, 22rem)) minmax(0, 1fr);
+  column-gap: var(--pr-space-4);
+  align-items: center;
+  padding: 0.7rem 0.25rem;
+}
+
+.vb-tl-row.vb-tl-axis {
+  padding-block: 0 0.45rem;
+}
+
+.vb-tl-ticks {
+  position: relative;
+  height: 1rem;
+}
+
+.vb-tl-ticks span {
+  position: absolute;
+  top: 0;
+  transform: translateX(-50%);
+  font-size: var(--pr-text-xs);
+  font-variant-numeric: tabular-nums;
+  color: var(--pr-text-faint);
+}
+
+/* The first year after the break starts at the break instead of straddling it. */
+.vb-tl-ticks .is-after-break {
+  transform: none;
+  padding-left: 2px;
+}
+
+.vb-tl-ticks .vb-tl-today {
+  color: var(--pr-accent-strong);
+  font-weight: 600;
+}
+
+.vb-tl-break {
+  position: absolute;
+  top: 1px;
+  transform: translateX(-50%);
+  color: var(--pr-text-faint);
+}
+
+.vb-tl-label {
+  position: relative;
+  line-height: 1.5;
+}
+
+.vb-tl-label strong {
+  color: var(--pr-text);
+  font-weight: 600;
+}
+
+.vb-tl-note {
+  margin: 0.35rem 0 0;
+  color: var(--pr-text-muted);
+}
+
+.vb-tl-track {
+  position: relative;
+  height: 1.25rem;
+}
+
+.vb-tl-grid {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: var(--pr-border);
+}
+
+.vb-tl-now {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: var(--pr-accent);
+  opacity: 0.6;
+}
+
+.vb-tl-line {
+  position: absolute;
+  top: 50%;
+  height: 2px;
+  margin-top: -1px;
+  border-radius: 2px;
+  background: var(--pr-accent-strong);
+}
+
+/* Same grammar as the "Cómo trabajo" slope: open point = start, filled = end. */
+.vb-tl-dot {
+  position: absolute;
+  top: 50%;
+  width: 9px;
+  height: 9px;
+  margin: -4.5px 0 0 -4.5px;
+  box-sizing: border-box;
+  border-radius: 50%;
+  border: 2px solid var(--pr-accent-strong);
+  background: var(--pr-bg-raised);
+}
+
+.vb-tl-dot.is-end {
+  background: var(--pr-accent-strong);
+}
+
+/* The plant years stay in neutral ink: the accent marks the software work. */
+.vb-timeline .is-past .vb-tl-line {
+  background: var(--pr-text-faint);
+}
+
+.vb-timeline .is-past .vb-tl-dot {
+  border-color: var(--pr-text-faint);
+}
+
+.vb-timeline .is-past .vb-tl-dot.is-end {
+  background: var(--pr-text-faint);
+}
+
+/* Container query: the chart narrows with its column, not the viewport. */
+@container (max-width: 42rem) {
+  .vb-tl-row {
+    grid-template-columns: minmax(0, 1fr);
+    row-gap: 0.5rem;
+  }
+  .vb-tl-row.vb-tl-axis > span {
+    display: none;
+  }
+}
+
+/* ---------- "Cómo trabajo" (live pass 2026-10-07) ----------
+   Typographic, no box: the thesis as the section's statement, then two columns that each
+   open with their lead result in display type. Figures inside sentences (88%, ~300, 13+)
+   are set in the display face and accent colour so the results read first. */
+
+.hw {
+  margin: 0 0 var(--pr-space-5);
+}
+
+.hw-head {
+  margin-bottom: 1.5rem;
+}
+
+.vb-section .hw-head h3 {
+  margin: 0 0 0.9rem;
+  font-family: var(--pr-font-body);
+  font-size: var(--pr-text-xs);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--pr-accent-strong);
+}
+
+.hw-thesis {
+  margin: 0;
+  max-width: 22ch;
+  font-family: var(--pr-font-display);
+  font-size: clamp(1.9rem, 1.2rem + 2.6vw, 3rem);
+  line-height: 1.12;
+  letter-spacing: -0.02em;
+  color: var(--pr-text);
+  text-wrap: balance;
+}
+
+.hw-cols {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: var(--pr-space-5);
+}
+
+.hw-col {
+  min-width: 0;
+  padding-top: var(--pr-space-3);
+  border-top: 1px solid var(--pr-border);
+}
+
+.hw-label {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.25rem 0.75rem;
+  margin: 0 0 var(--pr-space-3);
+  font-size: var(--pr-text-xs);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--pr-text-muted);
+}
+
+.hw-label span {
+  font-size: var(--pr-text-sm);
+  font-weight: 500;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.hw-lead {
+  margin: 0 0 var(--pr-space-3);
+  max-width: 26ch;
+  font-family: var(--pr-font-display);
+  font-size: clamp(1.4rem, 1.05rem + 1vw, 1.9rem);
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  color: var(--pr-text);
+}
+
+.hw-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.hw-list li {
+  max-width: 44ch;
+  padding: 0.85rem 0;
+  border-top: 1px solid var(--pr-border);
+  font-size: var(--pr-text-base);
+  line-height: 1.5;
+  color: var(--pr-text-muted);
+}
+
+.hw-num {
+  font-family: var(--pr-font-display);
+  font-size: 1.8em;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.01em;
+  color: var(--pr-accent-strong);
+  white-space: nowrap;
+}
+
+.hw-lead .hw-num {
+  font-size: 1.15em;
+}
+
+@media (max-width: 760px) {
+  .hw-cols {
+    grid-template-columns: minmax(0, 1fr);
+    row-gap: var(--pr-space-4);
+  }
+}
+
+.vb-bullets {
+  margin: 0.5rem 0 0;
+  padding-left: 1.15rem;
+  color: var(--pr-text-muted);
+  font-size: var(--pr-text-sm);
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.vb-bullets li::marker {
+  color: var(--pr-accent-strong);
+}
+
+/* ---------- Tecnologías ---------- */
+
+/* Technology ribbons (TechRibbon): each marquee row is a seam between two sections, one row
+   per seam, never stacked. Hairlines above and below frame the band; it carries no heading. The
+   loop mechanics are the shared .tl-* rules below. */
+.vb-ribbon {
+  margin: 0 0 var(--pr-space-5);
+  padding: 1.1rem 0;
+  border-block: 1px solid var(--pr-border);
+  --tl-gap: 3rem;
+  --tl-speed: 120s;
+}
+
+.vb-ribbon.is-back {
+  --tl-speed: 140s;
+}
+
+.vb-ribbon.is-ai {
+  --tl-speed: 100s;
+}
+
+/* Inside a section (closing the credentials) it hangs below the content instead. */
+.vb-section > .vb-ribbon {
+  margin: var(--pr-space-5) 0 0;
+}
+
+.vb-tech-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  white-space: nowrap;
+  font-size: var(--pr-text-lg);
+  font-weight: 500;
+  color: var(--pr-text-muted);
+  transition: color var(--pr-ease);
+}
+
+.vb-tech-item svg {
+  width: 1.5rem;
+  height: 1.5rem;
+  flex: none;
+}
+
+.vb-tech-item:hover {
+  color: var(--pr-accent-strong);
+}
+
+/* Marquee mechanics shared by every technology row (TechLoop). The track holds the list twice
+   and slides by half its own width, so the loop is seamless; gaps are item padding, not flex
+   gap, so both halves are exactly equal. Paused on hover; with reduced motion the row stops,
+   drops the copy and wraps as a plain list. */
+.tl-window {
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent);
+}
+
+.tl-track {
+  display: flex;
+  width: max-content;
+  animation: tl-slide var(--tl-speed, 55s) linear infinite;
+}
+
+.tl-track.is-right {
+  animation-direction: reverse;
+}
+
+.tl-window:hover .tl-track {
+  animation-play-state: paused;
+}
+
+.tl-list {
+  display: flex;
+  flex: none;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.tl-item {
+  flex: none;
+  padding-right: var(--tl-gap, 0.75rem);
+}
+
+@keyframes tl-slide {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tl-window {
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+
+  .tl-track {
+    width: auto;
+    animation: none;
+  }
+
+  .tl-list {
+    flex-wrap: wrap;
+    row-gap: var(--tl-gap, 0.75rem);
+  }
+
+  .tl-copy {
+    display: none;
+  }
+}
+
+.vb-todo {
+  display: block;
+  margin-top: 0.6rem;
+  font-size: var(--pr-text-xs);
+  font-style: italic;
+  color: var(--pr-accent-strong);
+  border: 1px dashed var(--pr-border);
+  border-radius: var(--pr-radius-sm);
+  padding: 0.4rem 0.65rem;
+}
+
+/* ---------- Mis trabajos ---------- */
+
+.vb-work-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 26rem), 1fr));
+  gap: var(--pr-space-3);
+  margin-bottom: var(--pr-space-4);
+  counter-reset: vb-work;
+}
+
+/* The featured project (the one with a `system`) leads the list across the whole row:
+   all its highlights visible, its architecture drawn beside it, and it rests lifted: the
+   most important piece of the section (Earned Lift Rule). The others share two columns. */
+.vb-work-list {
+  container-type: inline-size;
+}
+
+/* The featured project's card: the most important piece of the section, so it spans the row,
+   rests lifted (Earned Lift Rule) and shows the product itself: the customer app's capture
+   beside the four products it is made of. Text on the left, the scene on the right. */
+.vb-work-card.is-featured {
+  --brand: #c4730a;
+  --brand-ink: #16140f;
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.5fr);
+  gap: var(--pr-space-5);
+  align-items: center;
+  padding: var(--pr-space-5) 4rem var(--pr-space-5) var(--pr-space-5);
+  box-shadow: var(--pr-shadow-md);
+}
+
+/* A client's identity inside its own card: the one extra colour on the page, used for its
+   logo, its capture and the product icons only (never for text). The dark theme gets the
+   brand orange as is; the light theme a deeper orange that keeps 3:1 against paper. */
+body[data-theme='dark'] .vb-work-card.is-featured {
+  --brand: #faa61b;
+}
+
+.vb-brand-logo {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.vb-brand-logo.on-dark {
+  display: none;
+}
+
+body[data-theme='dark'] .vb-brand-logo.on-dark {
+  display: block;
+}
+
+body[data-theme='dark'] .vb-brand-logo.on-light {
+  display: none;
+}
+
+.vb-work-card.is-featured .vb-work-head {
+  font-size: var(--pr-text-lg);
+}
+
+.vb-work-card.is-featured .vb-work-desc {
+  max-width: 44ch;
+}
+
+.vb-work-main {
+  min-width: 0;
+}
+
+.vb-work-logo {
+  display: block;
+  width: 6.5rem;
+  margin-bottom: 0.9rem;
+}
+
+.vb-work-stage {
+  display: grid;
+  grid-template-columns: minmax(0, 15rem) minmax(0, 1fr);
+  gap: 3rem;
+  align-items: center;
+}
+
+/* The product shot: the app's home, cut out with transparency so the client's gradient
+   does not leak into the page's one-hue palette. */
+.vb-work-shot {
+  margin: 0;
+}
+
+.vb-work-shot img {
+  display: block;
+  width: 100%;
+  height: auto;
+  filter: drop-shadow(0 18px 24px rgb(0 0 0 / 0.3));
+  /* Enlarged without changing the card: a transform, anchored to the right so the line that
+     ties it to the first product keeps its place. */
+  position: relative;
+  z-index: 2;
+  transform-origin: 100% 50%;
+  scale: 1.32;
+}
+
+/* The four products, each with an icon, a name and one line of function. Pedí (the app in
+   the capture) is tied to it by a short line ending in an open point. */
+.vb-products {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.vb-product {
+  position: relative;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  column-gap: 0.9rem;
+  align-items: center;
+  padding: 0.85rem 0;
+  border-bottom: 1px solid var(--pr-border);
+}
+
+.vb-product:first-child {
+  border-top: 1px solid var(--pr-border);
+}
+
+.vb-product > span:last-child {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+}
+
+.vb-product-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 2.4rem;
+  height: 2.4rem;
+  border-radius: 50%;
+  border: 1.5px solid var(--brand);
+  color: var(--brand);
+}
+
+.vb-product-name {
+  font-size: var(--pr-text-md);
+  font-weight: 600;
+  color: var(--pr-text);
+}
+
+.vb-product-fn {
+  font-size: var(--pr-text-sm);
+  line-height: 1.45;
+  color: var(--pr-text-muted);
+}
+
+.vb-product.is-tied::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: -3rem;
+  width: 2.2rem;
+  height: 2px;
+  margin-top: -1px;
+  background: var(--brand);
+}
+
+.vb-product.is-tied::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: -0.8rem;
+  width: 9px;
+  height: 9px;
+  box-sizing: border-box;
+  margin: -4.5px 0 0 -4.5px;
+  border-radius: 50%;
+  border: 2px solid var(--brand);
+  background: var(--pr-bg-raised);
+}
+
+@container (max-width: 56rem) {
+  .vb-work-card.is-featured {
+    grid-template-columns: minmax(0, 1fr);
+    padding-right: var(--pr-space-4);
+  }
+  .vb-work-stage {
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--pr-space-4);
+  }
+  .vb-work-shot {
+    max-width: 14rem;
+    justify-self: center;
+  }
+  .vb-work-shot img {
+    scale: 1.1;
+  }
+  .vb-product.is-tied::before,
+  .vb-product.is-tied::after {
+    display: none;
+  }
+}
+
+/* A work's title is the link to its live product, stretched over the whole card so the card
+   behaves like the earlier-work cards. The details toggle stays above it. */
+.vb-work-link {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  text-underline-offset: 0.2em;
+  transition: text-decoration-color var(--pr-ease);
+}
+
+.vb-work-link::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: var(--pr-radius);
+}
+
+.vb-work-link:focus-visible {
+  outline: none;
+}
+
+.vb-work-link:focus-visible::before {
+  outline: 2px solid var(--pr-accent-strong);
+  outline-offset: 2px;
+}
+
+.vb-work-card:hover .vb-work-link {
+  text-decoration-color: var(--pr-accent-strong);
+}
+
+.vb-work-link-arrow {
+  margin-left: 0.3em;
+  font-size: 0.85em;
+  color: var(--pr-accent-strong);
+}
+
+.vb-work-card .vb-more {
+  position: relative;
+  z-index: 1;
+}
+
+/* The illustration band of a card without the featured layout: the same height for every
+   card in the row, so the drawing and the logo-only card line up. */
+.vb-work-art-band {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 19rem;
+  margin-bottom: var(--pr-space-3);
+}
+
+.vb-work-art {
+  display: block;
+  width: auto;
+  max-width: 100%;
+  height: 100%;
+  color: var(--pr-accent-strong);
+}
+
+.vb-work-art-logo {
+  display: block;
+  width: min(15rem, 72%);
+}
+
+/* The featured card, compact: a shorter card at the same width. The logo hangs off the top
+   edge at the left, clear of the title, the phone rises through it, and the product
+   rows are tighter. Wide layouts only get the overhang; stacked ones keep a logo tab at the left. */
+.vb-work-card.is-featured {
+  --out: 1.8rem;
+  --tab-h: 5.2rem;
+  --pad-y: 1.75rem;
+  margin-top: var(--out);
+  padding: var(--pad-y) 3.2rem var(--pad-y) 2.5rem;
+  gap: 3.25rem;
+  align-items: stretch;
+}
+
+.vb-work-card.is-featured .vb-work-logo {
+  position: absolute;
+  top: calc(var(--out) * -1);
+  left: 1.25rem;
+  z-index: 3;
+  width: 5.5rem;
+  margin: 0;
+  padding: 0.55rem 0.7rem;
+  background: var(--pr-bg-raised);
+  border: 1px solid var(--pr-border);
+  border-radius: var(--pr-radius);
+  box-shadow: var(--pr-shadow-sm);
+}
+
+.vb-work-card.is-featured .vb-work-main {
+  padding-top: max(0rem, calc(var(--tab-h) - var(--out) - var(--pad-y) + 1.7rem));
+}
+
+.vb-work-card.is-featured .vb-product {
+  padding-block: 0.5rem;
+}
+
+.vb-work-card.is-featured .vb-work-stage {
+  grid-template-columns: minmax(0, 11rem) minmax(0, 1fr);
+  gap: 3rem;
+}
+
+@media (max-width: 600px) {
+  .vb-work-card.is-featured .vb-work-stage {
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--pr-space-4);
+  }
+}
+
+@container (min-width: 56rem) {
+  .vb-work-card.is-featured {
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.5fr);
+  }
+  .vb-work-card.is-featured .vb-work-stage {
+    grid-template-columns: minmax(0, 15rem) minmax(0, 1fr);
+  }
+  .vb-work-card.is-featured .vb-work-logo {
+    left: 2.5rem;
+  }
+  .vb-work-card.is-featured .vb-work-shot {
+    position: relative;
+    z-index: 2;
+    translate: 0 calc((var(--pad-y) + var(--out) - 1.5rem) * -1);
+  }
+}
+
+.vb-more {
+  margin-top: 0.5rem;
+  font-size: var(--pr-text-sm);
+}
+
+.vb-more summary {
+  width: fit-content;
+  cursor: pointer;
+  font-weight: 600;
+  color: var(--pr-accent-strong);
+}
+
+.vb-more summary:hover {
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+/* The two cards under the featured one: Chaskyapp takes 60% of the row and Reforest the
+   remaining 40% (stacked on narrow lists). Chaskyapp keeps its text on the left and the drawing
+   on the right when the list is wide; both cards share the row height. */
+.vb-work-list {
+  grid-template-columns: repeat(10, minmax(0, 1fr));
+}
+
+.vb-work-list > #work-chaskyapp,
+.vb-work-list > #work-reforest {
+  grid-column: 1 / -1;
+}
+
+@container (min-width: 44rem) {
+  .vb-work-list > #work-chaskyapp {
+    grid-column: span 6;
+  }
+  .vb-work-list > #work-reforest {
+    grid-column: span 4;
+  }
+}
+
+#work-reforest .vb-work-main,
+#work-chaskyapp .vb-work-main {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+#work-reforest .vb-tags {
+  margin-top: auto;
+  padding-top: 0.85rem;
+}
+
+#work-reforest .vb-work-art-band {
+  height: 8.5rem;
+}
+
+#work-chaskyapp .vb-work-art-band {
+  flex: 1 1 auto;
+  height: auto;
+  min-height: 18rem;
+}
+
+#work-chaskyapp .vb-work-art {
+  width: min(100%, 34rem);
+  height: auto;
+}
+
+@container (min-width: 60rem) {
+  #work-chaskyapp .vb-work-main {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 46%;
+    column-gap: var(--pr-space-4);
+    align-content: center;
+    align-items: start;
+  }
+  #work-chaskyapp .vb-work-main > :not(.vb-work-art-band) {
+    grid-column: 1;
+  }
+  #work-chaskyapp .vb-work-art-band {
+    grid-column: 2;
+    grid-row: 1 / span 8;
+    flex: none;
+    align-self: center;
+    min-height: 0;
+    margin: 0;
+  }
+  #work-chaskyapp .vb-work-art {
+    width: 100%;
+  }
+}
+
+.vb-work-card {
+  position: relative;
+  padding: var(--pr-space-3);
+  padding-right: 3.5rem;
+  counter-increment: vb-work;
+}
+
+.vb-work-card:hover {
+  box-shadow: var(--pr-shadow-md);
+  border-color: var(--pr-accent);
+  transform: translateY(-2px);
+}
+
+.vb-work-card::after {
+  content: counter(vb-work, decimal-leading-zero);
+  position: absolute;
+  top: var(--pr-space-3);
+  right: var(--pr-space-3);
+  font-family: var(--pr-font-display);
+  font-size: 1.1rem;
+  color: var(--pr-text-faint); /* was Rule colour, ~1.2:1 */
+}
+
+.vb-work-head {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.4rem;
+  font-size: var(--pr-text-base);
+}
+
+/* Was an unstyled <p> at the browser default size — larger than its own subtitle. */
+.vb-work-desc {
+  font-size: var(--pr-text-base);
+  line-height: 1.6;
+  margin: 0 0 0.6rem;
+}
+
+/* Reading measure for every running paragraph in the main column (were 101–114ch). */
+.vb-main p {
+  max-width: 65ch;
+}
+
+.vb-work-subtitle {
+  color: var(--pr-text-muted);
+  font-size: var(--pr-text-sm);
+  margin: 0 0 0.6rem;
+}
+
+.vb-work-card .vb-tags {
+  margin-top: 0.85rem;
+}
+
+.vb-work-subhead {
+  font-size: var(--pr-text-sm);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--pr-text-faint);
+  margin: 0 0 var(--pr-space-2);
+}
+
+.vb-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+/* Credentials: the certificates themselves, each linking to its public verification page.
+   A gallery of artifacts, so the images carry the section; the hover answers like the work
+   cards (accent border, lift) without moving on touch. */
+.vb-credentials {
+  /* The containing block for the visually hidden text inside each cert: without it those
+     absolutely positioned spans escape the scroll strip below and widen the whole page. */
+  position: relative;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+/* On a narrow screen the five credentials wrap into a grid; nothing scrolls sideways. */
+@media (max-width: 760px) {
+  .vb-credentials {
+    grid-template-columns: repeat(auto-fill, minmax(8rem, 1fr));
+    gap: 0.75rem;
+  }
+}
+
+.vb-cert {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  height: 100%;
+  text-decoration: none;
+  color: inherit;
+  font-size: var(--pr-text-xs);
+}
+
+.vb-cert img {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin-bottom: 0.45rem;
+  border: 1px solid var(--pr-border);
+  border-radius: var(--pr-radius-sm);
+  box-shadow: var(--pr-shadow-sm);
+  transition:
+    border-color var(--pr-ease),
+    box-shadow var(--pr-ease),
+    transform var(--pr-ease);
+}
+
+.vb-cert strong {
+  color: var(--pr-text);
+  font-size: var(--pr-text-sm);
+  font-weight: 600;
+  line-height: 1.3;
+  text-wrap: balance;
+}
+
+.vb-cert-meta {
+  color: var(--pr-text-muted);
+}
+
+.vb-cert-verify {
+  margin-top: auto;
+  padding-top: 0.2rem;
+  font-weight: 600;
+  color: var(--pr-accent-strong);
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  text-underline-offset: 0.2em;
+  transition: text-decoration-color var(--pr-ease);
+}
+
+@media (hover: hover) {
+  .vb-cert:hover img {
+    border-color: var(--pr-accent);
+    box-shadow: var(--pr-shadow-md);
+    transform: translateY(-2px);
+  }
+  .vb-cert:hover .vb-cert-verify {
+    text-decoration-color: currentColor;
+  }
+}
+
+.vb-projects {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 22rem), 1fr));
+  gap: 0.7rem;
+  counter-reset: vb-legacy;
+}
+
+.vb-project {
+  position: relative;
+  display: flex;
+  gap: var(--pr-space-2);
+  text-decoration: none;
+  color: var(--pr-text);
+  padding: 0.75rem;
+  align-items: center;
+  counter-increment: vb-legacy;
+}
+
+.vb-project:hover {
+  border-color: var(--pr-accent);
+  box-shadow: var(--pr-shadow-sm);
+  transform: translateX(2px);
+}
+
+.vb-project::before {
+  content: counter(vb-legacy, decimal-leading-zero);
+  font-family: var(--pr-font-display);
+  font-size: 0.8rem;
+  color: var(--pr-text-faint);
+  flex-shrink: 0;
+  width: 1.4rem;
+}
+
+.vb-project img {
+  width: 96px;
+  height: 64px;
+  object-fit: cover;
+  border-radius: var(--pr-radius-sm);
+  flex-shrink: 0;
+  filter: grayscale(15%);
+  transition: filter var(--pr-ease);
+}
+
+.vb-project:hover img {
+  filter: grayscale(0%);
+}
+
+.vb-project strong {
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  text-underline-offset: 0.2em;
+  transition: text-decoration-color var(--pr-ease);
+}
+
+.vb-project:hover strong {
+  text-decoration-color: var(--pr-accent-strong);
+}
+
+.vb-project p {
+  color: var(--pr-text-muted);
+  font-size: var(--pr-text-xs);
+  margin: 0.2rem 0 0;
+}
+
+/* ---------- Feedback ---------- */
+
+/* Two verbatim excerpts, set as plain quotes: a fact line first, then the words. No carousel,
+   no cards: with this little material the text itself is the object. */
+.vb-feedback-lead {
+  margin: calc(var(--pr-space-2) * -1) 0 var(--pr-space-3);
+  max-width: 62ch;
+  font-size: var(--pr-text-sm);
+  line-height: 1.55;
+  color: var(--pr-text-muted);
+}
+
+.vb-feedback {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--pr-space-4);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.vb-quote {
+  margin: 0;
+  padding-left: var(--pr-space-3);
+  border-left: 2px solid var(--pr-accent);
+}
+
+.vb-quote blockquote {
+  margin: 0 0 var(--pr-space-2);
+  max-width: none;
+  font-family: var(--pr-font-display);
+  font-size: var(--pr-text-md);
+  font-style: italic;
+  line-height: 1.55;
+  color: var(--pr-text);
+}
+
+.vb-quote figcaption {
+  font-size: var(--pr-text-xs);
+  line-height: 1.4;
+  color: var(--pr-text-muted);
+}
+
+@media (max-width: 760px) {
+  .vb-feedback {
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--pr-space-3);
+  }
+}
+
+/* ---------- Contacto (closing section) ---------- */
+
+.vb-contact {
+  margin-bottom: 0;
+}
+
+.vb-contact-lead {
+  font-size: var(--pr-text-md);
+  line-height: 1.6;
+  max-width: 62ch;
+  margin: 0 0 var(--pr-space-3);
+}
+
+.vb-contact-lead a {
+  color: var(--pr-accent-strong);
+  text-decoration-color: currentColor;
+}
+
+.vb-sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ---------- Footer ---------- */
+
+.vb-footer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--pr-space-3);
+  padding-top: var(--pr-space-3);
+  border-top: 1px solid var(--pr-border);
+  font-size: var(--pr-text-sm);
+}
+
+.vb-footer a {
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  padding-bottom: 1px;
+}
+
+.vb-footer a:hover {
+  color: var(--pr-accent-strong);
+  border-bottom-color: var(--pr-accent-strong);
+}
+
+@media (max-width: 860px) {
+  .vb {
+    flex-direction: column;
+  }
+  .vb-rail {
+    position: static;
+    height: auto;
+    width: auto;
+    border-right: none;
+    border-bottom: 1px solid var(--pr-border);
+  }
+  .vb-main {
+    padding: var(--pr-space-3) 1.25rem 4rem;
+    max-width: none;
+  }
+  /* Without a sticky rail the jump-nav scrolls away after the first screen —
+     it only adds height before the content, so it goes. */
+  .vb-nav {
+    display: none;
+  }
+  /* Stacked rail: facts pack two-up (availability spans) so the ledger reaches
+     closer to the first screen. */
+  .vb-quickinfo {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .vb-quickinfo div:last-child {
+    grid-column: 1 / -1;
+  }
+}
+
+/* Stacked header, minimal (mobile pass 2026-10-09): a visitor on a phone should reach the
+   first project fast. The three fact boxes become plain lines (availability, then location
+   and languages in one muted line), the links sit in one row and the drawing is smaller. */
+@media (max-width: 860px) {
+  .vb-rail {
+    gap: 0.9rem;
+    padding-bottom: var(--pr-space-3);
+  }
+  .vb-prefs {
+    margin-bottom: 0.9rem;
+  }
+  .vb-identity {
+    margin-bottom: 0.5rem;
+  }
+  .vb-tagline {
+    margin: 0;
+  }
+  .vb-quickinfo {
+    display: block;
+    padding-top: 0.9rem;
+  }
+  .vb-quickinfo div,
+  .vb-quickinfo div:hover {
+    padding: 0;
+    border: 0;
+    background: none;
+  }
+  .vb-quickinfo .vb-quickinfo-status {
+    display: block;
+    margin-bottom: 0.35rem;
+  }
+  .vb-quickinfo div {
+    display: inline;
+  }
+  .vb-quickinfo div:last-child {
+    grid-column: auto;
+  }
+  /* The labels stay for screen readers; the values read on their own. */
+  .vb-quickinfo dt {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+  .vb-quickinfo dd {
+    display: inline;
+    margin: 0;
+    color: var(--pr-text-muted);
+    font-weight: 400;
+  }
+  .vb-quickinfo div:nth-child(2)::after {
+    content: ' · ';
+    color: var(--pr-text-faint);
+  }
+  .vb-rail .vb-links {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 0 1.5rem;
+    border-top: 0;
+    padding-top: 0;
+  }
+  .vb-hero-art {
+    max-width: 16rem;
+  }
+}
+
+/* Ledger rows: when the ledger itself is narrow (any viewport), the fact drops under
+   the product name instead of squeezing it. Container query, not a viewport guess. */
+@container (max-width: 30rem) {
+  .vb-now-row {
+    grid-template-columns: minmax(0, 1fr) auto;
+    row-gap: 0.45rem;
+  }
+  .vb-now-fact {
+    grid-column: 1;
+    grid-row: 2;
+    text-align: left;
+  }
+  .vb-now-arrow {
+    grid-column: 2;
+    grid-row: 1 / span 2;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pr-root * {
+    transition-duration: 0ms !important;
+  }
+}
+
+/* GSAP-driven motion (rail accent line, scroll reveals, Arcor sparkline — see
+   VariantB.tsx) is gated in JS via gsap.matchMedia('(prefers-reduced-motion:
+   no-preference)'), so none of it runs at all under reduced motion — nothing
+   extra to disable here. */
+
+/* ---------- Adapt pass: input-aware targets (2026-09-30) ----------
+   Two tiers. Everyone gets the WCAG 2.5.8 AA floor (24px). A coarse pointer (phone,
+   tablet, touch laptop) gets 44px targets; a mouse keeps the dossier's density. */
+
+.vb-links a,
+.vb-footer a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 24px;
+}
+
+.vb-theme-toggle {
+  min-height: 24px;
+}
+
+@media (pointer: coarse) {
+  .vb-lang-option {
+    min-width: 44px;
+    min-height: 44px;
+  }
+
+  .vb-btn,
+  .vb-nav-item,
+  .vb-theme-toggle {
+    min-height: 44px;
+  }
+
+  /* Text links: the box grows, the underline moves to text-decoration so it stays
+     under the words instead of at the bottom of a 44px box. */
+  .vb-links a,
+  .vb-footer a {
+    min-height: 44px;
+    min-width: 44px;
+    border-bottom-color: transparent;
+  }
+
+  .vb-links a:hover,
+  .vb-footer a:hover {
+    border-bottom-color: transparent;
+    text-decoration: underline;
+    text-decoration-color: var(--pr-accent-strong);
+  }
+
+  .vb-links {
+    gap: 0;
+  }
+
+  .vb-footer {
+    gap: var(--pr-space-2) var(--pr-space-4);
+  }
+}
+
+/* No hover (touch-only): hover lifts would stick after a tap, so drop the movement and
+   give an immediate pressed state instead. */
+@media (hover: none) {
+  .vb-btn:hover,
+  .vb-work-card:hover,
+  .vb-project:hover {
+    transform: none;
+  }
+
+  .vb-now-row:hover .vb-now-arrow {
+    transform: none;
+  }
+
+  .vb-now-row:active,
+  .vb-project:active,
+  .vb-nav-item:active {
+    background: var(--pr-accent-soft);
+  }
+
+  .vb-btn:active {
+    transform: scale(0.98);
+  }
+}
+
+/* Touch + sticky rail (tablets, touch laptops): 44px targets make the rail taller than a
+   768px landscape viewport, so pack it the way the stacked rail already does — facts
+   two-up, social links in a row. Identity, availability and the CTA stay in view. */
+@media (pointer: coarse) and (min-width: 861px) {
+  .vb-quickinfo {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .vb-quickinfo div:first-child {
+    grid-column: 1 / -1;
+  }
+  .vb-links {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 0 var(--pr-space-3);
+  }
+}
+
+/* ---------- Short viewports (polish 2026-09-30) ----------
+   The sticky rail outgrew ~800px-tall laptops (jump-nav fell into the rail's own
+   scroll). Same structure, tighter rhythm: spacing steps down one notch. Touch keeps
+   its 44px minimums (the coarse block sets min-height, not padding). */
+@media (min-width: 861px) and (max-height: 900px) {
+  .vb-rail {
+    padding-top: var(--pr-space-3);
+    gap: var(--pr-space-2);
+  }
+  .vb-prefs {
+    margin-bottom: var(--pr-space-2);
+  }
+  .vb-identity {
+    margin-bottom: 0.4rem;
+  }
+  .vb-tagline {
+    margin: 0.4rem 0 0;
+  }
+  .vb-quickinfo {
+    gap: 0.4rem;
+    padding-top: var(--pr-space-2);
+  }
+  .vb-quickinfo div {
+    padding: 0.4rem 0.6rem;
+  }
+  .vb-nav {
+    padding: var(--pr-space-1) 0;
+    gap: 0;
+  }
+  .vb-nav-item {
+    padding-block: 0.3rem;
+  }
+  .vb-links {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 0 var(--pr-space-3);
+    padding-top: var(--pr-space-1);
+  }
+}
+
+/* ---------- Phone pass (2026-10-09) ----------
+   On a phone the page is scanned, not read: less air before the first project, one even
+   gutter inside the cards, and the card numbers and the featured card's overhang (which need
+   room around the card) go. Last in the file on purpose: it settles the earlier card rules. */
+@media (max-width: 600px) {
+  .vb-hero {
+    margin-bottom: var(--pr-space-3);
+  }
+  .vb-hero-art {
+    max-width: 12.5rem;
+  }
+  .vb-ribbon {
+    padding: 0.7rem 0;
+    margin-bottom: var(--pr-space-4);
+  }
+  .vb-tech-item {
+    font-size: var(--pr-text-md);
+  }
+
+  .vb-work-card,
+  .vb-work-card.is-featured {
+    --out: 0rem;
+    margin-top: 0;
+    padding: 1.1rem;
+  }
+  .vb-work-card::after {
+    display: none;
+  }
+
+  /* Rapitrago: the logo is an ordinary mark above the title, the phone stays inside the card
+     and the four products shed their one-line functions (the paragraph above says it). */
+  .vb-work-card.is-featured .vb-work-logo {
+    position: static;
+    width: 4.25rem;
+    margin-bottom: 0.7rem;
+    padding: 0.4rem 0.5rem;
+    box-shadow: none;
+  }
+  .vb-work-card.is-featured .vb-work-main {
+    padding-top: 0;
+  }
+  .vb-work-card.is-featured .vb-work-stage {
+    gap: var(--pr-space-3);
+  }
+  .vb-work-shot {
+    max-width: 11rem;
+  }
+  .vb-work-shot img {
+    scale: 1;
+  }
+  .vb-product-fn {
+    display: none;
+  }
+  .vb-work-card.is-featured .vb-product {
+    padding-block: 0.4rem;
+  }
+
+  /* Chaskyapp and Reforest: the artwork takes the width it has, not a fixed band. */
+  #work-chaskyapp .vb-work-art-band {
+    min-height: 0;
+  }
+  #work-chaskyapp .vb-work-art {
+    width: 100%;
+  }
+  #work-reforest .vb-work-art-band {
+    height: 5.5rem;
+  }
+}
+
+/* The experience bars and their broken axis do not read at phone width, so there they go and
+   the entries stay as a plain list (role, company, dates, note). */
+@media (max-width: 760px) {
+  .vb-tl-axis-item,
+  .vb-tl-track {
+    display: none;
+  }
+  .vb-tl-row {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* The rail's jump-nav needs every section to be able to reach the top of the viewport, or its
+   link lands part-way down and the scroll-spy marks the wrong item. The last sections are
+   short, so the closing one (Contacto) is a full screen: Feedback and Contacto then both land
+   at the top like the others, at any window height. */
+@media (min-width: 861px) {
+  #contact {
+    min-height: 100vh;
+    min-height: 100dvh;
+  }
+}

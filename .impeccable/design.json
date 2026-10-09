@@ -1,0 +1,356 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-07T16:21:43.303Z",
+  "title": "Design System: Andrés Medina — Portfolio",
+  "extensions": {
+    "colorMeta": {
+      "sage-field": {
+        "role": "primary",
+        "displayName": "Sage Field",
+        "canonical": "#7c9885",
+        "dark": "#8fae97",
+        "tonalRamp": [
+          "#1f2a23",
+          "#2f3f34",
+          "#3f5446",
+          "#56705f",
+          "#7c9885",
+          "#9fb5a6",
+          "#c3d2c8",
+          "#e6ede8"
+        ]
+      },
+      "sage-field-deep": {
+        "role": "primary",
+        "displayName": "Sage Field Deep",
+        "canonical": "#56705f",
+        "dark": "#a9c4b0",
+        "tonalRamp": [
+          "#1f2a23",
+          "#2f3f34",
+          "#3f5446",
+          "#56705f",
+          "#7c9885",
+          "#9fb5a6",
+          "#c3d2c8",
+          "#e6ede8"
+        ]
+      },
+      "sage-field-wash": {
+        "role": "primary",
+        "displayName": "Sage Field Wash",
+        "canonical": "rgb(90 117 99 / 0.08)",
+        "dark": "rgb(169 196 176 / 0.1)"
+      },
+      "paper": {
+        "role": "neutral",
+        "displayName": "Paper",
+        "canonical": "#faf9f6",
+        "dark": "#15161a",
+        "tonalRamp": [
+          "#1c1c1a",
+          "#34342f",
+          "#5c5c57",
+          "#6b6b64",
+          "#b8b6ad",
+          "#e4e2db",
+          "#f2f1ec",
+          "#faf9f6"
+        ]
+      },
+      "paper-raised": {
+        "role": "neutral",
+        "displayName": "Paper Raised",
+        "canonical": "#ffffff",
+        "dark": "#1d1f24"
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Ink",
+        "canonical": "#1c1c1a",
+        "dark": "#ecece7"
+      },
+      "ink-muted": {
+        "role": "neutral",
+        "displayName": "Ink Muted",
+        "canonical": "#5c5c57",
+        "dark": "#a3a39c"
+      },
+      "ink-faint": {
+        "role": "neutral",
+        "displayName": "Ink Faint",
+        "canonical": "#6b6b64",
+        "dark": "#909089"
+      },
+      "rule": {
+        "role": "neutral",
+        "displayName": "Rule",
+        "canonical": "#e4e2db",
+        "dark": "#2c2e34"
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "The name in the stacked (mobile) rail. One name is visible at a time."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Section headings, preceded by a short sage rule."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Role line, card heads, timeline roles."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Running text, max 62-65ch (set per paragraph, not on the column)."
+      },
+      "body-small": {
+        "displayName": "Body small",
+        "purpose": "Tagline, timeline, bullets, credentials, feedback, footer."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Uppercase sub-headings in Ink Faint."
+      },
+      "hero-name": {
+        "displayName": "Hero name",
+        "purpose": "The name in the hero on the split layout (clamp 3.25-6rem in tokens, 3.5-6rem as built); the one display-size moment (6rem ceiling)."
+      },
+      "terminal": {
+        "displayName": "Terminal",
+        "purpose": "The typed role line only: system monospace, imitates terminal input."
+      }
+    },
+    "shadows": [
+      {
+        "name": "resting",
+        "value": "0 1px 2px rgb(28 28 26 / 0.04)",
+        "dark": "0 1px 2px rgb(0 0 0 / 0.3)",
+        "purpose": "All cards at rest."
+      },
+      {
+        "name": "lifted",
+        "value": "0 14px 32px -18px rgb(28 28 26 / 0.28)",
+        "dark": "0 16px 36px -18px rgb(0 0 0 / 0.6)",
+        "purpose": "Hovered cards with translateY(-2px); allowed at rest only for the most important piece of a section."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease-standard",
+        "value": "200ms cubic-bezier(0.4, 0, 0.2, 1)",
+        "purpose": "All hover/state transitions."
+      },
+      {
+        "name": "gsap-reveals",
+        "value": "GSAP + ScrollTrigger, gated by gsap.matchMedia('(prefers-reduced-motion: no-preference)')",
+        "purpose": "Play once, never reverse: rail accent line draws in and stays (no idle loop, WCAG 2.2.2); section reveals."
+      },
+      {
+        "name": "typed-role",
+        "value": "JS timers (no library): type 45ms/key, hold 600ms, erase 22ms/key, 160ms gap; plays once (~4.6s)",
+        "purpose": "The one authored motion moment: the hero role line types and erases two texts then rests on the real role. Caret blinks 3 times then goes. Reduced motion shows the final role immediately."
+      },
+      {
+        "name": "tech-ribbon",
+        "value": "CSS translate loop, 100s / 120s / 140s per half-track; pauses on hover; off under prefers-reduced-motion",
+        "purpose": "The one sanctioned loop (chosen 2026-10-07): slow technology ribbons at page seams, carrying no claim that is not also in the page text."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "stacked",
+        "value": "860px",
+        "purpose": "At or below: rail becomes a static header, single column."
+      },
+      {
+        "name": "short",
+        "value": "max-height: 900px (with min-width: 861px)",
+        "purpose": "Sticky rail steps its spacing down one notch so it fits ~768–800px-tall laptops."
+      },
+      {
+        "name": "touch",
+        "value": "pointer: coarse / hover: none",
+        "purpose": "44px targets; hover lifts off, :active feedback on."
+      },
+      {
+        "name": "timeline-container",
+        "value": "@container (max-width: 42rem)",
+        "purpose": "Timeline rows stack the label above the bar."
+      },
+      {
+        "name": "fluid-grids",
+        "value": "repeat(auto-fit, minmax(min(100%, X), 1fr)) with X = 22rem earlier work; the work list is a ten-column grid (featured 10, Chaskyapp 6, Reforest 4); credentials are five equal columns on one line (a scroll strip under 760px)",
+        "purpose": "No fixed column counts; the content column is fluid (max-width 88rem). Technology ribbons are full-width bands, not a grid."
+      },
+      {
+        "name": "how-i-work",
+        "value": "max-width: 760px",
+        "purpose": "\"Cómo trabajo\" columns stack to one."
+      }
+    ],
+    "background": {
+      "light": "background-color: #faf9f6; background-image: radial-gradient(rgb(28 28 26 / 0.06) 0 1px, transparent 1.5px); background-size: 28px 28px",
+      "dark": "background-color: #15161a; background-image: radial-gradient(rgb(236 236 231 / 0.06) 0 1px, transparent 1.5px); background-size: 28px 28px",
+      "purpose": "Flat paper over the whole viewport; the production dot pattern kept as a soft texture (6% alpha cap = contrast budget for Ink Faint). The production grey gradient was dropped 2026-10-05."
+    }
+  },
+  "components": [
+    {
+      "name": "Hero Identity",
+      "kind": "custom",
+      "refersTo": "hero-name",
+      "description": "Two-column hero: name, accent rule, role, tagline and status on the left, a decorative line illustration (web window + phone) on the right.",
+      "html": "<div class=\"ds-hero\"><div class=\"ds-hero-id\"><h1 class=\"ds-hero-name\">Andrés Medina</h1><span class=\"ds-hero-rule\"></span><p class=\"ds-hero-role\">Full Stack Developer</p><p class=\"ds-hero-tag\">I build products end to end, from client discovery to production.</p><p class=\"ds-hero-status\"><span class=\"ds-hero-dot\"></span>Available for Full Stack roles</p></div><svg class=\"ds-hero-art\" viewBox=\"0 0 220 140\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" aria-hidden=\"true\"><rect x=\"8\" y=\"14\" width=\"140\" height=\"96\" rx=\"6\" fill=\"#ffffff\"/><path d=\"M8 32h140\"/><circle cx=\"20\" cy=\"23\" r=\"2\"/><circle cx=\"29\" cy=\"23\" r=\"2\"/><rect x=\"156\" y=\"30\" width=\"48\" height=\"92\" rx=\"8\" fill=\"#ffffff\"/><rect x=\"164\" y=\"48\" width=\"26\" height=\"12\" rx=\"5\"/><rect x=\"170\" y=\"68\" width=\"26\" height=\"12\" rx=\"5\"/><path d=\"M8 124h140M8 120v8M148 120v8\" stroke-dasharray=\"3 3\"/></svg></div>",
+      "css": ".ds-hero { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1.1fr); column-gap: 3.25rem; align-items: center; font-family: -apple-system, 'Segoe UI', Roboto, sans-serif; color: #1c1c1a; } .ds-hero-id { padding: 1.5rem 0; } .ds-hero-name { margin: 0; font: 700 clamp(3.5rem, 1.5rem + 7vw, 6rem)/0.98 Georgia, 'Times New Roman', serif; letter-spacing: -0.03em; text-wrap: balance; } .ds-hero-rule { display: block; width: 3.5rem; height: 2px; margin: 1.6rem 0 1.4rem; background: #56705f; } .ds-hero-role { margin: 0; font-size: 1.75rem; font-weight: 600; color: #56705f; } .ds-hero-tag { margin: 1.6rem 0 0; max-width: 30ch; font-size: clamp(1.25rem, 1rem + 0.9vw, 1.6rem); line-height: 1.45; color: #5c5c57; } .ds-hero-status { display: flex; align-items: center; gap: 0.55rem; margin: 2rem 0 0; font-size: 0.95rem; font-weight: 600; color: #56705f; } .ds-hero-dot { width: 7px; height: 7px; border-radius: 50%; background: #56705f; } .ds-hero-art { display: block; width: 100%; height: auto; color: #56705f; } @media (max-width: 860px) { .ds-hero { grid-template-columns: minmax(0, 1fr); } .ds-hero-art { max-width: 26rem; margin: 0 auto; } }"
+    },
+    {
+      "name": "How I Work Block",
+      "kind": "custom",
+      "refersTo": "card",
+      "description": "Open typographic block: kicker, Georgia thesis, two hairline-topped columns whose figures are set as Sage Field Deep display numerals. No box.",
+      "html": "<section class=\"ds-hw\"><header class=\"ds-hw-head\"><h3>Cómo trabajo</h3><p class=\"ds-hw-thesis\">Primero la especificación, después el código.</p></header><div class=\"ds-hw-cols\"><div class=\"ds-hw-col\"><p class=\"ds-hw-label\">En planta <span>Grupo Arcor</span></p><p class=\"ds-hw-lead\">Eficiencia de <span class=\"ds-hw-num\">88%</span> a <span class=\"ds-hw-num\">93%</span></p><ul class=\"ds-hw-list\"><li>Reduje cambios de formato en <span class=\"ds-hw-num\">~10</span> min</li></ul></div><div class=\"ds-hw-col\"><p class=\"ds-hw-label\">En software <span>hoy</span></p><p class=\"ds-hw-lead\"><span class=\"ds-hw-num\">13+</span> ADRs documentados</p><ul class=\"ds-hw-list\"><li><span class=\"ds-hw-num\">48+</span> migraciones versionadas</li></ul></div></div></section>",
+      "css": ".ds-hw { font-family: -apple-system, 'Segoe UI', Roboto, sans-serif; color: #1c1c1a; } .ds-hw-head { margin-bottom: 1.5rem; } .ds-hw-head h3 { margin: 0 0 0.9rem; font-size: 0.7rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #56705f; } .ds-hw-thesis { margin: 0; max-width: 22ch; font: clamp(1.9rem, 1.2rem + 2.6vw, 3rem)/1.12 Georgia, 'Times New Roman', serif; letter-spacing: -0.02em; text-wrap: balance; } .ds-hw-cols { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 3.25rem; } .ds-hw-col { min-width: 0; padding-top: 1.25rem; border-top: 1px solid #e4e2db; } .ds-hw-label { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0.25rem 0.75rem; margin: 0 0 1.25rem; font-size: 0.7rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #5c5c57; } .ds-hw-label span { font-size: 0.8rem; font-weight: 500; letter-spacing: 0; text-transform: none; } .ds-hw-lead { margin: 0 0 1.25rem; max-width: 26ch; font: clamp(1.4rem, 1.05rem + 1vw, 1.9rem)/1.25 Georgia, 'Times New Roman', serif; letter-spacing: -0.01em; } .ds-hw-list { margin: 0; padding: 0; list-style: none; } .ds-hw-list li { max-width: 44ch; padding: 0.85rem 0; border-top: 1px solid #e4e2db; font-size: 0.95rem; line-height: 1.5; color: #5c5c57; } .ds-hw-num { font-family: Georgia, 'Times New Roman', serif; font-size: 1.8em; font-weight: 700; line-height: 1; letter-spacing: -0.01em; color: #56705f; white-space: nowrap; } .ds-hw-lead .ds-hw-num { font-size: 1.15em; } @media (max-width: 760px) { .ds-hw-cols { grid-template-columns: minmax(0, 1fr); row-gap: 2rem; } }"
+    },
+    {
+      "name": "Technology Ribbon",
+      "kind": "custom",
+      "description": "Full-width band between sections: 1px Rule hairlines above and below, monochrome logo + name per item. Shown static; the real one slides slowly, pauses on hover and stops under reduced motion.",
+      "html": "<div class=\"ds-ribbon\"><div class=\"ds-tl-window\"><div class=\"ds-tl-track\"><a class=\"ds-tech-item\" href=\"#\"><svg class=\"ds-tech-logo\" viewBox=\"0 0 24 24\" fill=\"currentColor\" aria-hidden=\"true\"><path d=\"M4 4h16v16H4z\"/></svg><span>HTML</span></a><a class=\"ds-tech-item\" href=\"#\"><svg class=\"ds-tech-logo\" viewBox=\"0 0 24 24\" fill=\"currentColor\" aria-hidden=\"true\"><path d=\"M12 2l9 5v10l-9 5-9-5V7z\"/></svg><span>Node.js</span></a><a class=\"ds-tech-item\" href=\"#\"><svg class=\"ds-tech-logo\" viewBox=\"0 0 24 24\" fill=\"currentColor\" aria-hidden=\"true\"><path d=\"M12 3a9 9 0 100 18 9 9 0 000-18zm0 4l5 10H7z\"/></svg><span>React</span></a><a class=\"ds-tech-item\" href=\"#\"><svg class=\"ds-tech-logo\" viewBox=\"0 0 24 24\" fill=\"currentColor\" aria-hidden=\"true\"><path d=\"M3 11h18v2H3z\"/></svg><span>Supabase</span></a></div></div></div>",
+      "css": ".ds-ribbon { padding: 1.1rem 0; border-block: 1px solid #e4e2db; font-family: -apple-system, 'Segoe UI', Roboto, sans-serif; } .ds-tl-window { overflow: hidden; -webkit-mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent); mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent); } .ds-tl-track { display: flex; gap: 3rem; width: max-content; padding: 0 2rem; } .ds-tech-item { display: inline-flex; align-items: center; gap: 0.75rem; white-space: nowrap; font-size: 1.3rem; font-weight: 500; color: #5c5c57; text-decoration: none; transition: color 200ms cubic-bezier(0.4,0,0.2,1); } .ds-tech-logo { width: 1.5rem; height: 1.5rem; flex-shrink: 0; } .ds-tech-item:hover { color: #56705f; } .ds-tech-item:focus-visible { outline: 2px solid #56705f; outline-offset: 2px; border-radius: 4px; }"
+    },
+    {
+      "name": "Credential Item",
+      "kind": "card",
+      "description": "One certificate as an artifact: bordered image, course name, issuer and month, accent verify link. Whole item is one link; grid min 16rem.",
+      "html": "<a class=\"ds-cert\" href=\"#\"><svg class=\"ds-cert-img\" viewBox=\"0 0 160 100\" aria-hidden=\"true\"><rect width=\"160\" height=\"100\" fill=\"#ffffff\"/><rect x=\"12\" y=\"12\" width=\"136\" height=\"76\" fill=\"none\" stroke=\"#7c9885\" stroke-width=\"1.5\"/><path d=\"M30 40h100M30 54h70\" stroke=\"#e4e2db\" stroke-width=\"3\"/></svg><strong>Claude Code in Action</strong><span class=\"ds-cert-meta\">Anthropic · Sep 2026</span><span class=\"ds-cert-verify\">Verificar certificado</span></a>",
+      "css": ".ds-cert { display: flex; flex-direction: column; gap: 0.15rem; width: 9.5rem; text-decoration: none; color: inherit; font: 0.8rem -apple-system, 'Segoe UI', Roboto, sans-serif; } .ds-cert-img { display: block; width: 100%; height: auto; margin-bottom: 0.45rem; border: 1px solid #e4e2db; border-radius: 6px; box-shadow: 0 1px 2px rgb(28 28 26 / 0.04); transition: border-color 200ms cubic-bezier(0.4,0,0.2,1), box-shadow 200ms cubic-bezier(0.4,0,0.2,1), transform 200ms cubic-bezier(0.4,0,0.2,1); } .ds-cert strong { color: #1c1c1a; font-weight: 600; line-height: 1.35; } .ds-cert-meta { color: #5c5c57; } .ds-cert-verify { margin-top: auto; padding-top: 0.2rem; font-weight: 600; color: #56705f; text-decoration: underline; text-decoration-color: transparent; text-underline-offset: 0.2em; transition: text-decoration-color 200ms cubic-bezier(0.4,0,0.2,1); } .ds-cert:hover .ds-cert-img { border-color: #7c9885; box-shadow: 0 14px 32px -18px rgb(28 28 26 / 0.28); transform: translateY(-2px); } .ds-cert:hover .ds-cert-verify { text-decoration-color: currentColor; } .ds-cert:focus-visible { outline: 2px solid #56705f; outline-offset: 2px; }"
+    },
+    {
+      "name": "Pill",
+      "kind": "chip",
+      "refersTo": "pill",
+      "description": "Dates and stack tags.",
+      "html": "<span class=\"ds-pill\">Next.js</span>",
+      "css": ".ds-pill { display: inline-block; padding: 0.3rem 0.8rem; border: 1px solid #e4e2db; border-radius: 999px; font: 0.8rem -apple-system, 'Segoe UI', Roboto, sans-serif; color: #5c5c57; transition: border-color 200ms cubic-bezier(0.4,0,0.2,1), color 200ms cubic-bezier(0.4,0,0.2,1); } .ds-pill:hover { border-color: #7c9885; color: #1c1c1a; }"
+    },
+    {
+      "name": "Work Card",
+      "kind": "card",
+      "refersTo": "card",
+      "description": "Numbered product card; lifts with accent border on hover.",
+      "html": "<article class=\"ds-work-card\"><div class=\"ds-work-head\"><strong>Chaskyapp</strong> <span class=\"ds-pill-status\">En producción</span></div><p class=\"ds-work-sub\">Pedidos por WhatsApp para comercios</p><span class=\"ds-work-num\">01</span></article>",
+      "css": ".ds-work-card { position: relative; background: #ffffff; border: 1px solid #e4e2db; border-radius: 10px; padding: 1.25rem 3.5rem 1.25rem 1.25rem; box-shadow: 0 1px 2px rgb(28 28 26 / 0.04); font-family: -apple-system, 'Segoe UI', Roboto, sans-serif; color: #1c1c1a; transition: box-shadow 200ms cubic-bezier(0.4,0,0.2,1), border-color 200ms cubic-bezier(0.4,0,0.2,1), transform 200ms cubic-bezier(0.4,0,0.2,1); } .ds-work-card:hover { box-shadow: 0 14px 32px -18px rgb(28 28 26 / 0.28); border-color: #7c9885; transform: translateY(-2px); } .ds-work-head { display: flex; gap: 0.6rem; align-items: center; font-size: 0.95rem; margin-bottom: 0.4rem; } .ds-work-sub { margin: 0; color: #5c5c57; font-size: 0.8rem; } .ds-work-num { position: absolute; top: 1.25rem; right: 1.25rem; font: 1.1rem Georgia, serif; color: #e4e2db; } .ds-pill-status { display: inline-block; padding: 0.3rem 0.8rem; border: 1px solid #e4e2db; border-radius: 999px; font-size: 0.8rem; color: #56705f; }"
+    },
+    {
+      "name": "Rail Jump-Nav",
+      "kind": "nav",
+      "refersTo": "nav-item",
+      "description": "Scroll-spy section nav in the identity rail.",
+      "html": "<nav class=\"ds-nav\"><a class=\"ds-nav-item is-active\" href=\"#\"><span class=\"ds-dot\"></span>Experiencia</a><a class=\"ds-nav-item\" href=\"#\"><span class=\"ds-dot\"></span>Mis trabajos</a></nav>",
+      "css": ".ds-nav { display: flex; flex-direction: column; gap: 0.15rem; padding: 0.75rem 0; border-top: 1px solid #e4e2db; border-bottom: 1px solid #e4e2db; font: 0.8rem -apple-system, 'Segoe UI', Roboto, sans-serif; width: 260px; } .ds-nav-item { display: flex; align-items: center; gap: 0.55rem; padding: 0.4rem 0.55rem; border-radius: 6px; color: #5c5c57; text-decoration: none; transition: background-color 200ms cubic-bezier(0.4,0,0.2,1), color 200ms cubic-bezier(0.4,0,0.2,1); } .ds-nav-item:hover { color: #1c1c1a; background: rgb(90 117 99 / 0.08); } .ds-nav-item:focus-visible { outline: 2px solid #56705f; outline-offset: 2px; } .ds-dot { width: 5px; height: 5px; border-radius: 50%; background: #e4e2db; transition: transform 200ms, background-color 200ms; } .ds-nav-item.is-active { color: #56705f; background: rgb(90 117 99 / 0.08); font-weight: 600; } .ds-nav-item.is-active .ds-dot { background: #56705f; transform: scale(1.6); }"
+    },
+    {
+      "name": "Data Point",
+      "kind": "custom",
+      "refersTo": "data-point",
+      "description": "Boxed quick-info fact in the rail.",
+      "html": "<div class=\"ds-data\"><span class=\"ds-data-term\">Disponibilidad</span><span class=\"ds-data-value\">Disponible para roles Full Stack</span></div>",
+      "css": ".ds-data { display: flex; flex-direction: column; gap: 0.2rem; padding: 0.55rem 0.7rem; border: 1px solid #e4e2db; border-radius: 6px; background: rgb(90 117 99 / 0.08); font: 0.8rem -apple-system, 'Segoe UI', Roboto, sans-serif; color: #1c1c1a; transition: border-color 200ms cubic-bezier(0.4,0,0.2,1); } .ds-data:hover { border-color: #7c9885; } .ds-data-term { color: #6b6b64; text-transform: uppercase; font-size: 0.65rem; font-weight: 600; letter-spacing: 0.08em; } .ds-data-value { font-weight: 500; }"
+    },
+    {
+      "name": "Theme Toggle",
+      "kind": "input",
+      "description": "Custom switch over native checkbox.",
+      "html": "<label class=\"ds-toggle\"><input type=\"checkbox\"> Modo oscuro</label>",
+      "css": ".ds-toggle { display: flex; align-items: center; gap: 0.6rem; font: 0.8rem -apple-system, 'Segoe UI', Roboto, sans-serif; color: #5c5c57; cursor: pointer; } .ds-toggle input { appearance: none; -webkit-appearance: none; margin: 0; width: 2.1rem; height: 1.15rem; border-radius: 999px; border: 1px solid #e4e2db; background: #ffffff; position: relative; cursor: pointer; transition: background-color 200ms, border-color 200ms; } .ds-toggle input::before { content: ''; position: absolute; top: 1px; left: 1px; width: 0.95rem; height: 0.95rem; border-radius: 50%; background: #6b6b64; transition: transform 200ms cubic-bezier(0.4,0,0.2,1), background-color 200ms; } .ds-toggle input:checked { border-color: #7c9885; background: rgb(90 117 99 / 0.08); } .ds-toggle input:checked::before { transform: translateX(0.95rem); background: #56705f; } .ds-toggle input:focus-visible { outline: 2px solid #56705f; outline-offset: 2px; }"
+    },
+    {
+      "name": "Timeline Row",
+      "kind": "custom",
+      "refersTo": "card",
+      "description": "One lane of the experience chart: label left, bar on the time axis right. Open point = start, filled = end.",
+      "html": "<div class=\"ds-tl\"><div class=\"ds-tl-label\"><strong>Contractor</strong> — Plug-Zone <span class=\"ds-pill\">Nov 2023 — Jan 2026</span></div><div class=\"ds-tl-track\"><span class=\"ds-tl-line\"></span><span class=\"ds-tl-dot\"></span><span class=\"ds-tl-dot ds-tl-end\"></span></div></div>",
+      "css": ".ds-tl { display: grid; grid-template-columns: minmax(0, 16rem) minmax(0, 1fr); column-gap: 2rem; align-items: center; padding: 0.7rem 0.25rem; border-bottom: 1px solid #e4e2db; font: 0.8rem/1.5 -apple-system, 'Segoe UI', Roboto, sans-serif; color: #5c5c57; } .ds-tl-label strong { color: #1c1c1a; font-weight: 600; } .ds-pill { display: inline-block; padding: 0.3rem 0.8rem; border: 1px solid #e4e2db; border-radius: 999px; } .ds-tl-track { position: relative; height: 1.25rem; } .ds-tl-line { position: absolute; top: 50%; left: 36%; width: 52%; height: 2px; margin-top: -1px; border-radius: 2px; background: #56705f; } .ds-tl-dot { position: absolute; top: 50%; left: 36%; width: 9px; height: 9px; margin: -4.5px 0 0 -4.5px; box-sizing: border-box; border-radius: 50%; border: 2px solid #56705f; background: #fff; } .ds-tl-dot.ds-tl-end { left: 88%; background: #56705f; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Engineer's Dossier",
+    "overview": "Split identity rail portfolio; an engineer's dossier of production evidence.\r\ncolors:\r\n  sage-field: '#7c9885'\r\n  sage-field-deep: '#56705f'\r\n  sage-field-wash: 'rgb(90 117 99 / 0.08)'\r\n  paper: '#faf9f6'\r\n  paper-raised: '#ffffff'\r\n  ink: '#1c1c1a'\r\n  ink-muted: '#5c5c57'\r\n  ink-faint: '#6b6b64'\r\n  rule: '#e4e2db'\r\ntypography:\r\n  display:\r\n    fontFamily: \"Georgia, 'Times New Roman', serif\"\r\n    fontSize: '1.75rem'\r\n    fontWeight: 700\r\n    lineHeight: 1.15\r\n    letterSpacing: '-0.01em'\r\n  hero-name:\r\n    fontFamily: \"Georgia, 'Times New Roman', serif\"\r\n    fontSize: 'clamp(3.25rem, 2rem + 6vw, 6rem)'\r\n    fontWeight: 700\r\n    lineHeight: 1.02\r\n    letterSpacing: '-0.025em'\r\n  headline:\r\n    fontFamily: \"Georgia, 'Times New Roman', serif\"\r\n    fontSize: '1.3rem'\r\n    fontWeight: 700\r\n    letterSpacing: '-0.005em'\r\n  title:\r\n    fontFamily: \"-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif\"\r\n    fontSize: '0.95rem'\r\n    fontWeight: 600\r\n  body:\r\n    fontFamily: \"-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif\"\r\n    fontSize: '1.05rem'\r\n    fontWeight: 400\r\n    lineHeight: 1.75\r\n  body-small:\r\n    fontFamily: \"-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif\"\r\n    fontSize: '0.8rem'\r\n    fontWeight: 400\r\n    lineHeight: 1.6\r\n  numeral:\r\n    fontFamily: \"Georgia, 'Times New Roman', serif\"\r\n    fontSize: '1.1rem'\r\n  quote-mark:\r\n    fontFamily: \"Georgia, 'Times New Roman', serif\"\r\n    fontSize: '2.2rem'\r\n    lineHeight: 1\r\n  terminal:\r\n    fontFamily: 'ui-monospace, SFMono-Regular, Menlo, Consolas, monospace'\r\n    fontSize: '0.92em'\r\n  label-micro:\r\n    fontFamily: \"-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif\"\r\n    fontSize: '0.7rem'\r\n    fontWeight: 600\r\n    letterSpacing: '0.08em'\r\n  label:\r\n    fontFamily: \"-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif\"\r\n    fontSize: '0.8rem'\r\n    fontWeight: 600\r\n    letterSpacing: '0.06em'\r\nrounded:\r\n  focus: '2px'\r\n  xs: '4px'\r\n  sm: '6px'\r\n  md: '10px'\r\n  full: '999px'\r\nspacing:\r\n  '1': '0.4rem'\r\n  '2': '0.75rem'\r\n  '3': '1.25rem'\r\n  '4': '2rem'\r\n  '5': '3.25rem'\r\ncomponents:\r\n  card:\r\n    backgroundColor: '{colors.paper-raised}'\r\n    rounded: '{rounded.md}'\r\n    padding: '{spacing.3}'\r\n  pill:\r\n    textColor: '{colors.ink-muted}'\r\n    rounded: '{rounded.full}'\r\n    padding: '0.3rem 0.8rem'\r\n  pill-status:\r\n    textColor: '{colors.sage-field-deep}'\r\n    rounded: '{rounded.full}'\r\n    padding: '0.3rem 0.8rem'\r\n  nav-item:\r\n    textColor: '{colors.ink-muted}'\r\n    rounded: '{rounded.sm}'\r\n    padding: '0.4rem 0.55rem'\r\n  nav-item-active:\r\n    backgroundColor: '{colors.sage-field-wash}'\r\n    textColor: '{colors.sage-field-deep}'\r\n    rounded: '{rounded.sm}'\r\n    padding: '0.4rem 0.55rem'\r\n  data-point:\r\n    backgroundColor: '{colors.sage-field-wash}'\r\n    rounded: '{rounded.sm}'\r\n    padding: '0.55rem 0.7rem'\r\n  identity-rail:\r\n    width: 'clamp(18rem, 20vw, 21rem)'\r\n---\r\n\r\n# Design System: Andrés Medina — Portfolio\r\n\r\n<!-- Source of truth today: src/portfolio/tokens.css (--pr-* tokens scoped to .pr-root) and src/portfolio/PortfolioPage.css (.vb-*, .tr-*). Variant B was chosen 2026-09-28 and promoted to the home route on `dev` 2026-10-05 (not on `main`/production yet); the legacy production styles were removed (src/styles/reset.css replaces them). Chart and typing logic: src/portfolio/ExperienceTimeline.tsx, src/portfolio/TypedRole.tsx. Technology marquee mechanics: src/portfolio/TechLoop.tsx, src/portfolio/data/techRows.ts (.vb-tech-*, shared .tl-* loop mechanics). Updated 2026-10-06: fluid layout, hero, charted timeline, typed role line. Updated 2026-10-07: technology section redrawn as a ledger of three marquee rows with logos. Updated 2026-10-07 (live pass): hero with a line illustration and no ledger, \"Cómo trabajo\" as an open typographic block (`.hw-*`, `emph()` in PortfolioPage.tsx), Credenciales as its own section, and the three marquee rows split into one ribbon per page seam (src/portfolio/TechRibbon.tsx, `.vb-ribbon`). -->\r\n\r\n## Overview\r\n\r\n**Creative North Star: \"The Engineer's Dossier\"**\r\n\r\nThe site reads like a well-kept technical dossier: a fixed rail on the left (preferences, quick facts, CV and contact, jump-nav) and, on the right, a hero that gives the name at full scale beside a line illustration, followed by filed evidence (numbered work, a charted timeline, credentials, feedback). Every visual device earns its place by organising or proving something: numbers index the work, boxed data points hold facts, measured results are set as display numerals inside their sentences (88% → 93%), and one bar chart places the career on a real time axis. Decoration that proves nothing does not belong, with two exceptions chosen by Andrés on 2026-10-07: the hero illustration and the technology ribbons.\r\n\r\nDensity is editorial and calm: a fluid content column that takes the space the rail leaves (capped only on ultra-wide screens) with reading measure set per paragraph (≤65ch), generous section spacing, small uppercase labels, a single desaturated accent used for marks rather than fills. Warmth comes from the serif headings and the off-white paper over the kept dotted-pattern background. Components are **firm and tactile**: they answer the pointer clearly (lift, shadow, accent border) instead of barely reacting.\r\n\r\nConfirmed anti-references: the **neon/gamer portfolio** (the current production site: neon gradients, violets, Poppins, attention-grabbing effects) and the **corporate CV** (formal, grey, HR-document feel).",
+    "keyCharacteristics": [
+      "Split layout: sticky fluid rail (`clamp(18rem, 20vw, 21rem)`) + a fluid content column that opens with the hero.\r",
+      "One accent (Sage Field), used as marks, rules, active states and status, never as large fills.\r",
+      "Serif display for names and section heads; system sans for everything else; one typed terminal line in system monospace.\r",
+      "Evidence drawn on a real axis (the 2013–today timeline: open point = start, filled point = end); measured results set as display numerals inside their sentences.\r",
+      "Numbered, boxed, dated evidence: `01`, `02`… on work cards, bordered data points, date pills.\r",
+      "Light and dark themes with the same structure; flat paper everywhere with the production dot pattern as a soft texture."
+    ],
+    "rules": [
+      {
+        "name": "The AA Floor Rule",
+        "body": "Every text token clears 4.5:1 on Paper, Paper Raised _and_ Sage Field Wash, in both themes (measured minimum 4.62:1). Ink Faint and Sage Field Deep were darkened/lightened for this; new tokens must meet the same floor before use.",
+        "section": "colors"
+      },
+      {
+        "name": "The One Voice Rule",
+        "body": "Sage Field is the only hue. No second accent, no gradients between hues; everything else is paper, ink and rule.",
+        "section": "colors"
+      },
+      {
+        "name": "The Mark, Not Fill Rule",
+        "body": "The accent appears as lines, dots, text, markers and 8–10% washes, never as a solid block behind content.",
+        "section": "colors"
+      },
+      {
+        "name": "The Client Artifact Exception",
+        "body": "A client's own identity may bring its own colour, only inside the card of that client's project and only on its artifacts: Rapitrago's logo, its app capture and the product icons use its orange (`#faa61b` on the dark theme, a deeper `#c4730a` on the light theme so the icons keep 3:1 against paper). Never for text, never for the card's background, no gradients, and no other client colour. The credential certificates are exempt for the same reason. Chaskyapp's captures (its own blue and yellow) and Reforest's logo follow the same rule: they appear only as the artwork of their own cards.",
+        "section": "colors"
+      },
+      {
+        "name": "The Serif Is a Signature Rule",
+        "body": "Georgia is reserved for the name, section headings, and numerals (work counters, quote mark, timeline years). Body, UI and data are always sans.",
+        "section": "typography"
+      },
+      {
+        "name": "The Typed Input Exception",
+        "body": "One line leaves the sans: the hero's typed role line uses the system monospace stack (`ui-monospace, SFMono-Regular, Menlo, Consolas, monospace`, no download) because it imitates terminal input. Nothing else on the page is monospace.",
+        "section": "typography"
+      },
+      {
+        "name": "The Quiet Label Rule",
+        "body": "Structure is labelled with small uppercase Ink Faint text, never with bigger or bolder headings.",
+        "section": "typography"
+      },
+      {
+        "name": "The Earned Lift Rule",
+        "body": "Elevation signals either interaction or importance. A piece may rest lifted only if it is the most important thing in its section.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do give the page one authored motion moment (the typed role line) plus the one sanctioned loop (the technology ribbons), and let everything else stay still or respond to the pointer; gate both behind `prefers-reduced-motion`.\r",
+      "Do keep claims readable without interaction and put detail behind `<details>`, not behind hover.\r",
+      "Do keep a single accent (Sage Field family) and use it as marks: rules, dots, borders, text, 8–10% washes.\r",
+      "Do reserve Georgia for the name, section headings and numerals; everything else in the system sans.\r",
+      "Do give interactive elements a clear, tactile response: lift (`translateY(-2px)` + Lifted shadow) and/or accent border/underline, 200ms standard ease.\r",
+      "Do number and box evidence (work counters, data points, date pills) so the page reads as a filed dossier.\r",
+      "Do keep the page one continuous paper surface with the dot texture at ≤6% alpha, and support both themes with the same tokens.\r",
+      "Do gate GSAP motion behind `prefers-reduced-motion: no-preference` and zero out CSS transitions under reduced motion; keep `:focus-visible` outlines (2px Sage Field Deep, 2px offset).\r"
+    ],
+    "donts": [
+      "Don't loop or auto-scroll content (idle drifts, endless rotators): it fails WCAG 2.2.2 and the dossier tone. A motion sequence plays once and settles on the true state. The one exception, chosen by Andrés on 2026-10-07, is the technology ribbons (three rows, each used alone at a seam of the page, never stacked): they are slow, carries no claim that is not also in the page text, pauses under the pointer and disappears under reduced motion. Open gap: it has no pause control for keyboard or touch users, which WCAG 2.2.2 asks for on motion longer than 5s; add one before this goes to `main`.\r",
+      "Don't draw a time axis that stops before the present or hides recent years: it makes live work read as stale. The timeline labels every year to 2026 and marks \"Hoy\".\r",
+      "Don't set a width in pixels as the layout: use `clamp`, `minmax`, `auto-fit` and container queries; pixels are limits.\r",
+      "Don't make a second monospace moment: the typed role line is the one exception to \"sans for everything else\".\r",
+      "Don't reintroduce the grey side-vignette gradient or any surface edge in the page background; a visible seam where the content ends was the reason it was dropped.\r",
+      "Don't drift toward the neon/gamer look of the current production site: no neon gradients, violets, Poppins/Oswald, glow shadows, or flashy effects.\r",
+      "Don't drift toward a corporate CV: no grey formality, no dense document tables, no stiff HR tone.\r",
+      "Don't add a second accent colour or fill large areas with the accent.\r",
+      "Don't add decoration that proves nothing; every illustrative element must organise or evidence real content. The two exceptions are the hero illustration and the technology ribbons (2026-10-07); the illustration carries no claim, and both stay out of the way of the evidence.\r",
+      "Don't put a thick coloured border on one side of a card or row; emphasis comes from elevation, structure and the accent as a mark.\r",
+      "Don't make hovers so faint they read as broken; components here are firm, not whisper-quiet.\r"
+    ]
+  }
+}
