@@ -171,6 +171,8 @@ export const contentEn: Content = {
         '13+ architecture decisions documented as ADRs',
         'Agent workflow: domain glossary, agent-ready issues and verification against the real database on every schema change',
       ],
+      imageAlt:
+        "Chaskyapp: the product's landing page on a computer and Market del Cevil's catalog on a phone.",
     },
     {
       status: 'Management system · In production',

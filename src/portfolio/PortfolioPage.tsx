@@ -20,6 +20,7 @@ import { useLang, type Lang } from './hooks/useLang';
 import ExperienceTimeline from './ExperienceTimeline';
 import TypedRole from './TypedRole';
 import ProductIcon from './ProductIcon';
+import WorkArt from './WorkArt';
 import TechRibbon from './TechRibbon';
 
 gsap.registerPlugin(ScrollTrigger, useGSAP);
@@ -74,6 +75,20 @@ const PortfolioPage: React.FC<Props> = ({ theme, toggleTheme }) => {
   // The featured project (the one made of products) has its own card; the others share one shape.
   const featuredWork = c.work.find((p) => p.products);
   const otherWork = c.work.filter((p) => !p.products);
+  // A work's title links to its live product when it has one; the link is stretched over the
+  // whole card (CSS), like the earlier-work cards that are links as a whole.
+  const workTitle = (p: (typeof c.work)[number]) =>
+    p.demo ? (
+      <a className="vb-work-link" href={p.demo} target="_blank" rel="noreferrer">
+        {p.title}
+        <span className="vb-sr-only"> {ui.newTab}</span>
+        <span className="vb-work-link-arrow" aria-hidden="true">
+          {'↗'}
+        </span>
+      </a>
+    ) : (
+      p.title
+    );
 
   const activeSection = useRailSpy(railNavIds as unknown as string[]);
 
@@ -298,35 +313,105 @@ const PortfolioPage: React.FC<Props> = ({ theme, toggleTheme }) => {
             </p>
           </div>
           <svg className="vb-hero-art" viewBox="0 0 480 400" aria-hidden="true" focusable="false">
-            <g fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-              <g strokeWidth="1" style={{ stroke: "var(--pr-text-faint)" }}>
+            <g
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <g strokeWidth="1" style={{ stroke: 'var(--pr-text-faint)' }}>
                 <path d="M40 46h300M40 40v12M340 40v12" />
                 <path d="M16 70v210M10 70h12M10 280h12" />
                 <path d="M300 104h130M300 98v12M430 98v12" />
-                <path d="M10 338h460" strokeDasharray="2 6" style={{ stroke: "var(--pr-border)" }} />
+                <path
+                  d="M10 338h460"
+                  strokeDasharray="2 6"
+                  style={{ stroke: 'var(--pr-border)' }}
+                />
               </g>
-              <g stroke="none" fontSize="11" style={{ fill: "var(--pr-text-faint)", fontFamily: "var(--pr-font-body)" }}>
-                <text x="190" y="34" textAnchor="middle">web</text>
-                <text x="365" y="92" textAnchor="middle">mobile</text>
+              <g
+                stroke="none"
+                fontSize="11"
+                style={{ fill: 'var(--pr-text-faint)', fontFamily: 'var(--pr-font-body)' }}
+              >
+                <text x="190" y="34" textAnchor="middle">
+                  web
+                </text>
+                <text x="365" y="92" textAnchor="middle">
+                  mobile
+                </text>
               </g>
-              <rect x="40" y="70" width="300" height="210" rx="10" style={{ fill: "var(--pr-bg-raised)" }} />
+              <rect
+                x="40"
+                y="70"
+                width="300"
+                height="210"
+                rx="10"
+                style={{ fill: 'var(--pr-bg-raised)' }}
+              />
               <path d="M40 102h300" />
               <circle cx="62" cy="86" r="3.5" />
               <circle cx="78" cy="86" r="3.5" />
               <circle cx="94" cy="86" r="3.5" />
-              <rect x="64" y="126" width="120" height="12" rx="3" style={{ fill: "var(--pr-accent-soft)" }} />
-              <path d="M64 158h200M64 172h160M64 186h180" strokeWidth="5" style={{ stroke: "var(--pr-border)" }} />
+              <rect
+                x="64"
+                y="126"
+                width="120"
+                height="12"
+                rx="3"
+                style={{ fill: 'var(--pr-accent-soft)' }}
+              />
+              <path
+                d="M64 158h200M64 172h160M64 186h180"
+                strokeWidth="5"
+                style={{ stroke: 'var(--pr-border)' }}
+              />
               <rect x="64" y="208" width="76" height="52" rx="6" />
               <rect x="152" y="208" width="76" height="52" rx="6" />
               <rect x="240" y="208" width="76" height="52" rx="6" />
-              <rect x="300" y="120" width="130" height="250" rx="20" style={{ fill: "var(--pr-bg)" }} />
+              <rect
+                x="300"
+                y="120"
+                width="130"
+                height="250"
+                rx="20"
+                style={{ fill: 'var(--pr-bg)' }}
+              />
               <path d="M346 136h38" />
-              <path d="M320 168h56" strokeWidth="5" style={{ stroke: "var(--pr-border)" }} />
-              <circle cx="410" cy="168" r="4" style={{ fill: "currentColor" }} stroke="none" />
-              <circle cx="410" cy="168" r="9" style={{ stroke: "var(--pr-accent-soft)" }} strokeWidth="2" />
-              <rect x="318" y="196" width="86" height="30" rx="10" style={{ fill: "var(--pr-bg-raised)" }} />
-              <rect x="338" y="240" width="74" height="30" rx="10" style={{ fill: "var(--pr-accent-soft)" }} />
-              <rect x="318" y="284" width="64" height="30" rx="10" style={{ fill: "var(--pr-bg-raised)" }} />
+              <path d="M320 168h56" strokeWidth="5" style={{ stroke: 'var(--pr-border)' }} />
+              <circle cx="410" cy="168" r="4" style={{ fill: 'currentColor' }} stroke="none" />
+              <circle
+                cx="410"
+                cy="168"
+                r="9"
+                style={{ stroke: 'var(--pr-accent-soft)' }}
+                strokeWidth="2"
+              />
+              <rect
+                x="318"
+                y="196"
+                width="86"
+                height="30"
+                rx="10"
+                style={{ fill: 'var(--pr-bg-raised)' }}
+              />
+              <rect
+                x="338"
+                y="240"
+                width="74"
+                height="30"
+                rx="10"
+                style={{ fill: 'var(--pr-accent-soft)' }}
+              />
+              <rect
+                x="318"
+                y="284"
+                width="64"
+                height="30"
+                rx="10"
+                style={{ fill: 'var(--pr-bg-raised)' }}
+              />
               <rect x="318" y="336" width="94" height="20" rx="10" />
             </g>
           </svg>
@@ -366,7 +451,7 @@ const PortfolioPage: React.FC<Props> = ({ theme, toggleTheme }) => {
                     </span>
                   )}
                   <div className="vb-work-head">
-                    <strong>{featuredWork.title}</strong>
+                    <strong>{workTitle(featuredWork)}</strong>
                     {featuredWork.status && (
                       <span className="pr-pill pr-accent-text">{featuredWork.status}</span>
                     )}
@@ -427,8 +512,42 @@ const PortfolioPage: React.FC<Props> = ({ theme, toggleTheme }) => {
                   className="vb-work-card pr-card vb-reveal"
                 >
                   <div className="vb-work-main">
+                    {(p.art || p.brand) && (
+                      <div className="vb-work-art-band">
+                        {p.art ? (
+                          <WorkArt
+                            desktop={p.art.desktop}
+                            mobile={p.art.mobile}
+                            label={p.imageAlt ?? p.title}
+                          />
+                        ) : (
+                          p.brand && (
+                            <span className="vb-work-art-logo" role="img" aria-label={p.title}>
+                              <img
+                                className="vb-brand-logo on-dark"
+                                src={p.brand.logoOnDark}
+                                alt=""
+                                width={720}
+                                height={230}
+                                loading="lazy"
+                                decoding="async"
+                              />
+                              <img
+                                className="vb-brand-logo on-light"
+                                src={p.brand.logoOnLight}
+                                alt=""
+                                width={720}
+                                height={230}
+                                loading="lazy"
+                                decoding="async"
+                              />
+                            </span>
+                          )
+                        )}
+                      </div>
+                    )}
                     <div className="vb-work-head">
-                      <strong>{p.title}</strong>
+                      <strong>{workTitle(p)}</strong>
                       {p.status && <span className="pr-pill pr-accent-text">{p.status}</span>}
                     </div>
                     {p.subtitle && <p className="vb-work-subtitle">{p.subtitle}</p>}
@@ -555,16 +674,23 @@ const PortfolioPage: React.FC<Props> = ({ theme, toggleTheme }) => {
             {c.credentials.map((cred) => (
               <li key={cred.verifyUrl}>
                 <a className="vb-cert" href={cred.verifyUrl} target="_blank" rel="noreferrer">
-                  <img src={cred.image} alt="" width={720} height={544} loading="lazy" decoding="async" />
+                  <img
+                    src={cred.image}
+                    alt=""
+                    width={720}
+                    height={544}
+                    loading="lazy"
+                    decoding="async"
+                  />
                   <strong>
                     {cred.name}
                     <span className="vb-sr-only"> {ui.newTab}</span>
                   </strong>
                   <span className="vb-cert-meta">
-                    {cred.issuer} ·{" "}
+                    {cred.issuer} ·{' '}
                     {new Date(`${cred.issued}T12:00:00`).toLocaleDateString(c.lang, {
-                      month: "short",
-                      year: "numeric",
+                      month: 'short',
+                      year: 'numeric',
                     })}
                   </span>
                   <span className="vb-cert-verify">{ui.verifyCert}</span>

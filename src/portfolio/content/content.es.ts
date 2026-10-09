@@ -8,6 +8,10 @@ import cvEsUrl from '../../assets/CV_Andres_Medina_esp.pdf';
 import rapitragoApp from '../../assets/rapitrago-app.webp';
 import rapitragoLogoOnDark from '../../assets/rapitrago-logo-onDark.webp';
 import rapitragoLogoOnLight from '../../assets/rapitrago-logo-onLight.webp';
+import chaskyLanding from '../../assets/chaskyapp-landing.webp';
+import chaskyCatalog from '../../assets/chaskyapp-catalog.webp';
+import reforestLogoOnDark from '../../assets/reforest-logo-onDark.webp';
+import reforestLogoOnLight from '../../assets/reforest-logo-onLight.webp';
 import certClaudeCode101 from '../../assets/certs/cert-claude-code-101.webp';
 import certClaudeCodeInAction from '../../assets/certs/cert-claude-code-in-action.webp';
 import certClaudeApi from '../../assets/certs/cert-claude-api.webp';
@@ -176,6 +180,9 @@ export type WorkItem = {
   todoNote?: string;
   image?: string;
   imageAlt?: string;
+  // Two captures drawn inside a laptop and a phone frame (WorkArt).
+  art?: { desktop: string; mobile: string };
+  // The live product: the whole card links to it.
   demo?: string;
 };
 
@@ -202,6 +209,7 @@ export const professionalWork: WorkItem[] = [
     imageAlt:
       'App de cliente de Rapitrago: home con categorías, comercios abiertos y seguimiento del repartidor en vivo.',
     brand: { logoOnDark: rapitragoLogoOnDark, logoOnLight: rapitragoLogoOnLight },
+    demo: 'https://rapitrago.com',
     products: [
       {
         id: 'customer',
@@ -244,7 +252,11 @@ export const professionalWork: WorkItem[] = [
       'Tailwind',
       'Zod',
     ],
-    todoNote: 'TODO(Andrés): ¿se pueden mostrar las URLs públicas de las tiendas? Si no, capturas.',
+    demo: 'https://chaskyapp.vercel.app',
+    // The product's landing on the laptop, Market del Cevil's public catalog on the phone.
+    art: { desktop: chaskyLanding, mobile: chaskyCatalog },
+    imageAlt:
+      'Chaskyapp: la página de presentación en una computadora y el catálogo de Market del Cevil en un celular.',
   },
   {
     title: 'Reforest',
@@ -258,8 +270,8 @@ export const professionalWork: WorkItem[] = [
       'Relevamiento, análisis de negocio y manual funcional para el cliente',
     ],
     stack: ['Next.js', 'React 19', 'Supabase', 'shadcn/ui', 'TanStack Table', 'Zod'],
-    todoNote:
-      'Sistema privado del cliente. TODO(Andrés): capturas anonimizadas, con permiso del cliente.',
+    // Private client system: no captures, only its logo.
+    brand: { logoOnDark: reforestLogoOnDark, logoOnLight: reforestLogoOnLight },
   },
 ];
 
