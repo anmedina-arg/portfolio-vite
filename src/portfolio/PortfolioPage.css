@@ -2195,3 +2195,14 @@ body[data-theme='dark'] .vb-brand-logo.on-light {
     grid-template-columns: minmax(0, 1fr);
   }
 }
+
+/* The rail's jump-nav needs every section to be able to reach the top of the viewport, or its
+   link lands part-way down and the scroll-spy marks the wrong item. The last sections are
+   short, so the closing one (Contacto) is a full screen: Feedback and Contacto then both land
+   at the top like the others, at any window height. */
+@media (min-width: 861px) {
+  #contact {
+    min-height: 100vh;
+    min-height: 100dvh;
+  }
+}
