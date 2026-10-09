@@ -6,6 +6,10 @@
 .vb {
   display: flex;
   min-height: 100vh;
+  /* The page never scrolls sideways: nothing inside may widen it. `clip` (not `hidden`) so it
+     does not become a scroll container and the sticky rail keeps working. */
+  max-width: 100%;
+  overflow-x: clip;
 }
 
 /* Skip link: first focus stop, jumps past the 10+ rail stops straight to content. */
@@ -1606,6 +1610,9 @@ body[data-theme='dark'] .vb-brand-logo.on-light {
    A gallery of artifacts, so the images carry the section; the hover answers like the work
    cards (accent border, lift) without moving on touch. */
 .vb-credentials {
+  /* The containing block for the visually hidden text inside each cert: without it those
+     absolutely positioned spans escape the scroll strip below and widen the whole page. */
+  position: relative;
   list-style: none;
   margin: 0;
   padding: 0;
@@ -1614,20 +1621,11 @@ body[data-theme='dark'] .vb-brand-logo.on-light {
   gap: 1rem;
 }
 
-/* Five credentials stay on one line; on a narrow screen the row scrolls instead of wrapping. */
+/* On a narrow screen the five credentials wrap into a grid; nothing scrolls sideways. */
 @media (max-width: 760px) {
   .vb-credentials {
-    display: flex;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    padding-bottom: 0.6rem;
-    scrollbar-width: thin;
-    scrollbar-color: var(--pr-border) transparent;
-  }
-
-  .vb-credentials > li {
-    flex: 0 0 10.5rem;
-    scroll-snap-align: start;
+    grid-template-columns: repeat(auto-fill, minmax(8rem, 1fr));
+    gap: 0.75rem;
   }
 }
 
@@ -1886,6 +1884,74 @@ body[data-theme='dark'] .vb-brand-logo.on-light {
   }
 }
 
+/* Stacked header, minimal (mobile pass 2026-10-09): a visitor on a phone should reach the
+   first project fast. The three fact boxes become plain lines (availability, then location
+   and languages in one muted line), the links sit in one row and the drawing is smaller. */
+@media (max-width: 860px) {
+  .vb-rail {
+    gap: 0.9rem;
+    padding-bottom: var(--pr-space-3);
+  }
+  .vb-prefs {
+    margin-bottom: 0.9rem;
+  }
+  .vb-identity {
+    margin-bottom: 0.5rem;
+  }
+  .vb-tagline {
+    margin: 0;
+  }
+  .vb-quickinfo {
+    display: block;
+    padding-top: 0.9rem;
+  }
+  .vb-quickinfo div,
+  .vb-quickinfo div:hover {
+    padding: 0;
+    border: 0;
+    background: none;
+  }
+  .vb-quickinfo .vb-quickinfo-status {
+    display: block;
+    margin-bottom: 0.35rem;
+  }
+  .vb-quickinfo div {
+    display: inline;
+  }
+  .vb-quickinfo div:last-child {
+    grid-column: auto;
+  }
+  /* The labels stay for screen readers; the values read on their own. */
+  .vb-quickinfo dt {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+  .vb-quickinfo dd {
+    display: inline;
+    margin: 0;
+    color: var(--pr-text-muted);
+    font-weight: 400;
+  }
+  .vb-quickinfo div:nth-child(2)::after {
+    content: ' · ';
+    color: var(--pr-text-faint);
+  }
+  .vb-rail .vb-links {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 0 1.5rem;
+    border-top: 0;
+    padding-top: 0;
+  }
+  .vb-hero-art {
+    max-width: 16rem;
+  }
+}
+
 /* Ledger rows: when the ledger itself is narrow (any viewport), the fact drops under
    the product name instead of squeezing it. Container query, not a viewport guess. */
 @container (max-width: 30rem) {
@@ -2046,5 +2112,86 @@ body[data-theme='dark'] .vb-brand-logo.on-light {
     flex-wrap: wrap;
     gap: 0 var(--pr-space-3);
     padding-top: var(--pr-space-1);
+  }
+}
+
+/* ---------- Phone pass (2026-10-09) ----------
+   On a phone the page is scanned, not read: less air before the first project, one even
+   gutter inside the cards, and the card numbers and the featured card's overhang (which need
+   room around the card) go. Last in the file on purpose: it settles the earlier card rules. */
+@media (max-width: 600px) {
+  .vb-hero {
+    margin-bottom: var(--pr-space-3);
+  }
+  .vb-hero-art {
+    max-width: 12.5rem;
+  }
+  .vb-ribbon {
+    padding: 0.7rem 0;
+    margin-bottom: var(--pr-space-4);
+  }
+  .vb-tech-item {
+    font-size: var(--pr-text-md);
+  }
+
+  .vb-work-card,
+  .vb-work-card.is-featured {
+    --out: 0rem;
+    margin-top: 0;
+    padding: 1.1rem;
+  }
+  .vb-work-card::after {
+    display: none;
+  }
+
+  /* Rapitrago: the logo is an ordinary mark above the title, the phone stays inside the card
+     and the four products shed their one-line functions (the paragraph above says it). */
+  .vb-work-card.is-featured .vb-work-logo {
+    position: static;
+    width: 4.25rem;
+    margin-bottom: 0.7rem;
+    padding: 0.4rem 0.5rem;
+    box-shadow: none;
+  }
+  .vb-work-card.is-featured .vb-work-main {
+    padding-top: 0;
+  }
+  .vb-work-card.is-featured .vb-work-stage {
+    gap: var(--pr-space-3);
+  }
+  .vb-work-shot {
+    max-width: 11rem;
+  }
+  .vb-work-shot img {
+    scale: 1;
+  }
+  .vb-product-fn {
+    display: none;
+  }
+  .vb-work-card.is-featured .vb-product {
+    padding-block: 0.4rem;
+  }
+
+  /* Chaskyapp and Reforest: the artwork takes the width it has, not a fixed band. */
+  #work-chaskyapp .vb-work-art-band {
+    min-height: 0;
+  }
+  #work-chaskyapp .vb-work-art {
+    width: 100%;
+  }
+  #work-reforest .vb-work-art-band {
+    height: 5.5rem;
+  }
+}
+
+/* The experience bars and their broken axis do not read at phone width, so there they go and
+   the entries stay as a plain list (role, company, dates, note). */
+@media (max-width: 760px) {
+  .vb-tl-axis-item,
+  .vb-tl-track {
+    display: none;
+  }
+  .vb-tl-row {
+    grid-template-columns: minmax(0, 1fr);
   }
 }
